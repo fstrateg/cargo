@@ -68,7 +68,6 @@ function cot_get_topusers ($maingrp, $count, $sqlsearch='', $tpl='index')
 		$t1->assign(cot_generate_usertags($tur, 'TOP_ROW_'));
 		$t1->parse('MAIN.TOP_ROW');
 	}
-
 	$t1->parse('MAIN');
 	return $t1->text('MAIN');
 }

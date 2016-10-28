@@ -5,7 +5,7 @@
 			{TOP_ROW_AVATAR}
 		</div>
 		<div class="span2">
-			<p>{TOP_ROW_NAME}</p>
+			<p>{TOP_ROW_NICKNAME}</p>
 			<p>
 				<!-- IF {TOP_ROW_ISPRO} -->
 				<span class="label label-important">PRO</span> 

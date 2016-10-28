@@ -85,7 +85,7 @@
 					<!-- IF {PRJ_ROW_COST} > 0 --><div class="pull-right">{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
 					<a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a>
 				</h4>
-				<p class="owner small">{PRJ_ROW_OWNER_NAME} <span class="date">[{PRJ_ROW_DATE}]</span>  
+				<p class="owner small">{PRJ_ROW_OWNER_NICKNAME} <span class="date">[{PRJ_ROW_DATE}]</span>  
 					<span class="region">{PRJ_ROW_COUNTRY} {PRJ_ROW_REGION} {PRJ_ROW_CITY}</span> -
 					<span class="region">{PRJ_ROW_COUNTRYTO} {PRJ_ROW_REGIONTO} {PRJ_ROW_CITYTO}</span>  
 					{PRJ_ROW_EDIT_URL}</p>

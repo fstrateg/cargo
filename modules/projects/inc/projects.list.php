@@ -116,7 +116,6 @@ foreach (cot_getextplugins('projects.list.query') as $pl)
 /* ===== */
 
 $t = new XTemplate($mskin);
-
 $where = ($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 $order = ($order) ? 'ORDER BY ' . implode(', ', $order) : '';
 
