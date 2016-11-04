@@ -1,84 +1,104 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<!DOCTYPE html>
+<html>
 <head>
+	<title>Facebook Login JavaScript Example</title>
+	<meta charset="UTF-8">
 </head>
-<style type="text/css">
-	body{margin:0;
-	font-family: Arial,Helvetica,sans-serif;}
-	
-	
-	
-	.container{
-	margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-	width: auto;
+<body>
+<script>
+	// This is called with the results from from FB.getLoginStatus().
+	function statusChangeCallback(response) {
+		console.log('statusChangeCallback');
+		console.log(response);
+		// The response object is returned with a status field that lets the
+		// app know the current login status of the person.
+		// Full docs on the response object can be found in the documentation
+		// for FB.getLoginStatus().
+		if (response.status === 'connected') {
+			// Logged into your app and Facebook.
+			testAPI();
+		} else if (response.status === 'not_authorized') {
+			// The person is logged into Facebook, but not your app.
+			document.getElementById('status').innerHTML = 'Please log ' +
+					'into this app.';
+		} else {
+			// The person is not logged into Facebook, so we're not sure if
+			// they are logged into this app or not.
+			document.getElementById('status').innerHTML = 'Please log ' +
+					'into Facebook.';
+		}
 	}
 
-	.landing-hero{
-		background-image: url('/images/logistik.jpg');
-		min-height: 21.36364rem;
-		padding-top: 6.5rem;
-		padding-bottom: 3rem;
-		background-size: cover;
+	// This function is called when someone finishes with the Login
+	// Button.  See the onlogin handler attached to it in the sample
+	// code below.
+	function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
 	}
-	
-	.landing-hero{
-		color: #fff;
-		font-weight: bold;
+
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '1600803566611967',
+			cookie     : true,  // enable cookies to allow the server to access
+								// the session
+			xfbml      : true,  // parse social plugins on this page
+			version    : 'v2.5' // use graph api version 2.5
+		});
+
+		// Now that we've initialized the JavaScript SDK, we call
+		// FB.getLoginStatus().  This function gets the state of the
+		// person visiting this page and can return one of three states to
+		// the callback you provide.  They can be:
+		//
+		// 1. Logged into your app ('connected')
+		// 2. Logged into Facebook, but not your app ('not_authorized')
+		// 3. Not logged into Facebook and can't tell if they are logged into
+		//    your app or not.
+		//
+		// These three cases are handled in the callback function.
+
+	};
+
+
+	// Load the SDK asynchronously
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+	// Here we run a very simple test of the Graph API after login is
+	// successful.  See statusChangeCallback() for when this call is made.
+	function testAPI() {
+		console.log('Welcome!  Fetching your information.... ');
+		FB.api('/me', function(response) {
+			console.log('Successful login for: ' + response.name);
+			document.getElementById('status').innerHTML =
+					'Thanks for logging in, ' + response.name + '!';
+		});
 	}
-	
-	.title{
-		font-size: 40px;
+
+	function connect() {
+		FB.login(function (response) {
+					alert(response.email);
+			statusChangeCallback(response);
+				}, {scope: 'public_profile,email'}
+		);
 	}
-	.row{
-		margin: auto;
-		width: 40%;
-		text-align: center;
-	}
-	@media (min-width: 990px)
-	{
-		.container {
-			width: 970px;
-		}
-	}
-	@media (min-width: 1200px)
-	{
-		.container {
-			width: 1170px;
-		}
-	}
-	
-	@media (min-width: 1400px)
-	{
-		.container {
-			width: 1370px;
-		}
-	}
-</style>
-<body>
-	<div>
-		<div>
-		<header>
-			<div class="container">
-				<a href="/"><img src="/themes/bootlance/img/logo.png"></a>
-			</div>
-		</header>
-		<main>
-			<section class="landing-hero">
-				<div class="container">
-					<div class="row">
-						<h1 class="title">Зарегистрируйся и зарабатывай</h1>
-					</div>
-					<div class="row">
-						<p>или найди транспорт чтобы привезти груз</p>
-					</div>
-				</div>
-			</section>
-		</main>
-		</div>
-	</div>
-	<p>test</p>
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+<a href="#" onclick="connect()"><img src="images/fb_login_awesome.jpg" border="0" alt="">Login FB</a>
+
+<div id="status">
+</div>
 </body>
 </html>

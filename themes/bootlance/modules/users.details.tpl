@@ -37,6 +37,9 @@
 				<!-- IF {PHP.cot_modules.projects} -->
 				<li<!-- IF {PHP.tab} == 'projects' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_PROJECTS_URL}#tab_projects" data-toggle="tab">{PHP.L.projects_projects} {USERS_DETAILS_PROJECTS_COUNT}</a></li>
 				<!-- ENDIF -->
+				<!-- IF {PHP.cot_modules.transport} -->
+				<li<!-- IF {PHP.tab} == 'transport' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_TRANSPORT_URL}#tab_transport" data-toggle="tab">{PHP.L.transport_transport} {USERS_DETAILS_TRANSPORT_COUNT}</a></li>
+				<!-- ENDIF -->
 				<!-- IF {PHP.cot_plugins_active.reviews} -->
 				<li<!-- IF {PHP.tab} == 'reviews' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_REVIEWS_URL}#tab_reviews" data-toggle="tab">{PHP.L.reviews_reviews} {USERS_DETAILS_REVIEWS_COUNT}</a></li>
 				<!-- ENDIF -->
@@ -91,6 +94,9 @@
 			</div>
 			<div class="tab-pane<!-- IF {PHP.tab} == 'projects' --> active<!-- ENDIF -->" id="tab_projects">
 				{PROJECTS}
+			</div>
+			<div class="tab-pane<!-- IF {PHP.tab} == 'transport' --> active<!-- ENDIF -->" id="tab_transport">
+				{TRANSPORT}
 			</div>
 			<div class="tab-pane<!-- IF {PHP.tab} == 'reviews' --> active<!-- ENDIF -->" id="tab_reviews">
 				{REVIEWS}
