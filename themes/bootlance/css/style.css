@@ -87,6 +87,7 @@ table.fico td img	{ margin-right:10px; vertical-align:middle; }
 .centerall 	{ text-align:center; vertical-align:middle; }
 .valid 		{ height:48px; text-align:center; vertical-align:middle; border:0!important; }
 
+table.flat td.photo{width: 310px;}
 /* 6. Misc
 -------------------------------------------------- */
 
@@ -279,3 +280,15 @@ ol					{ margin-left:20px; list-style-type:decimal; }
 	text-decoration: none;
 	color: #FFFFFF;
 	}
+
+#listtransport h4{
+	line-height: 24px;
+}
+#listtransport h4 span{
+	vertical-align: text-top;
+}
+#listtransport .dover{
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: normal;
+}

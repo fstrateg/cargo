@@ -87,6 +87,7 @@ $cfg['useremailduplicate'] = FALSE;     // Allow users to register new accounts 
 // folders among different hosts.
 // ========================
 
+$cfg['root_dir'] = realpath(dirname(__FILE__) . '/../');
 $cfg['avatars_dir'] = 'datas/avatars';
 $cfg['cache_dir'] = 'datas/cache';
 $cfg['lang_dir'] = 'lang';

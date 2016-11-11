@@ -70,6 +70,18 @@ class googleDriver extends socDriver
     var $url3='https://www.googleapis.com/oauth2/v1/userinfo';
     var $scope='https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
 
+    public function query()
+    {
+        $params = array(
+            'redirect_uri'  => $this->redirect_uri,
+            'response_type' => 'code',
+            'client_id'     => $this->client_id,
+            'scope'         => $this->scope
+        );
+        $query=http_build_query($params);
+        return $this->url.'?'.$query;
+    }
+
     public function getInfo($code)
     {
         $params = [
@@ -77,7 +89,7 @@ class googleDriver extends socDriver
             'client_secret' => $this->client_secret,
             'redirect_uri'  => $this->redirect_uri,
             'grant_type'    => 'authorization_code',
-            'code'          => $code
+            'code'          => $code,
         ];
 
         $curl = curl_init();
@@ -87,7 +99,9 @@ class googleDriver extends socDriver
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         $result = curl_exec($curl);
-        parse_str($result,$tokenInfo);
+        print_r($result);
+        exit();
+        $tokenInfo=json_encode($result);
         if (isset($tokenInfo['access_token'])) {
             $params2['access_token'] = $tokenInfo['access_token'];
             $params2['fields']=$this->scope;
