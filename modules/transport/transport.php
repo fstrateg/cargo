@@ -6,7 +6,7 @@
  * Time: 17:29
  */
 defined('COT_CODE') or die('Wrong URL');
-
+require_once cot_incfile('transport', 'module');
 if (!in_array($m, array('add', 'edit', 'preview', 'useroffers')))
 {
     if (isset($_GET['id']) || isset($_GET['al']))
