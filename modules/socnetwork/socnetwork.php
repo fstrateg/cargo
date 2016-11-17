@@ -7,11 +7,22 @@
  */
 defined('COT_CODE') or die('Wrong URL');
 $driver_name=cot_import('a','G','ALP',10);
+$cat=cot_import('c','G','ALP',10);
+
 require_once cot_incfile('socnetwork','module');
+require_once cot_langfile('socnetwork','module');
+
 if (!in_array($driver_name,['google','fb'])) cot_redirect('/');
-$params=[
-    'e'=>'cargo@mail.ru',
-    'id'=>'1234567890'
-];
-login($params);
+
+require_once cot_incfile('socnetwork','modules',$driver_name);
+
+$params=getparams();
+if ($params)
+{
+    if (!$cat)
+        login($params);
+    else
+        register($params);
+}
+
 cot_redirect('/');

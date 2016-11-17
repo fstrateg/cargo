@@ -22,6 +22,9 @@ RewriteRule ^([a-z]+)\.php(.*)$ $1.php$2 [QSA,NC,NE,L]
 RewriteRule ^admin/([a-z0-9]+) admin.php?m=$1 [QSA,NC,NE,L]
 RewriteRule ^(admin|login|message)(/|\?|$) $1.php [QSA,NC,NE,L]
 
+# Socnetwork area
+RewriteRule ^google/([a-z0-9]+) index.php?e=socnetwork&a=google&c=$1 [QSA,NC,NE,L]
+RewriteRule ^google index.php?e=socnetwork&a=google [QSA,NC,NE,L]
 RewriteRule ^socnetwork/([a-z0-9]+) index.php?e=socnetwork&a=$1 [QSA,NC,NE,L]
 
 # All the rest goes through standard rewrite gateway
