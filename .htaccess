@@ -10,7 +10,7 @@ RewriteBase "/"
 
 # Default path and static files protection
 RewriteRule ^(datas|images|js)/(.*)$ $1/$2 [QSA,NC,NE,L]
-RewriteRule ^(.*)\.(css|js|gif|jpg|png|ico)$ $1.$2 [QSA,NC,NE,L]
+RewriteRule ^(.*)\.(html|css|js|gif|jpg|png|ico)$ $1.$2 [QSA,NC,NE,L]
 
 # Language selector
 RewriteRule ^(en|ru|de|nl)/(.*) index.php?rwr=$2&l=$1 [QSA,NC,NE]
@@ -25,6 +25,14 @@ RewriteRule ^(admin|login|message)(/|\?|$) $1.php [QSA,NC,NE,L]
 # Socnetwork area
 RewriteRule ^google/([a-z0-9]+) index.php?e=socnetwork&a=google&c=$1 [QSA,NC,NE,L]
 RewriteRule ^google index.php?e=socnetwork&a=google [QSA,NC,NE,L]
+RewriteRule ^fb/([a-z0-9]+) index.php?e=socnetwork&a=fb&c=$1 [QSA,NC,NE,L]
+RewriteRule ^fb index.php?e=socnetwork&a=fb [QSA,NC,NE,L]
+RewriteRule ^vk/([a-z0-9]+) index.php?e=socnetwork&a=vk&c=$1 [QSA,NC,NE,L]
+RewriteRule ^vk index.php?e=socnetwork&a=vk [QSA,NC,NE,L]
+RewriteRule ^ok/([a-z0-9]+) index.php?e=socnetwork&a=ok&c=$1 [QSA,NC,NE,L]
+RewriteRule ^ok index.php?e=socnetwork&a=ok [QSA,NC,NE,L]
+RewriteRule ^mail/([a-z0-9]+) index.php?e=socnetwork&a=mail&c=$1 [QSA,NC,NE,L]
+RewriteRule ^mail index.php?e=socnetwork&a=mail [QSA,NC,NE,L]
 RewriteRule ^socnetwork/([a-z0-9]+) index.php?e=socnetwork&a=$1 [QSA,NC,NE,L]
 
 # All the rest goes through standard rewrite gateway

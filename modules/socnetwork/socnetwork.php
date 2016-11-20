@@ -12,7 +12,7 @@ $cat=cot_import('c','G','ALP',10);
 require_once cot_incfile('socnetwork','module');
 require_once cot_langfile('socnetwork','module');
 
-if (!in_array($driver_name,['google','fb'])) cot_redirect('/');
+if (!in_array($driver_name,['google','fb','vk','mail','ok'])) cot_redirect('/');
 
 require_once cot_incfile('socnetwork','modules',$driver_name);
 

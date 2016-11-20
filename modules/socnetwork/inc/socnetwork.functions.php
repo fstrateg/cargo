@@ -112,3 +112,35 @@ function register($params)
     cot_mail($ruser['user_email'], $subject, $body);
     login($params);
 }
+
+class socDriver
+{
+    var $userInfo=null;
+
+    public function getName()
+    {
+        return $this->userInfo["name"];
+    }
+
+    public function getId()
+    {
+        return $this->userInfo["id"];
+    }
+
+    public function getEmail()
+    {
+        return $this->userInfo["email"];
+    }
+
+    public function query()
+    {
+        $params = array(
+            'redirect_uri'  => $this->redirect_uri,
+            'response_type' => 'code',
+            'client_id'     => $this->client_id,
+        );
+        $query=http_build_query($params);
+        return $this->url.'?'.urldecode($query);
+    }
+
+}

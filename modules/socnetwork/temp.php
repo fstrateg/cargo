@@ -45,7 +45,8 @@ class socDriver
         $params = array(
             'redirect_uri'  => $this->redirect_uri,
             'response_type' => 'code',
-            'client_id'     => $this->client_id
+            'client_id'     => $this->client_id,
+            'scope'=>$this->scope,
         );
         $query=http_build_query($params);
         return $this->url.'?'.$query;
