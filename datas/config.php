@@ -100,6 +100,7 @@ $cfg['thumbs_dir'] = 'datas/thumbs';
 $cfg['themes_dir'] = 'themes';
 $cfg['extrafield_files_dir'] = 'datas/exflds';
 $cfg['icons_dir'] = 'images/icons';
+$cfg['scan_dir'] = 'datas/scan';
 
 // ========================
 // Directory and file permissions for uploaded files

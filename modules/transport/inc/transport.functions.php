@@ -16,8 +16,18 @@ function cot_generate_transport_row($item_data,$tag_prefix)
     $extp_main = cot_getextplugins('projectstags.main');
     $admin_rights = cot_auth('transports', $item_data['item_cat'], 'A');
 
-    $item_data['status']=cot_transport_status($item_data['item_status']);
+    $status=cot_transport_status($item_data['item_state']);
     $verifed=($item_data['item_verifed']==1)?'verifed':'no-verifed';
+
+    if($item_data['item_verifed']==0)
+        $verright=cot_rc_link(cot_url('transport','m=verif&id='.$item_data['item_id']),$L['transport_doverifed']);
+    elseif ($item_data['item_verifed']==1)
+        $verright='';
+    elseif ($item_data['item_verifed']==2)
+        $verright=$L['transport_status_moderated'];
+    else
+        $verright='';
+
     $temp_array = array(
         'ID' => $item_data['item_id'],
         'DATE'=>cot_date('datetime_medium',$item_data['item_date']),
@@ -25,14 +35,14 @@ function cot_generate_transport_row($item_data,$tag_prefix)
         'TEXT'=>$item_data['item_text'],
         'OFFERS_COUNT'=>$item_data['item_offerscount'],
         'USER_IS_ADMIN' => ($admin_rights || $usr['id'] == $item_data['item_userid']),
-        'LOCALSTATUS'=>$L['transport_status_'.$item_data['status']],
+        'LOCALSTATUS'=>$status,
         'ITEM'=>print_r('',true),
         'VERIFED'=>'/images/'.$verifed.'.png',
         'VERNAME'=>$L['transport_status_'.$verifed],
-        'DOVERIFED'=>cot_linkiif($item_data['item_verifed']<>1,'test',$L['transport_doverifed']),
+        'DOVERIFED'=>$verright,
         'URL'=>cot_url('transport','m=edit&id='.$item_data['item_id']),
     );
-    $photo=$cfg['root_dir'].$item_data['item_photo'];
+    $photo=$cfg['root_dir'].DS.$item_data['item_photo'];
     if (file_exists($photo)&&$item_data['item_photo'])
         $temp_array['PHOTO']=$item_data['item_photo'];
     else
@@ -55,15 +65,22 @@ function cot_generate_transport_row($item_data,$tag_prefix)
 
 function cot_transport_status($item_state)
 {
-    if ($item_state == 0)
+    global $L;
+    $class='info';
+    if ($item_state == 1)
     {
-        return 'published';
+        $status='published';
     }
     elseif ($item_state == 2)
     {
-        return 'moderated';
+        $status='moderated';
     }
-    return 'hidden';
+    elseif ($item_state == 0) {
+        $status = 'hidden';
+        $class='warning';
+    }
+    $status="<span class='label label-$class'>".$L['transport_status_'.$status].'</span>';
+    return $status;
 }
 
 function cot_linkiif($cond,$url,$text,$attrs="")
@@ -73,12 +90,26 @@ function cot_linkiif($cond,$url,$text,$attrs="")
 
 function cot_transport_import($source = 'POST', $ritem = array(), $auth = array())
 {
-    global $sys;
+    global $sys,$cfg,$usr;
 
     $ritem['item_cat'] = cot_import('rcat', $source, 'TXT');
 
     $ritem['item_text'] = cot_import('rtext', $source, 'HTM');
-    if ($ritem['item_verifed']==1)
+    if (isset($_FILES['rphoto'])&&$_FILES['rphoto']['errors']==0)
+    {
+        $file=$_FILES['rphoto'];
+        if (getimagesize($file['tmp_name']))
+        {
+            $id=$ritem['item_id'];
+            if (!$id)
+            {
+                $id='u_'.$usr['id'];
+            }
+            $ritem['item_photo']=$cfg['photos_dir']."/${id}_transp.jpg";
+            cot_transport_uploadImage($file['tmp_name'],$cfg['root_dir'].DS.$ritem['item_photo'],300);
+        }
+    }
+    if ($ritem['item_verifed']<>0)
     {
         $ritem['item_title'] = $ritem['item_title'];
     }
@@ -114,7 +145,7 @@ function cot_transport_validate($ritem)
 }
 function cot_transport_add(&$ritem, $auth = array())
 {
-    global $db,$db_transports,$usr;
+    global $db,$db_transports,$usr,$cfg;
     $id='';
     if (cot_error_found())
     {
@@ -124,6 +155,15 @@ function cot_transport_add(&$ritem, $auth = array())
     $ritem['item_state']=1;
     if ($db->insert($db_transports, $ritem)) {
         $id = $db->lastInsertId();
+    }
+    if ($ritem['item_photo'])
+    {
+        $old=$cfg['photos_dir'].'/u_'.$usr[id].'_transp.jpg';
+        $new=$cfg['photos_dir'].'/'.$id.'_transp.jpg';
+        $ritem['item_photo']=$new;
+        if (rename($cfg['root_dir'].DS.$old,$cfg['root_dir'].DS.$new))
+            cot_transport_update($id,$ritem);
+
     }
     return $id;
 }
@@ -145,4 +185,49 @@ function cot_transport_update($id, &$ritem, $auth = array())
 function cot_transport_delete($id, $ritem = array())
 {
 
+}
+
+function cot_transport_loaddocs($userid,$id)
+{
+    global $cfg,$L,$db,$db_transports;
+    $files=$_FILES;
+    $i=1;
+    foreach($files as $file)
+    {
+        if ($file['error']<>UPLOAD_ERR_OK) continue;
+        $ff = getimagesize($file["tmp_name"]);
+        if (!$ff) continue;
+        $ff=$cfg['root_dir'].DS.$cfg['scan_dir'].DS."${userid}_${id}_scan${i}.jpg";
+        if (cot_transport_uploadImage($file['tmp_name'],$ff,800)) {
+            cot_message($L['transport_filesending']);
+            $i++;
+        }
+    }
+    unset($_FILES);
+    $db->query("update $db_transports set item_verifed=2 where item_id=$id")->execute();
+}
+
+function cot_transport_uploadImage($fileist,$filename,$max_size)
+{
+    $rez=getimagesize($fileist);
+    $prcarray=[
+        1=>'gif',
+        2=>'jpeg',
+        3=>'png',
+        6=>'wbmp',
+    ];
+    $width=$rez[0];
+    $height=$rez[1];
+    $k=($width>$height?$width:$height)/$max_size;
+    $k=$k<1?1:$k;
+    $width = (int)($width / $k);
+    $height = (int)($height / $k);
+    $image_p = imagecreatetruecolor($width, $height);
+    if (!$prcarray[$rez[2]]) return false;
+    $prc = 'imagecreatefrom' . $prcarray[$rez[2]];
+    $image = $prc($fileist);
+    imagecopyresampled($image_p, $image, 0, 0, 0, 0,
+        $width, $height, $rez[0], $rez[1]);
+    imagejpeg($image_p, $filename);
+    return true;
 }

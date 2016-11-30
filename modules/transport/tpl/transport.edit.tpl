@@ -16,10 +16,10 @@
                 <td>{PHP.L.transport_regnumber}:</td>
                 <td>{TRNSEDIT_FORM_REGNUMBER}</td>
             </tr>
-            <!--tr>
+            <tr>
                 <td>{PHP.L.transport_photo}:</td>
                 <td>{TRNSEDIT_FORM_PHOTO}</td>
-            </tr-->
+            </tr>
             <tr>
                 <td class="top">{PHP.L.Text}:</td>
                 <td>{TRNSEDIT_FORM_TEXT}</td>
@@ -28,9 +28,16 @@
                 <td></td>
                 <td>
                     <input type="submit" class="btn btn-success" value="{PHP.L.transport_save}" />
+                    <div class="pull-right offers">{TRNSEDIT_FORM_UNPUBLISH} {TRNSEDIT_FORM_DELETE}</div>
                 </td>
             </tr>
         </table>
     </form>
 </div>
+<script type="text/javascript" charset="utf-8">
+    $('#del').click(function(){
+        if (confirm('{PHP.L.transport_delconfirm}'))
+            window.location='{TRNSEDIT_FORM_DELURL}';
+    });
+</script>
 <!-- END: MAIN -->

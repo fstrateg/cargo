@@ -15,6 +15,7 @@ if (!defined('COT_INSTALL'))
 	(function_exists('version_compare') && version_compare(PHP_VERSION, '5.3.3', '>=')) or die('Cotonti system requirements: PHP 5.3.3 or above.'); // TODO: Need translate
 	extension_loaded('mbstring') or die('Cotonti system requirements: mbstring PHP extension must be loaded.'); // TODO: Need translate
 }
+define('DS',DIRECTORY_SEPARATOR);
 
 // Group constants
 define('COT_GROUP_DEFAULT', 0);
