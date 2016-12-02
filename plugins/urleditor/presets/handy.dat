@@ -12,7 +12,6 @@ users	m=details&u=*			users/{cot_url_username()}
 users	m=register				{$m}
 users	m=profile				{$m}
 users	m=passrecover			{$m}
-socnetwork	a=google			{$a}
 socnetwork	a=*&c=*				{$a}/{$c}
 login	*						{$_area}
 message	*						{$_area}
