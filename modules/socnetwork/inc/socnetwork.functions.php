@@ -100,6 +100,7 @@ function register($params)
     $ruser['user_logcount'] = 0;
     $ruser['user_lastip'] = empty($ruser['user_lastip']) ? cot::$usr['ip'] : $ruser['user_lastip'];
     $ruser['user_token'] = cot_unique(16);
+    $ruser['user_auth']='';
 
     if (!$db->insert($db_users, $ruser)) return false;
     $userid = $db->lastInsertId();
