@@ -60,17 +60,18 @@ function createusl($params)
 function register($params)
 {
     global $db, $db_users, $db_groups_users, $cfg,$L;
-    $params=[
+    /*$params=[
         'e'=>'transport@mail.ru',
         'login'=>'Alexey',
         'name'=>'Alexey Mun',
         'id'=>'1234567890',
         'driver'=>'google',
         'group'=>'loads'
-    ];
+    ];*/
     $pass=cot_randomstring();
     $ruser=[
         'user_name'=>$params['login'],
+        'user_fiofirm'=>$params['name'],
         'user_email'=>$params['e'],
         'user_timezone'=>'GMT',
         'user_gender'=>'U',
@@ -102,15 +103,21 @@ function register($params)
 
     if (!$db->insert($db_users, $ruser)) return false;
     $userid = $db->lastInsertId();
+    $ruser['user_name']='id'.$userid;
+
+    $db->query("update $db_users set user_name='${ruser['user_name']}' where user_id=$userid")->execute();
 
     $db->insert($db_groups_users, array('gru_userid' => (int)$userid, 'gru_groupid' => (int)$ruser['user_maingrp']));
-    //TODO: mail
 
-    $subject=sprintf($L['socnetwork_email_title'],$cfg['mainurl']);
-    $body=sprintf($L['socnetwork_email_body'],$params['name'],$cfg['mainurl'],$params['login'],$pass,$cfg['mainurl']);
+    if ($ruser['user_email']) {
+        $subject = sprintf($L['socnetwork_email_title'], $cfg['mainurl']);
+        $body = sprintf($L['socnetwork_email_body'], $ruser['user_fiofirm'], $cfg['mainurl'], $ruser['user_name'], $pass, $cfg['mainurl']);
 
-    cot_mail($ruser['user_email'], $subject, $body);
+        cot_mail($ruser['user_email'], $subject, $body);
+    }
+
     login($params);
+    return true;
 }
 
 class socDriver

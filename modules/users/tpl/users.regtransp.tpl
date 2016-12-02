@@ -21,9 +21,7 @@
 			<button type="submit" class="btngreen">{PHP.L.users_register}</button>
 		</div>
 
-		<!--div class="pad">
-			<span><b>Быстрая регистрация в один клик</b></span>
-		</div-->
+			{USERS_SOCBUTTONS}
 			{USERS_REGISTER_GROUP}
 		</form>
 	</section>

@@ -17,12 +17,15 @@ if (!in_array($driver_name,['google','fb','vk','mail','ok'])) cot_redirect('/');
 require_once cot_incfile('socnetwork','modules',$driver_name);
 
 $params=getparams();
+
 if ($params)
 {
     if (!$cat)
         login($params);
-    else
-        register($params);
+    else {
+        if (register($params))
+            cot_redirect(cot_url('users','m=profile', '', true));
+    }
 }
 
 cot_redirect('/');
