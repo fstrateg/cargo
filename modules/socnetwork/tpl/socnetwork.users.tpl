@@ -15,7 +15,7 @@
 		background: url('/images/socbutton.png') no-repeat;
 		padding-right: 10px;
 	}
-	#vk{
+	#facebook{
 		background-position: 0 -30px;
 	}
 	#mail{

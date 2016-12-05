@@ -34,6 +34,19 @@ function login($cred)
     return true;
 }
 
+function gettestparams()
+{
+    $params=[
+        'e'=>'transport@mail.ru',
+        'login'=>'Alexey',
+        'name'=>'Alexey Mun',
+        'id'=>'362441637424820',
+        'driver'=>'fb',
+        'group'=>'loads'
+    ];
+    return $params;
+}
+
 function finduser($params)
 {
     global $db, $db_users;
@@ -53,38 +66,39 @@ function userbanned($params)
 
 function createusl($params)
 {
-    $usl="WHERE user_email = '" . $params['e']. "'";
+    $field='user_'.$params['driver'].'id';
+
+    $usl="WHERE $field = '".$params['id']."'";
     return $usl;
 }
 
 function register($params)
 {
     global $db, $db_users, $db_groups_users, $cfg,$L;
-    /*$params=[
-        'e'=>'transport@mail.ru',
-        'login'=>'Alexey',
-        'name'=>'Alexey Mun',
-        'id'=>'1234567890',
-        'driver'=>'google',
-        'group'=>'loads'
-    ];*/
+
     $pass=cot_randomstring();
     $ruser=[
         'user_name'=>$params['login'],
-        'user_fiofirm'=>$params['name'],
+        'user_fiofirm'=>$params['fio'],
         'user_email'=>$params['e'],
         'user_timezone'=>'GMT',
         'user_gender'=>'U',
-        'user_maingrp'=>$params['group']=='loads'? 7 : 4,
+        'user_maingrp'=>$params['group']=='regcargo'? 7 : 4,
         'user_password'=>$pass,
     ];
-    $ruser['user_'.$params['driver'].'id']=$params['id'];
+    $field='user_'.$params['driver'].'id';
+    $ruser[$field]=$params['id'];
     $ruser['user_usergroup']=$ruser['user_maingrp'];
     $ruser['user_passsalt'] = cot_unique(16);
     $ruser['user_passfunc'] = empty(cot::$cfg['hashfunc']) ? 'sha256' : cot::$cfg['hashfunc'];
     $ruser['user_password'] = cot_hash($ruser['user_password'], $ruser['user_passsalt'], $ruser['user_passfunc']);
-
-    $user_exists = (bool)$db->query("SELECT user_id FROM $db_users WHERE user_name = ? LIMIT 1", array($ruser['user_name']))->fetch();
+    $sql="SELECT user_id FROM $db_users WHERE $field = '".$ruser[$field]."' LIMIT 1";
+    $user_exists = $db->query($sql)->fetch();
+    if ($user_exists)
+    {
+        login($params);
+        return false;
+    }
     $email_exists = (bool)$db->query("SELECT user_id FROM $db_users WHERE user_email = ? LIMIT 1", array($ruser['user_email']))->fetch();
     if ($email_exists)
         cot_redirect(cot_url('message','msg=158'));
@@ -100,7 +114,7 @@ function register($params)
     $ruser['user_logcount'] = 0;
     $ruser['user_lastip'] = empty($ruser['user_lastip']) ? cot::$usr['ip'] : $ruser['user_lastip'];
     $ruser['user_token'] = cot_unique(16);
-    $ruser['user_auth']='';
+    $ruser['user_auth']=' ';
 
     if (!$db->insert($db_users, $ruser)) return false;
     $userid = $db->lastInsertId();
