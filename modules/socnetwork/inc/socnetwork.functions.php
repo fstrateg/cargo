@@ -4,7 +4,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 function login($cred)
 {
-    global $db, $db_users, $sys, $cfg;
+    global $db, $db_users, $sys, $cfg,$usr;
     $rows=$db->query("SELECT * FROM $db_users ".createusl($cred));
     if (!$row = $rows->fetch())
     {
@@ -28,21 +28,21 @@ function login($cred)
         $sid = hash_hmac('sha1', $sid, $cfg['secret_key']);
         $u = base64_encode($ruserid.':'.$sid);
         $_SESSION[$sys['site_id']] = $u;
+        $token=cot_unique(16);
 
-        $db->query("UPDATE $db_users SET user_lastip='{$usr['ip']}', user_lastlog = {$sys['now']}, user_logcount = user_logcount + 1, user_token = '$token' $update_sid WHERE user_id={$row['user_id']}");
-
+        $db->query("UPDATE $db_users SET user_lastip='{$usr['ip']}', user_lastlog = {$sys['now']}, user_logcount = user_logcount + 1, user_auth=null, user_token = '$token' $update_sid WHERE user_id={$row['user_id']}");
     return true;
 }
 
 function gettestparams()
 {
     $params=[
-        'e'=>'transport@mail.ru',
+        'e'=>'trans@mail.ru',
         'login'=>'Alexey',
-        'name'=>'Alexey Mun',
+        'fio'=>'Alexey Mun',
         'id'=>'362441637424820',
         'driver'=>'fb',
-        'group'=>'loads'
+        'group'=>'regcargo'
     ];
     return $params;
 }
@@ -113,8 +113,9 @@ function register($params)
     $ruser['user_regdate'] = (int)cot::$sys['now'];
     $ruser['user_logcount'] = 0;
     $ruser['user_lastip'] = empty($ruser['user_lastip']) ? cot::$usr['ip'] : $ruser['user_lastip'];
+    $ruser['user_auth']='';
     $ruser['user_token'] = cot_unique(16);
-    $ruser['user_auth']=' ';
+
 
     if (!$db->insert($db_users, $ruser)) return false;
     $userid = $db->lastInsertId();
