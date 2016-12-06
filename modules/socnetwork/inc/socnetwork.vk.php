@@ -14,8 +14,7 @@ function getparams()
 
     if ($driver->getInfo($code))
     {
-        echo $driver->getEmail();
-        print_r($driver->userInfo);
+        return $driver->userInfo;
     }
     exit();
 
@@ -32,8 +31,8 @@ function getparams()
 
 class vkDriver extends socDriver
 {
-    var $client_id = '5737820'; // Client ID
-    var $client_secret = 'm3wfugXCpEoMQtQpfMHK'; // Client secret
+    var $client_id = '5657944'; // Client ID
+    var $client_secret = 'zk43rdU4eOXrLZRjCCdL'; // Client secret
     var $redirect_uri = null; // Redirect URI
     var $url = 'http://oauth.vk.com/authorize';
     var $url2 = 'https://oauth.vk.com/access_token';
@@ -82,9 +81,8 @@ class vkDriver extends socDriver
 
             $userInfo = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
             $userInfo=$userInfo['response'][0];
-            print_r($userInfo);
             if (isset($userInfo['uid'])) {
-                $userInfo['driver']='fb';
+                $userInfo['driver']='vk';
                 $userInfo['id']=$userInfo['uid'];
                 $userInfo['email']=null;
                 $userInfo['fio']=$userInfo['first_name'].' '.$userInfo['last_name'];

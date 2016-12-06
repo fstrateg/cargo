@@ -14,13 +14,13 @@ require_once cot_langfile('socnetwork','module');
 if (!in_array($driver_name,['google','fb','vk','mail','ok'])) cot_redirect('/');
 
 
-$params=gettestparams();
-login($params);
+/*$params=gettestparams();
+login($params);*/
 
 require_once cot_incfile('socnetwork','modules',$driver_name);
 
-cot_redirect('/');
-exit();
+$params=getparams();
+
 if ($params)
 {
     if (!isset($params['group']))

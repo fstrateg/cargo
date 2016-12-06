@@ -1,6 +1,6 @@
 <!-- BEGIN:MAIN -->
     <div class="pad5">
-		<span><b>Быстрая регистрация в один клик</b></span>
+		<span><b>{SOCNETWORK_TITLE}</b></span>
 	</div>
 	<div class="pad5">
 		<a id="facebook" class="btn-soc" href="{FBURL}"></a>
