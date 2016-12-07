@@ -2029,17 +2029,17 @@ function cot_build_url($text, $maxlen=64)
  */
 function cot_build_user($id, $user, $extra_attrs = '')
 {
-	if (function_exists('cot_build_user_custom'))
+	/*if (function_exists('cot_build_user_custom'))
 	{
 		return cot_build_user_custom($id, $user, $extra_attrs);
-	}
+	}*/
 	if (!$id)
 	{
 		return empty($user) ? '' : $user;
 	}
 	else
 	{
-		return empty($user) ? '?' : cot_rc_link(cot_url('users', 'm=details&id='.$id.'&u='.$user), $user, $extra_attrs);
+		return empty($user) ? '?' : cot_rc_link(cot_url('users', 'm=details&id='.$id), $user, $extra_attrs);
 	}
 }
 
