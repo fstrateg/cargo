@@ -18,7 +18,7 @@ $where = array();
 $order = array();
 if($usr['id'] == 0 || $usr['id'] != $urr['user_id'] && !$usr['isadmin'])
 {
-    $where['state'] = "item_state=0";
+    $where['state'] = "item_state=1";
 }
 $where['owner'] = "item_userid=" . $urr['user_id'];
 
