@@ -121,7 +121,7 @@ $cfg['file_perms'] = 0664;
  * Set it TRUE when you experiment with something new.
  * Set it FALSE on production sites.
  */
-$cfg['debug_mode'] = FALSE;
+$cfg['debug_mode'] = TRUE;
 
 /**
  * Path to debug log files used by functions which dump debug data into it.
