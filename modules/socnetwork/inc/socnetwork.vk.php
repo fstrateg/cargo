@@ -80,15 +80,14 @@ class vkDriver extends socDriver
             ];
             $params2['access_token'] = $tokenInfo['access_token'];
 
-            $userInfo = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
-            $userInfo=$userInfo['response'][0];
-            print_r($userInfo);
-            if (isset($userInfo['uid'])) {
-                $userInfo['driver']='fb';
-                $userInfo['id']=$userInfo['uid'];
-                $userInfo['email']=null;
-                $userInfo['fio']=$userInfo['first_name'].' '.$userInfo['last_name'];
-                $userInfo['name']=$userInfo['first_name'];
+            $userInfo0 = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
+            $userInfo0=$userInfo0['response'][0];
+            if (isset($userInfo0['uid'])) {
+                $userInfo['id']=$userInfo0['uid'];
+                $userInfo['driver']='vk';
+                $userInfo['id']=$userInfo0['uid'];
+                $userInfo['fio']=$userInfo0['first_name'].' '.$userInfo0['last_name'];
+                $userInfo['name']=$userInfo0['first_name'];
                 $group=cot_import('state','G','ALP');
                 if (isset($group)) $userInfo['group']=$group;
                 $this->userInfo = $userInfo;

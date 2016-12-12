@@ -33,6 +33,8 @@ RewriteRule ^ok/([a-z0-9]+) index.php?e=socnetwork&a=ok&c=$1 [QSA,NC,NE,L]
 RewriteRule ^ok index.php?e=socnetwork&a=ok [QSA,NC,NE,L]
 RewriteRule ^mail/([a-z0-9]+) index.php?e=socnetwork&a=mail&c=$1 [QSA,NC,NE,L]
 RewriteRule ^mail index.php?e=socnetwork&a=mail [QSA,NC,NE,L]
+RewriteRule ^yandex/([a-z0-9]+) index.php?e=socnetwork&a=yandex&c=$1 [QSA,NC,NE,L]
+RewriteRule ^yandex index.php?e=socnetwork&a=yandex [QSA,NC,NE,L]
 RewriteRule ^socnetwork/([a-z0-9]+) index.php?e=socnetwork&a=$1 [QSA,NC,NE,L]
 
 # All the rest goes through standard rewrite gateway
