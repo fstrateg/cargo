@@ -22,6 +22,18 @@
 						</td>
 						<td class="width70">{USERS_FIOFIRM}</td>
 					</tr>
+                    <tr>
+                        <td class="width30">{PHP.L.Phone} №1</td>
+                        <td class="width70">{USERS_PHONE1}</td>
+                    </tr>
+                    <tr>
+                        <td class="width30">{PHP.L.Phone} №2</td>
+                        <td class="width70">{USERS_PHONE2}</td>
+                    </tr>
+                    <tr>
+                        <td class="width30">{PHP.L.Phone} №3</td>
+                        <td class="width70">{USERS_PHONE3}</td>
+                    </tr>
 					<!-- IF {PHP.usr.id}+0<>2 -->
 					<tr>
 						<td>{PHP.L.Category}:</td>
@@ -128,5 +140,27 @@
 				</table>
 			</form>
 		</div>
-
+<script type="text/javascript">
+$(document).ready(function() {
+        $("input.number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+        // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) ||
+        // Allow: Ctrl+C
+        (e.keyCode == 67 && e.ctrlKey === true) ||
+        // Allow: Ctrl+X
+        (e.keyCode == 88 && e.ctrlKey === true) ||
+        // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+        // let it happen, don't do anything
+        return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57))) {
+        e.preventDefault();
+        }
+        });
+});
+</script>
 <!-- END: MAIN -->

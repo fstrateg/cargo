@@ -233,7 +233,16 @@ $t->assign(array(
 	'USERS_PROFILE_NEWPASS1' => cot_inputbox('password', 'rnewpass1', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off')),
 	'USERS_PROFILE_NEWPASS2' => cot_inputbox('password', 'rnewpass2', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off')),
 ));
-
+//Phones
+$str='+7-('
+    .cot_inputbox('text','%s','%s','class="number" maxlength="3" style="width:30px!important;"')
+    .')-'
+    .cot_inputbox('text','%s','%s','class="number" maxlength="6" style="width:60px!important;"');
+$t->assign([
+    'USERS_PHONE1'=>sprintf($str,'phone11','','phone12',''),
+    'USERS_PHONE2'=>sprintf($str,'phone21','','phone22',''),
+    'USERS_PHONE3'=>sprintf($str,'phone31','','phone32',''),
+]);
 // Extra fields
 if (!empty(cot::$extrafields[cot::$db->users])) {
     foreach (cot::$extrafields[cot::$db->users] as $exfld) {
