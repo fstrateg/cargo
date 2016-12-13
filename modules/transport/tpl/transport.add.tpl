@@ -21,7 +21,7 @@
                 <td>{TRNSADD_FORM_PHOTO}</td>
             </tr-->
             <tr>
-                <td class="top">{PHP.L.Text}:</td>
+                <td class="top">{PHP.L.Notes}:</td>
                 <td>{TRNSADD_FORM_TEXT}</td>
             </tr>
             <tr>

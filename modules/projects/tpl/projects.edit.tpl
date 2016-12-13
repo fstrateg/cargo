@@ -25,20 +25,16 @@
 				<td>{PRJEDIT_FORM_LOCATIONTO}</td>
 			</tr>
 			<tr>
-				<td>{PHP.L.Title}:</td>
+				<td>{PHP.L.CargoTyp}:</td>
 				<td>{PRJEDIT_FORM_TITLE}</td>
 			</tr>
-			<tr>
+			<tr<!-- IF !{PHP.usr.isadmin} --> class="hidden"<!-- ENDIF -->>
 				<td>{PHP.L.Alias}:</td>
 				<td>{PRJEDIT_FORM_ALIAS}</td>
 			</tr>
 			<tr<!-- IF !{PHP.usr.isadmin} --> class="hidden"<!-- ENDIF -->>
 				<td align="right">{PHP.L.Parser}:</td>
 				<td>{PRJEDIT_FORM_PARSER}</td>
-			</tr>
-			<tr>
-				<td class="top">{PHP.L.Text}:</td>
-				<td>{PRJEDIT_FORM_TEXT}</td>
 			</tr>
 			<!-- BEGIN: TAGS -->
 			<tr>
@@ -70,6 +66,10 @@
 				<td>{PRJEDIT_FORM_DELETE}</td>
 			</tr>
 			<!-- ENDIF -->
+			<tr>
+				<td class="top">{PHP.L.Notes}:</td>
+				<td>{PRJEDIT_FORM_TEXT}</td>
+			</tr>
 			<tr>
 				<td></td>
 				<td>

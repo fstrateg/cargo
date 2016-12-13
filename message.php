@@ -84,7 +84,7 @@ switch ($msg)
 	/* ======== System messages ======== */
 
 	case '916':
-		$rd = 2;
+		$rd = 5;
 		$ru = cot_url('admin');
 		break;
 
@@ -118,7 +118,7 @@ switch ($msg)
 		{
 			break;
 		}
-		$rd = 2;
+		$rd = 5;
 		if (!empty($redirect))
 		{
 			$uri_redirect = base64_decode($redirect);
@@ -141,7 +141,7 @@ if (empty($title) || empty($body))
 }
 if (empty($rc) && empty($rd))
 {
-	$rd = '30';
+	$rd = '20';
 }
 
 switch ($rc)

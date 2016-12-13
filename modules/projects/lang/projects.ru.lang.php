@@ -158,4 +158,5 @@ $L['plu_prj_search_names'] = 'Поиск в названиях заявок';
 $L['plu_prj_search_text'] = 'Поиск в самих заявках';
 $L['plu_prj_set_subsec'] = 'Поиск в подразделах';
 
-$Ls['projects_headermoderated'] = "грузов на проверке,груза на проверке,грузов на проверке";
+$L['projects_headermoderated'] = "грузов на проверке,груза на проверке,грузов на проверке";
+$L['CargoTyp'] = 'Тип груза';
