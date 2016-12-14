@@ -144,7 +144,7 @@ if (empty($title) || empty($body))
 }
 if (empty($rc) && empty($rd))
 {
-	$rd = '20';
+	$rd = '15';
 }
 
 switch ($rc)
