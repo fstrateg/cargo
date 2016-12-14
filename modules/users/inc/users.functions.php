@@ -290,3 +290,11 @@ function cot_input_phone($name,$vl)
     }
     return sprintf($text,$name.'_1',$part1,$name.'_2',$part2);
 }
+
+function cot_import_phone($name,$source,$flt)
+{
+    $part1=cot_import($name.'_1',$source,$flt);
+    $part2=cot_import($name.'_2',$source,$flt);
+    if ($part1>0&&$part2>0) return "+7($part1)$part2";
+    return '';
+}
