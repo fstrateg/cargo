@@ -16,10 +16,10 @@
                 <td>{PHP.L.transport_regnumber}:</td>
                 <td>{TRNSADD_FORM_REGNUMBER}</td>
             </tr>
-            <tr>
+            <!--tr>
                 <td>{PHP.L.transport_photo}:</td>
                 <td>{TRNSADD_FORM_PHOTO}</td>
-            </tr>
+            </tr-->
             <tr>
                 <td class="top">{PHP.L.Notes}:</td>
                 <td>{TRNSADD_FORM_TEXT}</td>

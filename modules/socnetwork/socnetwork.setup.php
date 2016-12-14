@@ -4,7 +4,7 @@
  * Code=socnetwork
  * Name=Socnetwork
  * Description=Регистрация пользователей через соц сети
- * Version=1.00.01
+ * Version=1.00.00
  * Date=02.11.2016
  * Author=Alexey Mun
  * EMail=Alexeym78@mail.ru

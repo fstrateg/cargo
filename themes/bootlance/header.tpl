@@ -61,21 +61,17 @@
 							<li><a href="{PHP|cot_url('login')}" data-toggle="modal" onClick="$('#AuthModal').modal(); return false;">{PHP.L.Login}</a></li>
 							<li><a href="{PHP|cot_url('users','m=register')}">{PHP.L.Register}</a></li>
 							<!-- END: GUEST -->
+							
 							<!-- BEGIN: USER -->
-							<li><a href="{PHP.usr.name|cot_url('users', 'm=details&u='$this)}">{HEADER_USERNAME}</a></li>
+							<li><a href="{PHP.usr.name|cot_url('users', 'm=details&u='$this)}">{PHP.usr.name}</a></li>
 							<li><a href="{PHP|cot_url('users', 'm=profile')}">{PHP.L.Profile}</a></li>
 							<!-- IF {PHP.cfg.payments.balance_enabled} -->
 							<li><a href="{HEADER_USER_BALANCE_URL}">{PHP.L.payments_mybalance}: {HEADER_USER_BALANCE|number_format($this, '2', '.', ' ')} {PHP.cfg.payments.valuta}</a></li>
 							<!-- ENDIF -->
 							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">{PHP.L.projects_cabinet}<b class="caret"></b></a>
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">{PHP.L.projects_projects}<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<!-- IF {PHP.usr.iscargo} -->
 									<li><a href="{PHP.usr.id|cot_url('users', 'm=details&id='$this'&tab=projects')}">{PHP.L.projects_myprojects}</a></li>
-									<!-- ENDIF -->
-									<!-- IF {PHP.usr.istransp} -->
-									<li><a href="{PHP.usr.id|cot_url('users', 'm=details&id='$this'&tab=transport')}">{PHP.L.projects_mytransport}</a></li>
-									<!-- ENDIF -->
 									<!-- IF {PHP.cot_plugins_active.sbr} -->
 									<li><a href="{PHP|cot_url('sbr')}">{PHP.L.sbr_mydeals}</a></li>
 									<!-- ENDIF -->
@@ -146,6 +142,7 @@
 				</ul>
 			</div>
 		</div>
+		
 		<div id="main" class="content">
 		
 <!-- END: HEADER -->

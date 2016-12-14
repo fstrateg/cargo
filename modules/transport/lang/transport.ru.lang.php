@@ -24,20 +24,4 @@ $L['transport_status_moderated'] = 'На проверке';
 $L['transport_status_hidden'] = 'Скрыто';
 $L['transport_status_verifed'] = 'Верифицирован';
 $L['transport_status_no-verifed'] = 'Не верифицирован';
-$L['transport_status_declane']='Отказано';
-
-$L['transport_verif'] = 'Верификация';
 $L['transport_doverifed'] = 'Пройти верификацию';
-$L['transport_verif_text']='Для верификации транспортного средства Вам необходимо выслать скан или отчетливое фото тех паспорта на транспортное средство.';
-$L['transport_verif_scan']='Скан техпаспорта:';
-$L['transport_verif_send']='Отправить документы';
-$L['transport_delconfirm']='Вы действительно хотите удалить информацию по этому транспорту?';
-
-$L['transport_filesending']='Файл отправлен';
-$L['transport_deleted']='Сведенья по транспорту %s удалены!';
-$L['transport_verif_msg']='Верификация транспорта %s статус <%s>';
-
-$L['transport_moderation']='Модерация';
-$L['transport_moderate']='Заявки по транспорту на модерацию';
-$L['transport_verife']='Верифицировать';
-$L['transport_verif_declane']='Отказать';

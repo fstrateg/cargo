@@ -4,7 +4,7 @@ defined('COT_CODE') or die('Wrong URL');
 function getparams()
 {
     $code=cot_import('code','G','ALP');
-    $driver=new fbDriver();
+    $driver=new googleDriver();
 
     if (!isset($code)) {
         $url=$driver->query();
@@ -14,13 +14,23 @@ function getparams()
 
     if ($driver->getInfo($code))
     {
-        return $driver->userInfo;
+        echo $driver->getEmail();
+        print_r($driver->userInfo);
     }
-
     exit();
+
+    $params=[
+        'e'=>'transport@mail.ru',
+        'name'=>'test',
+        'id'=>'1234567890',
+        'driver'=>'google',
+        'group'=>'loads'
+
+    ];
+    return $params;
 }
 
-class fbDriver extends socDriver
+class googleDriver extends socDriver
 {
     var $client_id = '1600803566611967'; // Client ID
     var $client_secret = '2178f87c2c3cfc0838f4914c514030a9'; // Client secret

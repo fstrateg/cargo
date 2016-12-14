@@ -14,7 +14,8 @@ function getparams()
 
     if ($driver->getInfo($code))
     {
-        return $driver->userInfo;
+        echo $driver->getEmail();
+        print_r($driver->userInfo);
     }
     exit();
 
@@ -31,8 +32,8 @@ function getparams()
 
 class vkDriver extends socDriver
 {
-    var $client_id = '5657944'; // Client ID
-    var $client_secret = 'zk43rdU4eOXrLZRjCCdL'; // Client secret
+    var $client_id = '5737820'; // Client ID
+    var $client_secret = 'm3wfugXCpEoMQtQpfMHK'; // Client secret
     var $redirect_uri = null; // Redirect URI
     var $url = 'http://oauth.vk.com/authorize';
     var $url2 = 'https://oauth.vk.com/access_token';
@@ -79,14 +80,14 @@ class vkDriver extends socDriver
             ];
             $params2['access_token'] = $tokenInfo['access_token'];
 
-            $userInfo = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
-            $userInfo=$userInfo['response'][0];
-            if (isset($userInfo['uid'])) {
+            $userInfo0 = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
+            $userInfo0=$userInfo0['response'][0];
+            if (isset($userInfo0['uid'])) {
+                $userInfo['id']=$userInfo0['uid'];
                 $userInfo['driver']='vk';
-                $userInfo['id']=$userInfo['uid'];
-                $userInfo['email']=null;
-                $userInfo['fio']=$userInfo['first_name'].' '.$userInfo['last_name'];
-                $userInfo['name']=$userInfo['first_name'];
+                $userInfo['id']=$userInfo0['uid'];
+                $userInfo['fio']=$userInfo0['first_name'].' '.$userInfo0['last_name'];
+                $userInfo['name']=$userInfo0['first_name'];
                 $group=cot_import('state','G','ALP');
                 if (isset($group)) $userInfo['group']=$group;
                 $this->userInfo = $userInfo;

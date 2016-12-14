@@ -15,7 +15,6 @@ if (!defined('COT_INSTALL'))
 	(function_exists('version_compare') && version_compare(PHP_VERSION, '5.3.3', '>=')) or die('Cotonti system requirements: PHP 5.3.3 or above.'); // TODO: Need translate
 	extension_loaded('mbstring') or die('Cotonti system requirements: mbstring PHP extension must be loaded.'); // TODO: Need translate
 }
-define('DS',DIRECTORY_SEPARATOR);
 
 // Group constants
 define('COT_GROUP_DEFAULT', 0);
@@ -2029,17 +2028,17 @@ function cot_build_url($text, $maxlen=64)
  */
 function cot_build_user($id, $user, $extra_attrs = '')
 {
-	/*if (function_exists('cot_build_user_custom'))
+	if (function_exists('cot_build_user_custom'))
 	{
 		return cot_build_user_custom($id, $user, $extra_attrs);
-	}*/
+	}
 	if (!$id)
 	{
 		return empty($user) ? '' : $user;
 	}
 	else
 	{
-		return empty($user) ? '?' : cot_rc_link(cot_url('users', 'm=details&id='.$id), $user, $extra_attrs);
+		return empty($user) ? '?' : cot_rc_link(cot_url('users', 'm=details&id='.$id.'&u='.$user), $user, $extra_attrs);
 	}
 }
 

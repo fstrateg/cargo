@@ -4,7 +4,7 @@ defined('COT_CODE') or die('Wrong URL');
 function getparams()
 {
     $code=cot_import('code','G','ALP');
-    $driver=new mailDriver();
+    $driver=new yandexDriver();
 
     if (!isset($code)) {
         $url=$driver->query();
@@ -30,31 +30,29 @@ function getparams()
     return $params;
 }
 
-class mailDriver extends socDriver
+class yandexDriver extends socDriver
 {
-    var $client_id = '750146'; // Client ID
-    var $public_secret= '77818c39804088e9b3ce895e232b842f';
-    var $client_secret = 'a4cdef6773d62c00a4554a2d233ce489'; // Client secret
+    var $client_id = '2494e3cc1d2d410b923376b00b54d42b'; // Client ID
+    var $client_secret = '6392a89a6bc94b8a9a2779fa3eec2afd'; // Client secret
     var $redirect_uri = null; // Redirect URI
-    var $url  = 'https://connect.mail.ru/oauth/authorize';
-    var $url2 = 'https://connect.mail.ru/oauth/token';
-    var $url3 = 'http://www.appsmail.ru/platform/api';
+    var $url = 'https://oauth.yandex.ru/authorize';
+    var $url2 = 'https://oauth.yandex.ru/token';
+    var $url3='https://login.yandex.ru/info';
     var $scope='id,email,name';
 
     function __construct()
     {
         global $cfg;
-        $this->redirect_uri=$cfg['mainurl'].'/mail';
+        $this->redirect_uri=$cfg['mainurl'].'/yandex';
     }
 
     public function query()
     {
         $c=cot_import('c','G','ALP');
         $params = array(
-            'redirect_uri'  => $this->redirect_uri,
+            'display'  => 'popup',
             'response_type' => 'code',
             'client_id'     => $this->client_id,
-            'client_secret' => $this->client_secret,
         );
         if (isset($c))
             $params['state']=$c;
@@ -68,7 +66,6 @@ class mailDriver extends socDriver
         $params = [
             'client_id'     => $this->client_id,
             'client_secret' => $this->client_secret,
-            'redirect_uri'  => $this->redirect_uri,
             'grant_type'    => 'authorization_code',
             'code'          => $code
         ];
@@ -79,30 +76,23 @@ class mailDriver extends socDriver
         curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(http_build_query($params)));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        $tokenInfo = json_decode(curl_exec($curl),true);
+        $result = curl_exec($curl);
         curl_close($curl);
+        $tokenInfo=json_decode($result,true);
         if (isset($tokenInfo['access_token'])) {
-                $sign = md5("app_id={$this->client_id}method=users.getInfosecure=1session_key={$tokenInfo['access_token']}{$this->client_secret}");
+            $params2=['format'       => 'json'];
+            $params2['oauth_token'] = $tokenInfo['access_token'];
 
-                $params2 = array(
-                    'method'       => 'users.getInfo',
-                    'secure'       => '1',
-                    'app_id'       => $this->client_id,
-                    'session_key'  => $tokenInfo['access_token'],
-                    'sig'          => $sign
-                );
             $userInfo0 = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
-            $userInfo0=$userInfo0[0];
-            if (isset($userInfo0['uid'])) {
+            if (isset($userInfo0['id'])) {
                 $userInfo=[
-                    'id'=>$userInfo0['uid'],
-                    'driver'=>'mail',
-                    'fio'=>$userInfo0['nick'],
-                    'name'=>$userInfo0['first_name'],
-                    'photo'=>$userInfo0['pic_180'],
-                    'email'=>$userInfo0['email'],
+                    'id'=>$userInfo0['id'],
+                    'driver'=>'yandex',
+                    'fio'=>$userInfo0['real_name'],
+                    'email'=>$userInfo0['default_email'],
+                    'name'=>$userInfo0['display_name'],
+                    'birthday'=>$userInfo0['birthday'],
                 ];
-
                 $group=cot_import('state','G','ALP');
                 if (isset($group)) $userInfo['group']=$group;
                 $this->userInfo = $userInfo;

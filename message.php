@@ -69,10 +69,7 @@ switch ($msg)
 			$body .= cot_rc('msg_code_153_date', array('date' => cot_date('datetime_medium', $num)));
 		}
 		break;
-	case '158':
-		$title=$L['msg158_title'];
-		$body=$L['msg158_body'];
-		break;
+
 	/* ======== Error Pages ========= */
 
 	case '400':

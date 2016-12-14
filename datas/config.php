@@ -17,7 +17,7 @@ $cfg['mysqlhost'] = 'localhost';	// Database host URL
 $cfg['mysqlport'] = '';				// Database port, if non-default
 $cfg['mysqluser'] = 'root';			// Database user
 $cfg['mysqlpassword'] = '';			// Database password
-$cfg['mysqldb'] = 'bulat';		// Database name
+$cfg['mysqldb'] = 'cargo';		// Database name
 // MySQL database charset and collate. Very useful when MySQL server uses different charset rather than site
 // See the list of valid values here: http://dev.mysql.com/doc/refman/5.1/en/charset-charsets.html
 $cfg['mysqlcharset'] = 'utf8';
@@ -27,7 +27,7 @@ $cfg['mysqlcollate'] = 'utf8_unicode_ci';
 // Main site URL without trailing slash.
 // ========================
 
-$cfg['mainurl'] = 'http://cargo.git';
+$cfg['mainurl'] = 'http://cargo.kz';
 $cfg['site_id'] = 'd71cf259bdb10129def5d17b86187a86';
 $cfg['secret_key'] = '6e9a0d178974680e0230058b4bf377e6';
 $cfg['multihost'] = FALSE;			// Allow multiple host names for this site
@@ -100,7 +100,6 @@ $cfg['thumbs_dir'] = 'datas/thumbs';
 $cfg['themes_dir'] = 'themes';
 $cfg['extrafield_files_dir'] = 'datas/exflds';
 $cfg['icons_dir'] = 'images/icons';
-$cfg['scan_dir'] = 'datas/scan';
 
 // ========================
 // Directory and file permissions for uploaded files
@@ -121,7 +120,7 @@ $cfg['file_perms'] = 0664;
  * Set it TRUE when you experiment with something new.
  * Set it FALSE on production sites.
  */
-$cfg['debug_mode'] = TRUE;
+$cfg['debug_mode'] = FALSE;
 
 /**
  * Path to debug log files used by functions which dump debug data into it.
@@ -145,7 +144,7 @@ $cfg['shield_force'] = FALSE;
 // Else do not change.
 // ========================
 
-$db_x = 'cg_'; // Default: cot_, prefix for extra fields' table(s)
+$db_x = 'gr_'; // Default: cot_, prefix for extra fields' table(s)
 
 // Examples:
 // $db_auth			= 'my_custom_auth';

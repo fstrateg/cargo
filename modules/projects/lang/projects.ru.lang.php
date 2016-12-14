@@ -44,10 +44,8 @@ $L['projects_forreview'] = 'Ваш проект находится на пров
 $L['projects_isrealized'] = 'Исполненный';
 
 $L['projects'] = 'Поиск груза';
-$L['projects_cabinet']='Кабинет';
 $L['projects_projects'] = 'Грузы';
 $L['projects_myprojects'] = 'Мои грузы';
-$L['projects_mytransport'] = 'Мой транспорт';
 $L['catalog'] = 'Каталог';
 $L['projects_add_to_catalog'] = 'Добавить груз';
 $L['projects_edit_project'] = 'Редактировать груз';
