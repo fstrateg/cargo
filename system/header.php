@@ -58,7 +58,6 @@ $out['meta_keywords'] = empty($out['keywords']) ? $cfg['metakeywords'] : htmlspe
 $out['meta_lastmod'] = gmdate('D, d M Y H:i:s');
 $out['head_head'] .= $out['head'];
 
-
 if ($sys['noindex'])
 {
 	$out['head_head'] .= $R['code_noindex'];
@@ -106,8 +105,11 @@ if (!COT_AJAX)
 	{
 		$out['canonical_uri'] = COT_ABSOLUTE_URL . $out['canonical_uri'];
 	}
+	$usr['iscargo']=($usr['maingrp']==7?1:0);
+	$usr['istransp']=($usr['maingrp']==4?1:0);
 
 	$t->assign(array(
+		'HEADER_USERNAME' => $usr['profile']['user_fiofirm']?$usr['profile']['user_fiofirm']:$usr['name'],
 		'HEADER_TITLE' => $out['fulltitle'],
 		'HEADER_COMPOPUP' => $out['compopup'],
 		'HEADER_LOGSTATUS' => $out['logstatus'],

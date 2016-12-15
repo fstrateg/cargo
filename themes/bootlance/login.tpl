@@ -30,6 +30,9 @@
 		<div class="row">
 			<a class="green-link small" href="{PHP|cot_url('users','m=register')}">{PHP.L.Register}</a>
 		</div>
+		<div class="pad">
+		{USERS_SOCBUTTONS}
+		</div>
 	</section>
 </section>
 
