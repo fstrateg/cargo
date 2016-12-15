@@ -53,6 +53,9 @@ if($a == 'update')
 	$ruser['user_timezone'] = cot_import('rusertimezone','P','TXT');
 	$ruser['user_hideemail'] = cot_import('ruserhideemail','P','BOL');
 	$ruser['user_fiofirm']=cot_import('ruserfiofirm','P','TXT');
+    $ruser['user_phone1']=cot_import_phone('phone1','P','INT');
+    $ruser['user_phone2']=cot_import_phone('phone2','P','INT');
+    $ruser['user_phone3']=cot_import_phone('phone3','P','INT');
 
 	// Extra fields
     if (!empty(cot::$extrafields[cot::$db->users])) {
@@ -234,14 +237,10 @@ $t->assign(array(
 	'USERS_PROFILE_NEWPASS2' => cot_inputbox('password', 'rnewpass2', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off')),
 ));
 //Phones
-$str='+7-('
-    .cot_inputbox('text','%s','%s','class="number" maxlength="3" style="width:30px!important;"')
-    .')-'
-    .cot_inputbox('text','%s','%s','class="number" maxlength="6" style="width:60px!important;"');
 $t->assign([
-    'USERS_PHONE1'=>sprintf($str,'phone11','','phone12',''),
-    'USERS_PHONE2'=>sprintf($str,'phone21','','phone22',''),
-    'USERS_PHONE3'=>sprintf($str,'phone31','','phone32',''),
+    'USERS_PHONE1'=>cot_input_phone('phone1',$urr['user_phone1']),
+    'USERS_PHONE2'=>cot_input_phone('phone2',$urr['user_phone2']),
+    'USERS_PHONE3'=>cot_input_phone('phone3',$urr['user_phone3']),
 ]);
 // Extra fields
 if (!empty(cot::$extrafields[cot::$db->users])) {

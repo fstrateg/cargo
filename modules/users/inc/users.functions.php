@@ -277,3 +277,24 @@ function cot_user_data($uid = 0, $cacheitem = true)
 
 	return $user;
 }
+function cot_input_phone($name,$vl)
+{
+    $text='+7-('
+        .cot_inputbox('text','%s','%s','class="number" maxlength="3" style="width:30px!important;"')
+        .')-'
+        .cot_inputbox('text','%s','%s','class="number" maxlength="7" style="width:60px!important;"');
+    if (preg_match_all('/\d{3,}/',$vl,$arr)>1)
+    {
+        $part1=$arr[0][0];
+        $part2=$arr[0][1];
+    }
+    return sprintf($text,$name.'_1',$part1,$name.'_2',$part2);
+}
+
+function cot_import_phone($name,$source,$flt)
+{
+    $part1=cot_import($name.'_1',$source,$flt);
+    $part2=cot_import($name.'_2',$source,$flt);
+    if ($part1>0&&$part2>0) return "+7($part1)$part2";
+    return '';
+}
