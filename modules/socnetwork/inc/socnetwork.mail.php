@@ -14,8 +14,7 @@ function getparams()
 
     if ($driver->getInfo($code))
     {
-        echo $driver->getEmail();
-        print_r($driver->userInfo);
+        return $driver->userInfo;
     }
     exit();
 
@@ -79,33 +78,34 @@ class mailDriver extends socDriver
         curl_setopt($curl, CURLOPT_POSTFIELDS, urldecode(http_build_query($params)));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        $tokenInfo = json_decode(curl_exec($curl),true);
+        $result = curl_exec($curl);
         curl_close($curl);
-        if (isset($tokenInfo['access_token'])) {
-                $sign = md5("app_id={$this->client_id}method=users.getInfosecure=1session_key={$tokenInfo['access_token']}{$this->client_secret}");
 
-                $params2 = array(
-                    'method'       => 'users.getInfo',
-                    'secure'       => '1',
-                    'app_id'       => $this->client_id,
-                    'session_key'  => $tokenInfo['access_token'],
-                    'sig'          => $sign
-                );
-            $userInfo0 = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
-            $userInfo0=$userInfo0[0];
-            if (isset($userInfo0['uid'])) {
-                $userInfo=[
-                    'id'=>$userInfo0['uid'],
-                    'driver'=>'mail',
-                    'fio'=>$userInfo0['nick'],
-                    'name'=>$userInfo0['first_name'],
-                    'photo'=>$userInfo0['pic_180'],
-                    'email'=>$userInfo0['email'],
-                ];
+        $tokenInfo = json_decode($result, true);
+
+        if (isset($tokenInfo['access_token'])) {
+            $sign = md5("app_id={$this->client_id}method=users.getInfosecure=1session_key={$tokenInfo['access_token']}{$this->client_secret}");
+
+            $params2 = array(
+                'method'       => 'users.getInfo',
+                'secure'       => '1',
+                'app_id'       => $this->client_id,
+                'session_key'  => $tokenInfo['access_token'],
+                'sig'          => $sign
+            );
+
+            $userInfo = json_decode(file_get_contents($this->url3 . '?' . urldecode(http_build_query($params2))), true);
+            $userInfo=$userInfo[0];
+            if (isset($userInfo['uid'])) {
+                $userInfo2=[];
+                $userInfo2['driver']='mail';
+                $userInfo2['fio']=$userInfo['nick'];
+                $userInfo2['e']=$userInfo['email'];
+                $userInfo2['id']=$userInfo['uid'];
 
                 $group=cot_import('state','G','ALP');
-                if (isset($group)) $userInfo['group']=$group;
-                $this->userInfo = $userInfo;
+                if (isset($group)) $userInfo2['group']=$group;
+                $this->userInfo = $userInfo2;
                 $result = true;
             }
         }

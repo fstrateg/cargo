@@ -3,7 +3,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 function getparams()
 {
-    $code=cot_import('code','G','ALP');
+    /*$code=cot_import('code','G','ALP');
     $driver=new googleDriver();
 
     if (!isset($code)) {
@@ -17,11 +17,11 @@ function getparams()
         echo $driver->getEmail();
         print_r($driver->userInfo);
     }
-    exit();
+    exit();*/
 
     $params=[
-        'e'=>'transport@mail.ru',
-        'name'=>'test',
+        'e'=>'alexmun@mail.ru',
+        'name'=>'Алексей Мун',
         'id'=>'1234567890',
         'driver'=>'google',
         'group'=>'loads'

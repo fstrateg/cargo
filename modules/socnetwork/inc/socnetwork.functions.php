@@ -4,7 +4,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 function login($cred)
 {
-    global $db, $db_users, $sys, $cfg;
+    global $db, $db_users, $sys, $cfg,$usr;
     $rows=$db->query("SELECT * FROM $db_users ".createusl($cred));
     if (!$row = $rows->fetch())
     {
@@ -28,10 +28,23 @@ function login($cred)
         $sid = hash_hmac('sha1', $sid, $cfg['secret_key']);
         $u = base64_encode($ruserid.':'.$sid);
         $_SESSION[$sys['site_id']] = $u;
+        $token=cot_unique(16);
 
-        $db->query("UPDATE $db_users SET user_lastip='{$usr['ip']}', user_lastlog = {$sys['now']}, user_logcount = user_logcount + 1, user_token = '$token' $update_sid WHERE user_id={$row['user_id']}");
-
+        $db->query("UPDATE $db_users SET user_lastip='{$usr['ip']}', user_lastlog = {$sys['now']}, user_logcount = user_logcount + 1, user_auth=null, user_token = '$token' $update_sid WHERE user_id={$row['user_id']}");
     return true;
+}
+
+function gettestparams()
+{
+    $params=[
+        'e'=>'trans@mail.ru',
+        'login'=>'Alexey',
+        'fio'=>'Alexey Mun',
+        'id'=>'362441637424820',
+        'driver'=>'fb',
+        'group'=>'regcargo'
+    ];
+    return $params;
 }
 
 function finduser($params)
@@ -53,37 +66,39 @@ function userbanned($params)
 
 function createusl($params)
 {
-    $usl="WHERE user_email = '" . $params['e']. "'";
+    $field='user_'.$params['driver'].'id';
+
+    $usl="WHERE $field = '".$params['id']."'";
     return $usl;
 }
 
 function register($params)
 {
     global $db, $db_users, $db_groups_users, $cfg,$L;
-    $params=[
-        'e'=>'transport@mail.ru',
-        'login'=>'Alexey',
-        'name'=>'Alexey Mun',
-        'id'=>'1234567890',
-        'driver'=>'google',
-        'group'=>'loads'
-    ];
+
     $pass=cot_randomstring();
     $ruser=[
         'user_name'=>$params['login'],
+        'user_fiofirm'=>$params['fio'],
         'user_email'=>$params['e'],
         'user_timezone'=>'GMT',
         'user_gender'=>'U',
-        'user_maingrp'=>$params['group']=='loads'? 7 : 4,
+        'user_maingrp'=>$params['group']=='regcargo'? 7 : 4,
         'user_password'=>$pass,
     ];
-    $ruser['user_'.$params['driver'].'id']=$params['id'];
+    $field='user_'.$params['driver'].'id';
+    $ruser[$field]=$params['id'];
     $ruser['user_usergroup']=$ruser['user_maingrp'];
     $ruser['user_passsalt'] = cot_unique(16);
     $ruser['user_passfunc'] = empty(cot::$cfg['hashfunc']) ? 'sha256' : cot::$cfg['hashfunc'];
     $ruser['user_password'] = cot_hash($ruser['user_password'], $ruser['user_passsalt'], $ruser['user_passfunc']);
-
-    $user_exists = (bool)$db->query("SELECT user_id FROM $db_users WHERE user_name = ? LIMIT 1", array($ruser['user_name']))->fetch();
+    $sql="SELECT user_id FROM $db_users WHERE $field = '".$ruser[$field]."' LIMIT 1";
+    $user_exists = $db->query($sql)->fetch();
+    if ($user_exists)
+    {
+        login($params);
+        return false;
+    }
     $email_exists = (bool)$db->query("SELECT user_id FROM $db_users WHERE user_email = ? LIMIT 1", array($ruser['user_email']))->fetch();
     if ($email_exists)
         cot_redirect(cot_url('message','msg=158'));
@@ -98,19 +113,27 @@ function register($params)
     $ruser['user_regdate'] = (int)cot::$sys['now'];
     $ruser['user_logcount'] = 0;
     $ruser['user_lastip'] = empty($ruser['user_lastip']) ? cot::$usr['ip'] : $ruser['user_lastip'];
+    $ruser['user_auth']='';
     $ruser['user_token'] = cot_unique(16);
+
 
     if (!$db->insert($db_users, $ruser)) return false;
     $userid = $db->lastInsertId();
+    $ruser['user_name']='id'.$userid;
+
+    $db->query("update $db_users set user_name='${ruser['user_name']}' where user_id=$userid")->execute();
 
     $db->insert($db_groups_users, array('gru_userid' => (int)$userid, 'gru_groupid' => (int)$ruser['user_maingrp']));
-    //TODO: mail
 
-    $subject=sprintf($L['socnetwork_email_title'],$cfg['mainurl']);
-    $body=sprintf($L['socnetwork_email_body'],$params['name'],$cfg['mainurl'],$params['login'],$pass,$cfg['mainurl']);
+    if ($ruser['user_email']) {
+        $subject = sprintf($L['socnetwork_email_title'], $cfg['mainurl']);
+        $body = sprintf($L['socnetwork_email_body'], $ruser['user_fiofirm'], $cfg['mainurl'], $ruser['user_name'], $pass, $cfg['mainurl']);
 
-    cot_mail($ruser['user_email'], $subject, $body);
+        cot_mail($ruser['user_email'], $subject, $body);
+    }
+
     login($params);
+    return true;
 }
 
 class socDriver
