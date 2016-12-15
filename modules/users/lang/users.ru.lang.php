@@ -54,3 +54,6 @@ $L['users_transpreg']='Регистрация перевозчика';
 $L['users_transp_ascargo']='Зарегистрироваться как грузоотправитель';
 $L['users_transp_cargo']='Хотите сами отправить груз?';
 $L['users_hasaccount']='У Вас уже есть аккаунт?';
+
+$L['users_mainphone']='Основной номер';
+$L['users_addphone']='Дополнительный номер';

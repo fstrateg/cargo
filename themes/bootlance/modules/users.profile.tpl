@@ -17,21 +17,27 @@
 						<td class="width70">{USERS_PROFILE_NAME}</td>
 					</tr>
 					<tr>
-						<td class="width30">{PHP.L.Fio}:
+						<td class="width30">{NEED} {PHP.L.Fio}:
 							<p class="small">{PHP.L.FioOrFirm}</p>
 						</td>
 						<td class="width70">{USERS_FIOFIRM}</td>
 					</tr>
                     <tr>
-                        <td class="width30">{PHP.L.Phone} №1</td>
+                        <td class="width30">{NEED} {PHP.L.Phone} №1
+							<p class="small">{PHP.L.users_mainphone}</p>
+						</td>
                         <td class="width70">{USERS_PHONE1}</td>
                     </tr>
                     <tr>
-                        <td class="width30">{PHP.L.Phone} №2</td>
+                        <td class="width30">{PHP.L.Phone} №2
+							<p class="small">{PHP.L.users_addphone}</p>
+						</td>
                         <td class="width70">{USERS_PHONE2}</td>
                     </tr>
                     <tr>
-                        <td class="width30">{PHP.L.Phone} №3</td>
+                        <td class="width30">{PHP.L.Phone} №3
+							<p class="small">{PHP.L.users_addphone}</p>
+						</td>
                         <td class="width70">{USERS_PHONE3}</td>
                     </tr>
 					<!-- IF {PHP.usr.id}+0<>2 -->
@@ -91,7 +97,7 @@
 <!-- ENDIF -->
 					<!-- IF {PHP.cot_plugins_active.locationselector} -->
 					<tr>
-						<td>{PHP.L.Country}:</td>
+						<td>{NEED} {PHP.L.Location}:</td>
 						<td>{USERS_PROFILE_LOCATION}</td>
 					</tr>
 					<!-- ELSE -->
@@ -117,10 +123,6 @@
 						<td>{USERS_PROFILE_PHOTO}</td>
 					</tr>
 					<!-- ENDIF -->
-					<tr>
-						<td>{PHP.L.Signature}:</td>
-						<td>{USERS_PROFILE_TEXT}</td>
-					</tr>
 					<tr>
 						<td>
 							{PHP.L.users_newpass}:

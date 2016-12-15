@@ -100,10 +100,6 @@
 					</tr>
 					<!-- ENDIF -->
 					<tr>
-						<td>{PHP.L.Signature}:</td>
-						<td>{USERS_PROFILE_TEXT}</td>
-					</tr>
-					<tr>
 						<td>
 							{PHP.L.users_newpass}:
 							<p class="small">{PHP.L.users_newpasshint1}</p>

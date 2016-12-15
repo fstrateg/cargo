@@ -235,6 +235,7 @@ $t->assign(array(
 	'USERS_PROFILE_OLDPASS' => cot_inputbox('password', 'roldpass', '', array('size' => 12, 'maxlength' => 32)),
 	'USERS_PROFILE_NEWPASS1' => cot_inputbox('password', 'rnewpass1', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off')),
 	'USERS_PROFILE_NEWPASS2' => cot_inputbox('password', 'rnewpass2', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off')),
+	'NEED'=>'<span class="red">*</span>',
 ));
 //Phones
 $t->assign([
