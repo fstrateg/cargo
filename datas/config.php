@@ -27,7 +27,7 @@ $cfg['mysqlcollate'] = 'utf8_unicode_ci';
 // Main site URL without trailing slash.
 // ========================
 
-$cfg['mainurl'] = 'http://cargo.kz';
+$cfg['mainurl'] = 'http://cargo.git';
 $cfg['site_id'] = 'd71cf259bdb10129def5d17b86187a86';
 $cfg['secret_key'] = '6e9a0d178974680e0230058b4bf377e6';
 $cfg['multihost'] = FALSE;			// Allow multiple host names for this site
@@ -144,7 +144,7 @@ $cfg['shield_force'] = FALSE;
 // Else do not change.
 // ========================
 
-$db_x = 'gr_'; // Default: cot_, prefix for extra fields' table(s)
+$db_x = 'cg_'; // Default: cot_, prefix for extra fields' table(s)
 
 // Examples:
 // $db_auth			= 'my_custom_auth';
