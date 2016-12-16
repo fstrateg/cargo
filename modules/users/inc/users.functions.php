@@ -298,3 +298,12 @@ function cot_import_phone($name,$source,$flt)
     if ($part1>0&&$part2>0) return "+7($part1)$part2";
     return '';
 }
+
+function cot_validate_profile($ruser)
+{
+	if (!$ruser['user_phone1']) cot_error('users_error_empty_phone');
+	if (!$ruser['user_fiofirm']) cot_error('users_error_empty_fio');
+	if (!$ruser['user_city']) cot_error('users_error_empty_city');
+
+	return true;
+}

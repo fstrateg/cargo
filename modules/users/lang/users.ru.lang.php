@@ -57,3 +57,7 @@ $L['users_hasaccount']='У Вас уже есть аккаунт?';
 
 $L['users_mainphone']='Основной номер';
 $L['users_addphone']='Дополнительный номер';
+
+$L['users_error_empty_phone']='Основной контактный телефон не задан!';
+$L['users_error_empty_fio']='Поле "ФИО для обращения" не заполнено!';
+$L['users_error_empty_city']='Город не выбран!';

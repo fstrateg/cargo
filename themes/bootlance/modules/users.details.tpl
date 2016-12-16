@@ -64,22 +64,6 @@
 						<td>{USERS_DETAILS_REGION} {USERS_DETAILS_CITY}</td>
 					</tr>
 					<tr>
-						<td>{PHP.L.Timezone}:</td>
-						<td>{USERS_DETAILS_TIMEZONE}</td>
-					</tr>
-					<tr>
-						<td>{PHP.L.Birthdate}:</td>
-						<td>{USERS_DETAILS_BIRTHDATE}</td>
-					</tr>
-					<tr>
-						<td>{PHP.L.Age}:</td>
-						<td>{USERS_DETAILS_AGE}</td>
-					</tr>
-					<tr>
-						<td>{PHP.L.Gender}:</td>
-						<td>{USERS_DETAILS_GENDER}</td>
-					</tr>
-					<tr>
 						<td>{PHP.L.Registered}:</td>
 						<td>{USERS_DETAILS_REGDATE}</td>
 					</tr>

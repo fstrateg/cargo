@@ -69,6 +69,7 @@ if($a == 'update')
 	{
 		cot_error('pro_invalidbirthdate', 'ruserbirthdate');
 	}
+	cot_validate_profile($ruser);
 
 	$roldpass = cot_import('roldpass','P','HTM');
 	$rnewpass1 = cot_import('rnewpass1','P','HTM', 32);
