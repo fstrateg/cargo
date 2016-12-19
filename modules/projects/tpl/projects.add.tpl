@@ -12,6 +12,16 @@
 				<td>{PRJADD_FORM_TYPE}</td>
 			</tr>
 			<!-- ENDIF -->
+            <tr>
+                <td width="150">{PHP.L.projects_begin}
+                    <p class="small">{PHP.L.projects_actual}</p>
+                </td>
+                <td><input type="text" id="date_range" ></td>
+            </tr>
+            <tr>
+                <td>{PHP.L.projects_end}<p class="small">{PHP.L.projects_actual}</p></td>
+                <td>{PHP.env}</td>
+            </tr>
 			<tr>
 				<td width="150">{PHP.L.Category}:</td>
 				<td>{PRJADD_FORM_CAT}</td>
@@ -75,5 +85,38 @@
 		</table>
 	</form>
 </div>
+<script type="text/javascript" src="{PHP.cfg.modules_dir}/projects/js/jquery-ui.min.js">
+</script>
+<script>
+
+    $( function() {
+        $('#date_range').datepicker();
+        $('#date_range').datepicker("option", "dateFormat", "dd.mm.yy");
+        $( "#date_range" ).datepicker( "option",
+                $.datepicker.regional[ "ru" ] );
+        jQuery(function ($) {
+            $.datepicker.regional['ru'] = {
+                closeText: 'Закрыть',
+                prevText: '&#x3c;Пред',
+                nextText: 'След&#x3e;',
+                currentText: 'Сегодня',
+                monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                    'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                monthNamesShort: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                    'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+                dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+                dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                weekHeader: 'Нед',
+                dateFormat: 'dd.mm.yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+            $.datepicker.setDefaults($.datepicker.regional['ru']);
+        });
+    });
+</script>
 
 <!-- END: MAIN -->

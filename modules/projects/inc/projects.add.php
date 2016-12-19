@@ -177,6 +177,7 @@ $t->assign(array(
 	"PRJADD_FORM_PARSER" => cot_selectbox($cfg['projects']['parser'], 'rparser', $parser_list, $parser_list, false),
 ));
 
+Resources::addFile($cfg['modules_dir'].'/projects/js/jquery-ui.min.css');
 // Extra fields
 foreach($cot_extrafields[$db_projects] as $exfld)
 {

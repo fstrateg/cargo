@@ -53,6 +53,9 @@ $L['projects_add_to_catalog'] = 'Добавить груз';
 $L['projects_edit_project'] = 'Редактировать груз';
 $L['projects_add_project_title'] = 'Публикация груза';
 $L['projects_edit_project_title'] = 'Редактирование груза';
+$L['projects_begin']='Начало действия';
+$L['projects_end']='Конец действия';
+$L['projects_actual']='Актуальность заявки';
 
 $L['projects_hidden'] = 'Груз не опубликован';
 $L['projects_success_projects'] = 'Успешные проекты';
