@@ -134,6 +134,7 @@ if ($a == 'add')
 		cot_redirect(cot_url('projects', 'm=add&c='.$c.'&type='.$type, '', true));
 	}
 }
+if (empty($ritem['item_dateto'])) $ritem['item_dateto']=strtotime("+10 days");
 
 if (empty($ritem['item_cat']) && !empty($c))
 {
@@ -175,6 +176,8 @@ $t->assign(array(
 	"PRJADD_FORM_TEXT" => cot_textarea('rtext', $ritem['item_text'], 10, 60, 'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
 	"PRJADD_FORM_COST" => cot_inputbox('text', 'rcost', $ritem['item_cost'], 'size="10"'),
 	"PRJADD_FORM_PARSER" => cot_selectbox($cfg['projects']['parser'], 'rparser', $parser_list, $parser_list, false),
+    "PRJADD_FORM_FROM"=>cot_inputbox('text','rfrom',cot_date('d.m.Y',$ritem['item_datefrom']),'id="date_from"'),
+    "PRJADD_FORM_TO"=>cot_inputbox('text','rto',cot_date('d.m.Y',$ritem['item_dateto']),'id="date_to"'),
 ));
 
 Resources::addFile($cfg['modules_dir'].'/projects/js/jquery-ui.min.css');

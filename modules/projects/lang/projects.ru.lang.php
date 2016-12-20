@@ -37,8 +37,11 @@ $L['info_desc'] = 'Модуль публикации проектов';
 
 $L['projects_select_cat'] = "Выберите категорию";
 $L['projects_locked_cat'] = "Выбранная категория заблокирована";
-$L['projects_empty_title'] = "Не указано название заявки";
+$L['projects_empty_title'] = "Не указан тип груза";
 $L['projects_empty_text'] = "Описание груза не может быть пустым";
+$L['projects_wrong_period'] = "Не верно задан период действия заявки";
+$L['projects_empty_city']="Не задан пункт погрузки";
+$L['projects_empty_cityto']="Не задан пункт разгрузки";
 
 $L['projects_forreview'] = 'Ваш проект находится на проверке. Модератор утвердит его публикацию в ближайшее время.';
 $L['projects_isrealized'] = 'Исполненный';

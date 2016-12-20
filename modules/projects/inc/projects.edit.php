@@ -303,8 +303,12 @@ $t->assign(array(
 	"PRJEDIT_FORM_COST" => cot_inputbox('text', 'rcost', $item['item_cost'], 'size="10"'),
 	"PRJEDIT_FORM_STATE" => $item['item_state'],
 	"PRJEDIT_FORM_PARSER" => cot_selectbox($item['item_parser'], 'rparser', cot_get_parsers(), cot_get_parsers(), false),
-	"PRJEDIT_FORM_DELETE" => cot_radiobox(0, 'rdelete', array(1,0), array($L['Yes'], $L['No']))
-)); 
+	"PRJEDIT_FORM_DELETE" => cot_radiobox(0, 'rdelete', array(1,0), array($L['Yes'], $L['No'])),
+    "PRJEDIT_FORM_FROM"=>cot_inputbox('text','rfrom',cot_date('d.m.Y',$item['item_datefrom']),'id="date_from"'),
+    "PRJEDIT_FORM_TO"=>cot_inputbox('text','rto',cot_date('d.m.Y',$item['item_dateto']),'id="date_to"'),
+));
+
+Resources::addFile($cfg['modules_dir'].'/projects/js/jquery-ui.min.css');
 
 // Extra fields
 foreach($cot_extrafields[$db_projects] as $exfld)

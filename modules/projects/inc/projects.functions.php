@@ -444,7 +444,9 @@ function cot_projects_import($source = 'POST', $ritem = array(), $auth = array()
 	$ritem['item_cost'] = cot_import('rcost', $source, 'NUM');
 	$ritem['item_type'] = cot_import('rtype', $source, 'INT');
 	$ritem['item_parser'] = cot_import('rparser', $source, 'ALP');
-	
+    $ritem['item_datefrom']=cot_date2stamp(cot_import('rfrom', $source, 'TXT'),'d.m.Y');
+    $ritem['item_dateto']=cot_date2stamp(cot_import('rto', $source, 'TXT'),'d.m.Y');
+
 	if(empty($ritem['item_date']))
 	{
 		$ritem['item_date'] = (int)$sys['now'];
@@ -491,11 +493,13 @@ function cot_projects_validate($ritem)
 	}
 	cot_check(mb_strlen($ritem['item_title']) < 2, 'projects_empty_title', 'rtitle');
 	cot_check(!empty($ritem['item_alias']) && preg_match('`[+/?%#&]`', $ritem['item_alias']), 'prj_aliascharacters', 'ralias');
-
-	$allowemptytext = isset($cfg['projects']['cat_' . $ritem['item_cat']]['allowemptytext']) ?
+    cot_check(empty($ritem['item_datefrom'])||empty($ritem['item_dateto']),'projects_wrong_period');
+    cot_check(empty($ritem['item_city']),'projects_empty_city');
+    cot_check(empty($ritem['item_cityto']),'projects_empty_cityto');
+	/*$allowemptytext = isset($cfg['projects']['cat_' . $ritem['item_cat']]['allowemptytext']) ?
 							$cfg['projects']['cat_' . $ritem['item_cat']]['allowemptytext'] : $cfg['projects']['cat___default']['allowemptytext'];
 	cot_check(!$allowemptytext && empty($ritem['item_text']), 'projects_empty_text', 'rtext');
-
+*/
 	return !cot_error_found();
 }
 

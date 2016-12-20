@@ -16,11 +16,11 @@
                 <td width="150">{PHP.L.projects_begin}
                     <p class="small">{PHP.L.projects_actual}</p>
                 </td>
-                <td><input type="text" id="date_range" ></td>
+                <td>{PRJADD_FORM_FROM}</td>
             </tr>
             <tr>
                 <td>{PHP.L.projects_end}<p class="small">{PHP.L.projects_actual}</p></td>
-                <td>{PHP.env}</td>
+                <td>{PRJADD_FORM_TO}</td>
             </tr>
 			<tr>
 				<td width="150">{PHP.L.Category}:</td>
@@ -90,10 +90,12 @@
 <script>
 
     $( function() {
-        $('#date_range').datepicker();
-        $('#date_range').datepicker("option", "dateFormat", "dd.mm.yy");
-        $( "#date_range" ).datepicker( "option",
-                $.datepicker.regional[ "ru" ] );
+        $('#date_from').datepicker().on( "change", function() {
+            $('#date_to').datepicker( "option", "minDate", getDate( this ) );
+        });
+        $('#date_to').datepicker().on( "change", function() {
+            $('#date_from').datepicker( "option", "maxDate", getDate( this ) );
+        });
         jQuery(function ($) {
             $.datepicker.regional['ru'] = {
                 closeText: 'Закрыть',
@@ -111,12 +113,25 @@
                 dateFormat: 'dd.mm.yy',
                 firstDay: 1,
                 isRTL: false,
+                changeMonth: true,
+                changeYear: true,
                 showMonthAfterYear: false,
                 yearSuffix: ''
             };
             $.datepicker.setDefaults($.datepicker.regional['ru']);
+            $('#date_from').trigger("change");
+            $('#date_to').trigger("change");
         });
+        function getDate( element ) {
+            var date;
+            try {
+                date = $.datepicker.parseDate( 'dd.mm.yy', element.value );
+            } catch( error ) {
+                date = null;
+            }
+
+            return date;
+        }
     });
 </script>
-
 <!-- END: MAIN -->
