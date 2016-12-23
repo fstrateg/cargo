@@ -24,8 +24,8 @@
 	<div class="span1">
 		{PRJ_OWNER_AVATAR}
 	</div>
-	<div class="span5">
-		<p>{PRJ_OWNER_NAME}</p>
+	<div class="span1">
+		<p>{PRJ_OWNER_NICKNAME}</p>
 		<p>
 			<!-- IF {PRJ_OWNER_ISPRO} -->
 			<span class="label label-important">PRO</span> 
@@ -33,32 +33,26 @@
 			<span class="label label-info">{PRJ_OWNER_USERPOINTS}</span>
 		</p>
 	</div>
+	<div class="span4 pull-right">
+		<table width="100%">
+			<tr><td><b>ID:</b></td><td>id{PRJ_ID}</td></tr>
+			<tr><td><b>{PHP.L.projects_dat_created}:</b></td><td>{PRJ_DATE}</td></tr>
+			<tr><td><b>{PHP.L.projects_dat_period}:</b></td><td>{PRJ_DATEFROM}-{PRJ_DATETO}</td></tr>
+		</table>
+	</div>
 </div>
 <hr/>
 <div class="row">
-	<div class="span8">	
-		{PRJ_TEXT}
-		
-		<!-- IF {PHP.cot_plugins_active.mavatars} -->
-			<!-- IF {PRJ_MAVATARCOUNT} -->
-				<div style="clear:both;"></div>
-				<h5>{PHP.L.Files}:</h5>
-				<ol class="files">
-					<!-- FOR {KEY}, {VALUE} IN {PRJ_MAVATAR} -->
-					<li><a href="{VALUE.FILE}">{VALUE.FILENAME}.{VALUE.FILEEXT}</a></li>
-					<!-- ENDFOR -->
-				</ol>
-			<!-- ENDIF -->
-		<!-- ENDIF -->
-		
-	</div>
 	<div class="span4">
-		<!-- IF {PRJ_COST} > 0 --><p>{PHP.L.offers_budget}: {PRJ_COST} {PHP.cfg.payments.valuta}</p><!-- ENDIF -->
-		<p class="cat">{PHP.L.Category} : <a href="{PRJ_CAT|cot_url('projects', 'c='$this)}">{PRJ_CATTITLE}</a></p>
-		<p class="small region">{PHP.L.LocationFrom}:{PRJ_COUNTRY} {PRJ_REGION} {PRJ_CITY}</p>
-		<p class="small region">{PHP.L.LocationTo}:{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</p>
-		<p class="date">{PHP.L.Date}: {PRJ_DATE}</p>
-		
+		<table width="100%">
+			<!-- IF {PRJ_COST} > 0 -->
+			<tr><td><b>{PHP.L.offers_budget}:</b></td><td>{PRJ_COST} {PHP.cfg.payments.valuta}</td></tr>
+			<!-- ENDIF -->
+			<tr><td><b>{PHP.L.Category}:</b></td><td><a href="{PRJ_CAT|cot_url('projects', 'c='$this)}">{PRJ_CATTITLE}</a></td></tr>
+			<tr><td><b>{PHP.L.LocationFrom}:</b></td><td>{PRJ_COUNTRY} {PRJ_REGION} {PRJ_CITY}</td></tr>
+			<tr><td><b>{PHP.L.LocationTo}:</b></td><td>{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</td></tr>
+		</table>
+
 		<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
 		<p class="small">{PHP.L.Tags}: 
 			<!-- BEGIN: PRJ_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_TAGS_ROW_URL}" title="{PRJ_TAGS_ROW_TAG}" rel="nofollow">{PRJ_TAGS_ROW_TAG}</a><!-- END: PRJ_TAGS_ROW -->
@@ -77,6 +71,22 @@
 				<!-- ENDIF -->
 			</div>
 		<!-- ENDIF -->	
+	</div>
+	<div class="span8">
+		{PRJ_TEXT}
+
+		<!-- IF {PHP.cot_plugins_active.mavatars} -->
+		<!-- IF {PRJ_MAVATARCOUNT} -->
+		<div style="clear:both;"></div>
+		<h5>{PHP.L.Files}:</h5>
+		<ol class="files">
+			<!-- FOR {KEY}, {VALUE} IN {PRJ_MAVATAR} -->
+			<li><a href="{VALUE.FILE}">{VALUE.FILENAME}.{VALUE.FILEEXT}</a></li>
+			<!-- ENDFOR -->
+		</ol>
+		<!-- ENDIF -->
+		<!-- ENDIF -->
+
 	</div>
 </div>
 <hr/>

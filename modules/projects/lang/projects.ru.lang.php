@@ -46,6 +46,8 @@ $L['projects_empty_cityto']="Не задан пункт разгрузки";
 $L['projects_forreview'] = 'Ваш проект находится на проверке. Модератор утвердит его публикацию в ближайшее время.';
 $L['projects_isrealized'] = 'Исполненный';
 
+$L['projects_dat_created'] = 'Дата создания';
+$L['projects_dat_period'] = 'Период действия';
 $L['projects'] = 'Поиск груза';
 $L['projects_cabinet']='Кабинет';
 $L['projects_projects'] = 'Грузы';

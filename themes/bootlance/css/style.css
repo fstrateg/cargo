@@ -9,7 +9,7 @@ body	{
 	background-color:#FFFFFF;
 }
 
-hr			{ border:0 dashed #ccc; border-top-width:1px; clear:both; height:0; }
+hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }
 
 sub, sup	{ font-size:.8em; position:relative; }
@@ -64,7 +64,7 @@ div.help										{ color:#00529b; background-color:#bde5f8; background-image:ur
 /* 4. Tables
 -------------------------------------------------- */
 
-table td 	{ vertical-align:top; }
+table td 	{ vertical-align:top;line-height: 22px;}
 
 table.flat	{ border-collapse:collapse; width:100%; }
 table.flat td 	{ padding:2px; margin:0; border:0; }

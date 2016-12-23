@@ -12,7 +12,7 @@
 		{PRJ_OWNER_AVATAR}
 	</div>
 	<div class="span5">
-		<p>{PRJ_OWNER_NAME}</p>
+		<p>{PRJ_OWNER_NICKNAME}</p>
 		<p>
 			<!-- IF {PRJ_OWNER_ISPRO} -->
 			<span class="label label-important">PRO</span> 

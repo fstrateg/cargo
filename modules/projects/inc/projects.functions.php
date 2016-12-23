@@ -299,6 +299,8 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 			'UPDATE_STAMP' => $item_data['item_update'],
 			'SHOW_URL' => $item_data['item_pageurl'],
 			'USER_IS_ADMIN' => ($admin_rights || $usr['id'] == $item_data['item_userid']),
+			'DATEFROM' => cot_date('d.m.y',$item_data['item_datefrom']),
+			'DATETO' => cot_date('d.m.y',$item_data['item_dateto']),
 		);
 
 		$temp_array["OFFERS_ADDOFFER_URL"] = (empty($item_data['item_alias'])) ? 
