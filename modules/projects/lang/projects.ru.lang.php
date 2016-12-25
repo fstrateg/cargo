@@ -170,3 +170,4 @@ $L['plu_prj_set_subsec'] = 'Поиск в подразделах';
 
 $L['projects_headermoderated'] = "грузов на проверке,груза на проверке,грузов на проверке";
 $L['CargoTyp'] = 'Тип груза';
+$L['projects_views']='Просмотров';

@@ -24,7 +24,7 @@
 	<div class="span1">
 		{PRJ_OWNER_AVATAR}
 	</div>
-	<div class="span1">
+	<div class="span2">
 		<p>{PRJ_OWNER_NICKNAME}</p>
 		<p>
 			<!-- IF {PRJ_OWNER_ISPRO} -->
@@ -38,12 +38,15 @@
 			<tr><td><b>ID:</b></td><td>id{PRJ_ID}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_created}:</b></td><td>{PRJ_DATE}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_period}:</b></td><td>{PRJ_DATEFROM}-{PRJ_DATETO}</td></tr>
+            <!-- IF {PHP.cot_plugins_active.projectviews} -->
+            <tr><td><b>{PHP.L.projects_views}:</b></td><td>{PRJ_VIEWS}</td></tr>
+            <!-- ENDIF -->
 		</table>
 	</div>
 </div>
 <hr/>
 <div class="row">
-	<div class="span4">
+	<div class="span6">
 		<table width="100%">
 			<!-- IF {PRJ_COST} > 0 -->
 			<tr><td><b>{PHP.L.offers_budget}:</b></td><td>{PRJ_COST} {PHP.cfg.payments.valuta}</td></tr>
@@ -52,7 +55,7 @@
 			<tr><td><b>{PHP.L.LocationFrom}:</b></td><td>{PRJ_COUNTRY} {PRJ_REGION} {PRJ_CITY}</td></tr>
 			<tr><td><b>{PHP.L.LocationTo}:</b></td><td>{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</td></tr>
 		</table>
-
+        <p>&nbsp;</p>
 		<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
 		<p class="small">{PHP.L.Tags}: 
 			<!-- BEGIN: PRJ_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_TAGS_ROW_URL}" title="{PRJ_TAGS_ROW_TAG}" rel="nofollow">{PRJ_TAGS_ROW_TAG}</a><!-- END: PRJ_TAGS_ROW -->
@@ -72,7 +75,7 @@
 			</div>
 		<!-- ENDIF -->	
 	</div>
-	<div class="span8">
+	<div class="span6">
 		{PRJ_TEXT}
 
 		<!-- IF {PHP.cot_plugins_active.mavatars} -->
