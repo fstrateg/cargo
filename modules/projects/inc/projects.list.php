@@ -72,7 +72,11 @@ if (!empty($sq))
 	$words = explode(' ', preg_replace("'\s+'", " ", $sq));
 	$sqlsearch = '%'.implode('%', $words).'%';
 
-	$where['search'] = "(item_title LIKE '".$db->prep($sqlsearch)."' OR item_text LIKE '".$db->prep($sqlsearch)."')";
+	$where['search'] = "(item_title LIKE '".$db->prep($sqlsearch)
+        ."' OR item_text LIKE '".$db->prep($sqlsearch)
+        ."' OR item_id LIKE '".$db->prep($sqlsearch)
+        ."' OR item_userid LIKE '".$db->prep($sqlsearch)
+        ."')";
 }
 
 // Extra fields

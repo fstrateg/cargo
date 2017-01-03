@@ -64,6 +64,7 @@ if ($cfg['projects']['prjsearch'] && ($tab == 'projects' || empty($tab)) && cot_
 	$where_and = array_diff($where_and, array(''));
 	$where = implode(' AND ', $where_and);
 
+
 	/* === Hook === */
 	foreach (cot_getextplugins('projects.search.query') as $pl)
 	{

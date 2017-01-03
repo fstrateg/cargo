@@ -6,7 +6,7 @@
 		<!-- IF {PHP.cot_plugins_active.paypro} AND {PHP.usr.id} > 0 AND {PHP.usr.id} != {USERS_DETAILS_ID} -->
 		<br/>
 		<a class="btn btn-info btn-block" href="
-			<!-- IF {PHP.usr.isadmin} -->{USERS_DETAILS_ID|cot_url('admin', 'm=other&p=paypro&id='$this)}
+			<!-- IF {PHP.usr.isadmin} -->{USERS_DETAILS_ID|cot_url('ad  min', 'm=other&p=paypro&id='$this)}
 			<!-- ELSE -->{USERS_DETAILS_ID|cot_url('paypro', 'id='$this)}
 			<!-- ENDIF -->">{PHP.L.paypro_giftpro}</a>
 		<br/>
@@ -55,6 +55,10 @@
 						<td>{USERS_DETAILS_PM}</td>
 					</tr>
 	<!-- ENDIF -->
+                    <tr>
+                        <td>ID:</td>
+                        <td>{USERS_DETAILS_ID}</td>
+                    </tr>
 					<tr>
 						<td width="220">{PHP.L.Country}:</td>
 						<td>{USERS_DETAILS_COUNTRYFLAG} {USERS_DETAILS_COUNTRY}</td>
