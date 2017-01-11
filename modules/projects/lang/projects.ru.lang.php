@@ -51,6 +51,7 @@ $L['projects_dat_period'] = 'Период действия';
 $L['projects'] = 'Поиск груза';
 $L['projects_cabinet']='Кабинет';
 $L['projects_projects'] = 'Грузы';
+$L['projects_calc'] = 'Калькулятор';
 $L['projects_myprojects'] = 'Мои грузы';
 $L['projects_mytransport'] = 'Мой транспорт';
 $L['catalog'] = 'Каталог';

@@ -1,0 +1,41 @@
+a.hidden
+{
+	display: none;
+}
+a.remove{
+	cursor: pointer;
+}
+#distance table{
+	width: 100%;
+}
+td.point{
+	width: 40px;
+}
+td.distance{
+	font-weight: bold;
+}
+td.distance span {
+    font-weight: bold;
+    background: url('/images/distance.png');
+    display: block;
+    width: 25px;
+    height: 20px;
+    float: left;
+	background-position: -10px 0;
+}
+tr.calc td.calc{
+	text-align: left;
+	padding: 15px 20px 0 0;
+	line-height: 28px;
+}
+td.calc #speed{
+margin: 0px 10px; line-height: 26px; text-align:right; border: 1px solid #aaa;
+}
+#itog{
+	padding: 10px;
+}
+.out {
+    border: 1px solid rgb(153, 56, 21);
+    padding: 10px;
+    background: #F5F5F5;
+}
