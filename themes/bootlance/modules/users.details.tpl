@@ -34,10 +34,11 @@
 				<!-- IF {PHP.cot_modules.market} -->
 				<li<!-- IF {PHP.tab} == 'market' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_MARKET_URL}#tab_market" data-toggle="tab">{PHP.L.market} {USERS_DETAILS_MARKET_COUNT}</a></li>
 				<!-- ENDIF -->
-				<!-- IF {PHP.cot_modules.projects} AND {PHP.usr.iscargo} -->
-				<li<!-- IF {PHP.tab} == 'projects' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_PROJECTS_URL}#tab_projects" data-toggle="tab">{PHP.L.projects_projects} {USERS_DETAILS_PROJECTS_COUNT}</a></li>
+				<!-- IF {PHP.cot_modules.projects} AND {USERS_DETAILS_SHOWCARGO} -->
+				<li<!-- IF {PHP.tab} == 'projects' --> class="active"<!-- ENDIF -->>
+					<a href="{USERS_DETAILS_PROJECTS_URL}#tab_projects" data-toggle="tab">{PHP.L.projects_projects} {USERS_DETAILS_PROJECTS_COUNT}</a></li>
 				<!-- ENDIF -->
-				<!-- IF {PHP.cot_modules.transport} AND {PHP.usr.istransp} -->
+				<!-- IF {PHP.cot_modules.transport} AND {USERS_DETAILS_SHOWTRANSP} -->
 				<li<!-- IF {PHP.tab} == 'transport' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_TRANSPORT_URL}#tab_transport" data-toggle="tab">{PHP.L.transport_transport} {USERS_DETAILS_TRANSPORT_COUNT}</a></li>
 				<!-- ENDIF -->
 				<!-- IF {PHP.cot_plugins_active.reviews} -->

@@ -45,7 +45,7 @@ $t->assign(array(
     "TRNSADD_FORM_SEND" => cot_url('transport', "m=add&a=add",'',true),
     "TRNSADD_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
     "TRNSADD_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$disabled),
-    "TRNSADD_FORM_PHOTO"=> 'test',
+    "TRNSADD_FORM_PHOTO"=> cot_inputbox('file','rphoto'),
     "TRNSADD_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
     "TEST" =>  print_r($item,true),
 ));

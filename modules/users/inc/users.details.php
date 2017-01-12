@@ -66,6 +66,8 @@ $t->assign(cot_generate_usertags($urr, 'USERS_DETAILS_', '', true));
 $t->assign(array(
 	'USERS_DETAILS_TITLE' => cot_breadcrumbs(array(array(cot_url('users'), $L['Users']), array(cot_url('users', 'm=details&id='.$urr['user_id'].'&u='.$urr['user_name']), $urr['user_name'])), $cfg['homebreadcrumb']),
 	'USERS_DETAILS_SUBTITLE' => $L['use_subtitle'],
+	'USERS_DETAILS_SHOWCARGO'=> $urr['user_maingrp']==7 ? 1 : 0,
+	'USERS_DETAILS_SHOWTRANSP'=> $urr['user_maingrp']==4 ? 1 : 0,
 ));
 
 /* === Hook === */
@@ -79,12 +81,11 @@ if ($usr['isadmin'])
 {
 	$t-> assign(array(
 		'USERS_DETAILS_ADMIN_EDIT' => cot_rc_link(cot_url('users', 'm=edit&id='.$urr['user_id']), $L['Edit']),
-		'USERS_DETAILS_ADMIN_EDIT_URL' => cot_url('users', 'm=edit&id='.$urr['user_id'])
+		'USERS_DETAILS_ADMIN_EDIT_URL' => cot_url('users', 'm=edit&id='.$urr['user_id']),
 	));
 
 	$t->parse('MAIN.USERS_DETAILS_ADMIN');
 }
-
 $t->parse('MAIN');
 $t->out('MAIN');
 
