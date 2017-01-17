@@ -1,5 +1,5 @@
 <!-- BEGIN: MAIN -->
-<div class="breadcrumb"><h4>{PHP.L.marshrut_add_new}</h4></div>
+<div class="breadcrumb"><h4>{PHP.L.marshrut_edit}</h4></div>
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
 <div class="customform">
     <form action="{MR_FORM_SEND}" method="post" name="edit" enctype="multipart/form-data">
@@ -14,20 +14,21 @@
             </tr>
             <tr>
                 <td>{PHP.L.marshrut_from}:</td>
-                <td>{PRJADD_FORM_LOCATION}</td>
+                <td>{PRJEDIT_FORM_LOCATION}</td>
             </tr>
             <tr>
                 <td>{PHP.L.marshrut_to}:</td>
-                <td>{PRJADD_FORM_LOCATIONTO}</td>
+                <td>{PRJEDIT_FORM_LOCATIONTO}</td>
             </tr>
             <tr>
                 <td>{PHP.L.marshrut_price}:</td>
                 <td><div class="input-append">{MR_FORM_PRICE}<span class="add-on">{PHP.cfg.payments.valuta}</span></div></td>
             </tr>
             <tr><td></td>
-                <td><input type="submit" class="btn btn-info" value="{PHP.L.marshrut_next}" />
-            </td></tr>
+                <td><input type="submit" class="btn btn-info" value="{PHP.L.marshrut_save}" />
+                </td></tr>
         </table>
+        {MR_FORM_ID}
     </form>
 </div>
 {TEST}
