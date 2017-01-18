@@ -41,6 +41,9 @@
 				<!-- IF {PHP.cot_modules.transport} AND {USERS_DETAILS_SHOWTRANSP} -->
 				<li<!-- IF {PHP.tab} == 'transport' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_TRANSPORT_URL}#tab_transport" data-toggle="tab">{PHP.L.transport_transport} {USERS_DETAILS_TRANSPORT_COUNT}</a></li>
 				<!-- ENDIF -->
+                <!-- IF {PHP.cot_modules.marshrut} AND {USERS_DETAILS_SHOWTRANSP} -->
+                <li<!-- IF {PHP.tab} == 'marshrut' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_MARSHRUT_URL}#tab_marshrut" data-toggle="tab">{PHP.L.marshrut_marshrut} {USERS_DETAILS_MARSHRUT_COUNT}</a></li>
+                <!-- ENDIF -->
 				<!-- IF {PHP.cot_plugins_active.reviews} -->
 				<li<!-- IF {PHP.tab} == 'reviews' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_REVIEWS_URL}#tab_reviews" data-toggle="tab">{PHP.L.reviews_reviews} {USERS_DETAILS_REVIEWS_COUNT}</a></li>
 				<!-- ENDIF -->
@@ -90,6 +93,9 @@
 			<div class="tab-pane<!-- IF {PHP.tab} == 'reviews' --> active<!-- ENDIF -->" id="tab_reviews">
 				{REVIEWS}
 			</div>
+            <div class="tab-pane<!-- IF {PHP.tab} == 'marshrut' --> active<!-- ENDIF -->" id="tab_marshrut">
+                {MARSHRUT}
+            </div>
 		</div>
 	</div>
 </div>

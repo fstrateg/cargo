@@ -6,7 +6,7 @@ $id = cot_import('id', 'G', 'INT');
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('projects', 'any', 'RWA');
 cot_block($usr['auth_write']);
 
-$item = $db->query("SELECT a.*, u.* FROM $db_marshrut AS a LEFT JOIN $db_users AS u ON u.user_id=a.item_usr WHERE item_id=" . (int)$id)->fetch();
+$item = $db->query("SELECT a.*, u.* FROM $db_marshrut AS a LEFT JOIN $db_users AS u ON u.user_id=a.item_userid WHERE item_id=" . (int)$id)->fetch();
 
 if ($item['item_id'] != (int)$id)
 {

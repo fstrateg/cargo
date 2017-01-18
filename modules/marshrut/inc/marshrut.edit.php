@@ -3,16 +3,34 @@ defined('COT_CODE') or die('Wrong URL');
 
 $id = cot_import('id', 'G', 'INT');
 
+if (!$id || $id < 0)
+{
+    cot_die_message(404);
+}
+
+$item=cot_get_marshrut_fromdb();
+
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('projects', 'any', 'RWA');
-cot_block($usr['auth_write']);
+cot_block($usr['isadmin'] || $usr['auth_write'] && $usr['id'] == $item['item_userid']);
+
 if ($a=='save')
 {
     $ritem=cot_marshrut_import();
-
+    cot_marshrut_validate($ritem);
+    if (!cot_error_found())
+    {
+        $id = cot_marshrut_edit($ritem,$id);
+        cot_redirect(cot_url('/'));
+        exit;
+    }
+    else
+    {
+        $item=$ritem;
+    }
 }
-else
+elseif ($a=='del')
 {
-    $item=cot_get_marshrut_fromdb();
+    cot_marshrut_del($id);
 }
 
 $t=new XTemplate(cot_tplfile('marshrut.edit'));
