@@ -19,6 +19,11 @@ $L['marshrut_empty_region']='Не задан пункт отправки';
 $L['marshrut_empty_regionto']='Не задан пункт назначения';
 $L['marshrut_period']='Перод действия';
 $L['marshrut_empty']='Нет готовых маршрутов';
+$L['marshrut_status']='Статус';
+$L['marshrut_publish']='Опубликовано';
+$L['marshrut_archived']='В архиве';
+$L['marshrut_hidden']='Скрыто';
+$L['marshrut_delquery']='Вы действительно хотите удалить это маршрут?';
 
 
 // $L['']='';

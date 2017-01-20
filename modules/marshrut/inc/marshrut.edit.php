@@ -2,6 +2,8 @@
 defined('COT_CODE') or die('Wrong URL');
 
 $id = cot_import('id', 'G', 'INT');
+$stat=cot_import('stat','G','INT');
+$stat=$stat?'&stat='.$stat:'';
 
 if (!$id || $id < 0)
 {
@@ -12,6 +14,12 @@ $item=cot_get_marshrut_fromdb();
 
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('projects', 'any', 'RWA');
 cot_block($usr['isadmin'] || $usr['auth_write'] && $usr['id'] == $item['item_userid']);
+
+$params=['m'=>'details',
+    'id'=>$usr['id'],
+    'tab'=>'marshrut',
+];
+$r_url=cot_url('users',$params,'' ,true).$stat;
 
 if ($a=='save')
 {
@@ -26,11 +34,7 @@ if ($a=='save')
     if (!cot_error_found())
     {
         $id = cot_marshrut_edit($ritem,$id);
-        $params=['m'=>'details',
-            'id'=>$usr['id'],
-            'tab'=>'marshrut',
-        ];
-        $r_url=cot_url('users',$params,'' ,true);
+
         cot_redirect($r_url);
     }
     else
@@ -41,9 +45,18 @@ if ($a=='save')
 elseif ($a=='del')
 {
     cot_marshrut_del($id);
+    cot_redirect($r_url);
+}
+elseif ($a=='state')
+{
+    cot_marshrut_changestate($id);
+    cot_redirect($r_url);
 }
 
 $t=new XTemplate(cot_tplfile('marshrut.edit'));
+
+cot_display_messages($t);
+
 $t->assign([
     'MR_FORM_SEND'=>cot_url('marshrut','m=edit&a=save&id='.$id),
     'MR_FORM_DB'=>cot_inputbox('text','mrdb',cot_date('d.m.Y',$item['item_db']),['id'=>'mrdb']),

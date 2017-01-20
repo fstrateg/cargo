@@ -42,6 +42,8 @@
             var dt=getDate(this);
             $('#mrdb').datepicker('option','maxDate',dt);
         });
+        $('#mrdb').trigger("change");
+        $('#mrde').trigger("change");
     });
 </script>
 <!-- END: MAIN -->

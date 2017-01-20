@@ -2,6 +2,8 @@
 defined('COT_CODE') or die('Wrong URL');
 
 $id = cot_import('id', 'G', 'INT');
+$stat=cot_import('stat','G','INT');
+$stat=$stat?'&stat='.$stat:'';
 
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('projects', 'any', 'RWA');
 cot_block($usr['auth_write']);
@@ -25,8 +27,11 @@ $t=new XTemplate(cot_tplfile('marshrut.preview'));
 $t->assign(cot_generate_usertags($item, 'MR_OWNER_'));
 $t->assign(cot_generate_marshruttag($item,'MR_'));
 $t->assign([
-    'MR_SAVE_URL'=>cot_url('marshrut','m=preview&a=save',"&id=$id",true),
-    'MR_EDIT_URL'=>cot_url('marshrut','m=edit',"&id=$id",true),
+    'MR_PUBLISH_URL'=>cot_url('marshrut','m=edit&a=state&v=1'.$stat,"&id=$id",true),
+    'MR_HIDE_URL'=>cot_url('marshrut','m=edit&a=state&v=2'.$stat,"&id=$id",true),
+    'MR_ARCHIVE_URL'=>cot_url('marshrut','m=edit&a=state&v=3'.$stat,"&id=$id",true),
+    'MR_DELETE_URL'=>cot_url('marshrut','m=edit&a=del'.$stat,"&id=$id",true),
+    'MR_EDIT_URL'=>cot_url('marshrut','m=edit',"&id=$id".$stat,true),
     ]);
 
 $t->parse();

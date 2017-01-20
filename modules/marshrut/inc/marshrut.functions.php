@@ -25,7 +25,7 @@ function cot_marshrut_validate($ritem)
 function cot_marshrut_add($ritem)
 {
     global $db,$usr,$db_marshrut;
-    $ritem['item_state']=1;
+    $ritem['item_state']=2;
     $ritem['item_userid']=$usr['id'];
     if ($db->insert($db_marshrut, $ritem)) {
         $id = $db->lastInsertId();
@@ -36,24 +36,34 @@ function cot_marshrut_add($ritem)
 function cot_marshrut_edit($ritem,$id)
 {
     global $db, $db_marshrut;
-    if (!$db->update($db_marshrut,$ritem,"item_id=$id"))
-        exit();
+    return $db->update($db_marshrut,$ritem,"item_id=$id");
 }
 
 function cot_marshrut_del($id)
 {
     global $db, $db_marshrut;
-    if (!$db->delete($db_marshrut,"item_id=$id"))
-        exit();
+    return $db->delete($db_marshrut,"item_id=$id");
+}
+
+function cot_marshrut_changestate($id)
+{
+    global $db,$db_marshrut;
+    $v=cot_import('v','G','NUM');
+    $query=$db->prepare("update $db_marshrut set item_state=? where item_id=?");
+    $query->execute([$v, $id]);
 }
 
 function cot_generate_marshruttag($item_data,$prefix='')
 {
-    global $usr;
+    global $usr,$L;
     $temp_array=array();
+    $temp_array['ID']=$item_data['item_id'];
+    $temp_array['SHOW_STATUS']=($item_data['item_userid']==$usr['id']);
     $temp_array['DB']=cot_date('d.m.Y',$item_data['item_db']);
     $temp_array['DE']=cot_date('d.m.Y',$item_data['item_de']);
     $temp_array['COST']=number_format($item_data['item_price'],0,'.',' ');
+    $temp_array['STATE']=$item_data['item_state'];
+    $temp_array['STATUS']=cot_marshrut_state($item_data['item_state']);
 
     foreach (cot_getextplugins('projectstags.main') as $pl)
     {
@@ -78,7 +88,11 @@ function cot_generate_marshruttag($item_data,$prefix='')
         $title.=', '.$temp_array['REGIONTO'];
     }
     if ($item_data['item_userid']==$usr['id'])
-        $title=cot_rc_link(cot_url('marshrut','m=preview&id='.$item_data['item_id'],'',true),$title);
+    {
+        $state=cot_import('stat','G','INT');
+        $stat=$state?'&stat='.$state:'';
+        $title=cot_rc_link(cot_url('marshrut','m=preview&id='.$item_data['item_id'].$stat,'',true),$title);
+    }
     $temp_array['TITLE']=$title;
     $return_array=[];
     foreach ($temp_array as $key => $val)
@@ -87,7 +101,16 @@ function cot_generate_marshruttag($item_data,$prefix='')
     }
     return $return_array;
 }
-
+function cot_marshrut_state($state,$colored = true)
+{
+    global $L;
+    if ($colored)
+        return $state==1?'<span class="label label-info">'.$L['marshrut_publish'].'</span>':
+            ($state==2?'<span class="label label-warning">'.$L['marshrut_hidden'].'</span>':
+                '<span class="label label-inverse">'.$L['marshrut_archived']).'</span>';
+    return $state==1?$L['marshrut_publish']:
+        ($state==2?$L['marshrut_hidden']:$L['marshrut_archived']);
+}
 function cot_get_marshrut_fromdb()
 {
     global $db,$db_marshrut,$db_users;
