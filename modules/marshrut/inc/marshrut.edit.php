@@ -16,12 +16,22 @@ cot_block($usr['isadmin'] || $usr['auth_write'] && $usr['id'] == $item['item_use
 if ($a=='save')
 {
     $ritem=cot_marshrut_import();
+    /* === Hook === */
+    foreach (cot_getextplugins('projects.edit.update.import') as $pl)
+    {
+        include $pl;
+    }
+    /* ===== */
     cot_marshrut_validate($ritem);
     if (!cot_error_found())
     {
         $id = cot_marshrut_edit($ritem,$id);
-        cot_redirect(cot_url('/'));
-        exit;
+        $params=['m'=>'details',
+            'id'=>$usr['id'],
+            'tab'=>'marshrut',
+        ];
+        $r_url=cot_url('users',$params,'' ,true);
+        cot_redirect($r_url);
     }
     else
     {
@@ -47,6 +57,8 @@ foreach (cot_getextplugins('projects.edit.tags') as $pl)
     include $pl;
 }
 /* ===== */
+Resources::addFile('js/jquery-ui.min.js');
+Resources::addFile('js/jquery-ui.min.css');
 
 $t->parse();
 $module_body=$t->text();

@@ -17,6 +17,8 @@ function cot_marshrut_validate($ritem)
 {
     cot_check(empty($ritem['item_db']), 'marshrut_empty_db', 'mrdb');
     cot_check(empty($ritem['item_de']), 'marshrut_empty_de', 'mrde');
+    cot_check(empty($ritem['item_region']), 'marshrut_empty_region', 'region');
+    cot_check(empty($ritem['item_regionto']), 'marshrut_empty_regionto', 'regionto');
     return !cot_error_found();
 }
 

@@ -20,7 +20,7 @@ if ($a=='add')
     if (!cot_error_found())
     {
         $id = cot_marshrut_add($ritem);
-        cot_redirect(cot_url('/'));
+        cot_redirect(cot_url('marshrut','m=preview&id='.$id,'',true));
         exit;
     }
 }

@@ -15,6 +15,8 @@ $L['marshrut_next']='Далее';
 $L['marshrut_save']='Сохранить';
 $L['marshrut_empty_db']='Дата начала не задана';
 $L['marshrut_empty_de']='Дата окончания не задана';
+$L['marshrut_empty_region']='Не задан пункт отправки';
+$L['marshrut_empty_regionto']='Не задан пункт назначения';
 $L['marshrut_period']='Перод действия';
 $L['marshrut_empty']='Нет готовых маршрутов';
 

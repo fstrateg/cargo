@@ -1,8 +1,8 @@
 <?php
 /**
  * [BEGIN_COT_EXT]
- * Code=transport
- * Name=Transport
+ * Code=marshrut
+ * Name=Маршруты
  * Description=Маршруты для перевозчиков
  * Version=1.00.00
  * Date=14.01.2017
