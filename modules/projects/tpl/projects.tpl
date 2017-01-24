@@ -99,5 +99,13 @@
 		{OFFERS}
 	</div>
 </div>
+<!-- IF {PHP.cot_plugins_active.simmarsh} -->
+<hr />
+<div class="row">
+    <div class="span12">
+    {SIMMARSH}
+    </div>
+</div>
+<!-- ENDIF -->
 
 <!-- END: MAIN -->
