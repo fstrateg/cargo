@@ -1,5 +1,4 @@
 <!-- BEGIN: MAIN -->
-
 <h4>{PHP.L.simmarsh}</h4>
 <!-- BEGIN: SIMMR_ROW -->
 <div class="media">

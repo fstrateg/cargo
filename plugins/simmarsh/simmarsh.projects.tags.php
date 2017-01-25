@@ -78,12 +78,16 @@ $addto['country']="item_countryto='${item['item_countryto']}'";
 
 $simmr_add=" AND ( ".implode(" OR ", $add)." ) AND (".implode(" OR ", $addto).")";
 
-$sqlsim = $db->query("SELECT * FROM $db_marshrut AS p
+$tt="(${add['city']})*10+(${add['region']})*5+(${addto['city']})*10+(${addto['region']})";
+$sqlsim = $db->query("SELECT a.* FROM ("
+    . "SELECT $tt AS tt,u.*,p.* FROM $db_marshrut AS p
 	LEFT JOIN $db_users AS u ON u.user_id=p.item_userid 
 	" . $simmr_where . "
 	" . $simmr_add . "
 	" . $simmr_order . "
-	LIMIT " . $cfg['plugin']['simmarsh']['limit'])->fetchAll();
+	) a WHERE tt>=15 LIMIT " . $cfg['plugin']['simmarsh']['limit'])->fetchAll();
+
+if (count($sqlsim)==0) return;
 
 foreach ($sqlsim as $simmr)
 {

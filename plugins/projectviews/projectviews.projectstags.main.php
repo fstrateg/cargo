@@ -11,7 +11,7 @@ require_once cot_incfile('projectviews','plug');
 
 if (isset($temp_array['ID']))
 {
-    global $db_projectviews;
+    global $db_projectviews, $db;
     $id=$temp_array['ID'];
     $sql=$db->query("select count(*) from $db_projectviews where areaid=?",$id);
     $rz=$sql->fetchColumn();
