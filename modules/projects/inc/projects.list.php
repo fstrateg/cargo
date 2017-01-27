@@ -72,11 +72,15 @@ if (!empty($sq))
 	$words = explode(' ', preg_replace("'\s+'", " ", $sq));
 	$sqlsearch = '%'.implode('%', $words).'%';
 
+	$findid='';
+	if (preg_match('/^#\d+/',$sqlsearch,$arr)||preg_match('/^#\d+/',$sqlsearch,$arr)) {
+		preg_match('/\d+/', $arr[0], $arr);
+		$findid = " OR item_id=${arr[0]}";
+	}
+
 	$where['search'] = "(item_title LIKE '".$db->prep($sqlsearch)
         ."' OR item_text LIKE '".$db->prep($sqlsearch)
-        ."' OR item_id LIKE '".$db->prep($sqlsearch)
-        ."' OR item_userid LIKE '".$db->prep($sqlsearch)
-        ."')";
+        ."' $findid )";
 }
 
 // Extra fields
