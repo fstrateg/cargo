@@ -69,18 +69,24 @@ if (!empty($type))
 
 if (!empty($sq))
 {
-	$words = explode(' ', preg_replace("'\s+'", " ", $sq));
-	$sqlsearch = '%'.implode('%', $words).'%';
-
-	$findid='';
-	if (preg_match('/^#\d+/',$sqlsearch,$arr)||preg_match('/^#\d+/',$sqlsearch,$arr)) {
+	if (preg_match('/^#\d+/',$sq,$arr)) {
 		preg_match('/\d+/', $arr[0], $arr);
-		$findid = " OR item_id=${arr[0]}";
+		$where['search'] = "item_id=${arr[0]}";
 	}
+	elseif (preg_match('/^(id)\d+/i',$sq,$arr))
+	{
+		preg_match('/\d+/', $arr[0], $arr);
+		cot_redirect(cot_url('users',['m'=>'details','id'=>$arr[0]],'',true));
+	}
+	else {
+		$words = explode(' ', preg_replace("'\s+'", " ", $sq));
+		$sqlsearch = '%' . implode('%', $words) . '%';
 
-	$where['search'] = "(item_title LIKE '".$db->prep($sqlsearch)
-        ."' OR item_text LIKE '".$db->prep($sqlsearch)
-        ."' $findid )";
+
+		$where['search'] = "(item_title LIKE '" . $db->prep($sqlsearch)
+			. "' OR item_text LIKE '" . $db->prep($sqlsearch)
+			. "')";
+	}
 }
 
 // Extra fields

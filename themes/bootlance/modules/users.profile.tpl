@@ -40,7 +40,7 @@
 						</td>
                         <td class="width70">{USERS_PHONE3}</td>
                     </tr>
-					<!-- IF {PHP.usr.id}+0<>2 -->
+					<!-- IF {PHP.urr.user_maingrp} != 7 -->
 					<tr>
 						<td>{PHP.L.Category}:</td>
 						<td>{USERS_PROFILE_CAT}</td>
