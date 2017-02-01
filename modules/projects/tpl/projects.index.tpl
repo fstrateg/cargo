@@ -22,6 +22,10 @@
 					<td width="100">{PHP.L.Search}:</td>
 					<td>{SEARCH_SQ}</td>
 				</tr>
+				<tr>
+					<td></td>
+					<td style="padding-bottom: 10px;"><small class="info">{PHP.L.projects_find_info}</small></td>
+				</tr>
 				<!-- IF {PHP.cot_plugins_active.locationselector} -->
 				<tr>
 					<td >{PHP.L.Location}:</td>
@@ -54,8 +58,8 @@
 			<a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a>
 		</h4>
 		<p class="owner small">{PRJ_ROW_OWNER_NICKNAME} <span class="date">&nbsp;&nbsp;&nbsp;[#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span>
-			<span class="region">{PRJ_ROW_COUNTRY} {PRJ_ROW_REGION} {PRJ_ROW_CITY}</span> -
-			<span class="region">{PRJ_ROW_COUNTRYTO} {PRJ_ROW_REGIONTO} {PRJ_ROW_CITYTO}</span> 
+			<span class="region">{PRJ_ROW_COUNTRY}, <b>{PRJ_ROW_CITY}</b></span> -
+			<span class="region">{PRJ_ROW_COUNTRYTO}, <b>{PRJ_ROW_CITYTO}</b></span> 
 			{PRJ_ROW_EDIT_URL}</p>
 		<p class="text">{PRJ_ROW_SHORTTEXT}</p>
 		
