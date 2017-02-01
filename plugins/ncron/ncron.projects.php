@@ -1,7 +1,7 @@
 <?php
 /* ====================
   [BEGIN_COT_EXT]
- * Hooks=ncron.h1
+ * Hooks=ncron.h
   [END_COT_EXT]
   ==================== */
 defined('COT_CODE') && defined('COT_PLUG') or die('Wrong URL');

@@ -10,7 +10,7 @@ defined('COT_CODE') && defined('COT_PLUG') or die('Wrong URL');
 
 /* === Hook === */
 $h=cot_date('H',$sys['now']+6*3600);
-$extp = cot_getextplugins('ncron.h'.$h);
+$extp = cot_getextplugins('ncron.h');
 
 foreach ($extp as $pl)
 {
