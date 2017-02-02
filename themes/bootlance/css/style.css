@@ -292,3 +292,5 @@ ol					{ margin-left:20px; list-style-type:decimal; }
 	text-decoration: none;
 	font-weight: normal;
 }
+
+small.info{color: #888888;}

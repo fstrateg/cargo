@@ -69,14 +69,24 @@ if (!empty($type))
 
 if (!empty($sq))
 {
-	$words = explode(' ', preg_replace("'\s+'", " ", $sq));
-	$sqlsearch = '%'.implode('%', $words).'%';
+	if (preg_match('/^#\d+/',$sq,$arr)) {
+		preg_match('/\d+/', $arr[0], $arr);
+		$where['search'] = "item_id=${arr[0]}";
+	}
+	elseif (preg_match('/^(id)\d+/i',$sq,$arr))
+	{
+		preg_match('/\d+/', $arr[0], $arr);
+		cot_redirect(cot_url('users',['m'=>'details','id'=>$arr[0]],'',true));
+	}
+	else {
+		$words = explode(' ', preg_replace("'\s+'", " ", $sq));
+		$sqlsearch = '%' . implode('%', $words) . '%';
 
-	$where['search'] = "(item_title LIKE '".$db->prep($sqlsearch)
-        ."' OR item_text LIKE '".$db->prep($sqlsearch)
-        ."' OR item_id LIKE '".$db->prep($sqlsearch)
-        ."' OR item_userid LIKE '".$db->prep($sqlsearch)
-        ."')";
+
+		$where['search'] = "(item_title LIKE '" . $db->prep($sqlsearch)
+			. "' OR item_text LIKE '" . $db->prep($sqlsearch)
+			. "')";
+	}
 }
 
 // Extra fields
