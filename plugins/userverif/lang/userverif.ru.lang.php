@@ -1,8 +1,3 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Alexey
- * Date: 02.02.17
- * Time: 23:25
- * To change this template use File | Settings | File Templates.
- */
+defined('COT_CODE') or die('Wrong URL.');
+$L['userverif_not_verif']='Ваша учетная запись не верифицирована. Пожалуйста, пройдите процесс верификации чтобы полностью воспользоваться всеми доступными услугами.';
