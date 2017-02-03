@@ -1,6 +1,3 @@
 <!-- BEGIN:MAIN -->
-<!-- BEGIN:NOT_VERIF -->
-    test <div>{PHP.L.userverif_not_verif}</div>
-<!-- END:NOT_VERIF -->
-
+{PHP.L.userverif_getid}
 <!-- END:MAIN -->
