@@ -52,7 +52,7 @@
 						<div class="pull-right">
 							<span class="label label-info">{USERS_ROW_USERPOINTS}</span>
 						</div>
-						<strong>{USERS_ROW_NAME}</strong><!-- IF {USERS_ROW_ISPRO} --> <span class="label label-important">PRO</span><!-- ENDIF -->
+						<strong>{USERS_ROW_NICKNAME}</strong><!-- IF {USERS_ROW_ISPRO} --> <span class="label label-important">PRO</span><!-- ENDIF -->
 						<p>{USERS_ROW_COUNTRY} {USERS_ROW_REGION} {USERS_ROW_CITY}</p>
 					</div>
 				</div>
