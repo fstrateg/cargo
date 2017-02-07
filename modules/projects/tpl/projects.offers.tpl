@@ -147,11 +147,6 @@
 					{PHP.L.offers_do} {OFFER_FORM_COSTMAX} {PHP.cfg.payments.valuta}</td>
 			</tr>
 			<tr>
-				<td align="right">{PHP.L.offers_sroki}:</td>
-				<td>{PHP.L.offers_ot} {OFFER_FORM_TIMEMIN} 
-					{PHP.L.offers_do} {OFFER_FORM_TIMEMAX} {OFFER_FORM_TIMETYPE}</td>
-			</tr>
-			<tr>
 				<td align="right" class="top">{PHP.L.offers_text_predl}:</td>
 				<td>{OFFER_FORM_TEXT}</td>
 			</tr>
