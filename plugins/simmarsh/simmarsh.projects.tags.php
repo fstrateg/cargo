@@ -18,6 +18,8 @@
 
 defined('COT_CODE') or die('Wrong URL.');
 
+if ($item['item_userid']!=$usr['id']) return;
+
 require_once cot_incfile('marshrut', 'module');
 require_once cot_langfile('simmarsh');
 
