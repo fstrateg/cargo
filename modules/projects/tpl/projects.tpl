@@ -35,7 +35,7 @@
 	</div>
 	<div class="span4 pull-right">
 		<table width="100%">
-			<tr><td><b>ID:</b></td><td>#{PRJ_ID}</td></tr>
+			<tr><td><b>№:</b></td><td>#{PRJ_ID}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_created}:</b></td><td>{PRJ_DATE}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_period}:</b></td><td>{PRJ_DATEFROM}-{PRJ_DATETO}</td></tr>
             <!-- IF {PHP.cot_plugins_active.projectviews} -->
