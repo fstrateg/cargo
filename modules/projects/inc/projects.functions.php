@@ -301,6 +301,8 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 			'USER_IS_ADMIN' => ($admin_rights || $usr['id'] == $item_data['item_userid']),
 			'DATEFROM' => cot_date('d.m.y',$item_data['item_datefrom']),
 			'DATETO' => cot_date('d.m.y',$item_data['item_dateto']),
+            'MASSA' => $item_data['massa'],
+            'VOL' => $item_data['vol'],
 		);
 
 		$temp_array["OFFERS_ADDOFFER_URL"] = (empty($item_data['item_alias'])) ? 
