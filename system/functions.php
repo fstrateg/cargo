@@ -2209,7 +2209,8 @@ function cot_generate_usertags($user_data, $tag_prefix = '', $emptyname='', $all
 				'LASTLOG_STAMP' => $user_data['user_lastlog'],
 				'LOGCOUNT' => $user_data['user_logcount'],
 				'POSTCOUNT' => $user_data['user_postcount'],
-				'LASTIP' => $user_data['user_lastip']
+				'LASTIP' => $user_data['user_lastip'],
+				'PHONES' => cot_getphones($user_data),
 			);
 
 			if ($allgroups)
@@ -2272,6 +2273,14 @@ function cot_generate_usertags($user_data, $tag_prefix = '', $emptyname='', $all
 	return $return_array;
 }
 
+function cot_getphones($user_data)
+{
+	$rez=array();
+	if (isset($user_data['user_phone1'])) $rez[]=$user_data['user_phone1'];
+	if (isset($user_data['user_phone2'])) $rez[]=$user_data['user_phone2'];
+	if (isset($user_data['user_phone3'])) $rez[]=$user_data['user_phone3'];
+	return $rez;
+}
 
 /**
  * Resize an image

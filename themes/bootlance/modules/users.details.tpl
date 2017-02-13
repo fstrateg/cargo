@@ -75,8 +75,11 @@
 						<td>{PHP.L.Registered}:</td>
 						<td>{USERS_DETAILS_REGDATE}</td>
 					</tr>
-				</table>			
-			
+					<tr>
+						<td>{PHP.L.Phones}:</td>
+						<td></td>
+					</tr>
+				</table>
 			</div>
 			<div class="tab-pane<!-- IF {PHP.tab} == 'portfolio' --> active<!-- ENDIF -->" id="tab_portfolio">
 				{PORTFOLIO}

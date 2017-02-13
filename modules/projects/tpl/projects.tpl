@@ -32,6 +32,9 @@
 			<!-- ENDIF -->
 			<span class="label label-info">{PRJ_OWNER_USERPOINTS}</span>
 		</p>
+		<!-- FOR {PHONE} IN {PRJ_OWNER_PHONES} -->
+		<p>{PHONE}</p>
+		<!-- ENDFOR -->
 	</div>
 	<div class="span4 pull-right">
 		<table width="100%">
