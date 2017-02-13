@@ -38,6 +38,18 @@
 				<td>{PHP.L.CargoTyp}:</td>
 				<td>{PRJEDIT_FORM_TITLE}</td>
 			</tr>
+			<tr>
+				<td>{PHP.L.projects_cnt}</td>
+				<td>{PRJEDIT_FORM_COUNT}</td>
+			</tr>
+			<tr>
+				<td>{PHP.L.projects_vol}</td>
+				<td><div class="input-append">{PRJEDIT_FORM_VOL}<span class="add-on">{PHP.L.projects_m3}</span></div></td>
+			</tr>
+			<tr>
+				<td>{PHP.L.projects_massa}</td>
+				<td><div class="input-append">{PRJEDIT_FORM_MASSA}<span class="add-on">{PHP.L.projects_ton}</span></div></td>
+			</tr>
 			<tr<!-- IF !{PHP.usr.isadmin} --> class="hidden"<!-- ENDIF -->>
 				<td>{PHP.L.Alias}:</td>
 				<td>{PRJEDIT_FORM_ALIAS}</td>

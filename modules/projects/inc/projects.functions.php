@@ -301,8 +301,8 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 			'USER_IS_ADMIN' => ($admin_rights || $usr['id'] == $item_data['item_userid']),
 			'DATEFROM' => cot_date('d.m.y',$item_data['item_datefrom']),
 			'DATETO' => cot_date('d.m.y',$item_data['item_dateto']),
-            'MASSA' => $item_data['massa'],
-            'VOL' => $item_data['vol'],
+            'MASSA' => $item_data['item_massa'],
+            'VOL' => $item_data['item_vol'],
 		);
 
 		$temp_array["OFFERS_ADDOFFER_URL"] = (empty($item_data['item_alias'])) ? 
@@ -311,7 +311,7 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 
 		if ($admin_rights || $usr['id'] == $item_data['item_userid'])
 		{
-			$temp_array['ADMIN_EDIT'] = cot_rc_link(cot_url('projects', 'm=edit&id=' . $item_data['item_id']), $L['Edit']);
+			$temp_array['ADMIN_EDIT'] = cot_rc_link(cot_url('projects', 'm=edit&id=' . $item_data['item_id']), $L['Edit'], 'class="btn btn-info"');
 			$temp_array['ADMIN_EDIT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id']);
 			$temp_array['HIDEPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	(($item_data['item_state'] == 1) ? '&a=public' : '&a=hide'));
 			$temp_array['HIDEPROJECT_TITLE'] = ($item_data['item_state'] == 1) ? $L['Publish'] : $L['Hide'];
@@ -450,6 +450,9 @@ function cot_projects_import($source = 'POST', $ritem = array(), $auth = array()
 	$ritem['item_parser'] = cot_import('rparser', $source, 'ALP');
     $ritem['item_datefrom']=cot_date2stamp(cot_import('rfrom', $source, 'TXT'),'d.m.Y');
     $ritem['item_dateto']=cot_date2stamp(cot_import('rto', $source, 'TXT'),'d.m.Y');
+	$ritem['item_count']=cot_import('rcount', $source , 'INT');
+	$ritem['item_massa']=cot_import('rmassa', $source , 'NUM');
+	$ritem['item_vol']=cot_import('rvol', $source, 'NUM');
 
 	if(empty($ritem['item_date']))
 	{
@@ -500,6 +503,9 @@ function cot_projects_validate($ritem)
     cot_check(empty($ritem['item_datefrom'])||empty($ritem['item_dateto']),'projects_wrong_period');
     cot_check(empty($ritem['item_city']),'projects_empty_city');
     cot_check(empty($ritem['item_cityto']),'projects_empty_cityto');
+	cot_check(empty($ritem['item_count']),'projects_empty_count');
+	cot_check(empty($ritem['item_massa']),'projects_empty_massa');
+	cot_check(empty($ritem['item_vol']),'projects_empty_vol');
 	/*$allowemptytext = isset($cfg['projects']['cat_' . $ritem['item_cat']]['allowemptytext']) ?
 							$cfg['projects']['cat_' . $ritem['item_cat']]['allowemptytext'] : $cfg['projects']['cat___default']['allowemptytext'];
 	cot_check(!$allowemptytext && empty($ritem['item_text']), 'projects_empty_text', 'rtext');

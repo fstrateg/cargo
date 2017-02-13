@@ -471,6 +471,7 @@ function cot_import($name, $source, $filter, $maxlen = 0, $dieonerror = false, $
 			break;
 
 		case 'NUM':
+			$v=str_replace(' ','',$v);
 			if (is_numeric($v))
 			{
 				$pass = TRUE;

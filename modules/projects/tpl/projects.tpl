@@ -54,6 +54,9 @@
 			<!-- IF {PRJ_COST} > 0 -->
 			<tr><td><b>{PHP.L.offers_budget}:</b></td><td>{PRJ_COST} {PHP.cfg.payments.valuta}</td></tr>
 			<!-- ENDIF -->
+			<tr><td><b>{PHP.L.projects_count}:</b></td><td>{PRJ_COUNT}</td></tr>
+			<tr><td><b>{PHP.L.projects_massa}:</b></td><td>{PRJ_MASSA} {PHP.L.projects_ton}</td></tr>
+			<tr><td><b>{PHP.L.projects_vol}:</b></td><td>{PRJ_VOL} {PHP.L.projects_m3}</td></tr>
 			<tr><td><b>{PHP.L.Category}:</b></td><td><a href="{PRJ_CAT|cot_url('projects', 'c='$this)}">{PRJ_CATTITLE}</a></td></tr>
 			<tr><td><b>{PHP.L.LocationFrom}:</b></td><td>{PRJ_COUNTRY} {PRJ_REGION} {PRJ_CITY}</td></tr>
 			<tr><td><b>{PHP.L.LocationTo}:</b></td><td>{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</td></tr>
@@ -70,7 +73,7 @@
 			<div class="well well-small">
 				{PRJ_ADMIN_EDIT} &nbsp; 
 				<!-- IF {PRJ_STATE} != 2 -->
-					<a href="{PRJ_HIDEPROJECT_URL}">{PRJ_HIDEPROJECT_TITLE}</a>	&nbsp; 
+					<a href="{PRJ_HIDEPROJECT_URL}" class="btn btn-warning">{PRJ_HIDEPROJECT_TITLE}</a>	&nbsp;
 					<!-- IF {PRJ_PERFORMER} -->
 					<a href="{PRJ_REALIZEDPROJECT_URL}">{PRJ_REALIZEDPROJECT_TITLE}</a>					
 					<!-- ENDIF -->
