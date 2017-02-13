@@ -71,7 +71,7 @@ $L['projects_vol']='Объем груза';
 $L['projects_massa']='Вес груза';
 $L['projects_m3']='м3';
 $L['projects_ton']='тонн';
-
+$L['projects_t']='т.';
 
 $L['projects_hidden'] = 'Груз не опубликован';
 $L['projects_success_projects'] = 'Успешные проекты';

@@ -84,17 +84,28 @@
 		
 		<div id="listprojects">
 			<!-- BEGIN: PRJ_ROWS -->
-			<div class="media<!-- IF {PRJ_ROW_ISBOLD} --> well prjbold<!-- ENDIF --><!-- IF {PRJ_ROW_ISTOP} --> well prjtop<!-- ENDIF -->">
+			<div class="media<!-- IF {PRJ_ROW_ISBOLD} --> well prjbold<!-- ENDIF -->
+			<!-- IF {PRJ_ROW_ISTOP} --> well prjtop<!-- ENDIF -->">
 				<h4>
 					<!-- IF {PRJ_ROW_COST} > 0 --><div class="pull-right">{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
 					<a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a>
 				</h4>
-				<p class="owner small">{PRJ_ROW_OWNER_NICKNAME} <span class="date">&nbsp;&nbsp;&nbsp;[#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span>  
-					<span class="region">{PRJ_ROW_COUNTRY}, <b>{PRJ_ROW_CITY}</b></span> -
-					<span class="region">{PRJ_ROW_COUNTRYTO}, <b>{PRJ_ROW_CITYTO}</b></span>  
-					{PRJ_ROW_EDIT_URL}</p>
-				<p class="text">{PRJ_ROW_SHORTTEXT}</p>
-				
+                <div class="row">
+                    <div class="span9"><p class="owner small">{PRJ_ROW_OWNER_NICKNAME} <span class="date">&nbsp;&nbsp;&nbsp;
+                    [#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span></p>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="span7">
+                        <span class="region">{PRJ_ROW_COUNTRY}, <b>{PRJ_ROW_CITY}</b></span> -<span class="region">{PRJ_ROW_COUNTRYTO}, <b>{PRJ_ROW_CITYTO}</b></span></div>
+                        <div class="span1">{PRJ_ROW_MASSA}{PHP.L.projects_t}</div>
+                        <div class="span1">{PRJ_ROW_VOL}{PHP.L.projects_m3}</div>
+                    </div>
+                <div class="row">
+                    <div class="span9">{PRJ_ROW_SHORTTEXT}</div>
+                </div>
+                <div class="row">
+                <div class="span9">
 				<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
 				<p class="small">{PHP.L.Tags}: 
 					<!-- BEGIN: PRJ_ROW_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_ROW_TAGS_ROW_URL}" title="{PRJ_ROW_TAGS_ROW_TAG}" rel="nofollow">{PRJ_ROW_TAGS_ROW_TAG}</a><!-- END: PRJ_ROW_TAGS_ROW -->
@@ -103,7 +114,12 @@
 				<!-- ENDIF -->
 				
 				<div class="pull-right offers"><a href="{PRJ_ROW_OFFERS_ADDOFFER_URL}">{PHP.L.offers_add_offer}</a> ({PRJ_ROW_OFFERS_COUNT})</div>
-				<div class="type"><!-- IF {PHP.cot_plugins_active.paypro} AND {PRJ_ROW_FORPRO} --><span class="label label-important">{PHP.L.paypro_forpro}</span> <!-- ENDIF --><!-- IF {PRJ_ROW_TYPE} -->{PRJ_ROW_TYPE} / <!-- ENDIF --><a href="{PRJ_ROW_CATURL}">{PRJ_ROW_CATTITLE}</a></div>
+				<div class="type">
+                    <!-- IF {PHP.cot_plugins_active.paypro} AND {PRJ_ROW_FORPRO} --><span class="label label-important">{PHP.L.paypro_forpro}</span> <!-- ENDIF -->
+                    <!-- IF {PRJ_ROW_TYPE} -->{PRJ_ROW_TYPE} / <!-- ENDIF --><a href="{PRJ_ROW_CATURL}">{PRJ_ROW_CATTITLE}</a>
+                </div>
+                </div>
+                </div>
 			</div>
 			<hr/>
 			<!-- END: PRJ_ROWS -->
