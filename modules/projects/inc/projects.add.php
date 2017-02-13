@@ -146,6 +146,7 @@ if (empty($ritem['item_type']) && !empty($type))
 {
 	$ritem['item_type'] = $type;
 }
+if (empty($ritem['item_count'])) $ritem['item_count']=1;
 
 $out['subtitle'] = $L['projects_add_project_title'];
 $out['head'] .= $R['code_noindex'];
@@ -174,8 +175,11 @@ $t->assign(array(
 	"PRJADD_FORM_TITLE" => cot_inputbox('text', 'rtitle', $ritem['item_title'], 'size="56"'),
 	"PRJADD_FORM_ALIAS" => cot_inputbox('text', 'ralias', $ritem['item_alias'], array('size' => '32', 'maxlength' => '255')),
 	"PRJADD_FORM_TEXT" => cot_textarea('rtext', $ritem['item_text'], 10, 60, 'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
-	"PRJADD_FORM_COST" => cot_inputbox('text', 'rcost', $ritem['item_cost'], 'size="10"'),
-	"PRJADD_FORM_PARSER" => cot_selectbox($cfg['projects']['parser'], 'rparser', $parser_list, $parser_list, false),
+	"PRJADD_FORM_COST" => cot_inputbox('text', 'rcost', $ritem['item_cost'], 'size="10" class="number"'),
+    "PRJADD_FORM_COUNT" => cot_inputbox('text', 'rcount', $ritem['item_count'], 'size="10" class="number"'),
+    "PRJADD_FORM_MASSA" => cot_inputbox('text', 'rmassa', $ritem['item_massa'], 'size="10" class="number"'),
+    "PRJADD_FORM_VOL" => cot_inputbox('text', 'rvol', $ritem['item_vol'], 'size="10" class="number"'),
+    "PRJADD_FORM_PARSER" => cot_selectbox($cfg['projects']['parser'], 'rparser', $parser_list, $parser_list, false),
     "PRJADD_FORM_FROM"=>cot_inputbox('text','rfrom',cot_date('d.m.Y',$ritem['item_datefrom']),'id="date_from"'),
     "PRJADD_FORM_TO"=>cot_inputbox('text','rto',cot_date('d.m.Y',$ritem['item_dateto']),'id="date_to"'),
 ));

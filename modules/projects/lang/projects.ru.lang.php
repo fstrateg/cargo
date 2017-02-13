@@ -62,6 +62,12 @@ $L['projects_edit_project_title'] = 'Редактирование груза';
 $L['projects_begin']='Начало действия';
 $L['projects_end']='Конец действия';
 $L['projects_actual']='Актуальность заявки';
+$L['projects_cnt']='Необходимое кол-во фур';
+$L['projects_vol']='Объем груза';
+$L['projects_massa']='Вес груза';
+$L['projects_m3']='м3';
+$L['projects_ton']='тонн';
+
 
 $L['projects_hidden'] = 'Груз не опубликован';
 $L['projects_success_projects'] = 'Успешные проекты';
