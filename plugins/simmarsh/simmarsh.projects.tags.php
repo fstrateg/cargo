@@ -87,7 +87,7 @@ $sqlsim = $db->query("SELECT a.* FROM ("
 	" . $simmr_where . "
 	" . $simmr_add . "
 	" . $simmr_order . "
-	) a WHERE tt>=15 LIMIT " . $cfg['plugin']['simmarsh']['limit'])->fetchAll();
+	) a WHERE tt>=25 LIMIT " . $cfg['plugin']['simmarsh']['limit'])->fetchAll();
 
 if (count($sqlsim)==0) return;
 

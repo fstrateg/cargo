@@ -77,7 +77,9 @@
 					</tr>
 					<tr>
 						<td>{PHP.L.Phones}:</td>
-						<td></td>
+						<td><!-- FOR {PHONE} IN {USERS_DETAILS_PHONES} -->
+							{PHONE};
+							<!-- ENDFOR --></td>
 					</tr>
 				</table>
 			</div>
