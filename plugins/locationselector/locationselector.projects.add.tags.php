@@ -32,7 +32,7 @@ else
 		"PRJADD_FORM_LOCATION" => cot_select_location($ritem['item_country'], $ritem['item_region'], $ritem['item_city'], true)
 	));
 	$t->assign(array(
-		"PRJADD_FORM_LOCATIONTO" => cot_select_locationto($ritem['item_country'], $ritem['item_region'], $ritem['item_city'],true)
+		"PRJADD_FORM_LOCATIONTO" => cot_select_locationto($ritem['item_countryto'], $ritem['item_regionto'], $ritem['item_cityto'],true)
 	));
 }
 

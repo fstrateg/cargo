@@ -95,7 +95,7 @@
 			<tr>
 				<td></td>
 				<td>
-					<input type="submit" class="btn btn-info" value="{PHP.L.projects_next}" />
+					<button type="submit" class="btn btn-info"><i class="icon-download icon-white"></i> {PHP.L.projects_next}</button>
 				</td>
 			</tr>
 		</table>

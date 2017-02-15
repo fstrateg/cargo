@@ -66,7 +66,7 @@
     </div>
 </div>
 <p>&nbsp;</p>
-<a href="{PRJ_SAVE_URL}" class="btn btn-success"><span>{PHP.L.Publish}</span></a> 
-<a href="{PRJ_EDIT_URL}" class="btn btn-info"><span>{PHP.L.Edit}</span></a>
+<a href="{PRJ_SAVE_URL}" class="btn btn-success"><i class="icon-eye-open icon-white"></i> {PHP.L.Publish}</></a>
+<a href="{PRJ_EDIT_URL}" class="btn btn-info"><i class="icon-pencil icon-white"></i> {PHP.L.Edit}</a>
 
 <!-- END: MAIN -->	

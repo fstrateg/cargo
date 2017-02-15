@@ -19,7 +19,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 require_once cot_incfile('projects', 'module');
 
-if (!in_array($m, array('add', 'edit', 'preview', 'useroffers')))
+if (!in_array($m, array('add', 'edit', 'copy', 'preview', 'useroffers')))
 {
 	if (isset($_GET['id']) || isset($_GET['al']))
 	{

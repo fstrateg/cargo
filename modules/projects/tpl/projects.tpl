@@ -71,9 +71,10 @@
 		
 		<!-- IF {PRJ_USER_IS_ADMIN} -->
 			<div class="well well-small">
-				{PRJ_ADMIN_EDIT} &nbsp; 
+				<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
+				<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
 				<!-- IF {PRJ_STATE} != 2 -->
-					<a href="{PRJ_HIDEPROJECT_URL}" class="btn btn-warning">{PRJ_HIDEPROJECT_TITLE}</a>	&nbsp;
+					<a href="{PRJ_HIDEPROJECT_URL}" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {PRJ_HIDEPROJECT_TITLE}</a>	&nbsp;
 					<!-- IF {PRJ_PERFORMER} -->
 					<a href="{PRJ_REALIZEDPROJECT_URL}">{PRJ_REALIZEDPROJECT_TITLE}</a>					
 					<!-- ENDIF -->
