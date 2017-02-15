@@ -1,16 +1,16 @@
 <?php
 
 /**
- * [BEGIN_COT_EXT1]
+ * [BEGIN_COT_EXT]
  * Hooks=users.profile.tags
- * [END_COT_EXT1]
+ * [END_COT_EXT]
  */
 
 defined('COT_CODE') or die('Wrong URL.');
 
 include_once  cot_incfile('userverif','plug');
 
-$fl=cot_tplfile('userverif','plug');
+$fl=cot_tplfile(['userverif','profile'],'plug');
 
 $t1=new XTemplate($fl);
 $t1->assign('USERVERIF_TEXT',
