@@ -129,3 +129,36 @@ function cot_safename($basename, $underscore = true, $postfix = '')
 	if(empty($safename) || $safename != $fname) $fname = $safename.cot_unique();
 	return $fname . $postfix . '.' . mb_strtolower($ext);
 }
+
+/**
+ * Check image and upload it
+ *
+ * @param $fileist - temporary name for upload
+ * @param $filename - filename and path to upload image
+ * @param $max_size - max size in pixel to crop image
+ * @return bool
+ */
+function cot_uploadImage($fileist,$filename,$max_size)
+{
+    $rez=getimagesize($fileist);
+    $prcarray=[
+        1=>'gif',
+        2=>'jpeg',
+        3=>'png',
+        6=>'wbmp',
+    ];
+    $width=$rez[0];
+    $height=$rez[1];
+    $k=($width>$height?$width:$height)/$max_size;
+    $k=$k<1?1:$k;
+    $width = (int)($width / $k);
+    $height = (int)($height / $k);
+    $image_p = imagecreatetruecolor($width, $height);
+    if (!$prcarray[$rez[2]]) return false;
+    $prc = 'imagecreatefrom' . $prcarray[$rez[2]];
+    $image = $prc($fileist);
+    imagecopyresampled($image_p, $image, 0, 0, 0, 0,
+        $width, $height, $rez[0], $rez[1]);
+    imagejpeg($image_p, $filename);
+    return true;
+}
