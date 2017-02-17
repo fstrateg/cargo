@@ -19,16 +19,19 @@ defined('COT_CODE') or die('Wrong URL.');
 
 include_once  cot_incfile('userverif','plug');
 
+include_once cot_incfile('userverif','plug','info');
+
+$a=cot_import('a','G','ALP');
+
+$info=new UserVerif();
+if ($a=='verif')
+{
+    $info->importForm();
+}
+
 $t=new XTemplate(cot_tplfile('userverif','plug'));
 
-$t->assign([
-    'USRVER_FIZ'=>cot_radiobox('1','rfizlico',['1','0'],[$L['userverif_fiz'],$L['userverif_ur']]),
-    'USRVER_UDOS'=>cot_inputbox('file','ridcart'),
-    'USRVER_NUMBER'=>cot_inputbox('text','rnumber'),
-    'USRVER_SVIDET'=>cot_inputbox('file','rsvidet'),
-    'USRVER_URL'=>cot_url('userverif','a=verif'),
-    'USRVER_SUBMIT'=>cot_inputbox('submit','submit',$L['userverif_submit'],'class="btn btn-success"'),
-]);
+$t->assign($info->getData());
 
 $t->parse('MAIN');
 

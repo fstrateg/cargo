@@ -4,8 +4,7 @@
 <form action="{USRVER_URL}" method="post" enctype="multipart/form-data">
 <p>{USRVER_FIZ}</p>
     <hr />
-<p>{PHP.L.userverif_getid}</p>
-<p>{USRVER_UDOS}</p>
+    {USRVER_UDOS}
     <hr />
 <div id="verur" style="display: none;">
     <p>{PHP.L.userverif_number}</p>
