@@ -16,6 +16,7 @@ class UserVerif
     var $cert_status=null;
     var $new=true;
     var $fiz='1';
+    var $tax_number;
     var $userid;
     var $salt;
     var $dat;
@@ -41,12 +42,13 @@ class UserVerif
             $this->cert_status=$item['cert_status'];
             $this->salt=$item['salt'];
             $this->dat=$item['dat'];
+            $this->tax_number=$item['tax_number'];
             $this->new=(($this->pas_status+$this->cert_status)==0);
         }
         else
         {
             global $sys;
-            $this->salt=uniqid('verif_');
+            $this->salt=uniqid();
             $this->dat=$sys['now'];
             $db->insert($db_userverif,$this->getDbData());
         }
@@ -57,6 +59,7 @@ class UserVerif
         return ['fiz'=>$this->fiz,
             'pas_status'=>$this->pas_status,
             'cert_status'=>$this->cert_status,
+            'tax_number'=>$this->tax_number,
             'userid'=>$this->userid,
             'salt'=>$this->salt,
             'dat'=>$this->dat,
@@ -68,13 +71,31 @@ class UserVerif
         global $cfg,$sys,$db;
         include_once $cfg['system_dir'].'/uploads.php';
 
-        $this->fiz=cot_import('rfizlico','P','NUM');
-        if (isset($_FILES['ridcart'])&&$_FILES['ridcart']['errors']==0) {
-            $file = $_FILES['ridcart'];
-            $filename=$cfg['root_dir'].'/'.$cfg['photos_dir']."/".$this->userid."_pass_".$this->salt.".jpg";
-            if (cot_uploadImage($file['tmp_name'],$filename,800)) {
-                $this->pas_status = 2;
-                $this->dat=$sys['now'];
+        if ($this->new)
+            $this->fiz=(string)cot_import('rfizlico','P','NUM');
+
+        if ($this->pas_status==0||$this->pas_status==3)
+        {
+            if (isset($_FILES['ridcart'])&&$_FILES['ridcart']['errors']==0&&$_FILES['ridcart']['size']>0) {
+                $file = $_FILES['ridcart'];
+                $filename=$cfg['root_dir'].'/'.$cfg['photos_dir']."/".$this->userid."_pass_ver_".$this->salt.".jpg";
+                if (cot_uploadImage($file['tmp_name'],$filename,800)) {
+                    $this->pas_status = 2;
+                    $this->dat=$sys['now'];
+                }
+            }
+        }
+
+        $this->tax_number=cot_import('rnumber','P','NUM');
+        if ($this->pas_status==0||$this->pas_status==3)
+        {
+            if (isset($_FILES['rsvidet'])&&$_FILES['rsvidet']['errors']==0&&$_FILES['rsvidet']['size']>0) {
+                $file = $_FILES['rsvidet'];
+                $filename=$cfg['root_dir'].'/'.$cfg['photos_dir']."/".$this->userid."_svid_ver_".$this->salt.".jpg";
+                if (cot_uploadImage($file['tmp_name'],$filename,800)) {
+                    $this->cert_status = 2;
+                    $this->dat=$sys['now'];
+                }
             }
         }
         $this->update();
@@ -88,18 +109,20 @@ class UserVerif
 
     public function getPaspBlock()
     {
+        $html='';
         if ($this->pas_status==0||$this->pas_status==null)
         {
-            return cot_inputbox('file','ridcart');
+            $html='<p>'.$this->L['userverif_getid'].'</p>'.cot_inputbox('file','ridcart');
         }
         if ($this->pas_status==3)
         {
-            return cot_inputbox('file','ridcart');
+            $html=cot_inputbox('file','ridcart');
         }
         if ($this->pas_status==2)
         {
-            return $this->L['userverif_wait'];
+            $html=$this->L['userverif_wait'];
         }
+        return $html;
     }
 
     public function getFizBlock()
@@ -108,13 +131,14 @@ class UserVerif
 
         if ($this->new)
         {
-            $html="<p>".$this->L['userverif_getid'].'</p>';
+            $html="<p>".$this->L['userverif_reg'].':</p>';
             $html.='<p>'.cot_radiobox($this->fiz,'rfizlico',['1','0'],[$this->L['userverif_fiz'],$this->L['userverif_ur']]).'</p>';
         }
         else
         {
             $html="<p>".$this->L['userverif_iddone'].'</p>';
             $html.=sprintf('<p>'.$this->L['userverif_registred'].'</p>', $this->fiz=='1' ? $this->L['userverif_fiz'] : $this->L['userverif_ur'] );
+            $html.=cot_inputbox('hidden','hfizlico',$this->fiz);
         }
         return $html;
     }
@@ -124,7 +148,7 @@ class UserVerif
         return [
             'USRVER_FIZ'=>$this->getFizBlock(),
             'USRVER_UDOS'=>$this->getPaspBlock(),
-            'USRVER_NUMBER'=>cot_inputbox('text','rnumber'),
+            'USRVER_NUMBER'=>cot_inputbox('text','rnumber',$this->tax_number,'class="number"'),
             'USRVER_SVIDET'=>cot_inputbox('file','rsvidet'),
             'USRVER_URL'=>cot_url('userverif','a=verif'),
             'USRVER_SUBMIT'=>cot_inputbox('submit','submit',$this->L['userverif_submit'],'class="btn btn-success"'),

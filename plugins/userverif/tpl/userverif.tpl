@@ -20,14 +20,15 @@
     $(function() {
         $('input[name=rfizlico]').on('change',
                 function(){
-                    var v=$('input[name=rfizlico]:checked').val();
+                    var i=$('input[name=rfizlico]:checked');
+                    var v=i.val();
                     if (v=="0")
                         $('#verur').show("fold");
                     else
                         $('#verur').hide("fold");
                 });
-        if ($('input[name=rfizlico]:checked').val()=="0")
+        if ($('input[name=rfizlico]:checked').val()=="0"||$('input[name=hfizlico]').val()=="0")
             $('#verur').show("fold");
-    });
+    })
 </script>
 <!-- END:MAIN -->
