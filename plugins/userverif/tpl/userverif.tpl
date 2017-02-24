@@ -7,11 +7,7 @@
     {USRVER_UDOS}
     <hr />
 <div id="verur" style="display: none;">
-    <p>{PHP.L.userverif_number}</p>
-    <p>{USRVER_NUMBER}</p>
-    <hr />
-    <p>{PHP.L.userverif_svidetel}</p>
-    <p>{USRVER_SVIDET}</p>
+    {USRVER_SVIDET}
     <hr />
 </div>
     <p>{USRVER_SUBMIT}</p>

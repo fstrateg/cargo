@@ -87,7 +87,7 @@ class UserVerif
         }
 
         $this->tax_number=cot_import('rnumber','P','NUM');
-        if ($this->pas_status==0||$this->pas_status==3)
+        if ($this->cert_status==0||$this->cert_status==3)
         {
             if (isset($_FILES['rsvidet'])&&$_FILES['rsvidet']['errors']==0&&$_FILES['rsvidet']['size']>0) {
                 $file = $_FILES['rsvidet'];
@@ -98,7 +98,13 @@ class UserVerif
                 }
             }
         }
-        $this->update();
+        if ($this->validateForm())
+                $this->update();
+    }
+
+    public function validateForm()
+    {
+        return true;
     }
 
     private function update()
@@ -120,7 +126,32 @@ class UserVerif
         }
         if ($this->pas_status==2)
         {
-            $html=$this->L['userverif_wait'];
+            $html='<p class="text-info">'.$this->L['userverif_wait'].'</p>';
+        }
+        return $html;
+    }
+
+    public function getCertBlock()
+    {
+        $html='';
+        if ($this->pas_status==0||$this->pas_status==null)
+        {
+            $html.=vsprintf('<p>%s</p><p>%s</p><hr /><p>%s</p>%s',
+                [
+                    $this->L['userverif_number'],
+                    cot_inputbox('text','rnumber',$this->tax_number,'class="number"'),
+                    $this->L['userverif_svidetel'],
+                    cot_inputbox('file','rsvidet')
+                ]);
+        }
+        if ($this->pas_status==2)
+        {
+            $html.=vsprintf('<p>%s</p><p>%s</p><hr /><p class="text-info">%s</p>',
+                [
+                    $this->L['userverif_number'],
+                    cot_inputbox('text','rnumber',$this->tax_number,'class="number" disabled'),
+                    $this->L['userverif_wait']
+                ]);
         }
         return $html;
     }
@@ -136,7 +167,6 @@ class UserVerif
         }
         else
         {
-            $html="<p>".$this->L['userverif_iddone'].'</p>';
             $html.=sprintf('<p>'.$this->L['userverif_registred'].'</p>', $this->fiz=='1' ? $this->L['userverif_fiz'] : $this->L['userverif_ur'] );
             $html.=cot_inputbox('hidden','hfizlico',$this->fiz);
         }
@@ -148,8 +178,7 @@ class UserVerif
         return [
             'USRVER_FIZ'=>$this->getFizBlock(),
             'USRVER_UDOS'=>$this->getPaspBlock(),
-            'USRVER_NUMBER'=>cot_inputbox('text','rnumber',$this->tax_number,'class="number"'),
-            'USRVER_SVIDET'=>cot_inputbox('file','rsvidet'),
+            'USRVER_SVIDET'=>$this->getCertBlock(),
             'USRVER_URL'=>cot_url('userverif','a=verif'),
             'USRVER_SUBMIT'=>cot_inputbox('submit','submit',$this->L['userverif_submit'],'class="btn btn-success"'),
         ];
