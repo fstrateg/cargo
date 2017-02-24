@@ -66,11 +66,11 @@ if ($item['item_state'] != 0 && !$usr['isadmin'] && $usr['id'] != $item['item_us
 	}
 }
 
-if ($usr['id'] != $item['item_userid'] && (!$usr['isadmin'] || $cfg['projects']['count_admin']))
+/*if ($usr['id'] != $item['item_userid'] && (!$usr['isadmin'] || $cfg['projects']['count_admin']))
 {
 	$item['item_count']++;
 	$db->update($db_projects, array('item_count' => $item['item_count']), "item_id=" . (int)$item['item_id']);
-}
+}*/
 
 // Building the canonical URL
 $pageurl_params = array('c' => $item['item_cat']);
