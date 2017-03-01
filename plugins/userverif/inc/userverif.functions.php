@@ -4,12 +4,7 @@ defined('COT_CODE') or die('Wrong URL.');
 include_once cot_langfile('userverif','plug');
 cot::$db->registerTable('userverif');
 
-function cot_userverif_uploadpass()
-{
-    return true;
-}
-
-function cot_userverif_getinfo()
+function cot_userverif_verifed()
 {
     global $usr,$db,$db_userverif;
     /*
@@ -20,4 +15,7 @@ function cot_userverif_getinfo()
      * 3 не прошел верификацию
      */
     $item=$db->query("select * from $db_userverif where userid=${usr['id']}")->fetchAll();
+    // если физ лицо
+    // если юр лицо
+
 }

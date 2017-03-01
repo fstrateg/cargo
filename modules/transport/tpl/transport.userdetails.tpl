@@ -5,6 +5,7 @@
 </h4>
 <hr>
 <div id="listtransport">
+    {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
     <!-- BEGIN: TRANS_ROWS -->
     <table class="flat">
         <tr>
@@ -13,8 +14,16 @@
             </td>
             <td>
                 <h4>
-                    <img src="{TRANSP_ROW_VERIFED}" alt="{TRANSP_ROW_VERNAME}" title="{TRANSP_ROW_VERNAME}"/> <a href="{TRANSP_ROW_URL}">{TRANSP_ROW_TITLE}</a> <!-- IF {TRANSP_ROW_USER_IS_ADMIN} --> <span class="label label-info">{TRANSP_ROW_LOCALSTATUS}</span><!-- ENDIF -->
+                    <img src="{TRANSP_ROW_VERIFED}" alt="{TRANSP_ROW_VERNAME}" title="{TRANSP_ROW_VERNAME}"/>
+                    <!-- IF {TRANSP_ROW_USER_IS_ADMIN} -->
+                        <a href="{TRANSP_ROW_URL}">{TRANSP_ROW_TITLE}</a>
+                    <!-- ELSE -->
+                    {TRANSP_ROW_TITLE}
+                    <!-- ENDIF -->
+                    <!-- IF {TRANSP_ROW_USER_IS_ADMIN} -->
+                    {TRANSP_ROW_LOCALSTATUS}
                     <div class="pull-right offers"><span class="dover">{TRANSP_ROW_DOVERIFED}</span></div>
+                    <!-- ENDIF -->
                 </h4>
                 <p class="owner small"><span class="date">[{TRANSP_ROW_DATE}]</span>  
                     <span class="region">{TRANSP_ROW_COUNTRY} {TRANSP_ROW_REGION} {TRANSP_ROW_CITY}</span></p>
@@ -25,9 +34,9 @@
             <td>
 
             </td>
-            <td>
+            <!--td>
                 <div class="pull-right offers"><a href="{PRJ_ROW_OFFERS_ADDOFFER_URL}">{PHP.L.offers_add_offer}</a> ({TRANSP_ROW_OFFERS_COUNT})</div>
-            </td>
+            </td-->
         </tr>
     </table>
         {TRANSP_ROW_ITEM}

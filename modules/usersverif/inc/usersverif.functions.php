@@ -16,7 +16,7 @@ function get_usersverif($prefix='')
         $tmp_arr=[];
         $tmp_arr['NUM']=$i++;
         $tmp_arr['USERID']=$item['userid'];
-        $tmp_arr['FIZ']=$item['fiz']==0?$L['usersverif_fiz']:$L['usersverif_ur'];
+        $tmp_arr['FIZ']=$item['fiz']==0?$L['usersverif_ur']:$L['usersverif_fiz'];
         $tmp_arr['DAT']=cot_date('d.m.Y H:i', $item['dat']);
         $tmp_arr['TAXNUMBER']=$item['tax_number'];
 
@@ -74,5 +74,5 @@ function cot_uver_update($u,$d,$s)
     $q='';
     if ($d==1) $q="pas_status=$s";
     if ($d==2) $q="cert_status=$s";
-    if ($q) $db->query("update $db_userverif set $q where user_id=$u")->execute();
+    if ($q) $db->query("update $db_userverif set $q where userid=$u")->execute();
 }

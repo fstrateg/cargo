@@ -3,7 +3,7 @@
 		<div class="block">
 			<h2 class="users">{USERS_PROFILE_TITLE}</h2>
 			{FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
-			{USER_NOT_VERIF}
+			{USER_VERIF}
 			<form action="{USERS_PROFILE_FORM_SEND}" method="post" enctype="multipart/form-data" name="profile">
 				<input type="hidden" name="userid" value="{USERS_PROFILE_ID}" />
 				<table class="table">

@@ -17,8 +17,16 @@
                         </a>
                     </div>
                     <div class="span1">
+                        <!-- IF {UVER_PAS_STATUS} == 2 -->
                         <p><a class="btn btn-success" href="{UVER_AC_PS}">{PHP.L.usersverif_accept}</a></p>
                         <p><a class="btn btn-warning" href="{UVER_RJ_PS}">{PHP.L.usersverif_reject}</a></p>
+                        <!-- ENDIF -->
+                        <!-- IF {UVER_PAS_STATUS} == 1 -->
+                        <p><span class="label label-success">{PHP.L.usersverif_verifed}</span></p>
+                        <!-- ENDIF -->
+                        <!-- IF {UVER_PAS_STATUS} == 3 -->
+                        <p><span class="label label-warning">{PHP.L.usersverif_rejected}</span></p>
+                        <!-- ENDIF -->
                     </div>
                 </div>
                 <!-- ENDIF -->
@@ -31,8 +39,16 @@
                         </a>
                     </div>
                     <div class="span1">
+                        <!-- IF {UVER_CERT_STATUS} == 2 -->
                         <p><a class="btn btn-success" href="{UVER_AC_SV}">{PHP.L.usersverif_accept}</a></p>
                         <p><a class="btn btn-warning" href="{UVER_RJ_SV}">{PHP.L.usersverif_reject}</a></p>
+                        <!-- ENDIF -->
+                        <!-- IF {UVER_CERT_STATUS} == 1 -->
+                        <p><span class="label label-success">{PHP.L.usersverif_verifed}</span></p>
+                        <!-- ENDIF -->
+                        <!-- IF {UVER_CERT_STATUS} == 3 -->
+                        <p><span class="label label-warning">{PHP.L.usersverif_rejected}</span></p>
+                        <!-- ENDIF -->
                     </div>
                 </div>
                         <!-- ENDIF -->

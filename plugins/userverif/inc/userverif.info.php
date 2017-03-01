@@ -118,15 +118,23 @@ class UserVerif
         $html='';
         if ($this->pas_status==0||$this->pas_status==null)
         {
-            $html='<p>'.$this->L['userverif_getid'].'</p>'.cot_inputbox('file','ridcart');
+            $html='<p>'.$this->L['userverif_getid'];
+            $html.='</p><p>'.cot_inputbox('file','ridcart').'</p><p class="small" style="color: #999">'.$this->L['userverif_doc_types'].'</p>';
         }
         if ($this->pas_status==3)
         {
-            $html=cot_inputbox('file','ridcart');
+            $html='<p class="text-warning">'.$this->L['userverif_doc_rejected'].'</p><p>'.$this->L['userverif_getid'];
+            $html.='</p><p>'.cot_inputbox('file','ridcart').'</p><p class="small" style="color: #999">'.$this->L['userverif_doc_types'].'</p>';
         }
         if ($this->pas_status==2)
         {
-            $html='<p class="text-info">'.$this->L['userverif_wait'].'</p>';
+            $html='<p>'.$this->L['userverif_getid'];
+            $html.='</p><p class="text-info">'.$this->L['userverif_wait'].'</p>';
+        }
+        if ($this->pas_status==1)
+        {
+            $html='<p>'.$this->L['userverif_getid'].'</p>';
+            $html.='<p class="text-success">'.$this->L['userverif_doc_verifed'].'</p>';
         }
         return $html;
     }
@@ -134,24 +142,54 @@ class UserVerif
     public function getCertBlock()
     {
         $html='';
-        if ($this->pas_status==0||$this->pas_status==null)
+        if ($this->cert_status==0||$this->cert_status==null)
         {
-            $html.=vsprintf('<p>%s</p><p>%s</p><hr /><p>%s</p>%s',
+            $html.=vsprintf('<p>%s</p><p>%s</p><hr /><p>%s</p><p>%s</p>',
                 [
                     $this->L['userverif_number'],
                     cot_inputbox('text','rnumber',$this->tax_number,'class="number"'),
                     $this->L['userverif_svidetel'],
                     cot_inputbox('file','rsvidet')
                 ]);
+            $html.='<p class="small" style="color: #999">'.$this->L['userverif_doc_types'].'</p>';
         }
-        if ($this->pas_status==2)
+        if ($this->cert_status==1)
         {
-            $html.=vsprintf('<p>%s</p><p>%s</p><hr /><p class="text-info">%s</p>',
+            $html=vsprintf('<p>%s</p><p>%s</p><hr />',
+                        [
+                            $this->L['userverif_number'],
+                            cot_inputbox('text','rnumber',$this->tax_number,'class="number" disabled'),
+                        ]
+            );
+            $html.=vsprintf('<p>%s</p><p class="text-success">%s</p>',
+                [
+                    $this->L['userverif_svidetel'],
+                    $this->L['userverif_doc_verifed']
+                ]);
+        }
+        if ($this->cert_status==2)
+        {
+            $html.=vsprintf('<p>%s</p><p>%s</p><hr /><p>%s</p><p class="text-info">%s</p>',
                 [
                     $this->L['userverif_number'],
                     cot_inputbox('text','rnumber',$this->tax_number,'class="number" disabled'),
+                    $this->L['userverif_svidetel'],
                     $this->L['userverif_wait']
                 ]);
+        }
+        if ($this->cert_status==3)
+        {
+            $html.=vsprintf('<p>%s</p><p>%s</p><hr /><p>%s</p>
+                <p class="text-warning">%s</p>
+                <p>%s</p>',
+                [
+                    $this->L['userverif_number'],
+                    cot_inputbox('text','rnumber',$this->tax_number,'class="number"'),
+                    $this->L['userverif_svidetel'],
+                    $this->L['userverif_doc_rejected'],
+                    cot_inputbox('file','rsvidet')
+                ]);
+            $html.='<p class="small" style="color: #999">'.$this->L['userverif_doc_types'].'</p>';
         }
         return $html;
     }
@@ -183,5 +221,14 @@ class UserVerif
             'USRVER_SUBMIT'=>cot_inputbox('submit','submit',$this->L['userverif_submit'],'class="btn btn-success"'),
         ];
 
+    }
+
+    public function verifed()
+    {
+        // если физ лицо
+        if (((int)$this->fiz)==1) return ($this->pas_status==1);
+        // если юр лицо
+        else
+            return ($this->pas_status==1&&$this->cert_status==1);
     }
 }

@@ -13,3 +13,5 @@ $L['usersverif_fiz']='Физ';
 $L['usersverif_ur']='Юр';
 $L['usersverif_accept']='Принять';
 $L['usersverif_reject']='Отказать';
+$L['usersverif_verifed']='Верифицирован';
+$L['usersverif_rejected']='Отказано';

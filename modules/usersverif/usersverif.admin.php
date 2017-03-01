@@ -8,6 +8,7 @@ Hooks=admin
 defined('COT_CODE') or die('Wrong URL.');
 
 global $cfg;
+include_once cot_incfile('usersverif','module');
 
 $a=cot_import('a','G','ALP');
 $u=cot_import('u','G','INT');
@@ -21,8 +22,6 @@ elseif($a=='reject')
 {
     cot_uver_reject($u,$d);
 }
-
-include_once cot_incfile('usersverif','module');
 
 $part='main';
 
