@@ -37,7 +37,7 @@ function get_usersverif($prefix='')
         if (file_exists($url))
             $tmp_arr['SVURL']=$url;
         else
-            $tmp_arr['PASSURL']='';
+            $tmp_arr['SVURL']='';
 
         $tag=[];
         foreach($tmp_arr as $key => $vl)
@@ -61,6 +61,14 @@ function get_userinfo($user_id,$prefix='')
 function cot_uver_accept($u,$d)
 {
     cot_uver_update($u,$d,1);
+
+    $userid=$u;  // используется в хуке
+    /* === Hook === */
+    foreach (cot_getextplugins('usersverif.accept') as $pl)
+    {
+        include $pl;
+    }
+    /* ===== */
 }
 
 function cot_uver_reject($u,$d)

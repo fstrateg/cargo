@@ -19,3 +19,9 @@ function cot_userverif_verifed()
     // если юр лицо
 
 }
+
+function cot_verifuser($userid)
+{
+    global $db,$db_users,$usr;
+    $db->query("update $db_users set user_verif=1 where user_id=$userid")->execute();
+}

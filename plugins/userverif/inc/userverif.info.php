@@ -29,11 +29,14 @@ class UserVerif
         $this->init();
     }
 
-    private function init()
+    public function init($uid = 0)
     {
         global $db,$db_userverif,$usr;
-        $this->userid=$usr['id'];
-        $item=$db->query("select * from $db_userverif where userid=${usr['id']}")->fetchAll();
+        if (!$uid)
+            $this->userid=$usr['id'];
+        else
+            $this->userid=$uid;
+        $item=$db->query("select * from $db_userverif where userid=".$this->userid)->fetchAll();
         if (count($item)>0)
         {
             $item=$item[0];
@@ -110,7 +113,7 @@ class UserVerif
     private function update()
     {
         global  $db,$db_userverif;
-        $db->update($db_userverif,$this->getDbData());
+        $db->update($db_userverif,$this->getDbData(),'userid='.$this->userid);
     }
 
     public function getPaspBlock()

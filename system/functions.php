@@ -2177,11 +2177,14 @@ function cot_generate_usertags($user_data, $tag_prefix = '', $emptyname='', $all
 		{
 			$user_data['user_birthdate'] = cot_date2stamp($user_data['user_birthdate']);
 			$user_data['user_text'] = cot_parse($user_data['user_text'], $cfg['users']['usertextimg']);
+			$img=($user_data['user_verif']==1?'':'no-').'verifed.png';
+			$tit=$L['users_verifed'][$user_data['user_verif']];
+			$img="<img src='/images/$img' title='$tit'/> ";
 
 			$temp_array = array(
 				'ID' => $user_data['user_id'],
 				'NAME' => cot_build_user($user_data['user_id'], htmlspecialchars($user_data['user_name'])),
-				'NICKNAME' => cot_build_user($user_data['user_id'], htmlspecialchars( ((!empty($user_data['user_fiofirm']))?$user_data['user_fiofirm']:$user_data['user_name']).' [ID'.$user_data['user_id'].']' )),
+				'NICKNAME' => cot_build_user($user_data['user_id'], $img.htmlspecialchars( ((!empty($user_data['user_fiofirm']))?$user_data['user_fiofirm']:$user_data['user_name'])).' [ID'.$user_data['user_id'].']' ),
 				'DETAILSLINK' => cot_url('users', 'm=details&id=' . $user_data['user_id'].'&u='.htmlspecialchars($user_data['user_name'])),
 				'DETAILSLINKSHORT' => cot_url('users', 'm=details&id=' . $user_data['user_id']),
 				'FULL_NAME' => htmlspecialchars(cot_user_full_name($user_data)),
