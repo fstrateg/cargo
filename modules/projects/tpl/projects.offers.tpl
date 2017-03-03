@@ -8,7 +8,7 @@
 			{PRJ_PERFORMER_AVATAR}
 		</div>
 		<div class="span10">
-			<p class="owner">{PRJ_PERFORMER_NAME}</p>
+			<p class="owner">{PRJ_PERFORMER_NICKNAME}</p>
 			<p>
 				<!-- IF {PRJ_PERFORMER_ISPRO} -->
 				<span class="label label-important">PRO</span> 
@@ -59,7 +59,7 @@
 			</div>
 			<!-- END: CHOISE -->
 			
-			<p class="owner">{OFFER_ROW_OWNER_NAME} <span class="date">[{OFFER_ROW_DATE}] &nbsp; {OFFER_ROW_EDIT}</span></p>
+			<p class="owner">{OFFER_ROW_OWNER_NICKNAME} <span class="date">[{OFFER_ROW_DATE}] &nbsp; {OFFER_ROW_EDIT}</span></p>
 			<p>
 				<!-- IF {OFFER_ROW_OWNER_ISPRO} -->
 				<span class="label label-important">PRO</span> 
@@ -74,15 +74,6 @@
 				<!-- ENDIF -->
 				<!-- IF {OFFER_ROW_COSTMAX} == {OFFER_ROW_COSTMIN} AND {OFFER_ROW_COSTMIN} != 0 OR {OFFER_ROW_COSTMAX} == 0 AND {OFFER_ROW_COSTMIN} != 0 -->
 				{PHP.L.offers_budget}: {OFFER_ROW_COSTMIN} {PHP.cfg.payments.valuta}
-				<!-- ENDIF -->
-			</p>
-			<p class="time">
-				<!-- IF {OFFER_ROW_TIMEMAX} > {OFFER_ROW_TIMEMIN} AND {OFFER_ROW_TIMEMIN} != 0 -->
-				{PHP.L.offers_sroki}: {PHP.L.offers_ot} 
-				{OFFER_ROW_TIMEMIN} {PHP.L.offers_do} {OFFER_ROW_TIMEMAX} {OFFER_ROW_TIMETYPE}
-				<!-- ENDIF -->
-				<!-- IF {OFFER_ROW_TIMEMAX} == {OFFER_ROW_TIMEMIN} AND {OFFER_ROW_TIMEMIN} != 0 OR {OFFER_ROW_TIMEMAX} == 0 AND {OFFER_ROW_TIMEMIN} != 0 -->
-				{PHP.L.offers_sroki}: {OFFER_ROW_TIMEMIN} {OFFER_ROW_TIMETYPE}
 				<!-- ENDIF -->
 			</p>
 			<p class="text">
@@ -104,7 +95,7 @@
 				<div class="row">
 					<div class="span1">{POST_ROW_OWNER_AVATAR}</div>
 					<div class="span10">
-						<p class="owner">{POST_ROW_OWNER_NAME} <span class="date">[{POST_ROW_DATE}] &nbsp; {POST_ROW_EDIT_URL}</span></p> 
+						<p class="owner">{POST_ROW_OWNER_NICKNAME} <span class="date">[{POST_ROW_DATE}] &nbsp; {POST_ROW_EDIT_URL}</span></p>
 						{POST_ROW_TEXT}
 					</div>
 				</div>

@@ -126,7 +126,7 @@ function cot_reviews_list($userid, $area, $code='', $name='', $params='', $tail=
 				'REVIEW_ROW_TEXT' => $item['item_text'],
 				'REVIEW_ROW_TOUSER' => $item['item_touser'],
 				'REVIEW_ROW_OWNERID' => $item['item_userid'],
-				'REVIEW_ROW_OWNER' => cot_build_user($item['item_userid'], htmlspecialchars($item['user_name'])),
+				'REVIEW_ROW_OWNER' => cot_build_nickname($item),
 				'REVIEW_ROW_SCORE' => ($item['item_score'] > 0) ? '+' . $item['item_score'] : $item['item_score'],
 				'REVIEW_ROW_AREA' => $item['item_area'],
 				'REVIEW_ROW_CODE' => $item['item_code'],

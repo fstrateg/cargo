@@ -29,7 +29,7 @@
 			<!-- IF {PHP.cot_plugins_active.payprjtop} AND {PHP.usr.id} == {PHP.urr.user_id} --><li>{PRJ_ROW_PAYTOP}</li><!-- ENDIF -->
 			<!-- IF {PHP.cot_plugins_active.payprjbold} AND {PHP.usr.id} == {PHP.urr.user_id} --><li>{PRJ_ROW_PAYBOLD}</li><!-- ENDIF -->
 		</div>	
-		<p class="owner small"><span class="date">[{PRJ_ROW_DATE}]</span>  
+		<p class="owner small"><span class="date">[#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span>  
 			<span class="region">{PRJ_ROW_COUNTRY} {PRJ_ROW_REGION} {PRJ_ROW_CITY}</span> -
 			<span class="region">{PRJ_ROW_COUNTRYTO} {PRJ_ROW_REGIONTO} {PRJ_ROW_CITYTO}</span>  
 			{PRJ_ROW_EDIT_URL}</p>
