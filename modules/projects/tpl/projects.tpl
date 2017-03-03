@@ -62,25 +62,7 @@
 			<tr><td><b>{PHP.L.LocationTo}:</b></td><td>{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</td></tr>
 		</table>
         <p>&nbsp;</p>
-		<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
-		<p class="small">{PHP.L.Tags}: 
-			<!-- BEGIN: PRJ_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_TAGS_ROW_URL}" title="{PRJ_TAGS_ROW_TAG}" rel="nofollow">{PRJ_TAGS_ROW_TAG}</a><!-- END: PRJ_TAGS_ROW -->
-			<!-- BEGIN: PRJ_NO_TAGS -->{PRJ_NO_TAGS}<!-- END: PRJ_NO_TAGS -->
-		</p>
-		<!-- ENDIF -->
-		
-		<!-- IF {PRJ_USER_IS_ADMIN} -->
-			<div class="well well-small">
-				<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
-				<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
-				<!-- IF {PRJ_STATE} != 2 -->
-					<a href="{PRJ_HIDEPROJECT_URL}" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {PRJ_HIDEPROJECT_TITLE}</a>	&nbsp;
-					<!-- IF {PRJ_PERFORMER} -->
-					<a href="{PRJ_REALIZEDPROJECT_URL}">{PRJ_REALIZEDPROJECT_TITLE}</a>					
-					<!-- ENDIF -->
-				<!-- ENDIF -->
-			</div>
-		<!-- ENDIF -->	
+
 	</div>
 	<div class="span6">
 		{PRJ_TEXT}
@@ -97,6 +79,27 @@
 		<!-- ENDIF -->
 		<!-- ENDIF -->
 
+	</div>
+	<div class="span12">
+		<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
+		<p class="small">{PHP.L.Tags}:
+			<!-- BEGIN: PRJ_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_TAGS_ROW_URL}" title="{PRJ_TAGS_ROW_TAG}" rel="nofollow">{PRJ_TAGS_ROW_TAG}</a><!-- END: PRJ_TAGS_ROW -->
+			<!-- BEGIN: PRJ_NO_TAGS -->{PRJ_NO_TAGS}<!-- END: PRJ_NO_TAGS -->
+		</p>
+		<!-- ENDIF -->
+
+		<!-- IF {PRJ_USER_IS_ADMIN} -->
+		<div class="well well-small">
+			<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
+			<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
+			<!-- IF {PRJ_STATE} != 2 -->
+			<a href="{PRJ_HIDEPROJECT_URL}" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {PRJ_HIDEPROJECT_TITLE}</a>	&nbsp;
+			<!-- IF {PRJ_PERFORMER} -->
+			<a href="{PRJ_REALIZEDPROJECT_URL}" class="btn btn-warning">{PRJ_REALIZEDPROJECT_TITLE}</a>
+			<!-- ENDIF -->
+			<!-- ENDIF -->
+		</div>
+		<!-- ENDIF -->
 	</div>
 </div>
 <hr/>
