@@ -311,12 +311,17 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 
 		if ($admin_rights || $usr['id'] == $item_data['item_userid'])
 		{
-			$temp_array['ADMIN_EDIT'] = cot_rc_link(cot_url('projects', 'm=edit&id=' . $item_data['item_id']), $L['Edit'], 'class="btn btn-info"');
+            $temp_array['ADMIN_EDIT'] = cot_rc_link(cot_url('projects', 'm=edit&id=' . $item_data['item_id']), $L['Edit'], 'class="btn btn-info"');
 			$temp_array['ADMIN_EDIT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id']);
 			$temp_array['ADMIN_COPY_URL'] = cot_url('projects', 'm=copy&id=' . $item_data['item_id']);
-			$temp_array['HIDEPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	(($item_data['item_state'] == 1) ? '&a=public' : '&a=hide'));
-			$temp_array['HIDEPROJECT_TITLE'] = ($item_data['item_state'] == 1) ? $L['Publish'] : $L['Hide'];
-			$temp_array['REALIZEDPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	(($item_data['item_realized'] == 1) ? '&a=unrealized' : '&a=realized'));
+			$temp_array['HIDEPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	'&a=hide');
+            $temp_array['PUBLPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	'&a=public');
+            $temp_array['ARCHPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	'&a=archive');
+            $temp_array['HIDEPROJECT_TITLE'] = $L['Hide'];
+            $temp_array['PUBLPROJECT_TITLE'] = $L['Publish'];
+            $temp_array['ARCHPROJECT_TITLE'] = $L['Inarchive'];
+            $temp_array['REALIZEDPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	(($item_data['item_realized'] == 1) ? '&a=unrealized' : '&a=realized'));
+
 			$temp_array['REALIZEDPROJECT_TITLE'] = ($item_data['item_realized'] == 1) ? $L['project_unrealized'] : $L['project_realized'];
 		}
 
@@ -386,6 +391,10 @@ function cot_projects_status($item_state)
 	{
 		return 'moderated';
 	}
+    elseif ($item_state==3)
+    {
+        return 'inarchive';
+    }
 	return 'hidden';
 }
 

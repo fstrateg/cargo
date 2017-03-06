@@ -82,9 +82,11 @@ $L['projects_aliascharacters'] = 'Недопустимо использован�
 $L['projects_status_published'] = 'Опубликовано';
 $L['projects_status_moderated'] = 'На проверке';
 $L['projects_status_hidden'] = 'Скрыто';
+$L['projects_status_inarchive'] = 'В архиве';
 $L['projects_admin_home_valqueue'] = 'На проверке';
 $L['projects_admin_home_public'] = 'Опубликовано';
 $L['projects_admin_home_hidden'] = 'Скрытые';
+
 
 $L['project_added_mail_subj'] = 'Ваша заявка опубликована';
 $L['project_senttovalidation_mail_subj'] = 'Ваша заявка отправлена на проверку';

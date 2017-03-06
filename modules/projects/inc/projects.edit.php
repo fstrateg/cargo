@@ -227,6 +227,29 @@ if ($a == 'hide')
 	cot_redirect($r_url);
 	exit;
 }
+if ($a == 'archive')
+{
+    $ritem = array();
+    $ritem['item_state'] = 3;
+    $db->update($db_projects, $ritem, 'item_id = ?', $id);
+
+    cot_projects_sync($item['item_cat']);
+
+    $urlparams = empty($item['item_alias']) ?
+        array('c' => $item['item_cat'], 'id' => $id) :
+        array('c' => $item['item_cat'], 'al' => $item['item_alias']);
+    $r_url = cot_url('projects', $urlparams, '', true);
+
+    /* === Hook === */
+    foreach (cot_getextplugins('projects.edit.archive') as $pl)
+    {
+        include $pl;
+    }
+    /* ===== */
+
+    cot_redirect($r_url);
+    exit;
+}
 
 if ($a == 'unrealized')
 {
