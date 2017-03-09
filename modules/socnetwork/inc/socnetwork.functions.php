@@ -31,6 +31,14 @@ function login($cred)
         $token=cot_unique(16);
 
         $db->query("UPDATE $db_users SET user_lastip='{$usr['ip']}', user_lastlog = {$sys['now']}, user_logcount = user_logcount + 1, user_auth=null, user_token = '$token' $update_sid WHERE user_id={$row['user_id']}");
+
+        /* === Hook === */
+        foreach (cot_getextplugins('users.auth.check.done') as $pl)
+        {
+            include $pl;
+        }
+        /* ===== */
+
     return true;
 }
 

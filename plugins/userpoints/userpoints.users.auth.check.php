@@ -18,6 +18,7 @@
 defined('COT_CODE') or die('Wrong URL.');
 
 require_once cot_incfile('userpoints', 'plug');
+global $db_userpoints;
 
 $lastlog = $db->query("SELECT item_date FROM $db_userpoints 
 	WHERE item_userid=" . $ruserid . " AND item_type='auth' ORDER by item_date DESC LIMIT 1")->fetchColumn();
