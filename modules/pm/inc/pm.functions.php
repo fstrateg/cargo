@@ -170,3 +170,20 @@ function cot_build_pm($user)
 	global $L;
 	return cot_rc('pm_link', array('url' => cot_url('pm', 'm=send&to='.$user).'" title="'.$L['pm_sendnew']));
 }
+
+function cot_sendpm_fromadmin($touserid,$title,$subject)
+{
+	global $db,$db_pm,$sys,$db_users;
+	$data=[
+		'pm_fromstate'=>0,
+		'pm_tostate'=>0,
+		'pm_title'=>$title,
+		'pm_text'=>$subject,
+		'pm_touserid'=>$touserid,
+		'pm_date'=>$sys['now'],
+		'pm_fromuser'=>'admin',
+		'pm_fromuserid'=>1
+	];
+	$db->insert($db_pm,$data);
+	$db->update($db_users,["user_newpm"=>1],"user_id=$touserid");
+}

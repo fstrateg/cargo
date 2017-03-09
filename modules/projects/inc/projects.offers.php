@@ -140,13 +140,18 @@ if ($a == 'setperformer' && !empty($userid))
 		$rsubject = cot_rc($L['project_setperformer_header'], array('prtitle' => $item['item_title']));
 		$rbody = cot_rc($L['project_setperformer_body'], array(
 			'user_name' => $item['user_name'],
-			'offeruser_name' => $urr['user_name'],
+			'offeruser_name' => $urr['user_fiofirm']?$urr['user_fiofirm']:$urr['user_name'],
 			'prj_name' => $item['item_title'],	
 			'sitename' => $cfg['maintitle'],	
 			'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
 		));
 		cot_mail($urr['user_email'], $rsubject, $rbody);
 		cot_message(cot_rc($L['performer_set_done'],array('username' => $urr['user_name'])), 'ok');
+
+		include_once cot_incfile('pm','module');
+		cot_sendpm_fromadmin($urr['user_id'],$rsubject, $rbody);
+
+
 		if(!empty($lastperformer))
 		{
 			// Если исполнителем был другой пользователь, то ему отказ
@@ -159,13 +164,16 @@ if ($a == 'setperformer' && !empty($userid))
 			$rsubject = cot_rc($L['project_refuse_header'], array('prtitle' => $item['item_title']));
 			$rbody = cot_rc($L['project_refuse_body'], array(
 				'user_name' => $item['user_name'],
-				'offeruser_name' => $lastperformer['user_name'],
+				'offeruser_name' => $lastperformer['user_fiofirm']?$lastperformer['user_fiofirm']:$lastperformer['user_name'],
 				'prj_name' => $item['item_title'],	
 				'sitename' => $cfg['maintitle'],	
 				'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
 			));
 			cot_mail($lastperformer['user_email'], $rsubject, $rbody);
 			cot_message(cot_rc($L['performer_set_refuse'],array('username' => $lastperformer['user_name'])), 'warning');
+
+			include_once cot_incfile('pm','module');
+			cot_sendpm_fromadmin($lastperformer['user_id'],$rsubject, $rbody);
 			/* === Hook === */
 			foreach (cot_getextplugins('projects.offers.setperformer.refuselastperformer') as $pl)
 			{
@@ -214,14 +222,15 @@ if ($a == 'refuse' && !empty($userid))
 		$rsubject = cot_rc($L['project_refuse_header'], array('prtitle' => $item['item_title']));
 		$rbody = cot_rc($L['project_refuse_body'], array(
 			'user_name' => $item['user_name'],
-			'offeruser_name' => $urr['user_name'],
+			'offeruser_name' => $urr['user_fiofirm']?$urr['user_fiofirm']:$urr['user_name'],
 			'prj_name' => $item['item_title'],	
 			'sitename' => $cfg['maintitle'],	
 			'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
 		));
 		cot_mail($urr['user_email'], $rsubject, $rbody);
 		cot_message(cot_rc($L['performer_set_refuse'],array('username' => $urr['user_name'])), 'warning');
-			
+		include_once cot_incfile('pm','module');
+		cot_sendpm_fromadmin($urr['user_id'],$rsubject, $rbody);
 		/* === Hook === */
 		foreach (cot_getextplugins('projects.offers.refuse') as $pl)
 		{
