@@ -69,7 +69,7 @@ function cot_generate_marshruttag($item_data,$prefix='')
     {
         include $pl;
     }
-    $title=$temp_array['COUNTRY'];
+    $title=$temp_array['COUNTRY'].' '.cot_build_country_img($item_data['item_country']);
     if ($temp_array['CITY'])
     {
         $title.=', '.$temp_array['CITY'];
@@ -78,7 +78,7 @@ function cot_generate_marshruttag($item_data,$prefix='')
     {
         $title.=', '.$temp_array['REGION'];
     }
-    $title.=' - '.$temp_array['COUNTRYTO'];
+    $title.=' - '.$temp_array['COUNTRYTO'].' '.cot_build_country_img($item_data['item_countryto']);;
     if ($temp_array['CITYTO'])
     {
         $title.=', '.$temp_array['CITYTO'];

@@ -38,8 +38,7 @@
 			<!-- IF {PHP.cot_plugins_active.payprjbold} AND {PHP.usr.id} == {PHP.urr.user_id} --><li>{PRJ_ROW_PAYBOLD}</li><!-- ENDIF -->
 		</div>	
 		<p class="owner small"><span class="date">[#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span>  
-			<span class="region">{PRJ_ROW_COUNTRY} {PRJ_ROW_REGION} {PRJ_ROW_CITY}</span> -
-			<span class="region">{PRJ_ROW_COUNTRYTO} {PRJ_ROW_REGIONTO} {PRJ_ROW_CITYTO}</span>  
+			<span class="region">{PRJ_ROW_MARSHRUT}</span>  
 			{PRJ_ROW_EDIT_URL}</p>
 		<p class="text">{PRJ_ROW_SHORTTEXT}</p>
 		<div class="pull-right offers"><a href="{PRJ_ROW_OFFERS_ADDOFFER_URL}">{PHP.L.offers_add_offer}</a> ({PRJ_ROW_OFFERS_COUNT})</div>

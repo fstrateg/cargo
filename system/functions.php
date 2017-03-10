@@ -2114,6 +2114,11 @@ function cot_build_group($grpid, $title = false)
 	}
 }
 
+function cot_build_country_img($country)
+{
+	return "<img src='/images/$country.png' />";
+}
+
 /**
  * Returns user group icon
  *

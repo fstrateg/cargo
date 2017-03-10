@@ -354,6 +354,9 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 			include $pl;
 		}
 		/* ===== */
+		$temp_array['MARSHRUT']=$temp_array['COUNTRY'].' '.cot_build_country_img($item_data['item_country']).', <b>'.$temp_array['CITY'].
+			'</b> - '.$temp_array['COUNTRYTO'].' '.cot_build_country_img($item_data['item_countryto']).', <b>'.$temp_array['CITYTO'].'</b>';
+
 	}
 	else
 	{
@@ -371,7 +374,6 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 
 	return $return_array;
 }
-
 
 /**
  * Determines projects status

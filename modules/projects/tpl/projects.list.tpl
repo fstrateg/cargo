@@ -99,7 +99,7 @@
                 </div>
                 <div class="row">
                     <div class="span7">
-                        <span class="date"> [#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span> <span class="region">{PRJ_ROW_COUNTRY}, <b>{PRJ_ROW_CITY}</b></span> - <span class="region">{PRJ_ROW_COUNTRYTO}, <b>{PRJ_ROW_CITYTO}</b></span></div>
+                        <span class="date"> [#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span> <span class="region">{PRJ_ROW_MARSHRUT}</span></div>
                     <div class="span1">{PRJ_ROW_MASSA}{PHP.L.projects_t}</div>
                     <div class="span1">{PRJ_ROW_VOL}{PHP.L.projects_m3}</div>
                 </div>
