@@ -4,10 +4,11 @@ defined('COT_CODE') or die('Wrong URL');
 
 function login($cred)
 {
-    global $db, $db_users, $sys, $cfg,$usr;
+    global $db, $db_users, $sys, $cfg,$usr, $L;
     $rows=$db->query("SELECT * FROM $db_users ".createusl($cred));
     if (!$row = $rows->fetch())
     {
+        cot_message($L['socnetwork_user_notfound'],'warning');
         return false;
     }
         session_start();
@@ -104,8 +105,7 @@ function register($params)
     $user_exists = $db->query($sql)->fetch();
     if ($user_exists)
     {
-        login($params);
-        return false;
+        return login($params);
     }
     $email_exists = (bool)$db->query("SELECT user_id FROM $db_users WHERE user_email = ? LIMIT 1", array($ruser['user_email']))->fetch();
     if ($email_exists)

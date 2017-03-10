@@ -1,5 +1,6 @@
 <!-- BEGIN: MAIN -->
 <section class="main">
+	{FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
 	<section class="header">
 		<span><b>{USERS_AUTH_TITLE}</b></span>
 	</section>

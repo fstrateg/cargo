@@ -275,6 +275,8 @@ $out['head'] .= $R['code_noindex'];
 require_once $cfg['system_dir'] . '/header.php';
 $mskin = file_exists(cot_tplfile('login', 'core')) ? cot_tplfile('login', 'core') : cot_tplfile('users.auth', 'module');
 $t = new XTemplate($mskin);
+// Error and message handling
+cot_display_messages($t);
 
 require_once cot_incfile('forms');
 

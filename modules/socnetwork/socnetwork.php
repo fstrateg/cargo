@@ -20,9 +20,16 @@ $params=getparams();
 if ($params)
 {
     if (!$cat)
-        login($params);
+        if (!login($params))
+        {
+            cot_redirect(cot_url('login'));
+            return;
+        }
     else
-        register($params);
+        if (!register($params))
+        {
+            cot_redirect(cot_url('login'));
+            return;
+        }
 }
-
 cot_redirect('/');
