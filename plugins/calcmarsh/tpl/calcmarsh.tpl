@@ -25,24 +25,24 @@
                 <td></td>
                 <td class="calc">
                     <div class="row">
-                        <div class="span2">{PHP.L.calc_fura_speed} </div>
-                        <div class="span1">
+                        <div class="span3">{PHP.L.calc_fura_speed} </div>
+                        <div class="span4">
                             <div class="input-append">
                                 <input type="number" name="speed" value="20"/><span class="add-on">{PHP.L.calc_speed}</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="span2">{PHP.L.calc_fura_fuel} </div>
-                        <div class="span1">
+                        <div class="span3">{PHP.L.calc_fura_fuel} </div>
+                        <div class="span4">
                             <div class="input-append">
                                 <input type="number" id="fuel" name="fuel" value="0"/><span class="add-on">{PHP.L.calc_fuelex}</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="span2">{PHP.L.calc_fura_fuelcost}</div>
-                        <div class="span1">
+                        <div class="span3">{PHP.L.calc_fura_fuelcost}</div>
+                        <div class="span4">
                             <div class="input-append">
                             <input type="number" id="cost" name="cost" value="0"/><span class="add-on">{PHP.L.calc_fuelcost}</span>
                             </div>

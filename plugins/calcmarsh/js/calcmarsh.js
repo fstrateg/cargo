@@ -91,14 +91,16 @@ var fff={
 		html+='Средняя скорость фуры <b> '+Math.round(speed)+' км/ч </b><br>';
 		html+='Расход ГСМ <b> '+Math.round(expen)+' л/100 км </b><br>';
 		html+='Стоимость ГСМ <b> '+Math.round(cost)+' тг/л </b><br>';
-		html+='Среднее время в пути <b>~ '+Math.round(total/speed)+' ч </b>';
-		html+=getCost(expen,cost);
+		html+='Среднее время в пути <b>~ '+Math.round(total/speed)+' ч </b><br>';
+		html+=fff.getCost(total,expen,cost);
 		html+='</div>';
 		document.getElementById("itog").innerHTML = html;
 	},
-	getCost:function(expen,cost){
+	getCost:function(total,expen,cost){
 		var html;
-		html='Расход топлива <b>'+expen+'</b><br>';
+        expen=Math.round(total/100*expen);
+        cost=Math.round(expen*cost);
+		html='Расход топлива <b>'+expen+' ('+cost+'тг.)</b><br>';
 		return html;
 	},
 	test:function(){
