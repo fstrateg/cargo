@@ -24,8 +24,33 @@
             <tr class="calc">
                 <td></td>
                 <td class="calc">
-                    <span style="float:left">{PHP.L.calc_fura_speed}</span> <input id="speed" size="5" name="speed" value="20"/>
-                    <a class="btn btn-success" onclick="fff.calc()">{PHP.L.calc_calculate}</a>
+                    <div class="row">
+                        <div class="span2">{PHP.L.calc_fura_speed} </div>
+                        <div class="span1">
+                            <div class="input-append">
+                                <input type="number" name="speed" value="20"/><span class="add-on">{PHP.L.calc_speed}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">{PHP.L.calc_fura_fuel} </div>
+                        <div class="span1">
+                            <div class="input-append">
+                                <input type="number" id="fuel" name="fuel" value="0"/><span class="add-on">{PHP.L.calc_fuelex}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">{PHP.L.calc_fura_fuelcost}</div>
+                        <div class="span1">
+                            <div class="input-append">
+                            <input type="number" id="cost" name="cost" value="0"/><span class="add-on">{PHP.L.calc_fuelcost}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span4"><a class="btn btn-success" style="margin-top: 20px" onclick="fff.calc()">{PHP.L.calc_calculate}</a></div>
+                    </div>
                 </td>
             </tr>
         </table>

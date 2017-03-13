@@ -70,7 +70,9 @@ var fff={
 		var total = 0;
 		var id;
 		var myroute = result.routes[0];
-		var speed=parseInt($('#speed').val());
+		var speed=parseInt($('input[name="speed"]').val());
+		var expen=parseInt($('input[name="fuel"]').val());
+		var cost=parseInt($('input[name="cost"]').val());
 		if (!speed)
 		{
 			alert('Скорость движения фуры не задана!');
@@ -86,8 +88,18 @@ var fff={
 			$('tr.id'+id+' td.point').html('<img src="/images/point.png" />');
 		total = Math.round(total / 1000);
 		var html='<div class="out">Расстояние между пунктами '+'<b>'+vl[0].value+' - '+vl[vl.length-1].value+' ~ '+total + " км</b></br>";
-		html+='Среднее время в пути <b>~ '+Math.round(total/speed)+'ч </b></div>';
+		html+='Средняя скорость фуры <b> '+Math.round(speed)+' км/ч </b><br>';
+		html+='Расход ГСМ <b> '+Math.round(expen)+' л/100 км </b><br>';
+		html+='Стоимость ГСМ <b> '+Math.round(cost)+' тг/л </b><br>';
+		html+='Среднее время в пути <b>~ '+Math.round(total/speed)+' ч </b>';
+		html+=getCost(expen,cost);
+		html+='</div>';
 		document.getElementById("itog").innerHTML = html;
+	},
+	getCost:function(expen,cost){
+		var html;
+		html='Расход топлива <b>'+expen+'</b><br>';
+		return html;
 	},
 	test:function(){
 		alert('test'+fff.cn);
