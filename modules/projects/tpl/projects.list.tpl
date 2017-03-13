@@ -84,6 +84,7 @@
 		
 		<div id="listprojects">
 			<!-- BEGIN: PRJ_ROWS -->
+            <div class="claims">
 			<div class="media<!-- IF {PRJ_ROW_ISBOLD} --> well prjbold<!-- ENDIF -->
 			<!-- IF {PRJ_ROW_ISTOP} --> well prjtop<!-- ENDIF -->">
 				<h4>
@@ -91,23 +92,23 @@
 					<a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a>
 				</h4>
                 <div class="row">
-                    <div class="span9">{PRJ_ROW_OWNER_NICKNAME}
+                    <div class="span8">{PRJ_ROW_OWNER_NICKNAME}
                         <!-- FOR {PHONE} IN {PRJ_ROW_OWNER_PHONES} -->
                     {PHONE};
                         <!-- ENDFOR -->
                     </div>
                 </div>
                 <div class="row">
-                    <div class="span7">
+                    <div class="span6">
                         <span class="date"> [#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span> <span class="region">{PRJ_ROW_MARSHRUT}</span></div>
                     <div class="span1">{PRJ_ROW_MASSA}{PHP.L.projects_t}</div>
                     <div class="span1">{PRJ_ROW_VOL}{PHP.L.projects_m3}</div>
                 </div>
                 <div class="row">
-                    <div class="span9">{PRJ_ROW_SHORTTEXT}</div>
+                    <div class="span8">{PRJ_ROW_SHORTTEXT}</div>
                 </div>
                 <div class="row">
-                <div class="span9">
+                <div class="span8">
 				<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
 				<p class="small">{PHP.L.Tags}: 
 					<!-- BEGIN: PRJ_ROW_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_ROW_TAGS_ROW_URL}" title="{PRJ_ROW_TAGS_ROW_TAG}" rel="nofollow">{PRJ_ROW_TAGS_ROW_TAG}</a><!-- END: PRJ_ROW_TAGS_ROW -->
@@ -123,6 +124,7 @@
                 </div>
                 </div>
 			</div>
+            </div>
 			<hr/>
 			<!-- END: PRJ_ROWS -->
 		</div>
