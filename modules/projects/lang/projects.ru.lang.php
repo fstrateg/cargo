@@ -185,3 +185,10 @@ $L['projects_headermoderated'] = "грузов на проверке,груза 
 $L['CargoTyp'] = 'Тип груза';
 $L['projects_views']='Просмотров';
 $L['projects_find_info']='Можно найти карточку пользователя или нужный рейс. Пример: ID7 (для поиска пользователя по ID) или #7 (для поиска рейса по номеру).';
+
+$L['prj_setp_title']='Назначение исполнителя';
+$L['prj_setp_number']='Номер фуры';
+$L['prj_setp_fio']='ФИО водителя';
+$L['prj_setp_summa']='Сумма';
+$L['prj_setp_dtload']='Дата загрузки';
+$L['prj_setp_dtunload']='Дата выгрузки';
