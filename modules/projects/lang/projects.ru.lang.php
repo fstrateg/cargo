@@ -192,3 +192,5 @@ $L['prj_setp_fio']='ФИО водителя';
 $L['prj_setp_summa']='Сумма';
 $L['prj_setp_dtload']='Дата загрузки';
 $L['prj_setp_dtunload']='Дата выгрузки';
+
+$L['claims_idcarrier']='ID Перевозчика';

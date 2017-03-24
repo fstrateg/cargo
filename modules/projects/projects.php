@@ -19,7 +19,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 require_once cot_incfile('projects', 'module');
 
-if (!in_array($m, array('add', 'edit', 'copy', 'preview', 'useroffers','setperformer','performers','addperformer')))
+if (!in_array($m, array('add', 'edit', 'copy', 'preview', 'useroffers','setperformer','performers','addperformer','searchcarrier')))
 {
 	if (isset($_GET['id']) || isset($_GET['al']))
 	{
@@ -31,6 +31,11 @@ if (!in_array($m, array('add', 'edit', 'copy', 'preview', 'useroffers','setperfo
 	}
 }
 require_once cot_incfile('projects', 'module', $m);
+if (in_array($m,['searchcarrier']))
+{
+	echo $module_body;
+	return;
+}
 
 require_once $cfg['system_dir'].'/header.php';
 echo $module_body;
