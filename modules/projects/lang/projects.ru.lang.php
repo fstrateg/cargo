@@ -194,3 +194,4 @@ $L['prj_setp_dtload']='Дата загрузки';
 $L['prj_setp_dtunload']='Дата выгрузки';
 
 $L['claims_idcarrier']='ID Перевозчика';
+$L['claims_setcarrier']='Назначить исполнителем';

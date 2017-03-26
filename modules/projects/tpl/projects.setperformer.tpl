@@ -32,21 +32,34 @@
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_fio}:</b></td>
-                <td></td>
+                <td>{PRJ_FIO}</td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_summa}:</b></td>
-                <td></td>
+                <td>{PRJ_SUMM}</td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_dtload}:</b></td>
-                <td></td>
+                <td>{PRJ_DB}</td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_dtunload}:</b></td>
-                <td></td>
+                <td>{PRJ_DE}</td>
             </tr>
         </table>
     </div>
 </div>
+<script type="text/javascript" src="/js/jquery-ui.min.js">
+</script>
+<script>
+
+    $( function() {
+        $('#date_from').datepicker().on( "change", function() {
+            $('#date_to').datepicker( "option", "minDate", getDate( this ) );
+        });
+        $('#date_to').datepicker().on( "change", function() {
+            $('#date_from').datepicker( "option", "maxDate", getDate( this ) );
+        });
+    });
+</script>
 <!-- END:MAIN -->

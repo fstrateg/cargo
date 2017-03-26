@@ -75,14 +75,39 @@
             <a class="btn btn-success" onclick="doSearch()">{PHP.L.Search}</a>
         </div>
 </div>
-<div class="row">
+<p>&nbsp;</p>
+<!--div class="row"-->
     <div id="SearchRezult">
+        <!-- BEGIN: SEARCHCAR -->
+        <div class="row">
+            <div class="span1">
+            {CAR_AVATAR}
+            </div>
+            <div class="span2">
+                <p>{CAR_NICKNAME}</p>
+                <p>
+                    <!-- IF {CAR_ISPRO} -->
+                    <span class="label label-important">PRO</span>
+                    <!-- ENDIF -->
+                    <span class="label label-info">{CAR_USERPOINTS}</span>
+                </p>
+                <!-- FOR {PHONE} IN {CAR_PHONES} -->
+                <p>{PHONE}</p>
+                <!-- ENDFOR -->
+            </div>
+            <div class="span2 pull-right">
+                <a href="{CAR_SETURL}" class="btn btn-success">{PHP.L.offers_useroffers_performer}</a>
+            </div>
+        </div>
+        <hr>
+        <!-- END: SEARCHCAR -->
     </div>
-</div>
+<!--/div-->
 <script type="text/javascript">
     function doSearch()
     {
-        ajaxSend({url: '{PRJ_FIND_URL}', divId: 'SearchRezult'});
+        var search=$('#idcarrier').val();
+        ajaxSend({url: '{PRJ_FIND_URL}&text='+search, divId: 'SearchRezult'});
     }
 </script>
 <!-- END: MAIN -->

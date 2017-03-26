@@ -24,7 +24,7 @@ $t->assign(cot_generate_usertags($item, 'PRJ_OWNER_'));
 $t->assign(cot_generate_projecttags($item, 'PRJ_', $cfg['projects']['shorttextlen'], $usr['isadmin'], $cfg['homebreadcrumb']));
 $t->assign([
     'PRJ_FINDCARRIER'=>cot_inputbox('number','idcarrier','','id="idcarrier"'),
-    'PRJ_FIND_URL'=>cot_url('projects',"m=searchcarrier","",true),
+    'PRJ_FIND_URL'=>cot_url('projects',"m=searchcarrier&id=".$id,"",true),
 ]);
 
 $t->parse();
