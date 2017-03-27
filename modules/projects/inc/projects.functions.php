@@ -12,6 +12,7 @@
 
 defined('COT_CODE') or die('Wrong URL');
 
+// <editor-fold desc="Prepare project code">
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('projects', 'any', 'RWA');
 
 // Requirements
@@ -30,6 +31,9 @@ cot_extrafields_register_table('projects');
 cot_extrafields_register_table('projects_offers');
 
 $structure['projects'] = (is_array($structure['projects'])) ? $structure['projects'] : array();
+// </editor-fold>
+
+// <editor-fold desc="Code for projects">
 
 /**
  * Update projects categories counters
@@ -797,3 +801,37 @@ function cot_projects_selectcat($check, $name, $subcat = '', $hideprivate = true
 if ($cfg['projects']['markup'] == 1){
   $prjeditor = $cfg['projects']['prjeditor'];
 }
+// </editor-fold>
+
+// <editor-fold desc="Set carrier">
+
+/**
+ * @param array $item object for import variables
+ */
+function cot_setperformer_import($item)
+{
+	$item['item_number']=cot_import('rnumber','P','TXT');
+	$item['item_fio']=cot_import('rfio','P','TXT');
+    $item['item_summ']=cot_import('rsumm','P','NUM');
+    $item['item_db']=cot_date2stamp(cot_import('rdb','P','TXT'),'d.m.Y');
+    $item['item_de']=cot_date2stamp(cot_import('rde','P','TXT'),'d.m.Y');
+    return $item;
+}
+
+/**
+ * @param array $item object for import variables
+ */
+function cot_setperformer_validate($item)
+{
+
+}
+
+/**
+ * @param array $item object for import variables
+ */
+function cot_setperformer_save($item)
+{
+
+}
+
+// </editor-fold>
