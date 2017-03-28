@@ -20,8 +20,13 @@ if (isset($a)) {
     }
 }
 
+if (empty($item['item_db'])) $item['item_db']=$sys['now'];
+if (empty($item['item_de'])) $item['item_de']=$sys['now'];
+
 
 $t=new XTemplate(cot_tplfile('projects.setperformer'));
+
+cot_display_messages($t);
 
 $t->assign(cot_generate_usertags($userid,'PRJ_PERF_'));
 $t->assign([
@@ -31,7 +36,7 @@ $t->assign([
     'PRJ_SUMM'=>cot_inputbox('number','rsumm',$item['item_summ']),
     'PRJ_DB'=>cot_inputbox('text','rdb',cot_date('d.m.Y',$item['item_db']),'id="date_from"'),
     'PRJ_DE'=>cot_inputbox('text','rde',cot_date('d.m.Y',$item['item_de']),'id="date_to"'),
-    "PRJ_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60, 'id="formtext"', ''),
+    "PRJ_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60, 'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
     'PRJADD_FORM_ACTION'=>cot_url('projects',"m=setperformer&id=$id&userid=$userid&a=add",'',true),
     'PRJ_CANCEL_URL'=>cot_url('projects',"m=addperformer&id=$id",'',true),
     'TEST'=>print_r($item,true),

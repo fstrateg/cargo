@@ -823,7 +823,9 @@ function cot_setperformer_import($item)
  */
 function cot_setperformer_validate($item)
 {
-
+	cot_check(empty($item['item_number']), 'projects_select_cat', 'rnumber');
+	cot_check(empty($item['item_fio']), 'projects_select_cat', 'rfio');
+	cot_check(empty($item['item_summ']), 'projects_select_cat', 'rfio');
 }
 
 /**

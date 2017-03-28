@@ -50,7 +50,7 @@
                 <td>{PRJ_DE}</td>
             </tr>
             <tr>
-                <td><b>{PHP.L.text}:</b></td>
+                <td><b>{PHP.L.Notes}:</b></td>
                 <td></td>
             </tr>
             <tr>
