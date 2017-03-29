@@ -27,27 +27,27 @@
         <table width="100%">
             <tr>
                 <td><b>ID:</b></td>
-                <td style="line-height: 40px">#{PRJ_ID}</td>
+                <td style="line-height: 40px"><div class="span2">#{PRJ_ID}</div></td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_number}:</b></td>
-                <td>{PRJ_NUMBER}</td>
+                <td><div class="span2">{PRJ_NUMBER}</div></td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_fio}:</b></td>
-                <td>{PRJ_FIO}</td>
+                <td><div class="span4">{PRJ_FIO}</div></td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_summa}:</b></td>
-                <td>{PRJ_SUMM}</td>
+                <td><div class="span2">{PRJ_SUMM}</div></td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_dtload}:</b></td>
-                <td>{PRJ_DB}</td>
+                <td><div class="span2">{PRJ_DB}</div></td>
             </tr>
             <tr>
                 <td><b>{PHP.L.prj_setp_dtunload}:</b></td>
-                <td>{PRJ_DE}</td>
+                <td><div class="span2">{PRJ_DE}</div></td>
             </tr>
             <tr>
                 <td><b>{PHP.L.Notes}:</b></td>
@@ -59,6 +59,8 @@
         </table>
     </div>
 </div>
+    {PRJ_PERFORMER}
+    {PRJ_CLAIM}
     <div class="well well-small">
         <button type="submit" class="btn btn-success"><i class="icon-ok icon-white"></i> {PHP.L.Save}</button>
         <a href="{PRJ_CANCEL_URL}" class="btn btn-warning"><i class="icon-remove icon-white"></i> {PHP.L.Cancel}</a>

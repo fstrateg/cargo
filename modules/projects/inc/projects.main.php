@@ -107,6 +107,14 @@ foreach (cot_getextplugins('projects.tags') as $pl)
 if ($usr['isadmin'])
 {
 	$t->parse('MAIN.PRJ_ADMIN');
+
+}
+
+if ($usr['id']==$item['item_userid'])
+{
+	$performs=cot_claims_getperformers($id);
+	$t->assign('PRJ_PERFS',$performs);
+	$t->parse('MAIN.PRJ_PERFORM');
 }
 
 if ($usr['id'] == 0)

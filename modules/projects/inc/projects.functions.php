@@ -26,6 +26,7 @@ cot::$db->registerTable('projects');
 cot::$db->registerTable('projects_types');
 cot::$db->registerTable('projects_offers');
 cot::$db->registerTable('projects_posts');
+cot::$db->registerTable('projects_perform');
 
 cot_extrafields_register_table('projects');
 cot_extrafields_register_table('projects_offers');
@@ -813,9 +814,13 @@ function cot_setperformer_import($item)
 	$item['item_number']=cot_import('rnumber','P','TXT');
 	$item['item_fio']=cot_import('rfio','P','TXT');
     $item['item_summ']=cot_import('rsumm','P','NUM');
+	$item['item_note']=cot_import('rnote','P','HTM');
     $item['item_db']=cot_date2stamp(cot_import('rdb','P','TXT'),'d.m.Y');
     $item['item_de']=cot_date2stamp(cot_import('rde','P','TXT'),'d.m.Y');
-    return $item;
+	$item['item_claim']=cot_import('rclaim','P','INT');
+	$item['item_performer']=cot_import('rperformer','P','INT');
+
+	return $item;
 }
 
 /**
@@ -823,17 +828,41 @@ function cot_setperformer_import($item)
  */
 function cot_setperformer_validate($item)
 {
-	cot_check(empty($item['item_number']), 'projects_select_cat', 'rnumber');
-	cot_check(empty($item['item_fio']), 'projects_select_cat', 'rfio');
-	cot_check(empty($item['item_summ']), 'projects_select_cat', 'rfio');
+	cot_check(empty($item['item_number']), 'claims_empty_number', 'rnumber');
+	cot_check(empty($item['item_fio']), 'claims_empty_fio', 'rfio');
+	cot_check(empty($item['item_summ']), 'claims_empty_summ', 'rfio');
 }
 
 /**
  * @param array $item object for import variables
  */
-function cot_setperformer_save($item)
+function cot_setperformer_add($item)
 {
+	global $db,$db_projects_perform;
+	$item['item_status']=1;
+	$db->insert($db_projects_perform,$item);
 
 }
 
 // </editor-fold>
+
+
+// <editor-fold desc="Claims">
+/**
+ * @param $id id of claims
+ */
+function cot_claims_getperformers($id)
+{
+	global $db,$db_projects_perform;
+	$tmp_items=$db->query("select * from $db_projects_perform where item_claim=$id")->fetchAll();
+	$items=[];
+	foreach($tmp_items as $i)
+	{
+		$item=array();
+		$item['PRF_OWNER']=cot_generate_usertags($i['item_performer'],'PRF_');
+		$items[]=$item;
+	}
+	return $items;
+}
+// </editor-fold>
+

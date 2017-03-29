@@ -110,6 +110,29 @@
 	</div>
 </div>
 <hr/>
+<!-- BEGIN: PRJ_PERFORM -->
+<h4>{PHP.L.claims_performers}</h4>
+<!-- FOR {PRF} IN {PRJ_PERFS} -->
+<div class="row">
+    <div class="span1">
+        {PRF.PRF_OWNER.PRF_AVATAR}
+    </div>
+    <div class="span2">
+        <p>{PRF.PRF_OWNER.PRF_NICKNAME}</p>
+        <p>
+
+            <span class="label label-info">{PRJ_OWNER_USERPOINTS}</span>
+        </p>
+        <!-- FOR {PHONE} IN {PRF.PRF_OWNER.PRF_PHONES} -->
+        <p>{PHONE}</p>
+        <!-- ENDFOR -->
+    </div>
+    {PRF.PRF_OWNER.PRF_ID}
+<!-- ENDFOR -->
+<!-- BEGIN: PRJ_PERFORM_ROW -->
+<!-- END: PRJ_PERFORM_ROW -->
+<hr />
+<!-- END: PRJ_PERFORM -->
 
 <div class="row">
 	<div class="span12">

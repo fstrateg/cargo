@@ -196,3 +196,8 @@ $L['prj_setp_dtunload']='Дата выгрузки';
 $L['claims_idcarrier']='ID Перевозчика';
 $L['claims_setcarrier']='Назначить исполнителем';
 $L['claims_factdata']='Фактические данные по перевозке';
+
+$L['claims_empty_summ']='Фактическая сумма перевозки не задана!';
+$L['claims_empty_number']='Номер фуры не задан!';
+$L['claims_empty_fio']='ФИО водителя не известно!';
+$L['claims_performers']='Исполнители';
