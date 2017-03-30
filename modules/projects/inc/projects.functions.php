@@ -860,6 +860,12 @@ function cot_claims_getperformers($id)
 	{
 		$item=array();
 		$item['PRF_OWNER']=cot_generate_usertags($i['item_performer'],'PRF_');
+		$item['PRF_FIO']=$i['item_fio'];
+		$item['PRF_NUMBER']=$i['item_number'];
+		$item['PRF_DB']=cot_date('d.m.Y',$i['item_db']);
+		$item['PRF_DE']=cot_date('d.m.Y',$i['item_de']);
+		$item['PRF_SUMM']=number_format($i['item_summ'],0,'.',' ');
+		$item['PRF_NOTES']=$i['item_note'];
 		$items[]=$item;
 	}
 	return $items;
