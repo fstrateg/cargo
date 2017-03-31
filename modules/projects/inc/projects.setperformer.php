@@ -5,17 +5,27 @@ defined('COT_CODE') or die('Wrong URL');
 $id = cot_import('id', 'G', 'INT');
 $userid = cot_import('userid', 'G', 'INT');
 $a = cot_import('a', 'G', 'ALP');
-$item=[];
+$pid=cot_import('pid','G','INT');
 
+$perf=new Performers();
+$item=[];
 if (isset($a)) {
     if ($a == 'add') {
-        $item=cot_setperformer_import($item);
+        $item=$perf->cot__import($item);
         cot_setperformer_validate($item);
         if (!cot_error_found())
         {
             cot_setperformer_add($item);
             cot_redirect(cot_url('projects',"id=$id",'',true));
         }
+        cot_redirect(cot_url('projects',"m=setperformer&id=$id&userid=$userid",'',true));
+    }
+
+    if ($a=='edit'){
+        $item=cot_setperformer_load($pid);
+    }
+    if ($a=='del'){
+        cot_setperformer_del($pid);
         cot_redirect(cot_url('projects',"m=setperformer&id=$id&userid=$userid",'',true));
     }
 }
