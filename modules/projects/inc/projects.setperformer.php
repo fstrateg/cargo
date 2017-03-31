@@ -1,6 +1,7 @@
 <?php
 
 defined('COT_CODE') or die('Wrong URL');
+require_once cot_incfile('projects','module','performers');
 
 $id = cot_import('id', 'G', 'INT');
 $userid = cot_import('userid', 'G', 'INT');
@@ -8,25 +9,42 @@ $a = cot_import('a', 'G', 'ALP');
 $pid=cot_import('pid','G','INT');
 
 $perf=new Performers();
+
 $item=[];
 if (isset($a)) {
     if ($a == 'add') {
-        $item=$perf->cot__import($item);
-        cot_setperformer_validate($item);
+        $item=$perf->import($item);
+        $perf->validate($item);
         if (!cot_error_found())
         {
-            cot_setperformer_add($item);
+            $perf->add($item);
             cot_redirect(cot_url('projects',"id=$id",'',true));
         }
         cot_redirect(cot_url('projects',"m=setperformer&id=$id&userid=$userid",'',true));
     }
 
-    if ($a=='edit'){
-        $item=cot_setperformer_load($pid);
+    if ($a=='update'){
+        $item=$perf->import($item);
+        $perf->validate($item);
+        if (!cot_error_found())
+        {
+            $perf->edit($item,$pid);
+            $item=$perf->load($pid);
+            cot_redirect(cot_url('projects',"id={$item['item_claim']}",'',true));
+        }
+        else{
+            $id=$perf->getclaim($pid);
+        }
+        //cot_redirect(cot_url('projects',"m=setperformer&userid=$userid&pid=$pid",'',true));
     }
     if ($a=='del'){
-        cot_setperformer_del($pid);
-        cot_redirect(cot_url('projects',"m=setperformer&id=$id&userid=$userid",'',true));
+        $perf->del($pid);
+        cot_redirect(cot_url('projects',"id=$id",'',true));
+    }
+    if ($a=='edit'){
+        $item=$perf->load($pid);
+        $userid=$item['item_performer'];
+        $id=$item['item_claim'];
     }
 }
 
@@ -49,10 +67,16 @@ $t->assign([
     'PRJ_PERFORMER'=>cot_inputbox('hidden','rperformer',$userid),
     'PRJ_CLAIM'=>cot_inputbox('hidden','rclaim',$id),
     "PRJ_TEXT" => cot_textarea('rnote', $item['item_note'], 10, 60, 'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
-    'PRJADD_FORM_ACTION'=>cot_url('projects',"m=setperformer&id=$id&userid=$userid&a=add",'',true),
-    'PRJ_CANCEL_URL'=>cot_url('projects',"m=addperformer&id=$id",'',true),
     //'TEST'=>print_r($item,true),
 ]);
+if(isset($pid)){
+    $t->assign('PRJ_FORM_ACTION',cot_url('projects',"m=setperformer&pid=$pid&userid=$userid&a=update",'',true));
+    $t->assign('PRJ_CANCEL_URL',cot_url('projects',"id=$id",'',true));
+}
+else{
+    $t->assign('PRJ_FORM_ACTION',cot_url('projects',"m=setperformer&id=$id&userid=$userid&a=add",'',true));
+    $t->assign('PRJ_CANCEL_URL',cot_url('projects',"m=addperformer&id=$id",'',true));
+}
 
 Resources::addFile('js/jquery-ui.min.css');
 

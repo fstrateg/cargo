@@ -113,6 +113,7 @@
 <!-- BEGIN: PRJ_PERFORM -->
 <h4>{PHP.L.claims_performers}</h4>
 <!-- FOR {PRF} IN {PRJ_PERFS} -->
+<hr style="border-top: 1px solid #eee"/>
 <div class="row">
     <div class="span1">
         {PRF.PRF_OWNER.PRF_AVATAR}
@@ -153,21 +154,22 @@
 			<tr><td colspan="2" class="small">{PRF.PRF_NOTES}</td></tr>
 		</table>
 	</div>
-	<div class="pull-right">
+	<div class="span2 pull-right">
 		<div class="btn-group">
 			<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog icon-white"></i><span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li><a href="#"><i class="icon-pencil"></i> {PHP.L.Edit}</a></li>
-				<li><a href="#"><i class="icon-remove"></i> {PHP.L.offers_otkazat}</a></li>
+			<ul class="dropdown-menu pull-left">
+				<li><a href="{PRF.PRF_PRFEDURL}"><i class="icon-pencil"></i> {PHP.L.Edit}</a></li>
+				<li><a href="{PRF.PRF_PRFDELURL}"><i class="icon-remove"></i> {PHP.L.offers_otkazat}</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
-<!-- ENDFOR -->
 
+<!-- ENDFOR -->
+<hr>
 <!-- BEGIN: PRJ_PERFORM_ROW -->
 <!-- END: PRJ_PERFORM_ROW -->
-<hr />
+
 <!-- END: PRJ_PERFORM -->
 
 <div class="row">

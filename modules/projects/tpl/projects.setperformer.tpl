@@ -21,7 +21,7 @@
 </div>
 <hr>
 <h3>{PHP.L.claims_factdata}</h3>
-<form action="{PRJADD_FORM_ACTION}" method="post" name="newadv" enctype="multipart/form-data">
+<form action="{PRJ_FORM_ACTION}" method="post" name="newadv" enctype="multipart/form-data">
 <div class="row">
     <div class="span6">
         <table width="100%">
