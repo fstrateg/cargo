@@ -105,6 +105,7 @@
             <!-- IF {PRJ_PERFORMER} -->
             <a href="{PRJ_REALIZEDPROJECT_URL}" class="btn btn-warning">{PRJ_REALIZEDPROJECT_TITLE}</a>
             <!-- ENDIF -->
+			<a href="{PRJ_ADMIN_ADDPRF_URL}" class="btn btn-success pull-right"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a>
 		</div>
 		<!-- ENDIF -->
 	</div>

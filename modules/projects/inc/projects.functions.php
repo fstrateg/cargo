@@ -326,7 +326,7 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
             $temp_array['PUBLPROJECT_TITLE'] = $L['Publish'];
             $temp_array['ARCHPROJECT_TITLE'] = $L['Inarchive'];
             $temp_array['REALIZEDPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	(($item_data['item_realized'] == 1) ? '&a=unrealized' : '&a=realized'));
-
+			$temp_array['ADMIN_ADDPRF_URL']=cot_url('projects','m=addperformer&id='. $item_data['item_id'], '', true);
 			$temp_array['REALIZEDPROJECT_TITLE'] = ($item_data['item_realized'] == 1) ? $L['project_unrealized'] : $L['project_realized'];
 		}
 

@@ -73,4 +73,22 @@ class Performers
         $this->db->query("delete from {$this->table} where item_id=$pid")
             ->execute();
     }
+
+    function generatetags($data)
+    {
+        if (!is_array($data))
+        {
+            $data=$this->load($data);
+        }
+        $item['PRF_OWNER']=cot_generate_usertags($data['item_performer'],'PRF_');
+        $item['PRF_FIO']=$data['item_fio'];
+        $item['PRF_NUMBER']=$data['item_number'];
+        $item['PRF_DB']=cot_date('d.m.Y',$data['item_db']);
+        $item['PRF_DE']=cot_date('d.m.Y',$data['item_de']);
+        $item['PRF_SUMM']=number_format($data['item_summ'],0,'.',' ');
+        $item['PRF_NOTES']=$data['item_note'];
+        $item['PRF_PRFDELURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=del&pid=".$data['item_id']);
+        $item['PRF_PRFEDURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=edit&pid=".$data['item_id']);
+        return $item;
+    }
 }

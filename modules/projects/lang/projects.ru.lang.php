@@ -193,6 +193,8 @@ $L['prj_setp_summa']='Сумма';
 $L['prj_setp_dtload']='Дата загрузки';
 $L['prj_setp_dtunload']='Дата выгрузки';
 
+$L['claims_setperformed']='Отметить заказ исполненым';
+$L['claims_setperformer']='Добавить исполнителя';
 $L['claims_idcarrier']='ID Перевозчика';
 $L['claims_setcarrier']='Назначить исполнителем';
 $L['claims_factdata']='Фактические данные по перевозке';
