@@ -74,7 +74,7 @@ class Performers
             ->execute();
     }
 
-    function generatetags($data)
+    function generatetags($data,$prefix='')
     {
         if (!is_array($data))
         {
@@ -89,6 +89,12 @@ class Performers
         $item['PRF_NOTES']=$data['item_note'];
         $item['PRF_PRFDELURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=del&pid=".$data['item_id']);
         $item['PRF_PRFEDURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=edit&pid=".$data['item_id']);
-        return $item;
+        if (!$prefix) return $item;
+        $rez=[];
+        foreach($item as $key=>$vl)
+        {
+            $rez[$prefix.$key]=$vl;
+        }
+        return $rez;
     }
 }
