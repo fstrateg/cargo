@@ -47,22 +47,23 @@
 </div>
 <hr>
 <p><b>{PHP.L.claims_rating_title}</b></p>
+<form action="{PRJ_FORM_SEND}" method="post" name="edit" enctype="multipart/form-data">
 <div class="row">
     <div class="span3">
         <div id="reviewStars-input">
-            <input id="star-4" type="radio" name="reviewStars"/>
+            <input id="star-4" type="radio" name="reviewStars"<!-- IF {PRJ_PERFORMED_STARS} == 5 --> checked<!-- ENDIF --> />
             <label title="{PHP.L.claims_rating_verygood}" for="star-4"></label>
 
-            <input id="star-3" type="radio" name="reviewStars"/>
+            <input id="star-3" type="radio" name="reviewStars"<!-- IF {PRJ_PERFORMED_STARS} == 4 --> checked<!-- ENDIF --> />
             <label title="{PHP.L.claims_rating_good}" for="star-3"></label>
 
-            <input id="star-2" type="radio" name="reviewStars"/>
+            <input id="star-2" type="radio" name="reviewStars"<!-- IF {PRJ_PERFORMED_STARS} == 3 --> checked<!-- ENDIF --> />
             <label title="{PHP.L.claims_rating_norm}" for="star-2"></label>
 
-            <input id="star-1" type="radio" name="reviewStars"/>
+            <input id="star-1" type="radio" name="reviewStars"<!-- IF {PRJ_PERFORMED_STARS} == 2 --> checked<!-- ENDIF --> />
             <label title="{PHP.L.claims_rating_poor}" for="star-1"></label>
 
-            <input id="star-0" type="radio" name="reviewStars"/>
+            <input id="star-0" type="radio" name="reviewStars"<!-- IF {PRJ_PERFORMED_STARS} == 1 --> checked<!-- ENDIF --> />
             <label title="{PHP.L.claims_rating_bad}" for="star-0"></label>
         </div>
     </div>
@@ -70,4 +71,11 @@
 <hr />
 <p><b>{PHP.L.claims_rating_notes}</b></p>
 {PRJ_PERFORMED_NOTES}
+<p>&nbsp;</p>
+<div class="row">
+    <div class="span3">
+        <button type="submit" class="btn btn-success">{PHP.L.project_realized}</button>
+    </div>
+</div>
+</form>
 <!-- END:MAIN -->
