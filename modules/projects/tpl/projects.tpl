@@ -159,6 +159,7 @@
 		<div class="btn-group">
 			<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog icon-white"></i><span class="caret"></span></a>
 			<ul class="dropdown-menu pull-left">
+                <li><a href="{PRF.PRF_PRFDONEURL}"><i class="icon-ok"></i> {PHP.L.claims_performed}</a></li>
 				<li><a href="{PRF.PRF_PRFEDURL}"><i class="icon-pencil"></i> {PHP.L.Edit}</a></li>
 				<li><a href="{PRF.PRF_PRFDELURL}"><i class="icon-remove"></i> {PHP.L.offers_otkazat}</a></li>
 			</ul>

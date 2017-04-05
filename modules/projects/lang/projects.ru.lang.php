@@ -203,6 +203,7 @@ $L['claims_empty_summ']='Фактическая сумма перевозки н
 $L['claims_empty_number']='Номер фуры не задан!';
 $L['claims_empty_fio']='ФИО водителя не известно!';
 $L['claims_performers']='Исполнители';
+$L['claims_performed']='Выполнено';
 
 $L['claims_rating_title']='Оцените, пожалуйста, свои впечатления от работы с перевозчиком';
 $L['claims_rating_notes']='По возможности опишите выбор своей оценки';

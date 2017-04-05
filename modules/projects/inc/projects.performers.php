@@ -97,4 +97,25 @@ class Performers
         }
         return $rez;
     }
+
+    // <editor-fold desc="Feedbacks">
+    function importFeedback()
+    {
+        $ritem=[
+            'item_fstars'=>cot_import('reviewStars','POST','INT'),
+            'item_feedback'=>cot_import('rnotes','POST','HTM'),
+        ];
+        return $ritem;
+    }
+
+    function validateFeedback($ritem)
+    {
+
+    }
+
+    function saveFeedback($ritem)
+    {
+
+    }
+    // </editor-fold>
 }

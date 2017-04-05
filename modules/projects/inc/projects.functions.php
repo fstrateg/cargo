@@ -827,6 +827,7 @@ function cot_claims_getperformers($id)
 		$item['PRF_NOTES']=$i['item_note'];
         $item['PRF_PRFDELURL']=cot_url('projects',"m=setperformer&id=".$i['item_claim']."&a=del&pid=".$i['item_id']);
         $item['PRF_PRFEDURL']=cot_url('projects',"m=setperformer&id=".$i['item_claim']."&a=edit&pid=".$i['item_id']);
+        $item['PRF_PRFDONEURL']=cot_url('projects',"m=setperformed&pid=".$i['item_id']);
         $items[]=$item;
 	}
 	return $items;
