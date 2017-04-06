@@ -10,11 +10,11 @@ $perf=new Performers();
 $claim=$perf->load($pid);
 cot_die(!$claim,true);
 
-if ($a='add')
+if ($a=='add')
 {
     $ritem=$perf->importFeedback();
     $perf->validateFeedback($ritem);
-    if (cot_error_found())
+    if (!cot_error_found())
     {
         $perf->saveFeedback($ritem);
         cot_redirect(cot_url('projects',"id=".$claim['item_claim'],'',true));
@@ -25,12 +25,14 @@ if ($a='add')
 
 $t=new XTemplate(cot_tplfile('projects.setperformed'));
 
+cot_display_messages($t);
+
 $t->assign(cot_generate_usertags($claim['item_performer'],'PRJ_PERF_'));
 $t->assign($perf->generatetags($claim,'PRJ_'));
 $t->assign([
     'PRJ_PERFORMED_STARS'=>$ritem['item_fstars'],
     'PRJ_PERFORMED_NOTES'=>cot_textarea('rnotes',$ritem['item_feedback'],15,80,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
-    'PRJ_SEND_FROM'=>cot_url('projects','m=setperformed&pid='.$pid.'&a=add'),
+    'PRJ_FORM_SEND'=>cot_url('projects','m=setperformed&pid='.$pid.'&a=add'),
 ]);
 
 global $cfg;

@@ -104,18 +104,24 @@ class Performers
         $ritem=[
             'item_fstars'=>cot_import('reviewStars','POST','INT'),
             'item_feedback'=>cot_import('rnotes','POST','HTM'),
+            'item_id'=>cot_import('pid','G','INT'),
         ];
         return $ritem;
     }
 
     function validateFeedback($ritem)
     {
-
+        global $L;
+        cot_check(empty($ritem['item_fstars']),$L['claims_rating_emptystars'],'reviewStars');
+        if ($ritem['item_fstars']&&((int)$ritem['item_fstars'])<3) {
+            cot_check(empty($ritem['item_feedback']), $L['claims_rating_emptynotes'], 'rnotes');
+        }
     }
 
     function saveFeedback($ritem)
     {
-
+        $ritem['item_status']=2;
+        $this->db->update($this->table,$ritem,"item_id=".$ritem['item_id']);
     }
     // </editor-fold>
 }

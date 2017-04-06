@@ -212,3 +212,5 @@ $L['claims_rating_poor']='Плохо';
 $L['claims_rating_norm']='Нейтрально';
 $L['claims_rating_good']='Хорошо';
 $L['claims_rating_verygood']='Очень хорошо';
+$L['claims_rating_emptystars']='Пожалуйста, оцените работу перевозчика!';
+$L['claims_rating_emptynotes']='Мы сожалеем, что Вы получили негативное впечатление от работы с данным перевозчиком. Пожалуйста, опишите подробности Вашего впечатления!';
