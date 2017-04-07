@@ -424,7 +424,7 @@ while ($offer = $sql->fetch())
 	if ($usr['id'] == $item['item_userid'] && $choise_enabled)
 	{
 		$t_o->assign(array(
-			"OFFER_ROW_SETPERFORMER" => cot_url('projects', 'id=' . $id . '&a=setperformer&userid=' . $offer['user_id'] . '&' . cot_xg()),
+			"OFFER_ROW_SETPERFORMER" => cot_url('projects', 'id=' . $id . '&m=setperformer&userid=' . $offer['user_id'] . '&' . cot_xg()),
 			"OFFER_ROW_REFUSE" => cot_url('projects', 'id=' . $id . '&a=refuse&userid=' . $offer['user_id'] . '&' . cot_xg()),
 		));
 		
