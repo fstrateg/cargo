@@ -122,8 +122,7 @@
     <div class="span3">
         <p>{PRF.PRF_OWNER.PRF_NICKNAME}</p>
         <p>
-
-            <span class="label label-info">{PRJ_OWNER_USERPOINTS}</span>
+            <span class="label label-info">{PRF.PRF_OWNER.PRF_USERPOINTS}</span>
         </p>
         <!-- FOR {PHONE} IN {PRF.PRF_OWNER.PRF_PHONES} -->
         <p>{PHONE}</p>
@@ -155,6 +154,15 @@
 			<tr><td colspan="2" class="small">{PRF.PRF_NOTES}</td></tr>
 		</table>
 	</div>
+	<!-- IF {PRF.PRF_STATUS} == 2 -->
+	<div class="span4">
+		<label class="label label-info">{PHP.L.claims_performed}</label>
+		<div class="fstars" style="padding: 10px 0">
+			<span class="stars-view"><span style="width: {PRF.PRF_STARS}%"></span></span>
+		</div>
+		{PRF.PRF_FEEDBACK}
+	</div>
+	<!-- ELSE -->
 	<div class="span2 pull-right">
 		<div class="btn-group">
 			<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog icon-white"></i><span class="caret"></span></a>
@@ -165,6 +173,7 @@
 			</ul>
 		</div>
 	</div>
+	<!-- ENDIF -->
 </div>
 
 <!-- ENDFOR -->

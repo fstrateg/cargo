@@ -45,6 +45,18 @@
 #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
     background: url('/images/star_big_color.gif') no-repeat;
 }
+
+.fstars>span.stars-view{
+    display: inline-block;
+    height: 14px;
+    width: 75px;
+    background: url("/images/star_small_gray.png");
+}
+.fstars>span.stars-view>span{
+    display: inline-block;
+    height: 14px;
+    background: url("/images/star-small_color.png");
+}
 /*
 #reviewStars-input #star-0 {
     left: 0px;

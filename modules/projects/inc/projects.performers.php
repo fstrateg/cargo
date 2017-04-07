@@ -74,12 +74,25 @@ class Performers
             ->execute();
     }
 
+    function generatetags_forid($id)
+    {
+        $tmp_items=$this->db->query("select * from ".$this->table." where item_claim=$id")->fetchAll();
+        $items=[];
+        foreach($tmp_items as $i) {
+            $items[]=$this->generatetags($i);
+        }
+        return $items;
+    }
+
     function generatetags($data,$prefix='')
     {
         if (!is_array($data))
         {
             $data=$this->load($data);
         }
+        $item['PRF_STATUS']=$data['item_status'];
+        $item['PRF_STARS']=$data['item_fstars']*20;
+        $item['PRF_FEEDBACK']=$data['item_feedback'];
         $item['PRF_OWNER']=cot_generate_usertags($data['item_performer'],'PRF_');
         $item['PRF_FIO']=$data['item_fio'];
         $item['PRF_NUMBER']=$data['item_number'];

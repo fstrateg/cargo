@@ -112,9 +112,13 @@ if ($usr['isadmin'])
 
 if ($usr['id']==$item['item_userid'])
 {
-	$performs=cot_claims_getperformers($id);
+	require_once cot_incfile('projects','module','performers');
+	$perf=new Performers();
+	$performs=$perf->generatetags_forid($id);
 	$t->assign('PRJ_PERFS',$performs);
 	$t->parse('MAIN.PRJ_PERFORM');
+	global $cfg;
+	Resources::addFile("${cfg['themes_dir']}/${cfg['defaulttheme']}/css/stars.css");
 }
 
 if ($usr['id'] == 0)
