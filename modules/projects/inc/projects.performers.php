@@ -48,6 +48,7 @@ class Performers
     {
         $item['item_status'] = 1;
         $this->db->insert($this->table, $item);
+        $this->sendPrivateMessageSet($item);
     }
 
     function edit($items, $pid)
@@ -70,8 +71,10 @@ class Performers
 
     function del($pid)
     {
-        $this->db->query("delete from {$this->table} where item_id=$pid")
-            ->execute();
+        $this->sendPrivateMessageRefuse($this->getclaim($pid));
+        //$this->db->query("delete from {$this->table} where item_id=$pid")
+        //    ->execute();
+
     }
 
     function generatetags_forid($id)
@@ -109,6 +112,47 @@ class Performers
             $rez[$prefix.$key]=$vl;
         }
         return $rez;
+    }
+
+    function sendPrivateMessageSet($perf)
+    {
+        global $L,$cfg;
+        $item=$this->loadClaim($perf['item_claim']);
+        $rsubject = cot_rc($L['project_setperformer_header'], array('prtitle' => $item['item_title']));
+        die($rsubject);
+        $rbody = cot_rc($L['project_setperformer_body'], array(
+            'user_name' => $item['user_name'],
+            'offeruser_name' => $urr['user_fiofirm']?$urr['user_fiofirm']:$urr['user_name'],
+            'prj_name' => $item['item_title'],
+            'sitename' => $cfg['maintitle'],
+            'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
+        ));
+    }
+
+    function sendPrivateMessageRefuse($cid)
+    {
+        global $L,$cfg;
+        $item=$this->loadClaim($cid);
+        $rsubject = cot_rc($L['project_refuse_header'], array('prtitle' => $item['item_title']));
+        echo $rsubject;
+        exit();
+        $rbody = cot_rc($L['project_refuse_body'], array(
+            'user_name' => $item['user_name'],
+            'offeruser_name' => $urr['user_fiofirm']?$urr['user_fiofirm']:$urr['user_name'],
+            'prj_name' => $item['item_title'],
+            'sitename' => $cfg['maintitle'],
+            'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
+        ));
+
+
+    }
+
+    function loadClaim($id)
+    {
+        global $db_projects;
+        $items=$this->db->query("Select * from $db_projects where item_id=:id",["id"=>$id])->fetchAll();
+        $item=$items[0];
+        return $item;
     }
 
     // <editor-fold desc="Feedbacks">
