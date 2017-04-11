@@ -71,9 +71,9 @@ class Performers
 
     function del($pid)
     {
-        $this->sendPrivateMessageRefuse($this->getclaim($pid));
-        //$this->db->query("delete from {$this->table} where item_id=$pid")
-        //    ->execute();
+        $this->sendPrivateMessageRefuse($this->load($pid));
+        $this->db->query("delete from {$this->table} where item_id=$pid")
+            ->execute();
 
     }
 
@@ -117,9 +117,11 @@ class Performers
     function sendPrivateMessageSet($perf)
     {
         global $L,$cfg;
-        $item=$this->loadClaim($perf['item_claim']);
+        $item=$this->loadClaimDetails($perf['item_claim']);
+        $urr=$this->loadUserDetails($perf['item_performer']);
+        $urlparams="id=".$perf['item_claim'];
+
         $rsubject = cot_rc($L['project_setperformer_header'], array('prtitle' => $item['item_title']));
-        die($rsubject);
         $rbody = cot_rc($L['project_setperformer_body'], array(
             'user_name' => $item['user_name'],
             'offeruser_name' => $urr['user_fiofirm']?$urr['user_fiofirm']:$urr['user_name'],
@@ -127,16 +129,24 @@ class Performers
             'sitename' => $cfg['maintitle'],
             'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
         ));
+
+        include_once cot_incfile('pm','module');
+        cot_sendpm_fromadmin($perf['item_performer'],$rsubject,$rbody);
     }
 
-    function sendPrivateMessageRefuse($cid)
+    /**
+    * @param array $perf
+    */
+
+    function sendPrivateMessageRefuse($perf)
     {
         global $L,$cfg;
-        $item=$this->loadClaim($cid);
+        $item=$this->loadClaimDetails($perf['item_claim']);
+        $urr=$this->loadUserDetails($perf['item_performer']);
+        $urlparams="id=".$perf['item_claim'];
+
         $rsubject = cot_rc($L['project_refuse_header'], array('prtitle' => $item['item_title']));
-        echo $rsubject;
-        exit();
-        $rbody = cot_rc($L['project_refuse_body'], array(
+                $rbody = cot_rc($L['project_refuse_body'], array(
             'user_name' => $item['user_name'],
             'offeruser_name' => $urr['user_fiofirm']?$urr['user_fiofirm']:$urr['user_name'],
             'prj_name' => $item['item_title'],
@@ -144,14 +154,21 @@ class Performers
             'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
         ));
 
+        include_once cot_incfile('pm','module');
+        cot_sendpm_fromadmin($perf['item_performer'],$rsubject,$rbody);
 
     }
-
-    function loadClaim($id)
+    function loadClaimDetails($id)
     {
         global $db_projects;
-        $items=$this->db->query("Select * from $db_projects where item_id=:id",["id"=>$id])->fetchAll();
-        $item=$items[0];
+        $item=$this->db->query("Select * from $db_projects where item_id=:id",['id'=>$id])->fetch();
+        return $item;
+    }
+
+    function loadUserDetails($id)
+    {
+        global $db_users;
+        $item=$this->db->query("Select * from $db_users where user_id=:id",['id'=>$id])->fetch();
         return $item;
     }
 

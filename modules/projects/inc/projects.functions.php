@@ -556,7 +556,7 @@ function cot_projects_add(&$ritem, $auth = array())
 	}
 	else
 	{
-		$ritem['item_state'] = 1;
+		$ritem['item_state'] = 0;
 	}
 
 	if (!empty($ritem['item_alias']))
