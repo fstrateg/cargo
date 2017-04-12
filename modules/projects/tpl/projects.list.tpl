@@ -53,9 +53,13 @@
 					</tr>
 					<!-- IF {PHP.cot_plugins_active.locationselector} -->
 					<tr>
-						<td >{PHP.L.Location}:</td>
+						<td >{PHP.L.LocationFrom}:</td>
 						<td>{SEARCH_LOCATION}</td>
 					</tr>
+                    <tr>
+                        <td >{PHP.L.LocationTo}:</td>
+                        <td>{SEARCH_LOCATIONTO}</td>
+                    </tr>
 					<!-- ENDIF -->
 					<tr>
 						<td >{PHP.L.Category}:</td>

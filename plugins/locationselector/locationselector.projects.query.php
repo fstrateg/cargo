@@ -28,6 +28,10 @@ if(!empty($location['country'])) $where['location'] = "item_country='" . $db->pr
 if((int)$location['region'] > 0) $where['location'] =  "item_region=" . (int)$location['region'];
 if((int)$location['city'] > 0) $where['location'] = "item_city=" . (int)$location['city'];
 
+if(!empty($location['countryto'])) $where['location'] = "item_countryto='" . $db->prep($location['countryto'])."'";
+if((int)$location['regionto'] > 0) $where['location'] =  "item_regionto=" . (int)$location['regionto'];
+if((int)$location['cityto'] > 0) $where['location'] = "item_cityto=" . (int)$location['cityto'];
+
 
 $list_url_path['country'] = $location['country'];
 $list_url_path['region'] = $location['region'];
