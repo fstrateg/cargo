@@ -5,12 +5,14 @@ class Performers
 {
     var $db;
     var $table;
+    var $tableclaim;
 
     function __construct()
     {
-        global $db,$db_projects_perform;
+        global $db,$db_projects_perform,$db_projects;
         $this->db=$db;
         $this->table=$db_projects_perform;
+        $this->tableclaim=$db_projects;
     }
 
     /**
@@ -48,6 +50,11 @@ class Performers
     {
         $item['item_status'] = 1;
         $this->db->insert($this->table, $item);
+        $this->db
+            ->query("update ".$this->tableclaim.
+                " set item_performer=item_performer+1,
+                 item_inwork=case when item_performer>0 and item_realized<item_performer
+                    then 1 else 0 end where item_id=".$item['item_claim']);
         $this->sendPrivateMessageSet($item);
     }
 
@@ -71,7 +78,12 @@ class Performers
 
     function del($pid)
     {
+        $claim=$this->getclaim($pid);
         $this->sendPrivateMessageRefuse($this->load($pid));
+        $this->db
+            ->query("update ".$this->tableclaim." set item_performer=item_performer-1,
+                    item_inwork=case when item_performer>0 and item_realized<item_performer
+                    then 1 else 0 end where item_id=".$claim);
         $this->db->query("delete from {$this->table} where item_id=$pid")
             ->execute();
 
@@ -103,6 +115,7 @@ class Performers
         $item['PRF_DE']=cot_date('d.m.Y',$data['item_de']);
         $item['PRF_SUMM']=number_format($data['item_summ'],0,'.',' ');
         $item['PRF_NOTES']=$data['item_note'];
+        $item['PRF_PRFDONEURL']=cot_url('projects',"m=setperformed&id=".$data['item_claim']."&pid=".$data['item_id']);
         $item['PRF_PRFDELURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=del&pid=".$data['item_id']);
         $item['PRF_PRFEDURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=edit&pid=".$data['item_id']);
         if (!$prefix) return $item;
@@ -195,6 +208,11 @@ class Performers
     function saveFeedback($ritem)
     {
         $ritem['item_status']=2;
+        $claim=$this->getclaim($ritem['item_id']);
+        $this->db
+            ->query("update ".$this->tableclaim." set item_realized=item_realized+1,
+                    item_inwork=case when item_performer>0 and item_realized<item_performer
+                    then 1 else 0 end where item_id=".$claim);
         $this->db->update($this->table,$ritem,"item_id=".$ritem['item_id']);
     }
     // </editor-fold>

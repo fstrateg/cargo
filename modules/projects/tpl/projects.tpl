@@ -91,19 +91,20 @@
 		<!-- IF {PRJ_USER_IS_ADMIN} -->
 		<div class="well well-small">
             <!-- IF {PRJ_STATE} != 3 -->
-			<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
+				<!-- IF {PRJ_PERFORMER} == 0 -->
+					<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
+				<!-- ENDIF -->
             <!-- ENDIF -->
 			<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
 			<!-- IF {PRJ_STATE} == 0 -->
 			<a href="{PRJ_ARCHPROJECT_URL}" class="btn btn-danger"><i class="icon-inbox icon-white"></i> {PRJ_ARCHPROJECT_TITLE}</a>	&nbsp;
-			<a href="{PRJ_ADMIN_ADDPRF_URL}" class="btn btn-success pull-right"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a>
+				<!-- IF {PRJ_PERFORMER} < {PRJ_COUNT} -->
+				<a href="{PRJ_ADMIN_ADDPRF_URL}" class="btn btn-success pull-right"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a>
+				<!-- ENDIF -->
             <!-- ENDIF -->
             <!-- IF {PRJ_STATE} == 1 -->
             <a href="{PRJ_PUBLPROJECT_URL}" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {PRJ_PUBLPROJECT_TITLE}</a>	&nbsp;
             <a href="{PRJ_ARCHPROJECT_URL}" class="btn btn-danger"><i class="icon-inbox icon-white"></i> {PRJ_ARCHPROJECT_TITLE}</a>	&nbsp;
-            <!-- ENDIF -->
-            <!-- IF {PRJ_PERFORMER} -->
-            <a href="{PRJ_REALIZEDPROJECT_URL}" class="btn btn-warning">{PRJ_REALIZEDPROJECT_TITLE}</a>
             <!-- ENDIF -->
 		</div>
 		<!-- ENDIF -->
