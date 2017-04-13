@@ -87,11 +87,15 @@ var fff={
 		id=vl[i].id.replace('point','');
 			$('tr.id'+id+' td.point').html('<img src="/images/point.png" />');
 		total = Math.round(total / 1000);
+        var time=Math.round(total/speed);
+        var days=Math.floor(time/24);
 		var html='<div class="out">Расстояние между пунктами '+'<b>'+vl[0].value+' - '+vl[vl.length-1].value+' ~ '+total + " км</b></br>";
 		html+='Средняя скорость фуры <b> '+Math.round(speed)+' км/ч </b><br>';
 		html+='Расход ГСМ <b> '+Math.round(expen)+' л/100 км </b><br>';
 		html+='Стоимость ГСМ <b> '+Math.round(cost)+' тг/л </b><br>';
-		html+='Среднее время в пути <b>~ '+Math.round(total/speed)+' ч </b><br>';
+		html+='Среднее время в пути <b>~ ';
+        if (days>0) html+=days+' дн. '
+        html+=time%24+' ч </b> <br>';
 		html+=fff.getCost(total,expen,cost);
 		html+='</div>';
 		document.getElementById("itog").innerHTML = html;
@@ -99,8 +103,8 @@ var fff={
 	getCost:function(total,expen,cost){
 		var html;
         expen=Math.round(total/100*expen);
-        cost=Math.round(expen*cost);
-		html='Расход топлива <b>'+expen+' ('+cost+'тг.)</b><br>';
+        cost=Math.round(expen*cost).toLocaleString('ru');
+		html='Расход топлива <b>'+expen.toLocaleString('ru')+' ('+cost+' тг.)</b><br>';
 		return html;
 	},
 	test:function(){

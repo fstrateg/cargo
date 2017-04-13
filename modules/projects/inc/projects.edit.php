@@ -105,7 +105,7 @@ if ($a == 'update')
 						'sitename' => $cfg['maintitle'],
 						'link' => COT_ABSOLUTE_URL . $r_url
 					));
-					cot_mail($usr['profile']['user_email'], $L['project_added_mail_subj'], $rbody);
+					//cot_mail($usr['profile']['user_email'], $L['project_added_mail_subj'], $rbody);
 				}
 				break;
 			case 1:
@@ -125,7 +125,7 @@ if ($a == 'update')
 						'sitename' => $cfg['maintitle'],
 						'link' => COT_ABSOLUTE_URL . $r_url
 					));
-					cot_mail($usr['profile']['user_email'], $L['project_senttovalidation_mail_subj'], $rbody);
+					//cot_mail($usr['profile']['user_email'], $L['project_senttovalidation_mail_subj'], $rbody);
 				}
 
 				if ($cfg['projects']['notif_admin_moderate'])
@@ -136,7 +136,7 @@ if ($a == 'update')
 						'sitename' => $cfg['maintitle'],
 						'link' => COT_ABSOLUTE_URL . $r_url
 					));
-					cot_mail($cfg['adminemail'], $L['project_notif_admin_moderate_mail_subj'], $nbody);
+					//cot_mail($cfg['adminemail'], $L['project_notif_admin_moderate_mail_subj'], $nbody);
 				}
 				break;
 		}
@@ -175,7 +175,7 @@ if ($a == 'public')
 				'sitename' => $cfg['maintitle'],
 				'link' => COT_ABSOLUTE_URL . $r_url
 			));
-			cot_mail($usr['profile']['user_email'], $L['project_senttovalidation_mail_subj'], $rbody);
+			//cot_mail($usr['profile']['user_email'], $L['project_senttovalidation_mail_subj'], $rbody);
 		}
 		else
 		{
@@ -185,7 +185,7 @@ if ($a == 'public')
 				'sitename' => $cfg['maintitle'],
 				'link' => COT_ABSOLUTE_URL . $r_url
 			));
-			cot_mail($usr['profile']['user_email'], $L['project_added_mail_subj'], $rbody);
+			//cot_mail($usr['profile']['user_email'], $L['project_added_mail_subj'], $rbody);
 		}
 	}
 	

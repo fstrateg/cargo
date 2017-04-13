@@ -25,6 +25,8 @@ if (!empty($c) && !isset($structure['projects'][$c]))
 list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('projects', 'any', 'RWA');
 cot_block($usr['auth_write']);
 
+cot_block($usr['maingrp']<>4); //блок для перевозчиков
+
 /* === Hook === */
 $extp = cot_getextplugins('projects.add.first');
 foreach ($extp as $pl)
@@ -90,7 +92,7 @@ if ($a == 'add')
 						'sitename' => $cfg['maintitle'],
 						'link' => COT_ABSOLUTE_URL . $r_url
 					));
-					cot_mail($usr['profile']['user_email'], $L['project_added_mail_subj'], $rbody);
+					//cot_mail($usr['profile']['user_email'], $L['project_added_mail_subj'], $rbody);
 				}
 				break;
 			case 1:
@@ -110,7 +112,7 @@ if ($a == 'add')
 						'sitename' => $cfg['maintitle'],
 						'link' => COT_ABSOLUTE_URL . $r_url
 					));
-					cot_mail($usr['profile']['user_email'], $L['project_senttovalidation_mail_subj'], $rbody);
+					//cot_mail($usr['profile']['user_email'], $L['project_senttovalidation_mail_subj'], $rbody);
 				}
 
 				if ($cfg['projects']['notif_admin_moderate'])
@@ -121,7 +123,7 @@ if ($a == 'add')
 						'sitename' => $cfg['maintitle'],
 						'link' => COT_ABSOLUTE_URL . $r_url
 					));
-					cot_mail($cfg['adminemail'], $L['project_notif_admin_moderate_mail_subj'], $nbody);
+					//cot_mail($cfg['adminemail'], $L['project_notif_admin_moderate_mail_subj'], $nbody);
 				}				
 				break;
 		}
