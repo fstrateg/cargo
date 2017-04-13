@@ -10,3 +10,10 @@ CREATE TABLE `cg_projects_perform` (
 	`item_status` INT(11) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`item_id`)
 )
+
+locationselector
+css
+projects
+
+таблицы cg_projects_perform
+таблица cq_projects

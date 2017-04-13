@@ -24,6 +24,7 @@ list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('project
 $tab = cot_import('tab', 'G', 'ALP');
 $category = ($tab=='projects') ? cot_import('cat', 'G', 'TXT') : '' ;
 $state = ($tab=='projects') ? cot_import('stat', 'G', 'INT') : '' ;
+$inwork = ($tab=='projects') ? cot_import('inwork', 'G', 'INT') : '' ;
 
 //if ($state=='') unset($state);
 
@@ -53,6 +54,7 @@ if (isset($state)||$state===0)
     $where['stat'] = 'item_state=' . $db->quote($state);
 }
 
+
 $where['owner'] = "item_userid=" . $urr['user_id'];
 
 $order['date'] = "item_date DESC";
@@ -70,17 +72,27 @@ foreach (cot_getextplugins('projects.userdetails.query') as $pl)
 }
 /* ===== */
 
-$where = ($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 $wherecount = ($wherecount) ? 'WHERE ' . implode(' AND ', $wherecount) : '';
 $order = ($order) ? 'ORDER BY ' . implode(', ', $order) : '';
+
+$whereinwork = (($wherecount) ? $wherecount.' AND '  : 'WHERE ').'item_inwork=1';
 
 $sql_projects_count_cat = $db->query("SELECT item_cat, COUNT(item_cat) as cat_count FROM $db_projects " . $wherecount . " GROUP BY item_cat")->fetchAll();
 
 $sql_projects_count_state = $db->query("SELECT item_state, COUNT(item_state) as state_count FROM $db_projects " . $wherecount . " GROUP BY item_state")->fetchAll();
 
-$sql_projects_count = $db->query("SELECT * FROM $db_projects as p 
-	" . $wherecount . "");
+$sql_count_inwork= $db->query("SELECT COUNT(item_id) as item_count FROM $db_projects " . $whereinwork)->fetchAll();
+
+$projects=$sql_count_inwork['item_count'];
+
+$sql_projects_count = $db->query("SELECT * FROM $db_projects as p " . $wherecount . "");
 $projects_count_all = $projects_count = $sql_projects_count->rowCount();
+
+if (isset($inwork))
+{
+	$where['inwork']='item_inwork=1';
+}
+$where = ($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 
 $sqllist = $db->query("SELECT * FROM $db_projects AS p
 	" . $where . "
@@ -121,15 +133,23 @@ $opt_array = array(
 if($category){	
 	$projects_count = $page_nav[$category];
 	$opt_array['cat'] = $category;
-}
-if($state||$state===0){
+} elseif($state||$state===0){
     $projects_count = $page_nav[$state];
     $opt_array['stat'] = $state;
+} elseif($inwork){
+	$projects_count=$projects_count_inwork;
+	$opt_array['inwork'] = $inwork;
 }
 else
 {
     $t1->assign('PRJ_ALL_SELECT',1);
 }
+
+$t1->assign([
+	"USERS_DETAILS_PROJECTS_INWORK_COUNT"=> $projects_count_inwork,
+	"USERS_DETAILS_PROJECTS_INWORK_URL" => cot_url('users', 'm=details&id=' . $urr['user_id'] . '&u=' . $urr['user_name'] . '&tab=projects&inwork=1'),
+	"USERS_DETAILS_PROJECTS_INWORK_SELECT" => $inwork,
+]);
 
 $pagenav = cot_pagenav('users',$opt_array , $d, $projects_count, $cfg['projects']['cat___default']['maxrowsperpage'], 'dprj');
 

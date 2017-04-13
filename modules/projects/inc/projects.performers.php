@@ -49,12 +49,15 @@ class Performers
     function add($item)
     {
         $item['item_status'] = 1;
+        $claim=$item['item_claim'];
         $this->db->insert($this->table, $item);
         $this->db
             ->query("update ".$this->tableclaim.
                 " set item_performer=item_performer+1,
                  item_inwork=case when item_performer>0 and item_realized<item_performer
-                    then 1 else 0 end where item_id=".$item['item_claim']);
+                    then 1 else 0 end where item_id=$claim");
+        $this->db
+            ->query("update ".$this->tableclaim." set item_state=1 where item_id=$claim and item_performer=item_count");
         $this->sendPrivateMessageSet($item);
     }
 
@@ -84,6 +87,8 @@ class Performers
             ->query("update ".$this->tableclaim." set item_performer=item_performer-1,
                     item_inwork=case when item_performer>0 and item_realized<item_performer
                     then 1 else 0 end where item_id=".$claim);
+        $this->db
+            ->query("update ".$this->tableclaim." set item_state=0 where item_id=$claim and item_performer<item_count and item_state=1");
         $this->db->query("delete from {$this->table} where item_id=$pid")
             ->execute();
 
@@ -213,6 +218,8 @@ class Performers
             ->query("update ".$this->tableclaim." set item_realized=item_realized+1,
                     item_inwork=case when item_performer>0 and item_realized<item_performer
                     then 1 else 0 end where item_id=".$claim);
+        $this->db
+            ->query("update ".$this->tableclaim." set item_state=3 where item_id=$claim and item_realized=item_count");
         $this->db->update($this->table,$ritem,"item_id=".$ritem['item_id']);
     }
     // </editor-fold>

@@ -5,6 +5,11 @@
   <li class="centerall <!--IF {PRJ_ALL_SELECT} -->active<!-- ENDIF -->">
  	  <a href="{PHP.urr.user_id|cot_url('users', 'm=details&id=$this&tab=projects')}">{PHP.L.All}</a>
   </li>
+	<li class="centerall <!--IF {USERS_DETAILS_PROJECTS_INWORK_SELECT} -->active<!-- ENDIF -->">
+		<a href="{USERS_DETAILS_PROJECTS_INWORK_URL}">{PHP.L.Inwork}
+			<span class="badge badge-inverse">{USERS_DETAILS_PROJECTS_INWORK_COUNT}</span>
+		</a>
+	</li>
     <!-- BEGIN: STAT_ROW -->
         <li class="centerall <!-- IF {PRJ_STAT_ROW_SELECT} -->active<!-- ENDIF -->">
             <a href="{PRJ_STAT_ROW_URL}">
@@ -31,7 +36,16 @@
 	<div class="media<!-- IF {PRJ_ROW_ISBOLD} --> well prjbold<!-- ENDIF --><!-- IF {PRJ_ROW_ISTOP} --> well prjtop<!-- ENDIF -->">
 		<h4>
 			<!-- IF {PRJ_ROW_COST} > 0 --><div class="pull-right">{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
-			<a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a> <!-- IF {PRJ_ROW_USER_IS_ADMIN} --> <span class="label label-<!-- IF {PRJ_ROW_STATE} == 3 -->important<!-- ELSE -->info<!-- ENDIF -->">{PRJ_ROW_LOCALSTATUS}</span><!-- ENDIF -->
+			<a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a>
+				<!-- IF {PRJ_ROW_USER_IS_ADMIN} -->
+					<span class="label label-<!-- IF {PRJ_ROW_STATE} == 3 -->important<!-- ELSE -->info<!-- ENDIF -->">{PRJ_ROW_LOCALSTATUS}</span>
+					<!-- IF {PRJ_ROW_ISINWORK} -->
+						<span class="label label-info">{PHP.L.Inwork}</span>
+					<!-- ENDIF -->
+					<!-- IF {PRJ_ROW_REALIZED} -->
+					<span class="label label-info">{PHP.L.projects_isrealized}</span>
+					<!-- ENDIF -->
+				<!-- ENDIF -->
 		</h4>
 		<div class="pull-right textright">
 			<!-- IF {PHP.cot_plugins_active.payprjtop} AND {PHP.usr.id} == {PHP.urr.user_id} --><li>{PRJ_ROW_PAYTOP}</li><!-- ENDIF -->

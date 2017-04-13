@@ -16,8 +16,8 @@
 <!-- IF {PRJ_STATE} == 2 -->
 <div class="alert alert-warning">{PHP.L.projects_forreview}</div>
 <!-- ENDIF -->
-<!-- IF {PRJ_STATE} == 1 -->
-<div class="alert alert-warning">{PHP.L.projects_hidden}</div>
+<!-- IF {PRJ_ISINWORK} == 1 -->
+<div class="alert alert-info">{PHP.L.projects_inwork}</div>
 <!-- ENDIF -->
 
 <div class="row">
@@ -103,7 +103,6 @@
 				<!-- ENDIF -->
             <!-- ENDIF -->
             <!-- IF {PRJ_STATE} == 1 -->
-            <a href="{PRJ_PUBLPROJECT_URL}" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> {PRJ_PUBLPROJECT_TITLE}</a>	&nbsp;
             <a href="{PRJ_ARCHPROJECT_URL}" class="btn btn-danger"><i class="icon-inbox icon-white"></i> {PRJ_ARCHPROJECT_TITLE}</a>	&nbsp;
             <!-- ENDIF -->
 		</div>
