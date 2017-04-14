@@ -1,24 +1,5 @@
 <!-- BEGIN: MAIN -->
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
-<!-- IF {PRJ_PERFORMER_ID} > 0 -->
-<h4>{PHP.L.offers_vibran_ispolnitel}</h4>
-<div class="well well-small">
-	<div class="row">
-		<div class="span1">
-			{PRJ_PERFORMER_AVATAR}
-		</div>
-		<div class="span10">
-			<p class="owner">{PRJ_PERFORMER_NICKNAME}</p>
-			<p>
-				<!-- IF {PRJ_PERFORMER_ISPRO} -->
-				<span class="label label-important">PRO</span> 
-				<!-- ENDIF -->
-				<span class="label label-info">{PRJ_PERFORMER_USERPOINTS}</span>
-			</p>		
-		</div>
-	</div>
-</div>
-<!-- ENDIF -->
 
 <!-- BEGIN: PROJECTFORPRO -->
 <div class="alert alert-warning">{PHP.L.paypro_warning_onlyforpro}</div>

@@ -83,7 +83,7 @@ $sql_projects_count_state = $db->query("SELECT item_state, COUNT(item_state) as 
 
 $sql_count_inwork= $db->query("SELECT COUNT(item_id) as item_count FROM $db_projects " . $whereinwork)->fetchAll();
 
-$projects=$sql_count_inwork['item_count'];
+$projects_count_inwork=$sql_count_inwork[0]['item_count'];
 
 $sql_projects_count = $db->query("SELECT * FROM $db_projects as p " . $wherecount . "");
 $projects_count_all = $projects_count = $sql_projects_count->rowCount();
