@@ -49,7 +49,7 @@ if ($category)
 	$where['cat'] = 'item_cat=' . $db->quote($category);
 }
 
-if (isset($state)||$state===0)
+if ($state||$state===0)
 {
     $where['stat'] = 'item_state=' . $db->quote($state);
 }
@@ -88,7 +88,7 @@ $projects_count_inwork=$sql_count_inwork[0]['item_count'];
 $sql_projects_count = $db->query("SELECT * FROM $db_projects as p " . $wherecount . "");
 $projects_count_all = $projects_count = $sql_projects_count->rowCount();
 
-if (isset($inwork))
+if ($inwork)
 {
 	$where['inwork']='item_inwork=1';
 }
@@ -102,6 +102,7 @@ $sqllist = $db->query("SELECT * FROM $db_projects AS p
 
 foreach ($sql_projects_count_state as $value)
 {
+	if ($value['item_state']==1) continue;
     $page_nav[$value['item_state']] = $value['state_count'];
     $t1->assign(array(
         "TEST"=>$value['item_state'],

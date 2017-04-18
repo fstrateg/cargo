@@ -38,7 +38,9 @@
 			<!-- IF {PRJ_ROW_COST} > 0 --><div class="pull-right">{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
 			<a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a>
 				<!-- IF {PRJ_ROW_USER_IS_ADMIN} -->
-					<span class="label label-<!-- IF {PRJ_ROW_STATE} == 3 -->important<!-- ELSE -->info<!-- ENDIF -->">{PRJ_ROW_LOCALSTATUS}</span>
+					<!-- IF {PRJ_ROW_STATE} != 1 -->
+						<span class="label label-<!-- IF {PRJ_ROW_STATE} == 3 -->important<!-- ELSE -->info<!-- ENDIF -->">{PRJ_ROW_LOCALSTATUS}</span>
+					<!-- ENDIF -->
 					<!-- IF {PRJ_ROW_ISINWORK} -->
 						<span class="label label-info">{PHP.L.Inwork}</span>
 					<!-- ENDIF -->

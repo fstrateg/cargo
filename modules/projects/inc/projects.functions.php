@@ -320,6 +320,7 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 		{
             $temp_array['ADMIN_EDIT'] = cot_rc_link(cot_url('projects', 'm=edit&id=' . $item_data['item_id']), $L['Edit'], 'class="btn btn-info"');
 			$temp_array['ADMIN_EDIT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id']);
+			$temp_array['ADMIN_DELETE_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] . '&a=del');
 			$temp_array['ADMIN_COPY_URL'] = cot_url('projects', 'm=copy&id=' . $item_data['item_id']);
 			$temp_array['HIDEPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	'&a=hide');
             $temp_array['PUBLPROJECT_URL'] = cot_url('projects', 'm=edit&id=' . $item_data['item_id'] .	'&a=public');

@@ -31,9 +31,19 @@
 			<!-- IF {PHP.cot_plugins_active.paypro} -->
 			<li<!-- IF {PHP.forpro} --> class="active"<!-- ENDIF -->><a href="{FORPRO_URL}"><span class="label label-important">{PHP.L.paypro_forpro}</span></a></li>
 			<!-- ENDIF -->
-			<!-- IF {PHP.usr.auth_write} AND {PHP.usr.maingrp} != 4 -->
-			<li class="pull-right"><noindex><a rel="nofollow" class="btn btn-success" href="{SUBMITNEWPROJECT_URL}" title="{PHP.L.projects_add_to_catalog}">{PHP.L.projects_add_to_catalog}</a></noindex></li>
-			<!-- ENDIF -->
+			<!-- IF {PHP.usr.auth_write} -->
+			<li class="pull-right"><noindex>
+					<!-- IF {PHP.usr.maingrp} == 4 -->
+					<a rel="nofollow" class="btn btn-success" href="{PHP|cot_url('marshrut', 'm=add')}"
+					   title="{PHP.L.projects_add_to_catalog}">{PHP.L.projects_add_tr_marshrut}
+					</a>
+					<!-- ELSE -->
+					<a rel="nofollow" class="btn btn-success" href="{PHP|cot_url('projects', 'm=add')}"
+					   title="{PHP.L.projects_add_to_catalog}">{PHP.L.projects_add_to_catalog}
+					</a>
+					<!-- ENDIF -->
+				</noindex>
+			</li><!-- ENDIF -->
 		</ul>	
 		<!-- END: PTYPES -->
 		

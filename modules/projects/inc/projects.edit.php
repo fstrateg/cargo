@@ -227,6 +227,18 @@ if ($a == 'hide')
 	cot_redirect($r_url);
 	exit;
 }
+
+if ($a == 'del')
+{
+	$db->delete($db_projects, 'item_id = ?', $id);
+	cot_projects_sync($item['item_cat']);
+
+	$urlparams = ['m'=>'details','id'=>$usr['id'],'tab'=>'projects'];
+	$r_url = cot_url('users', $urlparams, '', true);
+	cot_redirect($r_url);
+	exit;
+}
+
 if ($a == 'archive')
 {
     $ritem = array();
