@@ -66,7 +66,11 @@ function transpedit_view($item)
     $t=new XTemplate($mskin);
     cot_display_messages($t);
 
-    $disabled=$item['item_verifed']==0?'':' disabled';
+    $attr=['style'=>'text-transform:uppercase;'];
+    if ($item['item_verifed']>0)
+    {
+        $attr['disabled']='true';
+    }
 
     if ($item['item_state']==1)
         $publish=cot_rc_link(cot_url('transport','m=publish&id='.$id.'&state=0'),$L['Hide'],'class="btn btn-warning"');
@@ -77,7 +81,8 @@ function transpedit_view($item)
         "TRNSEDIT_FORM_SEND" => cot_url('transport', "m=edit&a=update&id=" . $item['item_id']),
         "TRNSEDIT_FORM_ID" => $item['item_id'],
         "TRNSEDIT_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
-        "TRNSEDIT_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$disabled),
+        "TRNSEDIT_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
+        "TRNSEDIT_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255']),
         "TRNSEDIT_FORM_PHOTO"=> transpedit_getphoto($item['item_photo'],$id),
         "TRNSEDIT_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
         "TRNSEDIT_FORM_DELETE"=> cot_rc_link('javascript:void(0)',$L['Delete'],'class="btn btn-danger" id="del"'),

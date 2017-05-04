@@ -41,10 +41,13 @@ $mskin = cot_tplfile(array('transport', 'add'));
 $t=new XTemplate($mskin);
 cot_display_messages($t);
 
+$attr=['style'=>'text-transform:uppercase;'];
+
 $t->assign(array(
     "TRNSADD_FORM_SEND" => cot_url('transport', "m=add&a=add",'',true),
     "TRNSADD_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
-    "TRNSADD_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$disabled),
+    "TRNSADD_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
+    "TRNSADD_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255']),
     "TRNSADD_FORM_PHOTO"=> cot_inputbox('file','rphoto'),
     "TRNSADD_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
     "TEST" =>  print_r($item,true),

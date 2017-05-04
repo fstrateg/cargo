@@ -41,3 +41,5 @@ $L['transport_moderation']='Модерация';
 $L['transport_moderate']='Заявки по транспорту на модерацию';
 $L['transport_verife']='Верифицировать';
 $L['transport_verif_declane']='Отказать';
+
+$L['transport_fio_driver']='ФИО водителя';

@@ -13,6 +13,10 @@
                 <td>{TRNSEDIT_FORM_LOCATION}</td>
             </tr>
             <tr>
+                <td>{PHP.L.transport_fio_driver}</td>
+                <td>{TRNSEDIT_FORM_DRIVER}</td>
+            </tr>
+            <tr>
                 <td>{PHP.L.transport_regnumber}:</td>
                 <td>{TRNSEDIT_FORM_REGNUMBER}</td>
             </tr>

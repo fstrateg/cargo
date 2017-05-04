@@ -46,7 +46,7 @@ function cot_generate_transport_row($item_data,$tag_prefix)
     if (file_exists($photo)&&$item_data['item_photo'])
         $temp_array['PHOTO']=$item_data['item_photo'];
     else
-        $temp_array['PHOTO']='/datas/photos/no-image.png';
+        $temp_array['PHOTO']='/datas/photos/fura_no_photo.png';
 
     /* === Hook === */
     foreach ($extp_main as $pl)
@@ -93,7 +93,7 @@ function cot_transport_import($source = 'POST', $ritem = array(), $auth = array(
     global $sys,$cfg,$usr;
 
     $ritem['item_cat'] = cot_import('rcat', $source, 'TXT');
-
+    $ritem['item_driver']= cot_import('rdriver',$source,'TXT');
     $ritem['item_text'] = cot_import('rtext', $source, 'HTM');
     if (isset($_FILES['rphoto'])&&$_FILES['rphoto']['errors']==0)
     {
@@ -109,13 +109,9 @@ function cot_transport_import($source = 'POST', $ritem = array(), $auth = array(
             cot_transport_uploadImage($file['tmp_name'],$cfg['root_dir'].DS.$ritem['item_photo'],300);
         }
     }
-    if ($ritem['item_verifed']<>0)
+    if ($ritem['item_verifed']==0)
     {
-        $ritem['item_title'] = $ritem['item_title'];
-    }
-    else
-    {
-        $ritem['item_title'] = cot_import('rtitle', $source, 'TXT');
+        $ritem['item_title'] = strtoupper(cot_import('rtitle', $source, 'TXT'));
     }
 
     if(empty($ritem['item_date']))
