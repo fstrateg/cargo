@@ -95,6 +95,9 @@ function cot_transport_import($source = 'POST', $ritem = array(), $auth = array(
     $ritem['item_cat'] = cot_import('rcat', $source, 'TXT');
     $ritem['item_driver']= cot_import('rdriver',$source,'TXT');
     $ritem['item_text'] = cot_import('rtext', $source, 'HTM');
+    $ritem['item_vol']=cot_import('rvol',$source,'INT');
+    $ritem['item_len']=cot_import('rlen',$source,'INT');
+
     if (isset($_FILES['rphoto'])&&$_FILES['rphoto']['errors']==0)
     {
         $file=$_FILES['rphoto'];
@@ -112,6 +115,7 @@ function cot_transport_import($source = 'POST', $ritem = array(), $auth = array(
     if ($ritem['item_verifed']==0)
     {
         $ritem['item_title'] = strtoupper(cot_import('rtitle', $source, 'TXT'));
+        $ritem['item_title']=mb_convert_case($ritem['item_title'], MB_CASE_UPPER, "UTF-8");
     }
 
     if(empty($ritem['item_date']))

@@ -43,3 +43,5 @@ $L['transport_verife']='Верифицировать';
 $L['transport_verif_declane']='Отказать';
 
 $L['transport_fio_driver']='ФИО водителя';
+$L['transport_vol']='Объем';
+$L['transport_length']='Длина (по полу)';

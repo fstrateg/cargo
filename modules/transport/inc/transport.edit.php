@@ -82,6 +82,8 @@ function transpedit_view($item)
         "TRNSEDIT_FORM_ID" => $item['item_id'],
         "TRNSEDIT_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
         "TRNSEDIT_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
+        "TRNSEDIT_FORM_VOL" => cot_inputbox('text','rvol',$item['item_vol']),
+        "TRNSEDIT_FORM_LEN" => cot_inputbox('text','rlen',$item['item_len']),
         "TRNSEDIT_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255']),
         "TRNSEDIT_FORM_PHOTO"=> transpedit_getphoto($item['item_photo'],$id),
         "TRNSEDIT_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),

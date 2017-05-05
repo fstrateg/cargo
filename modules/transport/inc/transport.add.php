@@ -48,6 +48,8 @@ $t->assign(array(
     "TRNSADD_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
     "TRNSADD_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
     "TRNSADD_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255']),
+    "TRNSADD_FORM_VOL" => cot_inputbox('text','rvol',$item['item_vol']),
+    "TRNSADD_FORM_LEN" => cot_inputbox('text','rlen',$item['item_len']),
     "TRNSADD_FORM_PHOTO"=> cot_inputbox('file','rphoto'),
     "TRNSADD_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
     "TEST" =>  print_r($item,true),

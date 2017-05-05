@@ -21,6 +21,14 @@
                 <td>{TRNSEDIT_FORM_REGNUMBER}</td>
             </tr>
             <tr>
+                <td>{PHP.L.transport_vol}:</td>
+                <td><div class="input-append">{TRNSEDIT_FORM_VOL}<span class="add-on">{PHP.L.projects_m3}</td>
+            </tr>
+            <tr>
+                <td>{PHP.L.transport_length}:</td>
+                <td><div class="input-append">{TRNSEDIT_FORM_LEN}<span class="add-on">{PHP.L.projects_m}</td>
+            </tr>
+            <tr>
                 <td>{PHP.L.transport_photo}:</td>
                 <td>{TRNSEDIT_FORM_PHOTO}</td>
             </tr>
