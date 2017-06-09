@@ -305,3 +305,7 @@ background-color: #e9ffde;
 box-shadow: #b5f7bf 2px 2px 5px;
     border: 1px solid #b5f7bf;
 }
+table.noborder td{
+	border: none;
+	padding: 4px;
+}

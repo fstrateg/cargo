@@ -96,7 +96,22 @@ function cot_transport_import($source = 'POST', $ritem = array(), $auth = array(
     $ritem['item_driver']= cot_import('rdriver',$source,'TXT');
     $ritem['item_text'] = cot_import('rtext', $source, 'HTM');
     $ritem['item_vol']=cot_import('rvol',$source,'INT');
-    $ritem['item_len']=cot_import('rlen',$source,'INT');
+    $ritem['item_length']=cot_import('rlen',$source,'INT');
+
+    $trailer=cot_import('trailer',$source,'INT');
+    if ($trailer) {
+        $ritem['trailer_number'] = strtoupper(cot_import('tnumber', $source, 'TXT'));
+        $ritem['trailer_number'] = mb_strtoupper($ritem['trailer_number'],"UTF-8");
+        $ritem['trailer_vol'] = cot_import('tvol', $source, 'INT');
+        $ritem['trailer_len'] = cot_import('tlen', $source, 'INT');
+    }
+    else
+    {
+        $ritem['trailer_number'] = '';
+        $ritem['trailer_vol'] = '';
+        $ritem['trailer_len']='';
+    }
+
 
     if (isset($_FILES['rphoto'])&&$_FILES['rphoto']['errors']==0)
     {
@@ -141,6 +156,18 @@ function cot_transport_validate($ritem)
 {
     cot_check(empty($ritem['item_cat']), 'transport_select_cat', 'rcat');
     cot_check(mb_strlen($ritem['item_title']) < 2, 'transport_empty_title', 'rtitle');
+    cot_check(mb_strlen($ritem['item_driver']) < 2, 'transport_empty_driver', 'rdriver');
+    cot_check($ritem['item_vol']<=0,'transport_empty_vol','rvol');
+    cot_check($ritem['item_length']<=0,'transport_empty_len','rlen');
+
+
+    if ($ritem['trailer_number']||$ritem['trailer_len']||$ritem['trailer_vol'])
+    {
+        cot_check(mb_strlen($ritem['trailer_number']) < 2, 'transport_empty_tnumber', 'tnumber');
+        cot_check($ritem['trailer_len'] < 1, 'transport_empty_tlen', 'tlen');
+        cot_check($ritem['trailer_vol'] < 1, 'transport_empty_tvol', 'tvol');
+    }
+
     return !cot_error_found();
 }
 function cot_transport_add(&$ritem, $auth = array())

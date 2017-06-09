@@ -54,6 +54,15 @@ $t->assign(array(
     "TRNSADD_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
     "TEST" =>  print_r($item,true),
 ));
+
+/* triler */
+$t->assign([
+    'TRAILER_NUMBER'=>cot_inputbox('text','tnumber',$item['trailer_number'],$attr),
+    'TRAILER_VOL'=>cot_inputbox('number','tvol',$item['trailer_vol']),
+    'TRAILER_LEN'=>cot_inputbox('number','tlen',$item['trailer_len']),
+    'TRAILER'=>cot_inputbox('hidden','trailer',$item['trailer_number']||$item['trailer_vol']||$item['trailer_len']?'1':'0'),
+]);
+
 /* === Hook === */
 foreach (cot_getextplugins('transport.add.tags') as $pl)
 {

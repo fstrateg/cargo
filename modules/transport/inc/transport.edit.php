@@ -82,16 +82,24 @@ function transpedit_view($item)
         "TRNSEDIT_FORM_ID" => $item['item_id'],
         "TRNSEDIT_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
         "TRNSEDIT_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
-        "TRNSEDIT_FORM_VOL" => cot_inputbox('text','rvol',$item['item_vol']),
-        "TRNSEDIT_FORM_LEN" => cot_inputbox('text','rlen',$item['item_len']),
+        "TRNSEDIT_FORM_VOL" => cot_inputbox('number','rvol',$item['item_vol']),
+        "TRNSEDIT_FORM_LEN" => cot_inputbox('number','rlen',$item['item_length']),
         "TRNSEDIT_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255']),
         "TRNSEDIT_FORM_PHOTO"=> transpedit_getphoto($item['item_photo'],$id),
         "TRNSEDIT_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
         "TRNSEDIT_FORM_DELETE"=> cot_rc_link('javascript:void(0)',$L['Delete'],'class="btn btn-danger" id="del"'),
         "TRNSEDIT_FORM_DELURL"=> cot_url('transport','m=delete&id='.$id,'',true),
         "TRNSEDIT_FORM_UNPUBLISH" => $publish,
+        "TRNSEDIT_FORM_ADDTRAIL"=>cot_url('transport','m=ajax-addtrailer'),
     ));
 
+    /* triler */
+        $t->assign([
+            'TRAILER_NUMBER'=>cot_inputbox('text','tnumber',$item['trailer_number'],$attr),
+            'TRAILER_VOL'=>cot_inputbox('number','tvol',$item['trailer_vol']),
+            'TRAILER_LEN'=>cot_inputbox('number','tlen',$item['trailer_len']),
+            'TRAILER'=>cot_inputbox('hidden','trailer',$item['trailer_number']||$item['trailer_vol']||$item['trailer_len']?'1':'0'),
+        ]);
 
     /* === Hook === */
     foreach (cot_getextplugins('transport.edit.tags') as $pl)

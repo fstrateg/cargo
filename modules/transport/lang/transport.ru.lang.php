@@ -44,4 +44,13 @@ $L['transport_verif_declane']='Отказать';
 
 $L['transport_fio_driver']='ФИО водителя';
 $L['transport_vol']='Объем';
+$L['transport_triler']='Прицеп';
 $L['transport_length']='Длина (по полу)';
+
+$L['transport_empty_tnumber']='Регистрационный номер прицепа не указан!';
+$L['transport_empty_tvol']='Полезный объем прицепа не указан!';
+$L['transport_empty_tlen']='Длина прицепа не указана!';
+
+$L['transport_empty_driver']='ФИО водителя не задано!';
+$L['transport_empty_vol']='Объем грузового отделения не задан!';
+$L['transport_empty_len']='Полезная длина транспорта не задана!';
