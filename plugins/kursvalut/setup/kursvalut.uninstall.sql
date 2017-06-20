@@ -1,0 +1,1 @@
+DROP TABLE `cg_grab_kurs`;

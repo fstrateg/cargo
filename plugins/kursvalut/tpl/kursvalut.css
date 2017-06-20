@@ -1,0 +1,48 @@
+#kurs {
+    position:static;
+
+}
+
+.table_blur table {
+    width: 300px;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', Sans-Serif;
+    font-size: 11px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-spacing: 0px;
+    text-align: center;
+    box-shadow: inset rgba(0,0,0,.5) 0 3px 8px, inset rgba(252,255,255,.8) 0 2px 8px, rgba(0,0,0,.7) 0 4px 10px 0px;
+
+
+}
+.table_blur caption{
+    font-size: 15px;
+    color: white;
+    background: #0b7805 radial-gradient(circle at 50% 0, #0b7805, #0b7805);
+    box-shadow: inset rgba(0,0,0,.4) 0 -1px 6px, inset rgba(252,255,255,.4) 0 2px 6px, rgba(0,0,0,.5) 0 3px 8px -3px;
+    text-shadow: 0 1px 0px #2D2020;
+    padding: 0px 20px;
+    border-width: 0px 0px 0px 0px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.table_blur th {
+    font-size: 13px;
+    text-shadow: 0 1px 0px #2D2020;
+    font-weight: normal;
+    background: #0b7805;
+    color: white;
+    padding: 0px 4px;
+}
+.table_blur th:first-child, .table_blur td:first-child {
+    text-align: left;
+
+}
+.table_blur td {
+    background: #f5f5f5;
+    padding: 0px 5px;
+    border-style: solid;
+    border-width: 1px 0px 0px 0px ;
+    border-color: darkgray;
+
+}
