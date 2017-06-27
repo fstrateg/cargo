@@ -488,7 +488,7 @@ $L['hea_valqueues'] = 'В очереди на утверждение: '; // Disc
 $L['hea_welcome'] = 'Добро пожаловать';
 $L['hea_youareloggedas'] = 'Пользователь';
 $L['hea_youarenotlogged'] = 'Вы не авторизованы';
-
+$L['hea_claims'] = 'Заявки';
 /**
  * Footer
  */

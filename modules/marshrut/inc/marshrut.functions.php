@@ -3,12 +3,15 @@ defined('COT_CODE') or die('Wrong URL');
 
 require_once cot_langfile('marshrut','module');
 cot::$db->registerTable('marshrut');
+cot::$db->registerTable('transptype');
 
 function cot_marshrut_import()
 {
     $rez=[];
     $rez['item_db']=cot_date2stamp(cot_import('mrdb','POST','TXT'),'d.m.Y');
     $rez['item_de']=cot_date2stamp(cot_import('mrde','POST','TXT'),'d.m.Y');
+    $rez['item_ttype']=cot_import('mrttype','POST','NUM');
+    $rez['item_frt']=cot_import('mrfull','POST','NUM')+(cot_import('mrcoll','POST','NUM')*2);
     $rez['item_price']=cot_import('mrprice','POST','NUM');
     return $rez;
 }
@@ -19,6 +22,8 @@ function cot_marshrut_validate($ritem)
     cot_check(empty($ritem['item_de']), 'marshrut_empty_de', 'mrde');
     cot_check(empty($ritem['item_region']), 'marshrut_empty_region', 'region');
     cot_check(empty($ritem['item_regionto']), 'marshrut_empty_regionto', 'regionto');
+    cot_check(empty($ritem['item_ttype']),'marshrut_empty_ttype','mrttype');
+    cot_check(empty($ritem['item_frt']),'marshrut_empty_frt','mrfrt');
     return !cot_error_found();
 }
 
@@ -31,6 +36,21 @@ function cot_marshrut_add($ritem)
         $id = $db->lastInsertId();
     }
     return $id;
+}
+function cot_marshrut_gettr()
+{
+    global $db,$db_transptype;
+    $arr=$db->query("select item_id,item_name from $db_transptype")->fetchAll();
+    $vl=[];
+    $nam=[];
+    foreach($arr as $a)
+    {
+        $vl[]=$a["item_id"];
+        $nam[]=$a["item_name"];
+    }
+    $rez=['vl'=>$vl,'nam'=>$nam];
+
+    return $rez;
 }
 
 function cot_marshrut_edit($ritem,$id)
@@ -55,7 +75,17 @@ function cot_marshrut_changestate($id)
 
 function cot_generate_marshruttag($item_data,$prefix='')
 {
-    global $usr,$L;
+    global $usr,$L,$type;
+    if (!isset($type))
+    {
+        global $db,$db_transptype;
+        $arr=$db->query("select item_id,item_name from $db_transptype")->fetchAll();
+        $type=[];
+        foreach($arr as $a)
+        {
+            $type[$a["item_id"]]=$a["item_name"];
+        }
+    }
     $temp_array=array();
     $temp_array['ID']=$item_data['item_id'];
     $temp_array['SHOW_STATUS']=($item_data['item_userid']==$usr['id']);
@@ -64,6 +94,8 @@ function cot_generate_marshruttag($item_data,$prefix='')
     $temp_array['COST']=number_format($item_data['item_price'],0,'.',' ');
     $temp_array['STATE']=$item_data['item_state'];
     $temp_array['STATUS']=cot_marshrut_state($item_data['item_state']);
+    $temp_array['TTYPE']=$type[$item_data['item_ttype']];
+    $temp_array['FRT']=cot_getfrt_tag($item_data['item_frt']);
 
     foreach (cot_getextplugins('projectstags.main') as $pl)
     {
@@ -123,4 +155,32 @@ function cot_get_marshrut_fromdb()
         cot_die_message(404, TRUE);
     }
     return $item;
+}
+
+function cot_getfrt($vl)
+{
+    global $L;
+    $html=cot_checkbox($vl==1||$vl==3,'mrfull',$L['marshrut_frt_full']);
+    $html.=cot_checkbox($vl==2||$vl==3,'mrcoll',$L['marshrut_frt_coll']);
+
+    return $html;
+}
+
+function cot_getfrt_tag($vl)
+{
+    global $L;
+    switch($vl)
+    {
+        case 1:
+            return $L['marshrut_frt_full'];
+            break;
+        case 2:
+            return $L['marshrut_frt_coll'];
+            break;
+        case 3:
+            return $L['marshrut_frt_any'];
+            break;
+    }
+
+    return "";
 }

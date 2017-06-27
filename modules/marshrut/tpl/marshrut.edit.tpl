@@ -21,6 +21,14 @@
                 <td>{PRJEDIT_FORM_LOCATIONTO}</td>
             </tr>
             <tr>
+                <td>{PHP.L.marshrut_ttype}:</td>
+                <td>{MR_FORM_TTYPE}</td>
+            </tr>
+            <tr>
+                <td>{PHP.L.marshrut_frt}:</td>
+                <td>{MR_FORM_FRT}</td>
+            </tr>
+            <tr>
                 <td>{PHP.L.marshrut_price}:</td>
                 <td><div class="input-append">{MR_FORM_PRICE}<span class="add-on">{PHP.cfg.payments.valuta}</span></div></td>
             </tr>

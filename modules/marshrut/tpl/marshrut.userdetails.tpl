@@ -13,12 +13,24 @@
 <!-- ENDIF -->
 <hr>
     <!-- BEGIN: MARSH_ROWS -->
-    <table class="flat">
-        <tr>
-            <td>{MR_DB}-{MR_DE} {MR_TITLE} <!-- IF {MR_SHOW_STATUS} -->{MR_STATUS}<!-- ENDIF -->
-                <div class="pull-right">{MR_COST} {PHP.cfg.payments.valuta}</div></td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="span9">
+        <h4>
+            {MR_TITLE}
+            <!-- IF {MR_COST} > 0 --><div class="pull-right span2">{MR_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
+        </h4>
+        </div>
+        <div class="span3">
+            {MR_DB}-{MR_DE}
+        </div>
+        <div class="span2">
+            {MR_TTYPE}
+        </div>
+        <div class="span3">
+           {MR_FRT}
+        </div>
+    </div>
+    <hr>
     <!-- END: MARSH_ROWS -->
 <!-- IF {MARSHRUT_COUNT} > 0 -->
 <div class="pagination"><ul>{PAGENAV_PAGES}</ul></div>

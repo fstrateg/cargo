@@ -30,10 +30,14 @@ $t=new XTemplate($pt);
 
 cot_display_messages($t);
 
+$trt=cot_marshrut_gettr();
+
 $t->assign([
         'MR_FORM_SEND'=>cot_url('marshrut','m=add&a=add'),
         'MR_FORM_DB'=>cot_inputbox('text','mrdb',cot_date('d.m.Y',$ritem['item_db']),['id'=>'mrdb']),
         'MR_FORM_DE'=>cot_inputbox('text','mrde',cot_date('d.m.Y',$ritem['item_de']),['id'=>'mrde']),
+        'MR_FORM_TTYPE'=>cot_selectbox($ritem['item_ttype'],'mrttype',$trt['vl'],$trt['nam']),
+        'MR_FORM_FRT'=>cot_getfrt($ritem['item_frt']),
         'MR_FORM_PRICE'=>cot_inputbox('text','mrprice',$ritem['item_price']),
         'TEST'=> print_r($ritem,true),
     ]);
