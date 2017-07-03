@@ -17,7 +17,6 @@
  */
 
 defined('COT_CODE') or die('Wrong URL.');
-
 if ($item['item_userid']!=$usr['id']) return;
 
 require_once cot_incfile('marshrut', 'module');
@@ -81,13 +80,16 @@ $addto['country']="item_countryto='${item['item_countryto']}'";
 $simmr_add=" AND ( ".implode(" OR ", $add)." ) AND (".implode(" OR ", $addto).")";
 
 $tt="(${add['city']})*10+(${add['region']})*5+(${addto['city']})*10+(${addto['region']})";
-$sqlsim = $db->query("SELECT a.* FROM ("
-    . "SELECT $tt AS tt,u.*,p.* FROM $db_marshrut AS p
-	LEFT JOIN $db_users AS u ON u.user_id=p.item_userid 
+$sql="SELECT a.* FROM ("
+	. "SELECT $tt AS tt,u.*,p.* FROM $db_marshrut AS p
+	LEFT JOIN $db_users AS u ON u.user_id=p.item_userid
 	" . $simmr_where . "
 	" . $simmr_add . "
 	" . $simmr_order . "
-	) a WHERE tt>=25 LIMIT " . $cfg['plugin']['simmarsh']['limit'])->fetchAll();
+	) a WHERE tt>=16 LIMIT " . $cfg['plugin']['simmarsh']['limit'];
+
+$sqlsim = $db->query($sql)->fetchAll();
+
 
 if (count($sqlsim)==0) return;
 
