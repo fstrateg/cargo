@@ -1,6 +1,6 @@
 <!-- BEGIN: MAIN -->
 
-            {SPIS}
+            {SPISOK_TRAN}
 
 
 <!-- END: MAIN -->

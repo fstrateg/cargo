@@ -3,9 +3,9 @@
  * [BEGIN_COT_EXT]
  * Code=spisok
  * Name=Список транспорта
- * Description=Выводит список транспорта, работает администрирование списка
- * Version=1.0.1
- * Date=03.07.2017
+ * Description=Выводит список транспорта в любом месте сайта, работает администрирование списка
+ * Version=1.1.0
+ * Date=13.07.2017
  * Author= Timur Ahmetzyanov
  * Copyright=(c) Timurka)))
  * Notes=
@@ -16,11 +16,8 @@
  * [END_COT_EXT]
 
  * [BEGIN_COT_EXT_CONFIG]
- *
+ *  spisok_box=01:hidden:::
  * [END_COT_EXT_CONFIG]
  */
 defined ('COT_CODE') or die ('WRONG URL');
-
-
-
 ?>

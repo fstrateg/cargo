@@ -71,7 +71,7 @@ if (isset($_POST['add_spisok'])) {
             if (!$res){
             $hot = $_POST['add_hot'];
             $url = $_SERVER['HTTP_REFERER'];
-                $res = $db->query("INSERT INTO $db_spisok_transport(id,name, hot) VALUES (null,'$name','$hot')");
+                $db->query("INSERT INTO $db_spisok_transport(id,name, hot) VALUES (null,'$name','$hot')");
                 cot_message("Поле $name добавлено в базу данных");
         }
         }

@@ -1,12 +1,20 @@
 <?php
 
+$shortpath = $cfg['plugin']['spisok'];
+
+$shortpath['spisok_box']=create_option();
+
+$spisok_box = $shortpath['spisok_box'];
+
+
+
 function create_option()
 {
     cot::$db->registerTable('spisok_transport');
     global $db, $db_spisok_transport;
     $str = '<select name="rcat">
 <optgroup label="">';
-        $res = $db->query("SELECT id,name FROM $db_spisok_transport WHERE hot = TRUE ORDER BY name")->fetchall();
+        $res = $db->query("SELECT id,name FROM $db_spisok_transport WHERE hot = TRUE")->fetchall();
         foreach ($res as $item)
         {
             $id=$item['id'];
