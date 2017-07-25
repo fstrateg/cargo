@@ -20,7 +20,7 @@
 		{PHP|cot_get_topusers (7, 5)}	
 		<!-- ENDIF -->
 		<!-- IF {PHP.cot_plugins_active.kursvalut} -->
-		{INDEX_KURS}
+		{PHP.ext_kursvalut}
 		<!-- ENDIF -->
 		<br/>
 		<br/>
