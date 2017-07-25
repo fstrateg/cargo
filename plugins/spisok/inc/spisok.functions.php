@@ -1,14 +1,17 @@
 <?php
+if(!isset($rcat_id)){
+    $rcat_id=0;
+}
 
 $shortpath = $cfg['plugin']['spisok'];
 
-$shortpath['spisok_box']=create_option();
+$shortpath['spisok_box']=create_option($rcat_id);
 
 $spisok_box = $shortpath['spisok_box'];
 
 
 
-function create_option()
+function create_option($rcat_id)
 {
     cot::$db->registerTable('spisok_transport');
     global $db, $db_spisok_transport;
@@ -19,7 +22,9 @@ function create_option()
         {
             $id=$item['id'];
             $name=$item['name'];
-            $str=$str . "<option value=$id>$name</option>";
+            if($rcat_id==$id){
+            $str=$str . "<option value=$id selected>$name</option>";}
+            else{$str=$str . "<option value=$id>$name</option>";}
         }
     $str = $str . '</optgroup>
 <optgroup label="--------">';
