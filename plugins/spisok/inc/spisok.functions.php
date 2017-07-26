@@ -36,6 +36,7 @@ function create_option($rcat_id)
         $str=$str . "<option value=$id>$name</option>";
     }
     $str = $str . '</optgroup></select>';
+    unset($rcat_id);
     return $str;
 }
 
