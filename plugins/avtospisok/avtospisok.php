@@ -10,5 +10,5 @@
 defined ('COT_CODE') or die ('Wrong URL.');
 
 $t= new XTemplate(cot_tplfile('avtospisok', 'plug'));
-$str = create_my_selectbox('test',null);
+$str = create_avtospisok_selectbox('test',null);
 $t->assign('SPISOK_TRAN',$str);

@@ -1,11 +1,11 @@
 <?php
-function create_my_selectbox($optname,$sel){
+function create_avtospisok_selectbox($optname,$sel){
     if ($sel==null){
         $sel=0;}
     cot::$db->registerTable('spisok_avtotransport');
     global $db, $db_spisok_avtotransport;
-    $result = '<select name=' . $optname . '>
-<optgroup label="">';
+    $result = "<select name=$optname>
+<optgroup label=''>";
     $res = $db->query("SELECT id,name FROM $db_spisok_avtotransport WHERE hot = TRUE")->fetchall();
     foreach ($res as $item)
     {
@@ -31,7 +31,16 @@ function create_my_selectbox($optname,$sel){
 }
 
 
-function create_admin()
+function get_avtospisok_value($id){
+    cot::$db->registerTable('spisok_avtotransport');
+    global $db, $db_spisok_avtotransport;
+    $res = $db->query("SELECT name FROM $db_spisok_avtotransport WHERE id = $id")->fetch();
+    $result = $res['name'];
+    return $result;
+}
+
+
+function create_avtospisok_admin()
 {
     cot::$db->registerTable('spisok_avtotransport');
     global $db, $db_spisok_avtotransport;
