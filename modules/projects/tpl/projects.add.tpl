@@ -39,6 +39,10 @@
 				<td>{PRJADD_FORM_TITLE}</td>
 			</tr>
             <tr>
+                <td>{PHP.L.projects_frt}:</td>
+                <td>{PRJADD_FORM_FRT}</td>
+            </tr>
+            <tr>
                 <td>{PHP.L.projects_cnt}</td>
                 <td>{PRJADD_FORM_COUNT}</td>
             </tr>

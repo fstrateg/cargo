@@ -39,6 +39,10 @@
 				<td>{PRJEDIT_FORM_TITLE}</td>
 			</tr>
 			<tr>
+				<td>{PHP.L.projects_frt}:</td>
+				<td>{PRJEDIT_FORM_FRT}</td>
+			</tr>
+			<tr>
 				<td>{PHP.L.projects_cnt}</td>
 				<td>{PRJEDIT_FORM_COUNT}</td>
 			</tr>

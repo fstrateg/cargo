@@ -184,6 +184,7 @@ $t->assign(array(
     "PRJADD_FORM_PARSER" => cot_selectbox($cfg['projects']['parser'], 'rparser', $parser_list, $parser_list, false),
     "PRJADD_FORM_FROM"=>cot_inputbox('text','rfrom',cot_date('d.m.Y',$ritem['item_datefrom']),'id="date_from"'),
     "PRJADD_FORM_TO"=>cot_inputbox('text','rto',cot_date('d.m.Y',$ritem['item_dateto']),'id="date_to"'),
+	"PRJADD_FORM_FRT"=>cot_getfrt($ritem['item_frt']),
 ));
 
 Resources::addFile($cfg['modules_dir'].'/projects/js/jquery-ui.min.css');

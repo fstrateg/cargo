@@ -808,3 +808,11 @@ if ($cfg['projects']['markup'] == 1){
 }
 // </editor-fold>
 
+function cot_getfrt($vl)
+{
+	global $L;
+	$html=cot_checkbox($vl==1||$vl==3,'cgfull',$L['cargo_frt_full']);
+	$html.=cot_checkbox($vl==2||$vl==3,'cgcoll',$L['cargo_frt_coll']);
+
+	return $html;
+}
