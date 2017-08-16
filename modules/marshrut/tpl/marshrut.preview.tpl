@@ -33,10 +33,10 @@
 <!--IF {MR_STATE} != 1 -->
 <a href="{MR_PUBLISH_URL}" class="btn btn-success"><span>{PHP.L.Publish}</span></a>
 <!-- ENDIF -->
-<!--IF {MR_STATE} != 2 -->
+<!--IF 2 != 2 -->
 <a href="{MR_HIDE_URL}" class="btn btn-warning"><span>{PHP.L.Hide}</span></a>
 <!-- ENDIF -->
-<!--IF {MR_STATE} != 3 -->
+<!--IF 3 != 3 -->
 <a href="{MR_ARCHIVE_URL}" class="btn btn-inverse"><span>{PHP.L.Inarchive}</span></a>
 <!-- ENDIF -->
 <div class="pull-right"><span id="del" href="" class="btn btn-danger">{PHP.L.Delete}</span> </div>
@@ -47,4 +47,5 @@
     });
 </script>
 {TEST}
+{SIMCARGO}
 <!-- END: MAIN -->

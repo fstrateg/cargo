@@ -21,6 +21,12 @@ if ($item['item_state'] != 0 && !$usr['isadmin'] && $usr['id'] != $item['item_us
     cot_redirect(cot_url('message', "msg=930", '', true));
     exit;
 }
+if ($usr['id'] == $item['item_userid'])
+{
+    cot_update_lastview($item);
+}
+
+//marshrut.tags
 
 $t=new XTemplate(cot_tplfile('marshrut.preview'));
 
@@ -33,6 +39,13 @@ $t->assign([
     'MR_DELETE_URL'=>cot_url('marshrut','m=edit&a=del'.$stat,"&id=$id",true),
     'MR_EDIT_URL'=>cot_url('marshrut','m=edit',"&id=$id".$stat,true),
     ]);
+
+/* === Hook === */
+foreach (cot_getextplugins('marshrut.preview.tags') as $pl)
+{
+    include $pl;
+}
+/* ===== */
 
 $t->parse();
 $module_body=$t->text();

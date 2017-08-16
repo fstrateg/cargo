@@ -37,6 +37,14 @@ function cot_marshrut_add($ritem)
     }
     return $id;
 }
+function cot_update_lastview($item)
+{
+    global $db,$db_marshrut,$sys;
+    $lv=$sys["now"];
+    $id=$item["item_id"];
+    $db->query("update $db_marshrut set item_lastview=$lv where item_id=$id")->execute();
+}
+
 function cot_marshrut_gettr()
 {
     global $db,$db_transptype;

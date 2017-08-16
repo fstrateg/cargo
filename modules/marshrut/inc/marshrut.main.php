@@ -1,7 +1,7 @@
 <?php
 defined('COT_CODE') or die('Wrong URL');
 
-$maxrowsperpage=5;
+$maxrowsperpage=10;
 
 list($pn, $d, $d_url) = cot_import_pagenav('d', $maxrowsperpage);
 $where="where item_state=1";
