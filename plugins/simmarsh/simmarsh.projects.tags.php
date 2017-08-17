@@ -97,7 +97,7 @@ foreach ($sqlsim as $simmr)
 {
 	$jj++;
 	$sp_t->assign(cot_generate_usertags($simmr, 'SIMMR_ROW_OWNER_'));
-    /*$sp_t->assign(cot_generate_marshruttag($simmr, 'SIMMR_ROW_'));*/
+    $sp_t->assign(cot_generate_marshruttag($simmr, 'SIMMR_ROW_'));
 	//$sp_t->assign(cot_generate_projecttags($simmr, 'SIMMR_ROW_', $cfg['projects']['shorttextlen'], $usr['isadmin'], $cfg['homebreadcrumb']));
 	$sp_t->assign(array(
 		"SIMMR_ROW_ODDEVEN" => cot_build_oddeven($jj),
