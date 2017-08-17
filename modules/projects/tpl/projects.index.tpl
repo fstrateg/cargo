@@ -87,7 +87,8 @@
                 <div class="span1">{PRJ_ROW_VOL}{PHP.L.projects_m3}</div>
             </div>
             <div class="row">
-                <div class="span8">{PRJ_ROW_SHORTTEXT}</div>
+                <div class="span6">{PRJ_ROW_SHORTTEXT}</div>
+				<div class="span2">{PRJ_ROW_FRT}</div>
             </div>
             <div class="row">
                 <div class="span8">

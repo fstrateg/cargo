@@ -311,6 +311,7 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 			'DATETO' => cot_date('d.m.y',$item_data['item_dateto']),
             'MASSA' => $item_data['item_massa'],
             'VOL' => $item_data['item_vol'],
+            'FRT' => cot_frt_tag($item_data['item_frt']),
 		);
 
 		$temp_array["OFFERS_ADDOFFER_URL"] = (empty($item_data['item_alias'])) ? 
@@ -474,6 +475,7 @@ function cot_projects_import($source = 'POST', $ritem = array(), $auth = array()
 	$ritem['item_count']=cot_import('rcount', $source , 'INT');
 	$ritem['item_massa']=cot_import('rmassa', $source , 'NUM');
 	$ritem['item_vol']=cot_import('rvol', $source, 'NUM');
+	$ritem['item_frt']=cot_import_frt('rfrt',$source);
 
 	if(empty($ritem['item_date']))
 	{
@@ -500,11 +502,26 @@ function cot_projects_import($source = 'POST', $ritem = array(), $auth = array()
 	{
 		$ritem['item_'.$exfld['field_name']] = cot_import_extrafields('ritem'.$exfld['field_name'], $exfld, $source, $ritem['item_'.$exfld['field_name']]);
 	}
+
+    if ($ritem['item_performer']&&$ritem['item_count']==$ritem['item_performer']) $ritem['item_state']=1;
+    else $ritem['item_state']=0;
 	
 	return $ritem;
 }
 
-
+/**
+ * Нам нужно вернуть значения залоченных контролов
+ * @param $item То что было до редактирования
+ * @param $ritem Значения после редактирования
+ */
+function cot_projects_return_values($item,$ritem)
+{
+    if ($item['item_performer']==0) return $ritem;
+    $var = explode(',','item_cat,item_title,item_datefrom,item_dateto,item_city,item_cityto,item_frt,item_vol,item_massa');
+    foreach($var as $i)
+        $ritem[$i]=$item[$i];
+    return $ritem;
+}
 
 /**
  * Validates project data.
@@ -527,6 +544,8 @@ function cot_projects_validate($ritem)
 	cot_check(empty($ritem['item_count']),'projects_empty_count');
 	cot_check(empty($ritem['item_massa']),'projects_empty_massa');
 	cot_check(empty($ritem['item_vol']),'projects_empty_vol');
+    cot_check(empty($ritem['item_frt']),'projects_empty_frt');
+    cot_check($ritem['item_count']<$ritem['item_performer'],'projects_fev_count');
 	/*$allowemptytext = isset($cfg['projects']['cat_' . $ritem['item_cat']]['allowemptytext']) ?
 							$cfg['projects']['cat_' . $ritem['item_cat']]['allowemptytext'] : $cfg['projects']['cat___default']['allowemptytext'];
 	cot_check(!$allowemptytext && empty($ritem['item_text']), 'projects_empty_text', 'rtext');
@@ -808,11 +827,28 @@ if ($cfg['projects']['markup'] == 1){
 }
 // </editor-fold>
 
-function cot_getfrt($vl)
+function cot_frt_tag($vl)
+{
+    global $L;
+    $rez='';
+    if ($vl==1|$vl==3) $rez= $L['cargo_frt_full'];
+    if ($vl==3) $rez.=' или ';
+    if ($vl==2|$vl==3) $rez.= $L['cargo_frt_coll'];
+    return $rez;
+}
+
+function cot_get_frt($name,$vl)
 {
 	global $L;
-	$html=cot_checkbox($vl==1||$vl==3,'cgfull',$L['cargo_frt_full']);
-	$html.=cot_checkbox($vl==2||$vl==3,'cgcoll',$L['cargo_frt_coll']);
+	$html=cot_checkbox($vl==1||$vl==3,$name.'_full',$L['cargo_frt_full']);
+	$html.=cot_checkbox($vl==2||$vl==3,$name.'_coll',$L['cargo_frt_coll']);
 
 	return $html;
+}
+
+function cot_import_frt($name,$source)
+{
+	$vl= cot_import($name.'_full', $source, 'NUM');
+	$vl+=cot_import($name.'_coll', $source, 'NUM')*2;
+	return $vl;
 }

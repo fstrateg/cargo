@@ -42,6 +42,7 @@
             <tr><td><b>{PHP.L.offers_budget}:</b></td><td>{PRJ_COST} {PHP.cfg.payments.valuta}</td></tr>
             <!-- ENDIF -->
             <tr><td><b>{PHP.L.projects_count}:</b></td><td>{PRJ_COUNT_OST} ({PRJ_COUNT})</td></tr>
+            <tr><td><b>{PHP.L.projects_frt}:</b></td><td>{PRJ_FRT}</td></tr>
             <tr><td><b>{PHP.L.projects_massa}:</b></td><td>{PRJ_MASSA} {PHP.L.projects_ton}</td></tr>
             <tr><td><b>{PHP.L.projects_vol}:</b></td><td>{PRJ_VOL} {PHP.L.projects_m3}</td></tr>
             <tr><td><b>{PHP.L.Category}:</b></td><td><a href="{PRJ_CAT|cot_url('projects', 'c='$this)}">{PRJ_CATTITLE}</a></td></tr>
@@ -66,7 +67,7 @@
     </div>
 </div>
 <p>&nbsp;</p>
-<a href="{PRJ_SAVE_URL}" class="btn btn-success"><i class="icon-eye-open icon-white"></i> {PHP.L.Publish}</></a>
+<a href="/" class="btn btn-success"><i class="icon-eye-open icon-white"></i> {PHP.L.Home}</></a>
 <a href="{PRJ_EDIT_URL}" class="btn btn-info"><i class="icon-pencil icon-white"></i> {PHP.L.Edit}</a>
 
 <!-- END: MAIN -->	

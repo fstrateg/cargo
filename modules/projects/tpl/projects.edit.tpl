@@ -151,7 +151,11 @@
             }
 
             return date;
-        }
+        };
+		<!-- IF {PRJEDIT_FORM_INWORK} -->
+		$('[name="rfrt_full"],[name="rfrt_coll"],[name="country"],[name="region"],[name="city"],[name="countryto"],[name="regionto"],[name="cityto"]').prop('disabled',true);
+		//$('').prop('disabled',true);
+		<!-- ENDIF -->
     });
 </script>
 <!-- END: MAIN -->

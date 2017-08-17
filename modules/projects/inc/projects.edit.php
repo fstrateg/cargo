@@ -74,7 +74,7 @@ if ($a == 'update')
 		include $pl;
 	}
 	/* ===== */
-
+	$ritem=cot_projects_return_values($item,$ritem);
 	cot_projects_validate($ritem);
 
 	/* === Hook === */
@@ -325,25 +325,29 @@ $t = new XTemplate($mskin);
 // Error and message handling
 cot_display_messages($t);
 
+if ($item['item_inwork']) $disable='disabled="true"';
+
 $t->assign(array(
 	"PRJEDIT_FORM_SEND" => cot_url('projects', "m=edit&a=update&id=" . $item['item_id'] . "&r=" . $r),
 	"PRJEDIT_FORM_ID" => $item['item_id'],
-	"PRJEDIT_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat'),
+	"PRJEDIT_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat',null,null,null,null,$disable),
 	"PRJEDIT_FORM_CATTITLE" => $structure['projects'][$item['item_cat']]['title'],
 	"PRJEDIT_FORM_TYPETITLE" => (is_array($projects_types) && !empty($item['item_type'])) ? $projects_types[$item['item_type']] : '',
 	"PRJEDIT_FORM_TYPE" => (is_array($projects_types)) ? cot_selectbox(($item['item_type']) ? $item['item_type'] : $cfg['projects']['default_type'], 'rtype', array_keys($projects_types), array_values($projects_types)) : 'empty',
-	"PRJEDIT_FORM_TITLE" => cot_inputbox('text', 'rtitle', $item['item_title'], 'size="56"'),
+	"PRJEDIT_FORM_TITLE" => cot_inputbox('text', 'rtitle', $item['item_title'], 'size="56" '.$disable),
 	"PRJEDIT_FORM_ALIAS" => cot_inputbox('text', 'ralias', $item['item_alias'], array('size' => '32', 'maxlength' => '255')),
-	"PRJEDIT_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60, 'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
+	"PRJEDIT_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60, 'id="formtext" '.$disable, ($prjeditor) ? 'input_textarea_'.$prjeditor : ' '),
 	"PRJEDIT_FORM_COST" => cot_inputbox('text', 'rcost', $item['item_cost'], 'size="10"'),
 	"PRJEDIT_FORM_COUNT" => cot_inputbox('text', 'rcount', $item['item_count'], 'size="10" class="number"'),
-	"PRJEDIT_FORM_MASSA" => cot_inputbox('text', 'rmassa', $item['item_massa'], 'size="10" class="number"'),
-	"PRJEDIT_FORM_VOL" => cot_inputbox('text', 'rvol', $item['item_vol'], 'size="10" class="number"'),
+	"PRJEDIT_FORM_MASSA" => cot_inputbox('text', 'rmassa', $item['item_massa'], 'size="10" class="number" '.$disable),
+	"PRJEDIT_FORM_VOL" => cot_inputbox('text', 'rvol', $item['item_vol'], 'size="10" class="number" '.$disable),
 	"PRJEDIT_FORM_STATE" => $item['item_state'],
 	"PRJEDIT_FORM_PARSER" => cot_selectbox($item['item_parser'], 'rparser', cot_get_parsers(), cot_get_parsers(), false),
 	"PRJEDIT_FORM_DELETE" => cot_radiobox(0, 'rdelete', array(1,0), array($L['Yes'], $L['No'])),
-    "PRJEDIT_FORM_FROM"=>cot_inputbox('text','rfrom',cot_date('d.m.Y',$item['item_datefrom']),'id="date_from"'),
-    "PRJEDIT_FORM_TO"=>cot_inputbox('text','rto',cot_date('d.m.Y',$item['item_dateto']),'id="date_to"'),
+    "PRJEDIT_FORM_FROM"=>cot_inputbox('text','rfrom',cot_date('d.m.Y',$item['item_datefrom']),'id="date_from"'.$disable),
+    "PRJEDIT_FORM_TO"=>cot_inputbox('text','rto',cot_date('d.m.Y',$item['item_dateto']),'id="date_to"'.$disable),
+	"PRJEDIT_FORM_FRT"=>cot_get_frt('rfrt',$item['item_frt']),
+	"PRJEDIT_FORM_INWORK"=>$item['item_inwork'],
 ));
 
 Resources::addFile($cfg['modules_dir'].'/projects/js/jquery-ui.min.css');
