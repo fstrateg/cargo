@@ -79,9 +79,6 @@
 									<!-- IF {PHP.cot_plugins_active.sbr} -->
 									<li><a href="{PHP|cot_url('sbr')}">{PHP.L.sbr_mydeals}</a></li>
 									<!-- ENDIF -->
-									<!-- IF {PHP|cot_auth('projects', 'any', '1')} -->
-									<li><a href="{PHP|cot_url('projects', 'm=useroffers')}">{PHP.L.offers_useroffers}</a></li>
-									<!-- ENDIF --> 
 								</ul>
 							</li>
 							<!-- IF {PHP.cot_plugins_active.marketorders} -->

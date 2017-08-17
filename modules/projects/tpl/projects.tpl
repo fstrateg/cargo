@@ -174,17 +174,9 @@
 </div>
 
 <!-- ENDFOR -->
-<hr>
-<!-- BEGIN: PRJ_PERFORM_ROW -->
-<!-- END: PRJ_PERFORM_ROW -->
 
 <!-- END: PRJ_PERFORM -->
 
-<div class="row">
-	<div class="span12">
-		{OFFERS}
-	</div>
-</div>
 <!-- IF {PHP.cot_plugins_active.simmarsh} -->
 <hr />
 <div class="row">
