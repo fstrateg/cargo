@@ -8,7 +8,7 @@ $where="where item_state=1";
 
 $totalitems=$db->query("select count(*) from $db_marshrut $where")->fetchColumn();
 
-$claims=$db->query("select * from $db_marshrut $where LIMIT $d , $maxrowsperpage"
+$claims=$db->query("select p.*,u.* from $db_marshrut p LEFT JOIN $db_users AS u ON u.user_id=p.item_userid $where LIMIT $d , $maxrowsperpage"
 )->fetchAll();
 
 $list_url_path=$d_url;
@@ -21,6 +21,7 @@ $i=0;
 foreach($claims as $claim)
 {
     $t->assign(cot_generate_marshruttag($claim,'MR_'));
+    $t->assign(cot_generate_usertags($claim, 'MR_'));
     $t->parse("MAIN.MARSH_ROWS");
     $i++;
 }

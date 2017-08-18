@@ -23,6 +23,16 @@
             <!-- IF {MR_COST} > 0 --><div class="pull-right span2">{MR_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
         </h4>
     </div>
+</div>
+<div class="row">
+    <div class="span12">
+        {MR_NICKNAME}
+        <!-- FOR {PHONE} IN {MR_PHONES} -->
+        {PHONE};
+        <!-- ENDFOR -->
+    </div>
+</div>
+<div class="row">
     <div class="span4">
         {MR_DB}-{MR_DE}
     </div>
