@@ -32,6 +32,8 @@ $L['marshrut_empty']='Нет заявок на груз';
 $L['marshrut_status']='Статус';
 $L['marshrut_publish']='Опубликовано';
 $L['marshrut_archived']='В архиве';
+$L['marshrut_inwork']='В работе';
+$L['marshrut_isdone']='Завершено';
 $L['marshrut_hidden']='Скрыто';
 $L['marshrut_delquery']='Вы действительно хотите удалить это маршрут?';
 

@@ -41,6 +41,23 @@ $t1->assign(array(
     "MR_CAT_ROW_SELECT" => ($state ? '' : 1)
 ));
 $t1->parse("MAIN.ST_ROWS");
+
+if (!$marsh->isGuest())
+{
+    $t1->assign($marsh->getInWork('MR_CAT_ROW_'));
+    $t1->parse("MAIN.ST_ROWS");
+    $t1->assign($marsh->getIsDone('MR_CAT_ROW_'));
+    $t1->parse("MAIN.ST_ROWS");
+}
+/*$t1->assign(
+    array(
+    "MR_CAT_ROW_TITLE" => cot_marshrut_state($value['item_state'],false),
+    "MR_CAT_ROW_URL" => cot_url('users', 'm=details&id=' . $urr['user_id'] . '&u=' . $urr['user_name'] . '&tab=marshrut&stat='.$value['item_state']),
+    "MR_CAT_ROW_COUNT" => $value['stat_count'],
+    "MR_CAT_ROW_SELECT" => ($state && $state == $value['item_state']) ? 1 : ''
+));
+$t1->parse("MAIN.ST_ROWS");
+
 /*
 if ($state)
 {
@@ -75,8 +92,8 @@ foreach($marshrut as $item)
     $t1->assign(cot_generate_marshruttag($item,'MR_'));
     $t1->parse("MAIN.MARSH_ROWS");
 }*/
+$marsh->getRows($t1);
 $t1->assign("MR_SHOW_STATUS",!$marsh->isGuest());
-$t1->parse("MAIN.MARSH_ROWS");
 $t1->assign(['MARSHRUT_COUNT'=>$marshrut_count_all]);
 $t1->parse("MAIN");
 
