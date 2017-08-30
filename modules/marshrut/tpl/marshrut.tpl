@@ -26,8 +26,8 @@
 </div>
 <div class="row">
     <div class="span12">
-        {MR_NICKNAME}
-        <!-- FOR {PHONE} IN {MR_PHONES} -->
+        {MR_USER_NICKNAME}
+        <!-- FOR {PHONE} IN {MR_USER_PHONES} -->
         {PHONE};
         <!-- ENDFOR -->
     </div>

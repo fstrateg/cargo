@@ -8,7 +8,10 @@ $L['marshrut_claim_cargo']='Заявки на груз';
 $L['marshrut_marshrut']='Заявка';
 $L['marshrut_marshruts']='Заявки';
 
-
+$L['marshrut_confirm']='Подтвержден';
+$L['marshrut_confirm_not']='Не подтвержден';
+$L['marshrut_close']='Поставить оценку и закрыть';
+$L['marshrut_closeclaim']='Закрыть выполненный рейс';
 $L['marshrut_db']='Дата начала';
 $L['marshrut_de']='Дата окончания';
 $L['marshrut_from']='Пункт отправки';
@@ -19,6 +22,7 @@ $L['marshrut_frt_full']='Полный';
 $L['marshrut_frt_coll']='Сборный';
 $L['marshrut_frt_any']='Полный или сборный';
 $L['marshrut_price']='Цена';
+$L['marshrut_rating_title']='Оцените, пожалуйста, свои впечатления от работы с заказчиком';
 $L['marshrut_next']='Далее';
 $L['marshrut_save']='Сохранить';
 $L['marshrut_empty_db']='Дата начала не задана';

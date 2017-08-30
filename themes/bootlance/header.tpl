@@ -75,6 +75,7 @@
 									<!-- ENDIF -->
 									<!-- IF {PHP.usr.istransp} -->
 									<li><a href="{PHP.usr.id|cot_url('users', 'm=details&id='$this'&tab=transport')}">{PHP.L.projects_mytransport}</a></li>
+									<li><a href="{PHP.usr.id|cot_url('users', 'm=details&id='$this'&tab=marshrut')}">{PHP.L.projects_mymarshruts}</a></li>
 									<!-- ENDIF -->
 									<!-- IF {PHP.cot_plugins_active.sbr} -->
 									<li><a href="{PHP|cot_url('sbr')}">{PHP.L.sbr_mydeals}</a></li>

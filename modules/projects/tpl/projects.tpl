@@ -126,6 +126,7 @@
         <!-- ENDFOR -->
     </div>
 	<div class="span4">
+		{PRF.PRF_CONFIRM}
 		<table width="100%">
 			<tr>
 				<td><b>{PHP.L.prj_setp_fio}</b></td>
@@ -151,13 +152,18 @@
 			<tr><td colspan="2" class="small">{PRF.PRF_NOTES}</td></tr>
 		</table>
 	</div>
-	<!-- IF {PRF.PRF_STATUS} == 2 -->
+	<!-- IF {PRF.PRF_STATUS} >= 2 -->
 	<div class="span4">
 		<label class="label label-info">{PHP.L.claims_performed}</label>
 		<div class="fstars" style="padding: 10px 0">
 			<span class="stars-view"><span style="width: {PRF.PRF_STARS}%"></span></span>
 		</div>
 		{PRF.PRF_FEEDBACK}
+		<hr/>
+		<div class="fstars" style="padding: 10px 0">
+			<span class="stars-view"><span style="width: {PRF.PRF_TRSTARS}%"></span></span>
+		</div>
+		{PRF.PRF_TRFEEDBACK}
 	</div>
 	<!-- ELSE -->
 	<div class="span2 pull-right">

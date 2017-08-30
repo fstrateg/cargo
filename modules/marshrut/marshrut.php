@@ -9,7 +9,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 require_once cot_incfile('marshrut', 'module');
 
-if (!in_array($m,['add','edit','preview']))
+if (!in_array($m,['add','edit','preview','perform','closeclaim']))
 {
     $m='main';
 }

@@ -35,7 +35,7 @@ $marsh->setOwner($urr['user_id']);
 $marshrut_count_all = $marsh->getCountAll();
 
 $t1->assign(array(
-    "MR_CAT_ROW_TITLE" => $L['All'],
+    "MR_CAT_ROW_TITLE" => $L['marshrut_marshruts'],
     "MR_CAT_ROW_URL" => cot_url('users', 'm=details&id=' . $urr['user_id'] . '&u=' . $urr['user_name'] . '&tab=marshrut'),
     "MR_CAT_ROW_COUNT" => $marshrut_count_all,
     "MR_CAT_ROW_SELECT" => ($state ? '' : 1)
@@ -92,7 +92,7 @@ foreach($marshrut as $item)
     $t1->assign(cot_generate_marshruttag($item,'MR_'));
     $t1->parse("MAIN.MARSH_ROWS");
 }*/
-$marsh->getRows($t1);
+$marsh->getRows($t1,$state);
 $t1->assign("MR_SHOW_STATUS",!$marsh->isGuest());
 $t1->assign(['MARSHRUT_COUNT'=>$marshrut_count_all]);
 $t1->parse("MAIN");

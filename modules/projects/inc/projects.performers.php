@@ -6,13 +6,15 @@ class Performers
     var $db;
     var $table;
     var $tableclaim;
+    var $L;
 
     function __construct()
     {
-        global $db,$db_projects_perform,$db_projects;
+        global $L,$db,$db_projects_perform,$db_projects;
         $this->db=$db;
         $this->table=$db_projects_perform;
         $this->tableclaim=$db_projects;
+        $this->L=$L;
     }
 
     /**
@@ -81,8 +83,14 @@ class Performers
 
     function del($pid)
     {
-        $claim=$this->getclaim($pid);
+
         $this->sendPrivateMessageRefuse($this->load($pid));
+        $this->delete($pid);
+    }
+
+    function delete($pid)
+    {
+        $claim=$this->getclaim($pid);
         $this->db
             ->query("update ".$this->tableclaim." set item_performer=item_performer-1,
                     item_inwork=case when item_performer>0 and item_realized<item_performer
@@ -91,7 +99,18 @@ class Performers
             ->query("update ".$this->tableclaim." set item_state=0 where item_id=$claim and item_performer<item_count and item_state=1");
         $this->db->query("delete from {$this->table} where item_id=$pid")
             ->execute();
+    }
 
+    function reject($pid)
+    {
+        $this->sendPrivateMessageReject($this->load($pid));
+        $this->delete($pid);
+    }
+
+    function confirm($pid)
+    {
+        $this->db->query("update {$this->table} set item_confirm=1 where item_id=$pid")
+            ->execute();
     }
 
     function generatetags_forid($id)
@@ -123,6 +142,9 @@ class Performers
         $item['PRF_PRFDONEURL']=cot_url('projects',"m=setperformed&id=".$data['item_claim']."&pid=".$data['item_id']);
         $item['PRF_PRFDELURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=del&pid=".$data['item_id']);
         $item['PRF_PRFEDURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=edit&pid=".$data['item_id']);
+        $name=$this->L[$data['item_confirm']==0?'claims_not_confirm':'claims_confirm'];
+        $cls=$data['item_confirm']==0?'important':'info';
+        $item['PRF_CONFIRM']="<span class='label label-$cls'>$name</span>";
         if (!$prefix) return $item;
         $rez=[];
         foreach($item as $key=>$vl)
@@ -176,6 +198,32 @@ class Performers
         cot_sendpm_fromadmin($perf['item_performer'],$rsubject,$rbody);
 
     }
+
+    /**
+     * @param $perf
+     */
+    function sendPrivateMessageReject($perf)
+    {
+        global $L,$cfg;
+        $item=$this->loadClaimDetails($perf['item_claim']);
+        $urr=$this->loadUserDetails($perf['item_performer']);
+        $u=$this->loadUserDetails($item['item_userid']);
+        $urlparams="id=".$perf['item_claim'];
+
+        $rsubject = cot_rc($L['project_reject_header'], array('prtitle' => $item['item_title']));
+        $rbody = cot_rc($L['project_reject_body'], array(
+            'user_name' => $u['user_name'],
+            'offeruser_name' => $urr['user_fiofirm']?$urr['user_fiofirm']:$urr['user_name'],
+            'prj_name' => $item['item_title'],
+            'sitename' => $cfg['maintitle'],
+            'link' => COT_ABSOLUTE_URL . cot_url('projects', $urlparams, '', true)
+        ));
+
+        include_once cot_incfile('pm','module');
+        cot_sendpm_fromadmin($item['item_userid'],$rsubject,$rbody);
+
+    }
+
     function loadClaimDetails($id)
     {
         global $db_projects;

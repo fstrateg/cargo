@@ -59,6 +59,7 @@ $L['projects_projects'] = 'Грузы';
 $L['projects_calc'] = 'Калькулятор';
 $L['projects_myprojects'] = 'Мои грузы';
 $L['projects_mytransport'] = 'Мой транспорт';
+$L['projects_mymarshruts'] = 'Мои заявки';
 $L['catalog'] = 'Каталог';
 $L['projects_add_to_catalog'] = 'Добавить груз';
 $L['projects_add_tr_marshrut'] = 'Добавить заявку на груз';
@@ -170,6 +171,10 @@ $L['project_setperformer_body'] = 'Здравствуйте, {$offeruser_name}. 
 $L['project_refuse_header'] = 'Вам отказали по заявке «{$prtitle}»';
 $L['project_refuse_body'] = 'Здравствуйте, {$offeruser_name}. '."\n\n".'Вам отказали по заявке «{$prj_name}».'."\n\n".'{$link}';
 
+$L['project_reject_header'] = 'Перевозчик отказался от заявки «{$prtitle}»';
+$L['project_reject_body'] = 'Здравствуйте, {$user_name}. '."\n\n".'Перевозчик "{$offeruser_name}" отказался от заявки <a href="{$link}">«{$prj_name}»</a>.'."\n\n";
+
+
 $L['project_notif_admin_moderate_mail_subj'] = 'Новый груз на проверку';
 $L['project_notif_admin_moderate_mail_body'] = 'Здравствуйте, '."\n\n".'Пользователь {$user_name} отправил на проверку новый груз "{$prj_name}".'."\n\n".'{$link}';
 
@@ -210,6 +215,8 @@ $L['claims_empty_number']='Номер фуры не задан!';
 $L['claims_empty_fio']='ФИО водителя не известно!';
 $L['claims_performers']='Исполнители';
 $L['claims_performed']='Выполнено';
+$L['claims_confirm']='Подтверждено';
+$L['claims_not_confirm']='Не подтверждено водителем';
 
 $L['claims_rating_title']='Оцените, пожалуйста, свои впечатления от работы с перевозчиком';
 $L['claims_rating_notes']='По возможности опишите выбор своей оценки';

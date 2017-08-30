@@ -21,7 +21,7 @@ $i=0;
 foreach($claims as $claim)
 {
     $t->assign(cot_generate_marshruttag($claim,'MR_'));
-    $t->assign(cot_generate_usertags($claim, 'MR_'));
+    $t->assign(cot_generate_usertags($claim, 'MR_USER_'));
     $t->parse("MAIN.MARSH_ROWS");
     $i++;
 }
