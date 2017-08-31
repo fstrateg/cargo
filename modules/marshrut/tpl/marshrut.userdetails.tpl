@@ -73,25 +73,29 @@
         <div class="well well-small">
             <a class="btn btn-success" href="{MR_URLCONF}">Подтвердить заказ</a>
             <a class="btn btn-danger" href="javascript: void(0)" onclick="reject('{MR_URLREJT}')">Отказаться от заказа</a>
-            <script type="text/javascript">
-                function reject(url)
-                {
-                    if (window.confirm("Вы действительно хотите отказаться от этого заказа?")) window.location=url;
-                }
-                function closeClaim(url)
-                {
-                    if (window.confirm('Вы действительно хотите ')) window.location=url;
-                }
-            </script>
         </div>
     </div>
 </div>
 <!-- ENDIF -->
-<!-- IF {MR_CONFIRM} == 1 AND {MR_TRSTARS} == 0 -->
-    <a href="javascript: void(0)" onclick="closeClaim('{MR_URLCLOSE}')">{PHP.L.marshrut_close}</a>
+<!-- IF {MR_CONFIRM} == 1 -->
+    <!-- IF {MR_TRSTARS} == 0 -->
+        <a href="javascript: void(0)" onclick="closeClaim('{MR_URLCLOSE}')">{PHP.L.marshrut_close}</a>
+    <!-- ELSE -->
+        <span class="label">Ожидается отзыв от заказчика</span>
+    <!-- ENDIF -->
 <!-- ENDIF -->
 <hr>
     <!-- END: MARSH_ROWS -->
+<script type="text/javascript">
+    function reject(url)
+    {
+        if (window.confirm("Вы действительно хотите отказаться от этого заказа?")) window.location=url;
+    }
+    function closeClaim(url)
+    {
+        if (window.confirm('Вы действительно хотите закрыть заявку?')) window.location=url;
+    }
+</script>
 <!-- IF {MARSHRUT_COUNT} > 0 -->
 <div class="pagination"><ul>{PAGENAV_PAGES}</ul></div>
 <!-- ELSE -->

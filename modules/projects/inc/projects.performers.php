@@ -131,6 +131,8 @@ class Performers
         }
         $item['PRF_STATUS']=$data['item_status'];
         $item['PRF_STARS']=$data['item_fstars']*20;
+        $item['PRF_TRSTARS']=$data['item_trstars']*20;
+        $item['PRF_TRFEEDBACK']=$data['item_trfeedback'];
         $item['PRF_FEEDBACK']=$data['item_feedback'];
         $item['PRF_OWNER']=cot_generate_usertags($data['item_performer'],'PRF_');
         $item['PRF_FIO']=$data['item_fio'];
@@ -269,6 +271,7 @@ class Performers
         $this->db
             ->query("update ".$this->tableclaim." set item_state=3 where item_id=$claim and item_realized=item_count");
         $this->db->update($this->table,$ritem,"item_id=".$ritem['item_id']);
+        $this->db->query("update {$this->table} set item_done=1 where item_id={$ritem['item_id']} and item_trstars>0");
     }
     // </editor-fold>
 }
