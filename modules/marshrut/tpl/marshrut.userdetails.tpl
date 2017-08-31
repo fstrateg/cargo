@@ -86,6 +86,40 @@
 <!-- ENDIF -->
 <hr>
     <!-- END: MARSH_ROWS -->
+<!-- BEGIN: CLOSED_ROWS -->
+<div class="row">
+    <div class="span9">
+        <h4>
+        {MR_CLAIM}
+            <!-- IF {MR_SUMM} > 0 --><div class="pull-right span2">{MR_SUMM} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+    {MR_NICKNAME}
+        <!-- FOR {PHONE} IN {MR_PHONES} -->
+    {PHONE};
+        <!-- ENDFOR -->
+    </div>
+</div>
+<div class="row">
+    <div class="span9">
+    {MR_TITLE}
+    </div>
+    <div class="span3">
+    {MR_DB}-{MR_DE}
+    </div>
+    <div class="span2">
+    {MR_TTYPE}
+    </div>
+    <div class="span3">
+    {MR_FRT}
+    </div>
+</div>
+<hr>
+<!-- END: CLOSED_ROWS -->
+
 <script type="text/javascript">
     function reject(url)
     {

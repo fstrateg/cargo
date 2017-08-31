@@ -15,7 +15,7 @@ if ($act=='close')
     if (!cot_error_found())
     {
         $perf->saveFeedback($ritem);
-        cot_redirect(cot_url('users',['m'=>'details','tab'=>'marshrut','id'=>$perf->id_usr],'',true));
+        cot_redirect(cot_url('users',['m'=>'details','tab'=>'marshrut','id'=>$perf->id_usr,'stat'=>'inwork'],'',true));
     }
 }
 

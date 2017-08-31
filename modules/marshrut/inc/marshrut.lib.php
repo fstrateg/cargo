@@ -116,10 +116,11 @@ class MarshrutProfile
         }
         if ($flt=='isdone'){
             $mr = $this->done();
+            $tmpl='CLOSED';
         }
         foreach($mr as $item)
         {
-            if ($tmpl=='MARSH')
+            if ($tmpl=='MARSH'||$tmpl=='CLOSED')
                 $t->assign($this->generate_claim($item,'MR_'));
 
             $t->assign(cot_generate_marshruttag($item,'MR_'));
@@ -145,7 +146,7 @@ class MarshrutProfile
 
     private function inwork()
     {
-        $sql="select b.*,u.*,p.item_summ,p.item_confirm,p.item_id pid,item_trstars,item_trfeedback from ".$this->tb_performer." p, "
+        $sql="select b.*,u.*,p.item_summ,p.item_confirm,p.item_id pid,item_trstars,item_trfeedback,p.item_db,p.item_de from ".$this->tb_performer." p, "
             .$this->tb_users." u, "
             .$this->tb_projects." b where b.item_userid=u.user_id and p.item_performer=".$this->owner
             ." and p.item_done=0 and b.item_id=p.item_claim order by p.item_db desc";
@@ -154,7 +155,7 @@ class MarshrutProfile
 
     private function done()
     {
-        $sql="select b.*,u.*,p.item_summ,p.item_confirm,item_trstars,item_trfeedback from ".$this->tb_performer." p, "
+        $sql="select b.*,u.*,p.item_summ,p.item_confirm,item_trstars,item_trfeedback,p.item_db,p.item_de from ".$this->tb_performer." p, "
             .$this->tb_users." u, "
             .$this->tb_projects." b where b.item_userid=u.user_id and p.item_performer=".$this->owner
             ." and p.item_done=1 and b.item_id=p.item_claim order by p.item_db desc";
