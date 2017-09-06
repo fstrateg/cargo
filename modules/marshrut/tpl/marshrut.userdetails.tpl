@@ -108,13 +108,33 @@
     {MR_TITLE}
     </div>
     <div class="span3">
-    {MR_DB}-{MR_DE}
+    <p>{MR_DB}-{MR_DE}</p>
     </div>
     <div class="span2">
     {MR_TTYPE}
     </div>
     <div class="span3">
     {MR_FRT}
+    </div>
+</div>
+<div class="row">
+    <div class="span5">
+        <b>Мой отзыв</b>
+        <div class="fstars" style="padding: 10px 0">
+            <span class="stars-view"><span style="width: {MR_TRSTARS}%"></span></span>
+        </div>
+        <div>
+            {MR_TRFEEDBACK}
+        </div>
+    </div>
+    <div class="span4">
+        <b>Отзыв работодателя</b>
+        <div class="fstars" style="padding: 10px 0">
+            <span class="stars-view"><span style="width: {MR_FSTARS}%"></span></span>
+        </div>
+        <div>
+            {MR_FEEDBACK}
+        </div>
     </div>
 </div>
 <hr>

@@ -115,8 +115,10 @@ class MarshrutProfile
             $mr = $this->inwork();
         }
         if ($flt=='isdone'){
+            global $cfg;
             $mr = $this->done();
             $tmpl='CLOSED';
+            Resources::addFile("${cfg['themes_dir']}/${cfg['defaulttheme']}/css/stars.css");
         }
         foreach($mr as $item)
         {
@@ -138,6 +140,9 @@ class MarshrutProfile
         $temp['URLREJT']=cot_url('marshrut',['m'=>'perform','id'=>$data['pid'],'act'=>'rejt'],'',true);
         $temp['URLCLOSE']=cot_url('marshrut',['m'=>'closeclaim','id'=>$data['pid']]);
         $temp['TRSTARS']=$data['item_trstars'];
+        $temp['FSTARS']=$data['item_fstars'];
+        $temp['FEEDBACK']=$data['item_feedback'];
+        $temp['TRFEEDBACK']=$data['item_trfeedback'];
 
         $rez=array();
         foreach($temp as $item=>$vl) $rez[$prefix.$item]=$vl;
@@ -155,7 +160,7 @@ class MarshrutProfile
 
     private function done()
     {
-        $sql="select b.*,u.*,p.item_summ,p.item_confirm,item_trstars,item_trfeedback,p.item_db,p.item_de from ".$this->tb_performer." p, "
+        $sql="select b.*,u.*,p.item_summ,p.item_confirm,item_trstars*20 item_trstars,item_trfeedback,p.item_feedback,p.item_fstars*20 item_fstars,p.item_db,p.item_de from ".$this->tb_performer." p, "
             .$this->tb_users." u, "
             .$this->tb_projects." b where b.item_userid=u.user_id and p.item_performer=".$this->owner
             ." and p.item_done=1 and b.item_id=p.item_claim order by p.item_db desc";
