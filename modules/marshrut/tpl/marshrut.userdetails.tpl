@@ -46,7 +46,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="span12">
+    <div class="span9">
         {MR_NICKNAME}
         <!-- FOR {PHONE} IN {MR_PHONES} -->
         {PHONE};
@@ -69,7 +69,7 @@
 </div>
 <!-- IF {MR_CONFIRM} == 0 -->
 <div class="row">
-    <div class="span12">
+    <div class="span9">
         <div class="well well-small">
             <a class="btn btn-success" href="{MR_URLCONF}">Подтвердить заказ</a>
             <a class="btn btn-danger" href="javascript: void(0)" onclick="reject('{MR_URLREJT}')">Отказаться от заказа</a>
@@ -96,7 +96,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="span12">
+    <div class="span9">
     {MR_NICKNAME}
         <!-- FOR {PHONE} IN {MR_PHONES} -->
     {PHONE};

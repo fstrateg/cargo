@@ -16,11 +16,25 @@
 			<div id="rverify" class="pad5"><div class="width50 divsenter">
 				{USERS_REGISTER_VERIFYIMG}
 				{USERS_REGISTER_VERIFYINPUT}
-			</div></div>
+			</div>
+			</div>
+            <div class="pad5"><div class="width50 divsenter small">
+                    <input type="checkbox" name="ruseragreement" style="width: auto !important;" onchange="agreement(this)"/>
+                    Принять <a href="{PHP|cot_url('useragreement')}">пользовательское соглашение</a>
+            </div></div>
 		<div class="pad">
-			<button type="submit" class="btngreen">{PHP.L.users_register}</button>
+			<button type="submit" class="btngreen" disabled style="background-color: #aaa; border: 1px solid #777;">{PHP.L.users_register}</button>
 		</div>
+        <script type="text/javascript">
+            function agreement(ck)
+            {
+                if (ck.checked)
+                    $('button.btngreen').removeAttr('style').removeAttr('disabled');
 
+                else
+                    $('button.btngreen').attr('style','background-color: #aaa; border: 1px solid #777;').attr('disabled');
+            }
+        </script>
 		<!--div class="pad">
 			<span><b>Быстрая регистрация в один клик</b></span>
 		</div-->

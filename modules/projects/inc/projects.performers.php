@@ -272,6 +272,13 @@ class Performers
             ->query("update ".$this->tableclaim." set item_state=3 where item_id=$claim and item_realized=item_count");
         $this->db->update($this->table,$ritem,"item_id=".$ritem['item_id']);
         $this->db->query("update {$this->table} set item_done=1 where item_id={$ritem['item_id']} and item_trstars>0");
+
+        /* === Hook === */
+        foreach (cot_getextplugins('projects.feedback.save') as $pl)
+        {
+            include $pl;
+        }
+        /* ===== */
     }
     // </editor-fold>
 }

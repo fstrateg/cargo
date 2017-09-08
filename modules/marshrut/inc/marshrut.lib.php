@@ -173,13 +173,15 @@ class MarshrutPerf
     var $id_perf;
     var $id_usr;
     var $tb_perform;
+    var $tb_projects;
 
     function __construct()
     {
-        global $usr,$db_projects_perform;
+        global $usr,$db_projects_perform,$db_projects;
         $this->id_perf=cot_import('id','G','NUM');
         $this->id_usr=$usr['id'];
         $this->tb_perform=$db_projects_perform;
+        $this->tb_projects=$db_projects;
 
     }
 
@@ -216,6 +218,14 @@ class MarshrutPerf
         return $item->item_claim;
     }
 
+    public function getClaim()
+    {
+        global $db;
+        $item=$db->query("select p.* from {$this->tb_projects} p,{$this->tb_perform} pf where p.item_id=pf.item_claim and pf.item_id=".$this->id_perf)
+            ->fetchObject();
+        return $item;
+    }
+
     public function importFeedback()
     {
         $ritem=[
@@ -240,5 +250,11 @@ class MarshrutPerf
         global $db;
         $db->update($this->tb_perform,$ritem,'item_id='.$ritem['item_id']);
         $db->query("update {$this->tb_perform} set item_done=1 where item_id={$ritem['item_id']} and item_fstars>0");
+        /* === Hook === */
+        foreach (cot_getextplugins('marshrut.feedback.save') as $pl)
+        {
+            include $pl;
+        }
+        /* ===== */
     }
 }
