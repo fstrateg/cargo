@@ -62,7 +62,7 @@
 							<li><a href="{PHP|cot_url('users','m=register')}">{PHP.L.Register}</a></li>
 							<!-- END: GUEST -->
 							<!-- BEGIN: USER -->
-							<li><a href="{PHP.usr.name|cot_url('users', 'm=details&u='$this)}">{HEADER_USERNAME} [ID{PHP.usr.id}]</a></li>
+							<li><a href="{PHP.usr.name|cot_url('users', 'm=details&u='$this)}" style="padding-top: 6px"><img src="/images/{HEADER_IMG}" title="{HEADER_IMGTITLE}" /> {HEADER_USERNAME} [ID{PHP.usr.id}]</a></li>
 							<li><a href="{PHP|cot_url('users', 'm=profile')}">{PHP.L.Profile}</a></li>
 							<!-- IF {PHP.cfg.payments.balance_enabled} -->
 							<li><a href="{HEADER_USER_BALANCE_URL}">{PHP.L.payments_mybalance}: {HEADER_USER_BALANCE|number_format($this, '2', '.', ' ')} {PHP.cfg.payments.valuta}</a></li>

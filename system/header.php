@@ -108,8 +108,23 @@ if (!COT_AJAX)
 	$usr['iscargo']=($usr['maingrp']==7?1:0);
 	$usr['istransp']=($usr['maingrp']==4?1:0);
 
+	if ($usr['iscargo']) {
+		$img = 'box.png';
+		$imgtitle=$L['Cargo'];
+	}
+	elseif ($usr['istransp']) {
+		$img = 'car.png';
+		$imgtitle=$L['Transport'];
+	}
+	else {
+		$img = 'user.png';
+		$imgtitle=$L['User'];
+	}
+
 	$t->assign(array(
 		'HEADER_USERNAME' => $usr['profile']['user_fiofirm']?$usr['profile']['user_fiofirm']:$usr['name'],
+		'HEADER_IMG' => $img,
+		'HEADER_IMGTITLE' => $imgtitle,
 		'HEADER_TITLE' => $out['fulltitle'],
 		'HEADER_COMPOPUP' => $out['compopup'],
 		'HEADER_LOGSTATUS' => $out['logstatus'],
