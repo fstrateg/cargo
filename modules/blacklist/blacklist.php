@@ -9,7 +9,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 require_once cot_incfile('blacklist', 'module', 'classes');
 
-if (!in_array($m, array('edit')))
+if (!in_array($m, array('edit','add','find')))
 {
         $m = 'list';
 }

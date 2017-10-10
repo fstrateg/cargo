@@ -55,8 +55,12 @@ if (empty($item['item_de'])) $item['item_de']=$sys['now'];
 $t=new XTemplate(cot_tplfile('projects.setperformer'));
 
 cot_display_messages($t);
-
-$t->assign(cot_generate_usertags($userid,'PRJ_PERF_'));
+$info=cot_generate_usertags($userid,'PRJ_PERF_');
+if ($cot_modules['blacklist'] && $info['PRJ_PERF_BL'])
+{
+    cot_message($L['bl_userinbl'],'warning');
+}
+$t->assign($info);
 $t->assign([
     'PRJ_ID'=>$id,
     'PRJ_NUMBER'=>cot_inputbox('text','rnumber',$item['item_number']),

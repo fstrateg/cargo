@@ -1,5 +1,4 @@
 <!-- BEGIN:MAIN -->
-<h3>{BL_TITLE}</h3>
 <div class="row">
     <div class="span1">
         {BL_AVATAR}
@@ -19,19 +18,22 @@
     </div>
 </div>
 <form action="{BL_SEND}" method="post" name="edit" enctype="multipart/form-data">
+<div class="row">
+    <div class="span8">
+    <p>Добавить комментарий (для себя)</p>
+
+    {BL_NOTE}
+    </div>
+
+</div>
     <div class="row">
         <div class="span8">
-            <p>Добавить комментарий (для себя)</p>
-
-            {BL_NOTE}
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="span8">
-            {BL_POST}
+                {BL_POST}
         </div>
     </div>
-    {BL_ITEMID}
+{BL_USERID}
 </form>
 <!-- END:MAIN -->
+<!-- BEGIN:EMPTY -->
+Пользователь с ID={BL_ID} не найден!
+<!-- END:EMPTY -->

@@ -13,6 +13,9 @@
             <span class="label label-important">PRO</span>
             <!-- ENDIF -->
             <span class="label label-info">{PRJ_PERF_USERPOINTS}</span>
+            <!-- IF {PHP.cot_modules.blacklist} -->
+                    {PRJ_PERF_BLLABEL}
+            <!-- ENDIF -->
         </p>
         <!-- FOR {PHONE} IN {PRJ_PERF_PHONES} -->
         <p>{PHONE}</p>

@@ -90,6 +90,9 @@
                     <span class="label label-important">PRO</span>
                     <!-- ENDIF -->
                     <span class="label label-info">{CAR_USERPOINTS}</span>
+                    <!-- IF {PHP.cot_modules.blacklist} -->
+                        {CAR_BLLABEL}
+                    <!-- ENDIF -->
                 </p>
                 <!-- FOR {PHONE} IN {CAR_PHONES} -->
                 <p>{PHONE}</p>

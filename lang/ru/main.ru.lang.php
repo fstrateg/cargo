@@ -43,6 +43,7 @@ $L['BBcodes'] = 'BBCodes';
 $L['Begin'] = 'Опубликовано с';
 $L['Birthdate'] = 'Дата рождения';
 $L['Birthday'] = 'День рождения';
+$L['Blacklist']='Черный список';
 $L['Blog'] = 'Блог';
 $L['Blogs'] = 'Блоги';
 $L['Body'] = 'Текст';
