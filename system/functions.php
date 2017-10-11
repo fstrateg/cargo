@@ -2293,7 +2293,7 @@ function cot_build_nickname($user_data)
 function cot_getphones($user_data)
 {
 	$rez=array();
-	if (isset($user_data['user_phone1'])) $rez[]=$user_data['user_phone1'];
+	if (isset($user_data['user_phone1'])&&!empty($user_data['user_phone1'])) $rez[]=$user_data['user_phone1'];
 	if (isset($user_data['user_phone2'])&&!empty($user_data['user_phone2'])) $rez[]=$user_data['user_phone2'];
 	if (isset($user_data['user_phone3'])&&!empty($user_data['user_phone3'])) $rez[]=$user_data['user_phone3'];
 	return $rez;

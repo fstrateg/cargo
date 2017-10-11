@@ -22,11 +22,13 @@
     <div class="span8">
         <strong>{BL_NICKNAME}</strong><!-- IF {BL_ISPRO} --> <span class="label label-important">PRO</span><!-- ENDIF -->
         <span class="label label-info">{BL_USERPOINTS}</span>
+        <!-- IF {BL_PHONES} -->
         <p>
             <!-- FOR {PHONE} IN {BL_PHONES} -->
-            <span>{PHONE}; </span>
+            <span>{PHONE};</span>
             <!-- ENDFOR -->
         </p>
+        <!-- ENDIF -->
         <p>{BL_COUNTRY} {BL_REGION} {BL_CITY}</p>
     </div>
 
