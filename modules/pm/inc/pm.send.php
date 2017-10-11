@@ -182,6 +182,7 @@ if (!empty($to))
 	{
 		$touser_src = explode('-', $to);
 		$touser_req = count($touser_src);
+		$touser_sql=[];
 		foreach ($touser_src as $k => $i)
 		{
 			$userid = cot_import($i, 'D', 'INT');
