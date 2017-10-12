@@ -1,39 +1,39 @@
 <!-- BEGIN:MAIN -->
 <div class="row">
     <div class="span1">
-        {BL_AVATAR}
+        {FV_AVATAR}
     </div>
     <div class="span6">
-        <p>{BL_NICKNAME}</p>
+        <p>{FV_NICKNAME}</p>
         <p>
-            <!-- IF {BL_ISPRO} -->
+            <!-- IF {FV_ISPRO} -->
             <span class="label label-important">PRO</span>
             <!-- ENDIF -->
-            <span class="label label-info">{BL_USERPOINTS}</span>
+            <span class="label label-info">{FV_USERPOINTS}</span>
         </p>
-        <p>Дата регистрации: {BL_REGDATE}</p>
-        <!-- FOR {PHONE} IN {BL_PHONES} -->
+        <p>Дата регистрации: {FV_REGDATE}</p>
+        <!-- FOR {PHONE} IN {FV_PHONES} -->
         <p>{PHONE}</p>
         <!-- ENDFOR -->
     </div>
 </div>
-<form action="{BL_SEND}" method="post" name="edit" enctype="multipart/form-data">
+<form action="{FV_SEND}" method="post" name="edit" enctype="multipart/form-data">
 <div class="row">
     <div class="span8">
     <p>Добавить комментарий (для себя)</p>
 
-    {BL_NOTE}
+    {FV_NOTE}
     </div>
 
 </div>
     <div class="row">
         <div class="span8">
-                {BL_POST}
+                {FV_POST}
         </div>
     </div>
-{BL_USERID}
+{FV_USERID}
 </form>
 <!-- END:MAIN -->
 <!-- BEGIN:EMPTY -->
-Пользователь с ID={BL_ID} не найден!
+Пользователь с ID={FV_ID} не найден!
 <!-- END:EMPTY -->

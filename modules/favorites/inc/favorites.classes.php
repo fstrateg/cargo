@@ -56,7 +56,7 @@ class FavorClass
     {
         $tag=[];
         $tag['ID']=$this->id;
-        $tag['TITLE']=$this->id?$this->L['BL_TITLE_EDIT']:$this->L['BL_TITLE_NEW'];
+        $tag['TITLE']=$this->id?$this->L['FV_TITLE_EDIT']:$this->L['FV_TITLE_NEW'];
         return $this->addPrefix($tag,$prefix);
     }
 
@@ -72,8 +72,8 @@ class FavorClass
         $rez=[
             'NOTE'=>$data['note'],
             'DAT'=>cot_date('d.m.Y h:i',$data['dat']),
-            'EDIT'=>cot_url('blacklist','m=edit&id='.$data['id'],'',true),
-            'DELETE'=>cot_url('blacklist','m=edit&act=del&id='.$data['id'],'',true),
+            'EDIT'=>cot_url('favorites','m=edit&id='.$data['id'],'',true),
+            'DELETE'=>cot_url('favorites','m=edit&act=del&id='.$data['id'],'',true),
         ];
         return $this->addPrefix($rez,$prefix);
     }
@@ -124,7 +124,7 @@ class FavorClass
     }
 }
 
-class BL
+class Favorites
 {
     var $own;
     var $L;
@@ -162,22 +162,22 @@ class BL
     {
         $rez=$this->checkUser($data['ID']);
         if ($rez) {
-            $data['BL'] = true;
-            $data['BLLABEL']=$this->createLablel();
-            $data['BLDAT'] = cot_date('d.m.Y h:i',$this->dat);
-            $data['BLNOTE']= $this->note;
+            $data['FV'] = true;
+            $data['FVLABEL']=$this->createLablel();
+            $data['FVDAT'] = cot_date('d.m.Y h:i',$this->dat);
+            $data['FVNOTE']= $this->note;
         }
         else
         {
-            $data['BL']=false;
+            $data['FV']=false;
         }
         return $data;
     }
 
     private function createLablel()
     {
-        $text=sprintf($this->L['bl_label'],cot_date('d.m.Y h:i',$this->dat),$this->note);
-        $html="<span class=\"label label-inverse\" data-toggle=\"tooltip\" title=\"$text\">BL</span>";
+        $text=sprintf($this->L['fv_label'],cot_date('d.m.Y h:i',$this->dat),$this->note);
+        $html="<span class=\"label label-success\" data-toggle=\"tooltip\" title=\"$text\">FV</span>";
         return $html;
     }
 }

@@ -10,12 +10,12 @@ $t=new XTemplate(cot_tplfile('favorites.add'));
 $ls=new FavorClass();
 if ($act)
 {
-    $bl->addUser();
-    cot_message($L['bl_ok']);
+    $ls->addUser();
+    cot_message($L['fv_ok']);
     cot_redirect(cot_url('favorites'));
 }
 
-$t->assign($ls->gettags('BL_'));
+$t->assign($ls->gettags('FV_'));
 $t->assign('FV_FIND',cot_inputbox('number','ridfind','','id="idfind"'));
 $t->assign('FV_FIND_URL',cot_url('favorites','m=find','',true));
 

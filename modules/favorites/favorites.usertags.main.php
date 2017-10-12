@@ -6,7 +6,7 @@ Hooks=usertags.main
 ==================== */
 if ($usr['id']<0) return;
 
-include_once cot_incfile('blacklist','module','classes');
+include_once cot_incfile('favorites','module','classes');
 
-$bl=new BL();
-$temp_array=$bl->addInfo($temp_array);
+$fv=new Favorites();
+$temp_array=$fv->addInfo($temp_array);

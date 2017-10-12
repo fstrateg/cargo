@@ -93,6 +93,9 @@
                     <!-- IF {PHP.cot_modules.blacklist} -->
                         {CAR_BLLABEL}
                     <!-- ENDIF -->
+                    <!-- IF {PHP.cot_modules.favorites} -->
+                        {CAR_FVLABEL}
+                    <!-- ENDIF -->
                 </p>
                 <!-- FOR {PHONE} IN {CAR_PHONES} -->
                 <p>{PHONE}</p>

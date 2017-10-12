@@ -16,6 +16,9 @@
             <!-- IF {PHP.cot_modules.blacklist} -->
                     {PRJ_PERF_BLLABEL}
             <!-- ENDIF -->
+            <!-- IF {PHP.cot_modules.favorites} -->
+                {PRJ_PERF_FVLABEL}
+            <!-- ENDIF -->
         </p>
         <!-- FOR {PHONE} IN {PRJ_PERF_PHONES} -->
         <p>{PHONE}</p>
