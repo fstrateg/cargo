@@ -1,0 +1,12 @@
+CREATE TABLE `cg_favorlist` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`userid` INT(11) NOT NULL DEFAULT '0',
+	`usr` INT(11) NOT NULL DEFAULT '0',
+	`note` TEXT NULL,
+	`dat` INT(11) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
