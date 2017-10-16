@@ -24,7 +24,7 @@
             </tr>
 			<tr>
 				<td width="150">{PHP.L.Category}:</td>
-				<td>{PRJEDIT_FORM_CAT}</td>
+				<td>{PRJEDIT_FORM_TRANSP}</td>
 			</tr>		
 			<tr>
 				<td>{PHP.L.LocationFrom}:</td>

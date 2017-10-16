@@ -14,6 +14,7 @@ list($usr['auth_read'], $usr['auth_write'], $usr['isadmin']) = cot_auth('project
 cot_block($usr['auth_read']);
 
 $type = cot_import('type', 'G', 'INT');
+$transp=cot_import('transp','G', 'INT');
 $sort = cot_import('sort', 'G', 'ALP');
 $c = cot_import('c', 'G', 'ALP');
 $forpro = cot_import('forpro', 'G', 'INT');
@@ -60,6 +61,10 @@ if (!empty($c))
 {
 	$catsub = cot_structure_children('projects', $c);
 	$where['cat'] = "item_cat IN ('" . implode("','", $catsub) . "')";
+}
+if (!empty($transp))
+{
+	$where['transp'] = "item_transp=$transp";
 }
 
 if (!empty($type))
@@ -182,6 +187,7 @@ $t->assign(array(
 	"SEARCH_ACTION_URL" => cot_url('projects', "&type=" . $type, '', true),
 	"SEARCH_SQ" => cot_inputbox('text', 'sq', htmlspecialchars($sq), 'class="schstring"'),
 	"SEARCH_CAT" => cot_projects_selectcat($c, 'c'),
+	"SEARCH_TRANSP"=>create_avtospisok_selectbox('transp',$transp),
 	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false),
 	"PAGENAV_PAGES" => $pagenav['main'],
 	"PAGENAV_PREV" => $pagenav['prev'],

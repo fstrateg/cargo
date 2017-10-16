@@ -49,7 +49,7 @@
 				<!-- ENDIF -->
 				<tr>
 					<td >{PHP.L.Category}:</td>
-					<td>{SEARCH_CAT}</td>
+					<td>{SEARCH_TRANSP}</td>
 				</tr>
 				<tr>
 					<td>{PHP.L.Order}:</td>
@@ -101,7 +101,7 @@
 
                     <div class="type">
                         <!-- IF {PHP.cot_plugins_active.paypro} AND {PRJ_ROW_FORPRO} --><span class="label label-important">{PHP.L.paypro_forpro}</span> <!-- ENDIF -->
-                        <!-- IF {PRJ_ROW_TYPE} -->{PRJ_ROW_TYPE} / <!-- ENDIF --><a href="{PRJ_ROW_CATURL}">{PRJ_ROW_CATTITLE}</a>
+                        <!-- IF {PRJ_ROW_TYPE} -->{PRJ_ROW_TYPE} / <!-- ENDIF -->{PRJ_ROW_TRANSP}
                     </div>
                 </div>
             </div>

@@ -230,7 +230,7 @@ function cot_build_structure_projects_tree($parent = '', $selected = '', $level 
 function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0, $admin_rights = null,
 								  $pagepath_home = false, $emptytitle = '')
 {
-	global $db, $cot_extrafields, $cfg, $L, $Ls, $R, $db_projects, $usr, $sys, $cot_yesno, $structure, $db_structure, $db_projects_offers, $projects_types;
+	global $db, $cot_extrafields, $cfg, $L, $Ls, $R, $db_projects, $usr, $sys, $cot_yesno, $structure, $db_structure, $db_projects_offers, $projects_types, $type_transp;
 	static $extp_first = null, $extp_main = null;
 
 	if (is_null($extp_first))
@@ -295,6 +295,8 @@ function cot_generate_projecttags($item_data, $tag_prefix = '', $textlength = 0,
 			'CATURL' => cot_url('projects', 'c=' . $item_data['item_cat']),
 			'CATPATH' => $catpath,
 			'TEXT' => $text,
+			'TRANSPID' => $item_data['item_transp'],
+			'TRANSP'=>$type_transp[$item_data['item_transp']],
 			'SHORTTEXT' => $text_cut,
 			'COST' => number_format($item_data['item_cost'], '0', '.', ' '),
 			'TYPEID' => $item_data['item_type'],
@@ -463,7 +465,7 @@ function cot_projects_import($source = 'POST', $ritem = array(), $auth = array()
 		$source = 'PATCH';
 	}
 
-	$ritem['item_cat'] = cot_import('rcat', $source, 'TXT');
+	$ritem['item_cat'] = 'cargo';//cot_import('rcat', $source, 'TXT');
 	$ritem['item_title'] = cot_import('rtitle', $source, 'TXT');
 	$ritem['item_alias'] = cot_import('ralias', $source, 'TXT');
 	$ritem['item_text'] = cot_import('rtext', $source, 'HTM');
@@ -476,6 +478,7 @@ function cot_projects_import($source = 'POST', $ritem = array(), $auth = array()
 	$ritem['item_massa']=cot_import('rmassa', $source , 'NUM');
 	$ritem['item_vol']=cot_import('rvol', $source, 'NUM');
 	$ritem['item_frt']=cot_import_frt('rfrt',$source);
+	$ritem['item_transp']=cot_import('rtransp',$source,'INT');
 
 	if(empty($ritem['item_date']))
 	{
@@ -543,6 +546,7 @@ function cot_projects_validate($ritem)
     cot_check(empty($ritem['item_cityto']),'projects_empty_cityto');
 	cot_check(empty($ritem['item_count']),'projects_empty_count');
 	cot_check(empty($ritem['item_massa']),'projects_empty_massa');
+	cot_check(empty($ritem['item_transp']),'projects_empty_transp');
 	cot_check(empty($ritem['item_vol']),'projects_empty_vol');
     cot_check(empty($ritem['item_frt']),'projects_empty_frt');
     cot_check($ritem['item_count']<$ritem['item_performer'],'projects_fev_count');
@@ -708,7 +712,7 @@ function cot_projects_update($id, &$ritem, $auth = array())
 	}
 	else
 	{
-		$ritem['item_state'] = 1;
+		$ritem['item_state'] = 0;
 	}
 	
 	if (!$db->update($db_projects, $ritem, 'item_id = ?', $id))

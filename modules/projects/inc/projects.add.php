@@ -171,6 +171,7 @@ cot_display_messages($t);
 $t->assign(array(
 	"PRJADD_FORM_SEND" => cot_url('projects', 'm=add&c='.$c.'&type='.$type.'&a=add'),
 	"PRJADD_FORM_CAT" => cot_selectbox_structure('projects', $ritem['item_cat'], 'rcat'),
+	"PRJADD_FORM_TRANSP" => create_avtospisok_selectbox('rtransp',$ritem['item_transp']),
 	"PRJADD_FORM_CATTITLE" => (!empty($c)) ? $structure['projects'][$c]['title'] : '',
 	"PRJADD_FORM_TYPE" => (is_array($projects_types)) ? cot_selectbox(($ritem['item_type']) ? $ritem['item_type'] : $cfg['projects']['default_type'], 'rtype', array_keys($projects_types), array_values($projects_types)) : 'empty',
 	"PRJADD_FORM_TYPETITLE" => (is_array($projects_types) && !empty($type)) ? $projects_types[$type] : '',

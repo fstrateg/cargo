@@ -16,7 +16,7 @@ function create_avtospisok_selectbox($optname,$sel){
         else{$result=$result . "<option value=$id>$name</option>";}
     }
     $result = $result . '</optgroup>
-<optgroup label="--------">';
+<optgroup label="---------------">';
     $res = $db->query("SELECT id,name FROM $db_spisok_avtotransport WHERE hot = FALSE  ORDER BY name")->fetchall();
     foreach ($res as $item)
     {
@@ -37,6 +37,21 @@ function get_avtospisok_value($id){
     $res = $db->query("SELECT name FROM $db_spisok_avtotransport WHERE id = $id")->fetch();
     $result = $res['name'];
     return $result;
+}
+
+function create_avtospisok_list()
+{
+    global $type_transp;
+    if (isset($type_transp)) return;
+    cot::$db->registerTable('spisok_avtotransport');
+    global $db, $db_spisok_avtotransport;
+    $res = $db->query("SELECT id,name FROM $db_spisok_avtotransport");
+    $type_transp=[];
+    while ($rw=$res->fetch())
+    {
+        $type_transp[$rw['id']]=$rw['name'];
+    }
+    $res->closeCursor();
 }
 
 

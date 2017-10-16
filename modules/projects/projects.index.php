@@ -48,6 +48,7 @@ $t_pr->assign(array(
 	'SEARCH_ACTION_URL' => cot_url('projects', '', '', true),
 	'SEARCH_SQ' => cot_inputbox('text', 'sq', htmlspecialchars($sq), 'class="schstring"'),
 	"SEARCH_CAT" => cot_projects_selectcat($c, 'c'),
+	"SEARCH_TRANSP"=> create_avtospisok_selectbox('transp',''),
 	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false),
 ));
 

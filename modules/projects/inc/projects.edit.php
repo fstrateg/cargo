@@ -331,6 +331,7 @@ $t->assign(array(
 	"PRJEDIT_FORM_SEND" => cot_url('projects', "m=edit&a=update&id=" . $item['item_id'] . "&r=" . $r),
 	"PRJEDIT_FORM_ID" => $item['item_id'],
 	"PRJEDIT_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat',null,null,null,null,$disable),
+	"PRJEDIT_FORM_TRANSP" => create_avtospisok_selectbox('rtransp',$item['item_transp']),
 	"PRJEDIT_FORM_CATTITLE" => $structure['projects'][$item['item_cat']]['title'],
 	"PRJEDIT_FORM_TYPETITLE" => (is_array($projects_types) && !empty($item['item_type'])) ? $projects_types[$item['item_type']] : '',
 	"PRJEDIT_FORM_TYPE" => (is_array($projects_types)) ? cot_selectbox(($item['item_type']) ? $item['item_type'] : $cfg['projects']['default_type'], 'rtype', array_keys($projects_types), array_values($projects_types)) : 'empty',
