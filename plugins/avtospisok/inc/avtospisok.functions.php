@@ -1,7 +1,7 @@
 <?php
 function create_avtospisok_selectbox($optname,$sel){
-    if ($sel==null){
-        $sel=0;}
+    if (!$sel){
+        $sel=cot_import_buffered($optname,$sel);}
     cot::$db->registerTable('spisok_avtotransport');
     global $db, $db_spisok_avtotransport;
     $result = "<select name=$optname>
