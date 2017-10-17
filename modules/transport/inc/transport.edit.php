@@ -80,7 +80,7 @@ function transpedit_view($item)
     $t->assign(array(
         "TRNSEDIT_FORM_SEND" => cot_url('transport', "m=edit&a=update&id=" . $item['item_id']),
         "TRNSEDIT_FORM_ID" => $item['item_id'],
-        "TRNSEDIT_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
+        "TRNSEDIT_FORM_TRANSP" => create_avtospisok_selectbox('rtransp', $item['item_transp']),
         "TRNSEDIT_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
         "TRNSEDIT_FORM_VOL" => cot_inputbox('number','rvol',$item['item_vol']),
         "TRNSEDIT_FORM_LEN" => cot_inputbox('number','rlen',$item['item_length']),

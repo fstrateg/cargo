@@ -28,11 +28,13 @@ function cot_generate_transport_row($item_data,$tag_prefix)
     else
         $verright='';
 
+    global $type_transp;
     $temp_array = array(
         'ID' => $item_data['item_id'],
         'DATE'=>cot_date('datetime_medium',$item_data['item_date']),
         'TITLE'=>$item_data['item_title'],
         'TEXT'=>$item_data['item_text'],
+        'TRANSP'=>$type_transp[$item_data['item_transp']],
         'OFFERS_COUNT'=>$item_data['item_offerscount'],
         'USER_IS_ADMIN' => ($admin_rights || $usr['id'] == $item_data['item_userid']),
         'LOCALSTATUS'=>$status,
@@ -92,11 +94,11 @@ function cot_transport_import($source = 'POST', $ritem = array(), $auth = array(
 {
     global $sys,$cfg,$usr;
 
-    $ritem['item_cat'] = cot_import('rcat', $source, 'TXT');
     $ritem['item_driver']= cot_import('rdriver',$source,'TXT');
     $ritem['item_text'] = cot_import('rtext', $source, 'HTM');
     $ritem['item_vol']=cot_import('rvol',$source,'INT');
     $ritem['item_length']=cot_import('rlen',$source,'INT');
+    $ritem['item_transp']=cot_import('rtransp',$source,'INT');
 
     $trailer=cot_import('trailer',$source,'INT');
     if ($trailer) {
@@ -154,7 +156,7 @@ function cot_transport_import($source = 'POST', $ritem = array(), $auth = array(
 
 function cot_transport_validate($ritem)
 {
-    cot_check(empty($ritem['item_cat']), 'transport_select_cat', 'rcat');
+    cot_check(empty($ritem['item_transp']), 'transport_select_cat', 'rtransp');
     cot_check(mb_strlen($ritem['item_title']) < 2, 'transport_empty_title', 'rtitle');
     cot_check(mb_strlen($ritem['item_driver']) < 2, 'transport_empty_driver', 'rdriver');
     cot_check($ritem['item_vol']<=0,'transport_empty_vol','rvol');

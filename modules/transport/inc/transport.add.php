@@ -45,7 +45,7 @@ $attr=['style'=>'text-transform:uppercase;'];
 
 $t->assign(array(
     "TRNSADD_FORM_SEND" => cot_url('transport', "m=add&a=add",'',true),
-    "TRNSADD_FORM_CAT" => cot_selectbox_structure('projects', $item['item_cat'], 'rcat', '', false),
+    "TRNSADD_FORM_CAT" => create_avtospisok_selectbox('rtransp', $item['item_transp']),
     "TRNSADD_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
     "TRNSADD_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255']),
     "TRNSADD_FORM_VOL" => cot_inputbox('text','rvol',$item['item_vol']),

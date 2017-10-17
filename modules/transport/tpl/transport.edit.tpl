@@ -6,7 +6,7 @@
         <table class="table">
             <tr>
                 <td width="150">{PHP.L.transport_type}:</td>
-                <td>{TRNSEDIT_FORM_CAT}</td>
+                <td>{TRNSEDIT_FORM_TRANSP}</td>
             </tr>
             <tr>
                 <td>{PHP.L.transport_location}:</td>

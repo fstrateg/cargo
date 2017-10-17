@@ -13,6 +13,4 @@
     <hr/>
     <input type="submit" class="btn btn-success" value="{PHP.L.transport_verif_send}" />
 </form>
-{TEST}
-{TEST2}
 <!-- END: MAIN -->

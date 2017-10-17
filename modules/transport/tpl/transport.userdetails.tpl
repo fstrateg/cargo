@@ -27,6 +27,7 @@
                 </h4>
                 <p class="owner small"><span class="date">[{TRANSP_ROW_DATE}]</span>  
                     <span class="region">{TRANSP_ROW_COUNTRY} {TRANSP_ROW_REGION} {TRANSP_ROW_CITY}</span></p>
+                <p>{TRANSP_ROW_TRANSP}</p>
                 <p class="text">{TRANSP_ROW_TEXT}</p>
             </td>
         </tr>
