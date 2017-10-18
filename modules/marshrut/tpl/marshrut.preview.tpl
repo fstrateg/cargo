@@ -14,20 +14,26 @@
     </div>
 </div>
 <hr/>
-<div class="row">
-    <div class="span6">
-        <table width="100%">
+
             <!-- IF {MR_COST} > 0 -->
-            <tr><td><b>{PHP.L.offers_budget}:</b></td><td>{MR_COST} {PHP.cfg.payments.valuta}</td></tr>
+            <div class="row">
+                <div class="span2"><b>{PHP.L.offers_budget}:</b></div><div class="span6">{MR_COST} {PHP.cfg.payments.valuta}</div>
+            </div>
             <!-- ENDIF -->
-            <tr><td><b>{PHP.L.marshrut_marshrut}:</b></td><td>{MR_COUNTRY} {MR_REGION} {MR_CITY} - {MR_COUNTRYTO} {MR_REGIONTO} {MR_CITYTO}</td></tr>
-            <tr><td><b>{PHP.L.marshrut_period}:</b></td><td>{MR_DB}-{MR_DE}</td></tr>
-            <!-- IF {MR_SHOW_STATUS} -->
-            <tr><td><b>{PHP.L.marshrut_status}</b></td><td>{MR_STATUS}</td></tr>
-            <!-- ENDIF -->
-        </table>
-    </div>
+<div class="row">
+    <div class="span2"><b>{PHP.L.marshrut_marshrut}:</b></div><div class="span6">{MR_COUNTRY} {MR_REGION} {MR_CITY} - {MR_COUNTRYTO} {MR_REGIONTO} {MR_CITYTO}</div>
 </div>
+<div class="row">
+    <div class="span2"><b>{PHP.L.marshrut_period}:</b></div><div class="span6">{MR_DB}-{MR_DE}</div>
+</div>
+<div class="row">
+    <div class="span2"><b>{PHP.L.marshrut_ttype}:</b></div><div class="span6">{MR_TTYPE}</div>
+</div>
+<!-- IF {MR_SHOW_STATUS} -->
+<div class="row">
+    <div class="span2"><b>{PHP.L.marshrut_status}:</b></div><div class="span6">{MR_STATUS}</div>
+</div>
+<!-- ENDIF -->
 <hr/>
 <a href="{MR_EDIT_URL}" class="btn btn-info"><span>{PHP.L.Edit}</span></a>
 <!--IF {MR_STATE} != 1 -->

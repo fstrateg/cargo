@@ -3,7 +3,6 @@ defined('COT_CODE') or die('Wrong URL');
 
 require_once cot_langfile('marshrut','module');
 cot::$db->registerTable('marshrut');
-cot::$db->registerTable('transptype');
 
 function cot_marshrut_import()
 {
@@ -45,21 +44,6 @@ function cot_update_lastview($item)
     $db->query("update $db_marshrut set item_lastview=$lv where item_id=$id")->execute();
 }
 
-function cot_marshrut_gettr()
-{
-    global $db,$db_transptype;
-    $arr=$db->query("select item_id,item_name from $db_transptype")->fetchAll();
-    $vl=[];
-    $nam=[];
-    foreach($arr as $a)
-    {
-        $vl[]=$a["item_id"];
-        $nam[]=$a["item_name"];
-    }
-    $rez=['vl'=>$vl,'nam'=>$nam];
-
-    return $rez;
-}
 
 function cot_marshrut_edit($ritem,$id)
 {
@@ -83,18 +67,9 @@ function cot_marshrut_changestate($id)
 
 function cot_generate_marshruttag($item_data,$prefix='')
 {
-    global $usr,$L,$type;
-    if (!isset($type))
-    {
-        global $db,$db_transptype;
-        $arr=$db->query("select item_id,item_name from $db_transptype")->fetchAll();
-        $type=[];
-        foreach($arr as $a)
-        {
-            $type[$a["item_id"]]=$a["item_name"];
-        }
-    }
-    $temp_array=array();
+    global $usr,$L,$type_transp;
+
+
     $temp_array['ID']=$item_data['item_id'];
     $temp_array['SHOW_STATUS']=($item_data['item_userid']==$usr['id']);
     $temp_array['DB']=cot_date('d.m.Y',$item_data['item_db']);
@@ -102,7 +77,7 @@ function cot_generate_marshruttag($item_data,$prefix='')
     $temp_array['COST']=number_format($item_data['item_price'],0,'.',' ');
     $temp_array['STATE']=$item_data['item_state'];
     $temp_array['STATUS']=cot_marshrut_state($item_data['item_state']);
-    $temp_array['TTYPE']=$type[$item_data['item_ttype']];
+    $temp_array['TTYPE']=$type_transp[$item_data['item_ttype']];
     $temp_array['FRT']=cot_getfrt_tag($item_data['item_frt']);
 
     foreach (cot_getextplugins('projectstags.main') as $pl)

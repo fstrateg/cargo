@@ -57,14 +57,12 @@ $t=new XTemplate(cot_tplfile('marshrut.edit'));
 
 cot_display_messages($t);
 
-$trt=cot_marshrut_gettr();
-
 $t->assign([
     'MR_FORM_SEND'=>cot_url('marshrut','m=edit&a=save&id='.$id),
     'MR_FORM_DB'=>cot_inputbox('text','mrdb',cot_date('d.m.Y',$item['item_db']),['id'=>'mrdb']),
     'MR_FORM_DE'=>cot_inputbox('text','mrde',cot_date('d.m.Y',$item['item_de']),['id'=>'mrde']),
     'MR_FORM_PRICE'=>cot_inputbox('number','mrprice',$item['item_price']),
-    'MR_FORM_TTYPE'=>cot_selectbox($item['item_ttype'],'mrttype',$trt['vl'],$trt['nam']),
+    'MR_FORM_TTYPE'=>create_avtospisok_selectbox('mrttype',$item['item_ttype']),
     'MR_FORM_FRT'=>cot_getfrt($item['item_frt']),
     ]);
 // Цепляем пункты отправки и т.п.
