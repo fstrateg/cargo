@@ -92,6 +92,35 @@ function cot_projects_auth($cat = null)
 	return $auth;
 }
 
+function cot_build_leftpanel($selected)
+{
+	global $db,$db_projects,$db_spisok_avtotransport;
+	$children=$db->query("Select b.id,b.name,b.hot,count(a.item_transp) cnt
+	from $db_spisok_avtotransport b left join $db_projects a
+	on b.id=a.item_transp and a.item_state=0
+	group by b.hot,b.name,b.id
+	order by b.hot desc,b.name")->fetchAll();
+
+
+	$t1 = new XTemplate(cot_tplfile(array('projects', 'leftpanel'), 'module'));
+	$t1->assign([
+		'HREF'=>cot_url('projects'),
+	]);
+
+	foreach($children as $row)
+	{
+		$t1->assign(array(
+			"ROW_TITLE" => htmlspecialchars($row['name']),
+			"ROW_COUNT" => $row['cnt'],
+			"ROW_HOT" => $row['hot'],
+			"ROW_HREF" => cot_url("projects", "transp=${row['id']}" ),
+			"ROW_SELECTED" => ($row['id'] == $selected ? 1 : 0),
+		));
+		$t1->parse('MAIN.ROWS');
+	}
+	$t1->parse("MAIN");
+	return $t1->text("MAIN");
+}
 
 function cot_build_structure_projects_tree($parent = '', $selected = '', $level = 0, $template = '')
 {

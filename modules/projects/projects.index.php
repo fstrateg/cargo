@@ -154,7 +154,7 @@ $t->assign('PROJECTS', $t_pr->text('PROJECTS'));
 
 
 $t->assign(array(
-	"PROJECTS_CATALOG" => cot_build_structure_projects_tree('', array())
+	"PROJECTS_CATALOG" => cot_build_leftpanel('')
 
 ));
 

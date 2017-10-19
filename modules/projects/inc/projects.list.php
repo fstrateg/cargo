@@ -193,7 +193,7 @@ $t->assign(array(
 	"PAGENAV_PREV" => $pagenav['prev'],
 	"PAGENAV_NEXT" => $pagenav['next'],
 	"PAGENAV_COUNT" => $totalitems,
-	"CATALOG" => cot_build_structure_projects_tree('', array($c)),
+	"CATALOG" => cot_build_leftpanel($transp),
 	"BREADCRUMBS" => $catpath,
 	"SUBMITNEWPROJECT_URL" => cot_url('projects', 'm=add&c='.$c.'&type='.$type)
 ));

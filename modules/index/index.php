@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_URI'] == COT_SITE_URI . 'index.php')
 if ($usr['id'] === 0) {
 	define('COT_NOMENU',TRUE);
 	cot_rc_add_file($cfg['themes_dir'] . '/' . $usr['theme'] . '/css/land.css');
+	cot_redirect('/login');
+	//сщ
 	if (cot_langfile('index','module')) include_once cot_langfile('index','module');
 	$mpl=cot_tplfile('index.home','module');
 	require_once $cfg['system_dir'] . '/header.php';
