@@ -24,3 +24,4 @@ $L['cfg_portfolioaddtocat'] = array('Изменить рейтинг за раз
 
 $L['userpoints_topfreelancers'] = 'Топ-перевозчиков';
 $L['userpoints_topemployers'] = 'Топ-работодателей';
+$L['userpoints_rating']='Рейтинг';

@@ -47,6 +47,11 @@
 				<!-- IF {PHP.cot_plugins_active.reviews} -->
 				<li<!-- IF {PHP.tab} == 'reviews' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_REVIEWS_URL}#tab_reviews" data-toggle="tab">{PHP.L.reviews_reviews} {USERS_DETAILS_REVIEWS_COUNT}</a></li>
 				<!-- ENDIF -->
+				<!-- IF {PHP.cot_plugins_active.userpoints} -->
+					<!-- IF {PHP.usr.id} == {PHP.urr.user_id} -->
+					<li<!-- IF {PHP.tab} == 'rating' --> class="active"<!-- ENDIF -->><a href="{USERS_DETAILS_RATING_URL}#tab_rating" data-toggle="tab">{PHP.L.userpoints_rating}</a></li>
+					<!-- ENDIF -->
+				<!-- ENDIF -->
 			</ul>
 		</div>
 		<div class="tab-content">
@@ -101,6 +106,9 @@
             <div class="tab-pane<!-- IF {PHP.tab} == 'marshrut' --> active<!-- ENDIF -->" id="tab_marshrut">
                 {MARSHRUT}
             </div>
+			<div class="tab-pane<!-- IF {PHP.tab} == 'rating' --> active<!-- ENDIF -->" id="tab_rating">
+				{RATING}
+			</div>
 		</div>
 	</div>
 </div>
