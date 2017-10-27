@@ -4,8 +4,8 @@
         <b>Ваш рейтинг</b>
     </div>
     <div class="span1">
-        <b>100</b><br>
-            <small class="muted">test</small>
+        <b>{RATING_POINTS}</b><br>
+            <small class="muted">Максимальный рейтинг {RATING_MAXPOINTS}</small>
     </div>
     <div class="span5">
         <div class="pull-right"><a href="{RATING_INFO_URL}">Подробнее о рейтинге</a></div>
