@@ -30,7 +30,7 @@
 			<!-- IF {PRJ_OWNER_ISPRO} -->
 			<span class="label label-important">PRO</span> 
 			<!-- ENDIF -->
-			<span class="label label-info">{PRJ_OWNER_USERPOINTS}</span>
+			<span class="label label-info">{PRJ_OWNER_USERPOINTS}</span> {PRJ_OWNER_USERSTARS}
 		</p>
 		<!-- FOR {PHONE} IN {PRJ_OWNER_PHONES} -->
 		<p>{PHONE}</p>

@@ -17,5 +17,11 @@
 defined('COT_CODE') or die('Wrong URL.');
 
 if(is_array($user_data)){
-	$temp_array['USERPOINTS'] = number_format($user_data['user_userpoints'], '1', '.', ' ');
+    $p=(int)$user_data['user_userpoints'];
+	$temp_array['USERPOINTS'] = number_format($p, '1', '.', ' ');
+    $img='stars1.png';
+    if ($p>10) $img='stars2.png';
+    if ($p>20) $img='stars3.png';
+    if ($p>40) $img='stars4.png';
+    $temp_array['USERSTARS']='<img src="/images/icons/default/'.$img.'" />';
 }

@@ -23,7 +23,7 @@
 			<!-- IF {USERS_DETAILS_ISPRO} -->
 			<span class="label label-important">PRO</span> 
 			<!-- ENDIF -->
-			<span class="label label-info">{USERS_DETAILS_USERPOINTS}</span>
+			<span class="label label-info">{USERS_DETAILS_USERPOINTS}</span> {USERS_DETAILS_USERSTARS}
 		</div>
 		<div class="tabbable">
 			<ul class="nav nav-tabs">

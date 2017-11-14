@@ -9,7 +9,7 @@
             <!-- IF {BL_ISPRO} -->
             <span class="label label-important">PRO</span>
             <!-- ENDIF -->
-            <span class="label label-info">{BL_USERPOINTS}</span>
+            <span class="label label-info">{BL_USERPOINTS}</span> {BL_USERSTARS}
         </p>
         <p>Дата регистрации: {BL_REGDATE}</p>
         <!-- FOR {PHONE} IN {BL_PHONES} -->

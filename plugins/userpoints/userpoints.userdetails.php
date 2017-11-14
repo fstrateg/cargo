@@ -23,6 +23,10 @@ $t1->assign([
         'RATING_INFO_URL'=>cot_url('page',['c'=>'info','al'=>'rating']),
         'RATING_POINTS'=>$cl->urate,
         'RATING_MAXPOINTS'=>$cl->maxrate,
+        'RATING_AUTH'=>$cl->details['auth'],
+        'RATING_VERIF'=>$cl->details['verif'],
+        'RATING_REVIEW'=>$cl->details['review'],
+        'RATING_OTHER'=>$cl->details['other'],
     ]);
 $t1->parse();
 

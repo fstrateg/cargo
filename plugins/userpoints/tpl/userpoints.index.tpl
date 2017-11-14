@@ -10,7 +10,7 @@
 				<!-- IF {TOP_ROW_ISPRO} -->
 				<span class="label label-important">PRO</span> 
 				<!-- ENDIF -->
-				<span class="label label-info">{TOP_ROW_USERPOINTS}</span>
+				<span class="label label-info">{TOP_ROW_USERPOINTS}</span> {TOP_ROW_USERSTARS}
 			</p>
 		</div>
 	</div>

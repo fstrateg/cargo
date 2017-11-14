@@ -21,7 +21,7 @@
     </div>
     <div class="span8">
         <strong>{BL_NICKNAME}</strong><!-- IF {BL_ISPRO} --> <span class="label label-important">PRO</span><!-- ENDIF -->
-        <span class="label label-info">{BL_USERPOINTS}</span>
+        <span class="label label-info">{BL_USERPOINTS}</span> {BL_USERSTARS}
         <!-- IF {BL_PHONES} -->
         <p>
             <!-- FOR {PHONE} IN {BL_PHONES} -->
