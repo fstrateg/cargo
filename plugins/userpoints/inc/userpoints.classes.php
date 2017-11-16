@@ -49,7 +49,7 @@ class UserRating
                     $this->details['review']+=(int)$vl['points'];
                     break;
                 case 'verif':
-                    $this->details['vrif']+=(int)$vl['points'];
+                    $this->details['verif']+=(int)$vl['points'];
                     break;
                 default:
                     $this->details['other']+=(int)$vl['points'];
