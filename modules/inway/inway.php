@@ -7,6 +7,7 @@
 defined('COT_CODE') or die('Wrong URL');
 
 include_once cot_langfile('inway','module');
+include_once cot_incfile('inway','modile');
 
 if (!in_array($m,array('add'))) {
     $m = 'main';

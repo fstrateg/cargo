@@ -7,6 +7,13 @@
         <div class="row">
             <div class="span3">
                 <h3>{PHP.L.inway_dsc}</h3>
+                <!-- BEGIN:ROW_INWAY -->
+                <p>{IN_TITLE}</p>
+                <p>{IN_STARS}</p>
+                <p><b>{IN_CATNAME}</b></p>
+                <p>{IN_LOCATION}</p>
+                <p><small>{PHP.L.Adds}: {IN_DAT}</small></p>
+                <!-- END:ROW_INWAY -->
             </div>
             <div class="span6">
                 <h3>{PHP.L.inway_lastreview}</h3>
