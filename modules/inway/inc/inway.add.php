@@ -1,7 +1,21 @@
 <?php
 defined('COT_CODE') or die('Wrong URL');
 
+global $usr;
+cot_block($usr['id']);
+
 $cls=new InwayAdd('inway.add');
+
+if ($a!=null)
+{
+    $cls->loadFromPost();
+    if ($cls->validate())
+    {
+        $cls->save();
+        cot_redirect(cot_url('inway'));
+    }
+}
+
 $module_body=$cls->createPage();
 
 class InwayAdd extends InwayBase
@@ -14,12 +28,11 @@ class InwayAdd extends InwayBase
 
     public function addTags()
     {
+        $this->t->assign($this->value->getTags('FRM'));
         $this->t->assign(
             [
-                'ADD_TITLE'=>cot_inputbox('text','rtitle',$this->value->title),
-                'ADD_CAT'=>$this->createCat(),
-                'ADD_OTHERS'=>cot_inputbox('text','rother','','id="val_other"').cot_inputbox('hidden','rothers',$this->others,'id="list_other"'),
-                'ADD_DSC'=>cot_textarea('rdsc',$this->value,10,70),
+                'FRM_CAT'=>$this->createCat(),
+                'FRM_ADDURL'=>cot_url('inway','m=add&a=add','',true),
             ]);
     }
 
@@ -48,8 +61,21 @@ class InwayAdd extends InwayBase
             }
         }
         $this->others=implode(',',$others);
-        $html=cot_selectbox($this->value->cat,'rtype',$values,$titles);
+        $html=cot_selectbox($this->value->cat,'rcat',$values,$titles);
         return $html;
     }
+    public function loadFromPost()
+    {
+        $this->value=TbInway::loadPost();
+    }
 
+    public function validate()
+    {
+        return $this->value->validate();
+    }
+
+    public function save()
+    {
+        $this->value->add();
+    }
 }

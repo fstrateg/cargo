@@ -52,6 +52,7 @@ function MapWrapper()
             });
             //при окончании перемещения маркера установить функцию
             google.maps.event.addListener(_this.setMarker, 'dragend', _this.markerPositionChanged);
+            _this.SetAddresses(_this.map.getCenter());
         }
     }
 
@@ -86,17 +87,17 @@ function MapWrapper()
         _this.geocoder.geocode({ 'latLng': latlng, 'language' : 'ru' }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 _this.map.setCenter(results[0].geometry.location);
-                _this.SetAddresses(results);
+                _this.SetAddresses(results[0].geometry.location);
             } else {
                 alert("Пошло что-то не так, потому что: " + status);
             }
         });
     }
 
-    this.SetAddresses= function(results)
+    this.SetAddresses= function(result)
     {
-        var lat=results[0].geometry.location.lat();
-        var lng=results[0].geometry.location.lng();
+        $("#rform input[name='rlat']").val(result.lat());
+        $("#rform input[name='rlong']").val(result.lng());
     }
 }
 
@@ -121,7 +122,7 @@ function FormWrapper()
     }
     this.save=function()
     {
-        alert('save');
+        $('#rform').submit();
     }
     this.typechanged=function()
     {

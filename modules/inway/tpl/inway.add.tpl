@@ -1,6 +1,8 @@
 <!-- BEGIN:MAIN -->
-<h1>{PHP.L.inway_addservise}</h1>
-<form id="sform">
+<div class="breadcrumb"><h4>{PHP.L.inway_addservise}</h4></div>
+{FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
+<div id="msg"></div>
+<form id="rform" action="{FRM_ADDURL}" method="POST" enctype="multipart/form-data">
 <div class="row">
     <div class="span5">
         <div class="row">
@@ -8,7 +10,7 @@
                 {PHP.L.inway_title}:
             </div>
             <div class="span3">
-                {ADD_TITLE}
+                {FRM_TITLE}
             </div>
         </div>
         <div class="row">
@@ -16,8 +18,8 @@
                 {PHP.L.inway_cat}:
             </div>
             <div class="span3">
-                {ADD_CAT}
-                {ADD_OTHERS}
+                {FRM_CAT}
+                {FRM_OTHERS}
             </div>
         </div>
         <div class="row">
@@ -25,7 +27,7 @@
                 {PHP.L.inway_dsc}:
             </div>
             <div class="span3">
-                {ADD_DSC}
+                {FRM_DSC}
             </div>
         </div>
         </div>
@@ -50,6 +52,7 @@
         <a class="btn btn-success" id="save">{PHP.L.Save}</a>
     </div>
 </div>
+    {FRM_LAT}{FRM_LONG}
 </form>
 <script type="text/javascript">
     $("#val_other").hide();
