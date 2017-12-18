@@ -15,6 +15,7 @@ class InwayMain extends InwayBase
         foreach($list as $item)
         {
             $this->t->assign($item->getTags('IN_'));
+            $this->t->assign('IN_DETAILS',cot_url('inway','m=details&id='.$item->id,'',true));
             $this->t->parse('MAIN.ROW_INWAY');
         }
     }

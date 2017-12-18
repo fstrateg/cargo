@@ -4,6 +4,8 @@ defined('COT_CODE') or die('Wrong URL');
 global $usr;
 cot_block($usr['id']);
 
+$id=cot_import('id','G','INT');
+
 $cls=new InwayAdd('inway.add');
 
 if ($a!=null)
@@ -11,9 +13,13 @@ if ($a!=null)
     $cls->loadFromPost();
     if ($cls->validate())
     {
-        $cls->save();
-        cot_redirect(cot_url('inway'));
+        $cls->save($a);
+        cot_redirect(cot_url('inway','m=details&id='.$cls->value->id,'',true));
     }
+}
+if ($id)
+{
+    $cls->load($id);
 }
 
 $module_body=$cls->createPage();
@@ -28,11 +34,12 @@ class InwayAdd extends InwayBase
 
     public function addTags()
     {
-        $this->t->assign($this->value->getTags('FRM'));
+        $oper=$this->value->id?'edit':'add';
+        $this->t->assign($this->value->getTagForm('FRM_'));
         $this->t->assign(
             [
                 'FRM_CAT'=>$this->createCat(),
-                'FRM_ADDURL'=>cot_url('inway','m=add&a=add','',true),
+                'FRM_ADDURL'=>cot_url('inway','m=add&a='.$oper,'',true),
             ]);
     }
 
@@ -64,6 +71,14 @@ class InwayAdd extends InwayBase
         $html=cot_selectbox($this->value->cat,'rcat',$values,$titles);
         return $html;
     }
+
+    public function load($id)
+    {
+        global $usr;
+        $this->value=TbInway::getItem($id);
+        if ($this->value->owner!=$usr['id']) cot_die_message(404);
+    }
+
     public function loadFromPost()
     {
         $this->value=TbInway::loadPost();
@@ -74,8 +89,9 @@ class InwayAdd extends InwayBase
         return $this->value->validate();
     }
 
-    public function save()
+    public function save($act)
     {
-        $this->value->add();
+        if ($act=='add') $this->value->add();
+        if ($act=='edit') $this->value->edit();
     }
 }

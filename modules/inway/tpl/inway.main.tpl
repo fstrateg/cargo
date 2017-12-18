@@ -8,7 +8,7 @@
             <div class="span3">
                 <h3>{PHP.L.inway_dsc}</h3>
                 <!-- BEGIN:ROW_INWAY -->
-                <p>{IN_TITLE}</p>
+                <p><a href="{IN_DETAILS}">{IN_TITLE}</a></p>
                 <p>{IN_STARS}</p>
                 <p><b>{IN_CATNAME}</b></p>
                 <p>{IN_LOCATION}</p>

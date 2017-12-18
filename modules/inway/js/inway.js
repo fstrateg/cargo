@@ -12,16 +12,39 @@ function MapWrapper()
         if (_this.geocoder == null) {
             _this.geocoder = new google.maps.Geocoder();
         }
+        this.latLng=_this.GetAddresses();
 
         if (_this.map==null) {
-            var mapOptions = {
-                zoom: 5,
-                center: new google.maps.LatLng(48, 68),
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                scrollwheel: false
-            };
+            var mapOptions;
+            if (_this.latLng==null)
+                mapOptions = {
+                    zoom: 5,
+                    center: new google.maps.LatLng(48, 68),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    scrollwheel: false
+                };
+            else
+            {
+                mapOptions = {
+                    zoom: 10,
+                    center: _this.latLng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    scrollwheel: false
+                };
+            }
             _this.map = new google.maps.Map(document.getElementById('formap'),
                 mapOptions);
+            if (_this.latLng!=null)
+            {
+                _this.setMarker = new google.maps.Marker({
+                    map: _this.map,
+                    draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    position: _this.latLng
+                });
+                google.maps.event.addListener(_this.setMarker, 'dragend', _this.markerPositionChanged);
+
+            }
             _this.autocomplete = new google.maps.places.Autocomplete(document.getElementById('adress'));
         }
 
@@ -98,6 +121,18 @@ function MapWrapper()
     {
         $("#rform input[name='rlat']").val(result.lat());
         $("#rform input[name='rlong']").val(result.lng());
+    }
+
+    this.GetAddresses=function()
+    {
+        if (_this.latLng==null)
+        {
+            var lat=$("#rform input[name='rlat']").val();
+            var long=$("#rform input[name='rlong']").val();
+            if (lat!=null&&long!=null)
+                return new google.maps.LatLng(lat, long);
+            return null;
+        }
     }
 }
 

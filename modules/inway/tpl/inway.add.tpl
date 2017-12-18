@@ -1,7 +1,6 @@
 <!-- BEGIN:MAIN -->
 <div class="breadcrumb"><h4>{PHP.L.inway_addservise}</h4></div>
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
-<div id="msg"></div>
 <form id="rform" action="{FRM_ADDURL}" method="POST" enctype="multipart/form-data">
 <div class="row">
     <div class="span5">
@@ -52,7 +51,7 @@
         <a class="btn btn-success" id="save">{PHP.L.Save}</a>
     </div>
 </div>
-    {FRM_LAT}{FRM_LONG}
+    {FRM_LAT}{FRM_LONG}{FRM_ID}
 </form>
 <script type="text/javascript">
     $("#val_other").hide();

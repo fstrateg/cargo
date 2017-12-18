@@ -43,6 +43,7 @@ class TbInway
     var $lat;
     var $long;
     var $cat;
+    var $cat_name;
     var $other;
     var $owner;
 
@@ -65,7 +66,7 @@ class TbInway
         $this->lat=$item['lat'];
         $this->long=$item['long'];
         $this->desc=$item['desc'];
-
+        $this->cat=$item['cat'];
     }
 
     /**
@@ -81,6 +82,7 @@ class TbInway
                 'lat'=>$this->lat,
                 'long'=>$this->long,
                 'desc'=>$this->desc,
+                'cat'=>$this->cat,
             ];
     }
 
@@ -104,9 +106,35 @@ class TbInway
         if (!$items) cot_die_message(404);
         $item=new TbInway();
         $item->load($items[0]);
+        $item->getCatName();
         return $item;
     }
 
+    private function getCatName()
+    {
+        global $db,$db_inway_cat;
+        $item=$db->query('Select name from '.$db_inway_cat.' where id='.$this->cat)->fetchAll();
+        if ($item)
+        {
+            $this->cat_name=$item[0]['name'];
+        }
+
+    }
+
+    public function getTagForm($prefix='')
+    {
+        $tmp=$this->getTags('');
+        $tmp['OTHERS']=cot_inputbox('text','rother','','id="val_other"').cot_inputbox('hidden','rothers',$this->other,'id="list_other"');
+        $tmp['DSC']=cot_textarea('rdsc',$this->desc,10,70);
+        $tmp['TITLE']=cot_inputbox('text','rtitle',$this->title);
+        $tmp['ID']=cot_inputbox('hidden','rid',$this->id);
+        $rez=array();
+        foreach($tmp as $key=>$vl)
+        {
+            $rez[$prefix.$key]=$vl;
+        }
+        return $rez;
+    }
     /**
      * @param TbInway $item
      * @param string $prefix
@@ -117,11 +145,14 @@ class TbInway
         $tmp=[
             'TITLE'=>$this->title,
             'DAT'=>cot_date('d.m.Y',$this->dat),
-            'OTHERS'=>cot_inputbox('text','rother','','id="val_other"').cot_inputbox('hidden','rothers',$this->other,'id="list_other"'),
-            'DSC'=>cot_textarea('rdsc',$this->desc,10,70),
+            'DSC'=>$this->desc,
             'LAT'=>cot_inputbox('hidden','rlat',$this->lat),
             'LONG'=>cot_inputbox('hidden','rlong',$this->long),
         ];
+        if ($this->cat_name)
+        {
+            $tmp['CAT_NAME']=$this->cat_name;
+        }
         $rez=array();
         foreach($tmp as $key=>$vl)
         {
@@ -134,6 +165,7 @@ class TbInway
     public static function loadPost()
     {
         $vl=new TbInway();
+        $vl->id=cot_import('rid','P','INT');
         $vl->title=cot_import('rtitle','P','TXT');
         $vl->cat=cot_import('rcat','P','INT');
         $vl->desc=cot_import('rdsc','P','TXT');
