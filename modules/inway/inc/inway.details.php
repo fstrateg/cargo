@@ -21,6 +21,9 @@ class InwayDetails extends InwayBase
     {
         global $cfg;
         cot_rc_add_file($cfg['modules_dir'].'/inway/js/inway.show.js');
+        cot_rc_add_file("${cfg['themes_dir']}/${cfg['defaulttheme']}/css/stars.css");
+        cot_rc_add_file('js/jquery-ui.min.js');
+        cot_rc_add_file('js/jquery-ui.min.css');
         cot_rc_add_file('http://maps.googleapis.com/maps/api/js?key=AIzaSyCwrTqZZepbfT_JwP5GJKaZH1MfR2afYR0&amp;libraries=places');
         parent::prepare();
     }
@@ -43,6 +46,7 @@ class InwayDetails extends InwayBase
             $btn['FRM_RURL']=cot_url('inway',['m'=>'claim','id'=>$this->value->id],'',true);
         }
         $this->t->assign($btn);
+        $this->t->assign('FRM_COMURL',cot_url('inway',['m'=>'comment','a'=>'form','id'=>$this->value->id],'',true));
     }
 
 }

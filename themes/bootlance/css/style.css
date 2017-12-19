@@ -309,3 +309,14 @@ table.noborder td{
 	border: none;
 	padding: 4px;
 }
+
+.aslink{
+	background-color: transparent;
+	text-decoration: none;
+	border: none;
+	color: #007707;
+	cursor: pointer;
+}
+.aslink:hover {
+	text-decoration: underline;
+}

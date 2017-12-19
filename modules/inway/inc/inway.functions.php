@@ -3,6 +3,7 @@ defined('COT_CODE') or die('Wrong URL');
 
 cot::$db->registerTable('inway');
 cot::$db->registerTable('inway_cat');
+cot::$db->registerTable('inway_comments');
 
 class InwayBase
 {
@@ -206,4 +207,67 @@ class TbInway
         global $db;
         $db->delete($this->table_name,'id='.$this->id);
     }
+}
+
+class TbComment
+{
+    var $id;
+    var $dat;
+    var $created;
+    var $stars;
+    var $note;
+    var $userid;
+    var $inway_id;
+
+    public static function getListForID($id)
+    {
+        global $db,$db_inway_comments;
+        $rz=$db->query("select * from $db_inway_comments where inway_id=$id");
+        $rez=array();
+        while ($arr=$rz->fetch())
+        {
+            $item=new TbComment();
+            $item->loadFromArray($arr);
+            $rezp[]=$item;
+        }
+    }
+
+    public function loadFromArray($arr)
+    {
+        $this->id=$arr['ID'];
+        $this->dat=$arr['DAT'];
+        $this->stars=$arr['STARS'];
+    }
+
+    public function loadFromPost()
+    {
+        global $usr,$sys;
+        $this->id=cot_import('rid','P','INT');
+        $this->dat=cot_import('rdat','P','TXT');
+        $this->note=cot_import('rnote','P','TXT');
+        $this->stars=cot_import('rstars','P','INT');
+        $this->userid=$usr['id'];
+        $this->created=$sys['now'];
+        $this->inway_id=1; cot_import('rinway_id','P','INT');
+    }
+
+    private function toArray()
+    {
+        return [
+            'ID'=>$this->id,
+            'DAT'=>$this->dat,
+            'STARS'=>$this->stars,
+            'NOTE'=>$this->note,
+            'USERID'=>$this->userid,
+            'CREATED'=>$this->created,
+            'INWAY_ID'=>$this->inway_id
+        ];
+    }
+
+    public function add()
+    {
+        global $db_inway_comments;
+        cot::$db->insert($db_inway_comments,$this->toArray());
+    }
+
 }

@@ -41,10 +41,16 @@
 </div>
 <div class="row">
     <div id="comments" class="span12">
-        <a class="ajax" href="/index.php?e=inway&m=comment&a=form" rel="get-comments">{PHP.L.inway_addcomment}</a>
-
+        <a class="ajax" href="{FRM_COMURL}" rel="get-comments">{PHP.L.inway_addcomment}</a>
     </div>
 </div>
+<!-- BEGIN: COMMENT -->
+<div class="row">
+    <div class="span3">
+        {COM_STARS}
+    </div>
+</div>
+<!-- END: COMMENT -->
 <script type="text/javascript">
     $().ready(function () {
         var mapWrapper = new MapWrapper();

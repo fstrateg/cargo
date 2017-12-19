@@ -21,3 +21,4 @@ $L['inway_claim']='Заявить права';
 $L['inway_datvisit']='Дата посещения сервиса';
 $L['inway_stars']='Оцените сервис';
 $L['inway_yourcomment']='Ваш комментарий';
+$L['inway_commentadded']='Комментарий добавлен';
