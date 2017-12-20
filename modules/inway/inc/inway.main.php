@@ -18,6 +18,12 @@ class InwayMain extends InwayBase
             $this->t->assign('IN_DETAILS',cot_url('inway','m=details&id='.$item->id,'',true));
             $this->t->parse('MAIN.ROW_INWAY');
         }
+        $list=TbComment::getListTop(10);
+        foreach($list as $item)
+        {
+            $this->t->assign($item->getTags('IN_'));
+            $this->t->parse('MAIN.ROW_COMMENT');
+        }
     }
 
     public function addTags()

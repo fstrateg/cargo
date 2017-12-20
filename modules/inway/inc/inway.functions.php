@@ -195,6 +195,7 @@ class TbInway
         $this->dat=$sys["now"];
         $this->owner=$usr["id"];
         $db->insert($this->table_name,$this->toArray());
+        $this->id=$db->lastInsertId();
     }
 
     public function edit()
@@ -225,8 +226,20 @@ class TbComment
     {
         global $db,$db_inway_comments;
         $rz=$db->query("select * from $db_inway_comments where inway_id=$id");
+        return TbComment::cursorToList($rz);
+    }
+
+    public static function getListTop($top)
+    {
+        global $db,$db_inway_comments;
+        $rz=$db->query("select * from $db_inway_comments order by created DESC limit $top");
+        return TbComment::cursorToList($rz);
+    }
+
+    private static function cursorToList($c)
+    {
         $rez=array();
-        while ($arr=$rz->fetch())
+        while ($arr=$c->fetch())
         {
             $item=new TbComment();
             $item->loadFromArray($arr);

@@ -34,6 +34,7 @@ class InwayAdd extends InwayBase
 
     public function addTags()
     {
+        if (!$this->value) $this->value=new TbInway();
         $oper=$this->value->id?'edit':'add';
         $this->t->assign($this->value->getTagForm('FRM_'));
         $this->t->assign(
@@ -91,7 +92,7 @@ class InwayAdd extends InwayBase
 
     public function save($act)
     {
-        if ($act=='add') $this->value->add();
+        if ($act=='add')  $this->value->add();
         if ($act=='edit') $this->value->edit();
     }
 }

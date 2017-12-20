@@ -17,6 +17,13 @@
             </div>
             <div class="span6">
                 <h3>{PHP.L.inway_lastreview}</h3>
+                <!-- BEGIN:ROW_COMMENT -->
+                <div class="row">
+                    <div class="span2">
+                        {IN_DAT}
+                    </div>
+                </div>
+                <!-- BEGIN:END_COMMENT -->
             </div>
         </div>
     </div>
