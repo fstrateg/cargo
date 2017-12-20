@@ -320,3 +320,6 @@ table.noborder td{
 .aslink:hover {
 	text-decoration: underline;
 }
+.round img{
+	border-radius: 50%;
+}

@@ -47,6 +47,19 @@ class InwayDetails extends InwayBase
         }
         $this->t->assign($btn);
         $this->t->assign('FRM_COMURL',cot_url('inway',['m'=>'comment','a'=>'form','id'=>$this->value->id],'',true));
+        $this->outComments();
+    }
+
+    private function outComments()
+    {
+        $cm=TbComment::getListForID($this->value->id);
+        foreach($cm as $item)
+        {
+            $this->t->assign($item->getTags('FRM_'));
+            $this->t->assign(cot_generate_usertags($item->userid, 'FRM_'));
+            $this->t->parse('MAIN.COMMENT');
+        }
+
     }
 
 }

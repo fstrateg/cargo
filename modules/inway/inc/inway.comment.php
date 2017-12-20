@@ -27,9 +27,6 @@ class InwayComment
     {
         $this->t=new XTemplate(cot_tplfile($tpl));
         $this->value=new TbComment();
-        //TODO: Проверка на существование топика
-        //TODO: Проверка на кол-во уже добавленых оценок
-        //TODO: Проверка на публикацию комментария владельцем
         $this->id=cot_import('id','G','INT');
     }
 
@@ -56,6 +53,13 @@ class InwayComment
 
     private function validate()
     {
+        global $usr;
+        cot_check(empty($this->value->dat),'inway_empty_dat');
+        cot_check(empty($this->value->stars),'inway_empty_dat');
+        cot_check(empty($this->value->note),'inway_empty_note');
+        // Проверка что такой топик у нас есть
+        $rz=TbInway::getItem($this->value->inway_id);
+        cot_check($rz->owner==$usr['id'],'inway_nocommowner');
         return !cot_error_found();
     }
 
@@ -87,6 +91,7 @@ class InwayComment
                 break;
 
         }
+        cot_display_messages($this->t,$this->action);
         $this->t->parse($this->action);
         return $this->t->text($this->action);
     }

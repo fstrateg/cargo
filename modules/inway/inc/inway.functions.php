@@ -149,6 +149,7 @@ class TbInway
             'DSC'=>$this->desc,
             'LAT'=>cot_inputbox('hidden','rlat',$this->lat),
             'LONG'=>cot_inputbox('hidden','rlong',$this->long),
+            'OWNER'=>$this->owner,
         ];
         if ($this->cat_name)
         {
@@ -180,6 +181,7 @@ class TbInway
         global $L;
         cot_check(empty($this->title),$L['inway_empty_title'],'rtitle');
         cot_check(empty($this->cat),$L['inway_empty_cat'],'rcat');
+        //TODO реализовать доп поле
         //TODO добавить проверку на дополнительное поле
         cot_check(empty($this->desc),$L['inway_empty_desc'],'rdesc');
 
@@ -228,15 +230,33 @@ class TbComment
         {
             $item=new TbComment();
             $item->loadFromArray($arr);
-            $rezp[]=$item;
+            $rez[]=$item;
         }
+        return $rez;
     }
 
+    public function getTags($pref='')
+    {
+        $tmp=[
+            'STARS'=>$this->stars*20,
+            'DAT'=>$this->dat,
+            'NOTE'=>$this->note,
+            'CREATED'=>cot_date('d.m.y h:i',$this->created),
+        ];
+        if (!$pref) return $tmp;
+        $rez=array();
+        foreach($tmp as $key=>$vl)
+            $rez[$pref.$key]=$vl;
+        return $rez;
+    }
     public function loadFromArray($arr)
     {
-        $this->id=$arr['ID'];
-        $this->dat=$arr['DAT'];
-        $this->stars=$arr['STARS'];
+        $this->id=$arr['id'];
+        $this->dat=$arr['dat'];
+        $this->stars=$arr['stars'];
+        $this->note=$arr['note'];
+        $this->created=$arr['created'];
+        $this->userid=$arr['userid'];
     }
 
     public function loadFromPost()

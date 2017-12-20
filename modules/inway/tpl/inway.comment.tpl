@@ -1,4 +1,5 @@
 <!-- BEGIN:FORM -->
+{FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
 <form id="cmForm" action="{FSAVE}" method="post" class="ajax post-comments">
 <div class="row">
     <div class="span2">
