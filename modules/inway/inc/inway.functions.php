@@ -47,6 +47,8 @@ class TbInway
     var $cat_name;
     var $other;
     var $owner;
+    var $stars;
+    var $cnt;
 
     var $table_name;
 
@@ -68,6 +70,8 @@ class TbInway
         $this->long=$item['long'];
         $this->desc=$item['desc'];
         $this->cat=$item['cat'];
+        $this->stars=$item['stars'];
+        $this->cnt=$item['cnt'];
     }
 
     /**
@@ -84,6 +88,8 @@ class TbInway
                 'long'=>$this->long,
                 'desc'=>$this->desc,
                 'cat'=>$this->cat,
+                'stars'=>$this->stars,
+                'cnt'=>$this->cnt,
             ];
     }
 
@@ -111,7 +117,7 @@ class TbInway
         return $item;
     }
 
-    private function getCatName()
+    public function getCatName()
     {
         global $db,$db_inway_cat;
         $item=$db->query('Select name from '.$db_inway_cat.' where id='.$this->cat)->fetchAll();
@@ -150,6 +156,8 @@ class TbInway
             'LAT'=>cot_inputbox('hidden','rlat',$this->lat),
             'LONG'=>cot_inputbox('hidden','rlong',$this->long),
             'OWNER'=>$this->owner,
+            'STARS'=>$this->stars*20,
+            'CNT'=>$this->cnt,
         ];
         if ($this->cat_name)
         {
@@ -174,6 +182,13 @@ class TbInway
         $vl->lat=cot_import('rlat','P','NUM');
         $vl->long=cot_import('rlong','P','NUM');
         return $vl;
+    }
+
+    public static function refreshReviews($id)
+    {
+        global $db,$db_inway_comments,$db_inway;
+        $rz=$db->query("Select avg(stars) stars,count(stars) from $db_inway_comments where inway_id=$id")->fetchObject();
+        $db->query("update $db_inway set stars=".$rz->stars.",cnt=".$rz->cnt." Where id=".$id)->execute();
     }
 
     public function validate()

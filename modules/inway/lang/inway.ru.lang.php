@@ -28,3 +28,4 @@ $L['inway_yourcomment']='Ваш комментарий';
 $L['inway_commentadded']='Комментарий добавлен';
 $L['inway_added']='Добавлено';
 $L['inway_cm_dat']='Посещал сервис';
+$L['inway_reviews']='Отзывов';
