@@ -8,10 +8,29 @@ $module_body=$cls->createPage();
 
 class InwayMain extends InwayBase
 {
+    var $type;
 
+    function InwayMain($tmpl)
+    {
+        $this->type=cot_import('type','G','INT');
+        parent::__construct($tmpl);
+    }
     public function addRows()
     {
-        $list=TbInway::getList();
+        $list=TbInway::getCategory();
+        foreach($list as $item) {
+            $this->t->assign([
+                'ITYPE_ROW_TITLE'=>$item['name'].' ('.$item['cnt'].')',
+                'ITYPE_ROW_ACT'=>($item['id']==$this->type),
+                'ITYPE_ROW_URL'=>cot_url('inway',['type'=>$item['id']]),
+            ]);
+            $this->t->parse('MAIN.ITYPES.ITYPES_ROWS');
+        }
+        $this->t->assign('ITYPE_ALL_ACT',empty($this->type));
+        $this->t->assign('ITYPE_ALL_URL',cot_url('inway'));
+        $this->t->parse('MAIN.ITYPES');
+
+        $list=TbInway::getList($this->type);
         foreach($list as $item)
         {
             $item->getCatName();
@@ -19,7 +38,7 @@ class InwayMain extends InwayBase
             $this->t->assign('IN_DETAILS',cot_url('inway','m=details&id='.$item->id,'',true));
             $this->t->parse('MAIN.ROW_INWAY');
         }
-        $list=TbComment::getListTop(5);
+        $list=TbComment::getListTop(5,$this->type);
         foreach($list as $item)
         {
             $this->t->assign($item->getTags('IN_'));

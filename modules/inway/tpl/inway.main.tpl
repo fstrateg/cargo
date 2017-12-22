@@ -1,6 +1,17 @@
 <!-- BEGIN:MAIN -->
 <div class="row">
-    <div class="span3"></div>
+    <div class="span3">
+        <!-- BEGIN:ITYPES -->
+        <div class="well well-small">
+        <ul class="nav nav-list">
+            <li<!-- IF {ITYPE_ALL_ACT} --> class="active"<!-- ENDIF -->><a href="{ITYPE_ALL_URL}">{PHP.L.All}</a></li>
+            <!-- BEGIN:ITYPES_ROWS -->
+            <li<!-- IF {ITYPE_ROW_ACT} --> class="active"<!-- ENDIF -->><a href="{ITYPE_ROW_URL}">{ITYPE_ROW_TITLE}</a></li>
+            <!-- END:ITYPES_ROWS -->
+        </ul>
+        </div>
+        <!-- END:ITYPES -->
+    </div>
     <div class="span9">
         <div class="span2 pull-right" style="text-align: right"><a href="{ADD_URL}" class="btn btn-success">{PHP.L.Add}</a></div>
         <h1>{PHP.L.inway_usefull}</h1>

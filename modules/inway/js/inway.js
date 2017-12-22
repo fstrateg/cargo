@@ -148,16 +148,11 @@ function FormWrapper()
             var st=$('#list_other').val();
             if (st!=null) {
                 _this.others = st.split(',');
-                var i=$('form select[name=rtype]');
+                var i=$('form select[name=rcat]');
                 i.change(_this.typechanged);
+                i.change();
             }
         }
-        $('#save').unbind('click');
-        $('#save').click(_this.save);
-    }
-    this.save=function()
-    {
-        $('#rform').submit();
     }
     this.typechanged=function()
     {

@@ -72,6 +72,7 @@ class TbInway
         $this->cat=$item['cat'];
         $this->stars=$item['stars'];
         $this->cnt=$item['cnt'];
+        $this->other=$item['other'];
     }
 
     /**
@@ -90,14 +91,17 @@ class TbInway
                 'cat'=>$this->cat,
                 'stars'=>$this->stars,
                 'cnt'=>$this->cnt,
+                'other'=>$this->other,
             ];
     }
 
-    public static function getList()
+    public static function getList($type=0)
     {
         global $db,$db_inway;
+        $sql=empty($type)?'':" where cat=$type";
+
         $rez=array();
-        $items=$db->query("Select * from ".$db_inway." order by dat desc")->fetchAll();
+        $items=$db->query("Select * from ".$db_inway.$sql." order by dat desc")->fetchAll();
         foreach ($items as $item) {
             $vl=new TbInway();
             $vl->load($item);
@@ -128,10 +132,21 @@ class TbInway
 
     }
 
+    public static function getCategory()
+    {
+        global $db,$db_inway,$db_inway_cat;
+        $sql="Select b.id,b.name,count(a.id) cnt
+from $db_inway_cat b left join $db_inway a
+on (a.cat=b.id)
+group by b.id,b.name
+order by b.order";
+        $rez=$db->query($sql)->fetchAll();
+        return $rez;
+    }
+
     public function getTagForm($prefix='')
     {
         $tmp=$this->getTags('');
-        $tmp['OTHERS']=cot_inputbox('text','rother','','id="val_other"').cot_inputbox('hidden','rothers',$this->other,'id="list_other"');
         $tmp['DSC']=cot_textarea('rdsc',$this->desc,10,70);
         $tmp['TITLE']=cot_inputbox('text','rtitle',$this->title);
         $tmp['ID']=cot_inputbox('hidden','rid',$this->id);
@@ -181,13 +196,14 @@ class TbInway
         $vl->desc=cot_import('rdsc','P','TXT');
         $vl->lat=cot_import('rlat','P','NUM');
         $vl->long=cot_import('rlong','P','NUM');
+        $vl->other=cot_import('rother','P','TXT');
         return $vl;
     }
 
     public static function refreshReviews($id)
     {
         global $db,$db_inway_comments,$db_inway;
-        $rz=$db->query("Select avg(stars) stars,count(stars) from $db_inway_comments where inway_id=$id")->fetchObject();
+        $rz=$db->query("Select avg(stars) stars,count(stars) cnt from $db_inway_comments where inway_id=$id")->fetchObject();
         $db->query("update $db_inway set stars=".$rz->stars.",cnt=".$rz->cnt." Where id=".$id)->execute();
     }
 
@@ -240,14 +256,18 @@ class TbComment
     public static function getListForID($id)
     {
         global $db,$db_inway_comments;
-        $rz=$db->query("select * from $db_inway_comments where inway_id=$id");
+        $rz=$db->query("select * from $db_inway_comments where inway_id=$id order by created desc");
         return TbComment::cursorToList($rz);
     }
 
-    public static function getListTop($top)
+    public static function getListTop($top,$type=0)
     {
-        global $db,$db_inway_comments;
-        $rz=$db->query("select * from $db_inway_comments order by created DESC limit $top");
+        global $db,$db_inway_comments,$db_inway;
+        $sql="select * from $db_inway_comments order by created DESC limit $top";
+        if (!empty($type))
+            $sql="select a.*,b.cat from $db_inway_comments a, $db_inway b where b.id=a.inway_id and b.cat=$type order by a.created DESC limit $top";
+
+        $rz=$db->query($sql);
         return TbComment::cursorToList($rz);
     }
 
@@ -316,6 +336,7 @@ class TbComment
     {
         global $db_inway_comments;
         cot::$db->insert($db_inway_comments,$this->toArray());
+        TbInway::refreshReviews($this->inway_id);
     }
 
 }
