@@ -11,7 +11,7 @@ include_once cot_incfile('inway','modile');
 
 cot_block($usr['id']>0);
 
-if (!in_array($m,array('add','edit','del','details','comment'))) {
+if (!in_array($m,array('add','edit','del','details','comment','map','data'))) {
     $m = 'main';
 }
 

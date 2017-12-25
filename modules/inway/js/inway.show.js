@@ -23,4 +23,27 @@ function MapWrapper() {
             });
         }
     }
+
+    this.loadData = function(url){
+        $.get(url, function(xml){
+            $(xml).find("marker").each(function(){
+                var name = $(this).find('name').text();
+                var lat = $(this).find('lat').text();
+                var lng = $(this).find('long').text();
+                var point = new google.maps.LatLng(parseFloat(lat),parseFloat(lng));
+
+                var marker = new google.maps.Marker({
+                    position: point,
+                    map: _this.map
+                });
+
+                var infoWindow = new google.maps.InfoWindow();
+                var html='<strong>'+name+'</strong.>';
+                google.maps.event.addListener(marker, 'click', function() {
+                    infoWindow.setContent(html);
+                    infoWindow.open(_this.map, marker);
+                });
+            });
+        });
+    }
 }

@@ -124,10 +124,10 @@ class TbInway
     public function getCatName()
     {
         global $db,$db_inway_cat;
-        $item=$db->query('Select name from '.$db_inway_cat.' where id='.$this->cat)->fetchAll();
+        $item=$db->query('Select name,other from '.$db_inway_cat.' where id='.$this->cat)->fetchAll();
         if ($item)
         {
-            $this->cat_name=$item[0]['name'];
+            $this->cat_name=empty($item[0]['other'])?$item[0]['name']:$this->other;
         }
 
     }
