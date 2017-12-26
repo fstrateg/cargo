@@ -1,11 +1,11 @@
 <!-- BEGIN:MAIN -->
-<h4>{FRM_TITLE}</h4>
+<h4>{FRM_IN_TITLE}</h4>
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
 <div class="row">
     <div class="span5">
         <div class="row">
             <div class="span5">
-                <p><b>{FRM_CAT_NAME}</b></p>
+                <p><b>{FRM_IN_CAT_NAME}</b></p>
             </div>
         </div>
         <div class="row">
@@ -15,10 +15,10 @@
         </div>
         <div class="row">
             <div class="span5">
-                {FRM_DSC}
+                {FRM_IN_DSC}
                 <form id="rform">
-                {FRM_LAT}
-                {FRM_LONG}
+                {FRM_IN_LAT}
+                {FRM_IN_LONG}
                 </form>
             </div>
 
@@ -35,14 +35,14 @@
     <div class="span12">
         <div class="well well-small">
 
-            <a href="{FRM_RURL}" class="btn btn-success">{FRM_RTITLE}</a>
+            <a href="{FRM_IN_RURL}" class="btn btn-success">{FRM_IN_RTITLE}</a>
         </div>
     </div>
 </div>
-<!-- IF {PHP.usr.id} != {FRM_OWNER} -->
+<!-- IF {PHP.usr.id} != {FRM_IN_OWNER} -->
 <div class="row">
     <div id="comments" class="span12">
-        <a class="ajax" href="{FRM_COMURL}" rel="get-comments">{PHP.L.inway_addcomment}</a>
+        <a class="ajax" href="{FRM_IN_COMURL}" rel="get-comments">{PHP.L.inway_addcomment}</a>
     </div>
 </div>
 <hr>

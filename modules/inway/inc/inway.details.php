@@ -31,22 +31,22 @@ class InwayDetails extends InwayBase
     public function addTags()
     {
         global $usr,$L;
-        $this->t->assign($this->value->getTags('FRM_'));
+        $this->t->assign($this->value->getTags('FRM_IN_'));
         $btn=array();
         if ($usr['id']==$this->value->owner)
         {
             // edit
-            $btn['FRM_RTITLE']=$L['Edit'];
-            $btn['FRM_RURL']=cot_url('inway',['m'=>'add','id'=>$this->value->id],'',true);
+            $btn['FRM_IN_RTITLE']=$L['Edit'];
+            $btn['FRM_IN_RURL']=cot_url('inway',['m'=>'add','id'=>$this->value->id],'',true);
         }
         else
         {
             // claim
-            $btn['FRM_RTITLE']=$L['inway_claim'];
-            $btn['FRM_RURL']=cot_url('inway',['m'=>'claim','id'=>$this->value->id],'',true);
+            $btn['FRM_IN_RTITLE']=$L['inway_claim'];
+            $btn['FRM_IN_RURL']=cot_url('inway',['m'=>'claim','id'=>$this->value->id],'',true);
         }
         $this->t->assign($btn);
-        $this->t->assign('FRM_COMURL',cot_url('inway',['m'=>'comment','a'=>'form','id'=>$this->value->id],'',true));
+        $this->t->assign('FRM_IN_COMURL',cot_url('inway',['m'=>'comment','a'=>'form','id'=>$this->value->id],'',true));
         $this->outComments();
     }
 

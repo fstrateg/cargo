@@ -153,6 +153,12 @@ function FormWrapper()
                 i.change();
             }
         }
+        $('#save').unbind('click');
+        $('#save').click(_this.save);
+    }
+    this.save=function()
+    {
+        $('#rform').submit();
     }
     this.typechanged=function()
     {

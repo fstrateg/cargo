@@ -14,7 +14,7 @@ class InwayData
         $rez='';
         foreach($data as $item)
             $rez.=$this->getXml($item);
-        return $rez;
+        return '<markers>'.$rez.'</markers>';
     }
 
     /**
@@ -22,6 +22,6 @@ class InwayData
      */
     private function getXml($item)
     {
-        return sprintf('<lat>%F</lat><long>%F</long><name>%s</name>',$item->lat,$item->long,$item->title);
+        return sprintf('<marker><lat>%F</lat><long>%F</long><name>%s</name></marker>',$item->lat,$item->long,$item->title);
     }
 }
