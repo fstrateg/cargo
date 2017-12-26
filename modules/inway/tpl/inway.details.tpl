@@ -19,6 +19,7 @@
                 <form id="rform">
                 {FRM_IN_LAT}
                 {FRM_IN_LONG}
+                {FRM_IN_NAME}
                 </form>
             </div>
 

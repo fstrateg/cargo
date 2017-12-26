@@ -170,6 +170,7 @@ order by b.order";
             'DSC'=>$this->desc,
             'LAT'=>cot_inputbox('hidden','rlat',$this->lat),
             'LONG'=>cot_inputbox('hidden','rlong',$this->long),
+            'NAME'=>cot_inputbox('hidden','rname',$this->title),
             'OWNER'=>$this->owner,
             'STARS'=>$this->stars*20,
             'CNT'=>$this->cnt,

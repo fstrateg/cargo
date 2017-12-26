@@ -16,13 +16,15 @@ class InwayMap extends InwayBase
     public function __construct($tmpl)
     {
         $this->id=cot_import('id','G','INT');
-        $this->value=TbInway::getItem($this->id);
+        if ($this->id)
+            $this->value=TbInway::getItem($this->id);
         parent::__construct($tmpl);
     }
 
     public function addTags()
     {
-        $this->t->assign($this->value->getTags('FRM_'));
+        if ($this->id)
+            $this->t->assign($this->value->getTags('FRM_'));
         $this->t->assign('FRM_URL_DATA',cot_url('inway',['m'=>'data','id'=>$this->id],'',true));
          parent::addTags();
     }

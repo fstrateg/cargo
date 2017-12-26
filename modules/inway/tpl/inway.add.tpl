@@ -37,7 +37,7 @@
                 {PHP.L.inway_city}:</div>
             <div class="control">
                 <input id="adress" class="address" name="address" type="text" value="" size="50"/>
-                <a id="city_ok" class="btn btn-success" style="margin-bottom: 10px;">Ok</a>
+                <a id="city_ok" class="btn btn-success" style="margin-bottom: 10px;">OK</a>
             </div>
         </div>
         <p>{PHP.L.inway_map}</p>
