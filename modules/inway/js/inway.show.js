@@ -25,7 +25,7 @@ function MapWrapper() {
                 draggable: false,
                 animation: google.maps.Animation.DROP,
                 position: new google.maps.LatLng(lat, long),
-                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                icon: '/images/green-dot.png'
             });
             _this.addInfo(_this.setMarker,name);
             }
@@ -43,7 +43,7 @@ function MapWrapper() {
                 var marker = new google.maps.Marker({
                     position: point,
                     map: _this.map,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                    icon: '/images/red-dot.png'
                 });
 
                 _this.addInfo(marker,name);

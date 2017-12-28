@@ -41,8 +41,8 @@ class TbInway
     var $title;
     var $desc;
     var $dat;
-    var $lat;
-    var $long;
+    var $lat=43.2246925;
+    var $long=76.8412974;
     var $cat;
     var $cat_name;
     var $other;
@@ -213,8 +213,11 @@ order by b.order";
         global $L;
         cot_check(empty($this->title),$L['inway_empty_title'],'rtitle');
         cot_check(empty($this->cat),$L['inway_empty_cat'],'rcat');
-        //TODO реализовать доп поле
-        //TODO добавить проверку на дополнительное поле
+        if ($this->cat)
+        {
+            $cat=TbCat::getItem($this->cat);
+            if ($cat->other>0) cot_check(empty($this->other),$L['inway_empty_cat'],'rcat');
+        }
         cot_check(empty($this->desc),$L['inway_empty_desc'],'rdesc');
 
         return !cot_error_found();
@@ -340,4 +343,28 @@ class TbComment
         TbInway::refreshReviews($this->inway_id);
     }
 
+}
+
+class TbCat{
+    var $id;
+    var $name;
+    var $other;
+    var $order;
+
+    public function load($item)
+    {
+        $this->id=$item['id'];
+        $this->name=$item['name'];
+        $this->other=$item['other'];
+        $this->order=$item['order'];
+    }
+
+    public static function getItem($id)
+    {
+        global $db,$db_inway_cat;
+        $items=$db->query("Select * from ".$db_inway_cat." where id=$id")->fetchAll();
+        $rez=new TbCat();
+        $rez->load($items[0]);
+        return $rez;
+    }
 }

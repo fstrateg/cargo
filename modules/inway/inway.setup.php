@@ -14,7 +14,11 @@
  * Auth_members=RW
  * Lock_members=
  * Requires_plugins=
+ * [BEGIN_COT_EXT_CONFIG]
+ * inway_desc=01:text::<p>Текст для запроса заявки прав</p>
+ * [END_COT_EXT_CONFIG]
  * [END_COT_EXT]
+
 */
 
 /**

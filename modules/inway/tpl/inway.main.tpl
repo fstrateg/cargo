@@ -15,11 +15,12 @@
     <div class="span9">
         <div class="span2 pull-right" style="text-align: right"><a href="{ADD_URL}" class="btn btn-success">{PHP.L.Add}</a></div>
         <h1>{PHP.L.inway_usefull}</h1>
+        {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
         <div class="row">
             <div class="span3">
                 <h3>{PHP.L.inway_dsc}</h3>
                 <!-- BEGIN:ROW_INWAY -->
-                <p><a href="{IN_DETAILS}">{IN_TITLE}</a></p>
+                <p><a href="{IN_ONMAP}"><img src="/images/view.png" title="{PHP.L.inway_showonmap}"/></a> <a href="{IN_DETAILS}">{IN_TITLE}</a></p>
                 <div class="fstars" style="padding: 10px 0">
                     <span class="stars-view"><span style="width: {IN_STARS}%"></span></span> ({IN_CNT} {PHP.L.inway_reviews})
                 </div>

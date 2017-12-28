@@ -36,6 +36,7 @@ class InwayMain extends InwayBase
             $item->getCatName();
             $this->t->assign($item->getTags('IN_'));
             $this->t->assign('IN_DETAILS',cot_url('inway','m=details&id='.$item->id,'',true));
+            $this->t->assign('IN_ONMAP',cot_url('inway',['m'=>'map','id'=>$item->id],'',true));
             $this->t->parse('MAIN.ROW_INWAY');
         }
         $list=TbComment::getListTop(5,$this->type);
@@ -58,5 +59,6 @@ class InwayMain extends InwayBase
     {
         $this->addTags();
         $this->addRows();
+        parent::prepare();
     }
 }

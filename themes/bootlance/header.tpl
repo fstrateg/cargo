@@ -153,6 +153,7 @@
 					<!-- IF {PHP.cot_plugins_active.calcmarsh} -->
 					<li<!-- IF {PHP.env.ext} == 'calcmarsh' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('calcmarsh')}">{PHP.L.projects_calc}</a></li>
 					<!-- ENDIF -->
+					<li<!-- IF {PHP.env.ext} == 'inway' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('inway')}">{PHP.L.hea_inway}</a></li>
 				</ul>
 			</div>
 		</div>

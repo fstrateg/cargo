@@ -63,7 +63,8 @@ class InwayAdd extends InwayBase
         {
             $values[]=$item['id'];
             $titles[]=$item['name'];
-            if ($item['other'])
+
+            if ((boolean)$item['other'])
             {
                 $others[]=$item['id'];
             }
