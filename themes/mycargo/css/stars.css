@@ -1,0 +1,78 @@
+/*sprite with stars*/
+#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+    background: url('/images/star_big_gray.gif') no-repeat;
+}
+
+#reviewStars-input {
+
+    /*fix floating problems*/
+    overflow: hidden;
+    *zoom: 1;
+    /*end of fix floating problems*/
+
+    position: relative;
+    float: left;
+}
+
+#reviewStars-input input {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+
+    width: 34px;
+    height: 34px;
+
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+#reviewStars-input input:checked ~ label {
+    background: url('/images/star_big_color.gif') no-repeat;
+}
+
+#reviewStars-input label {
+    background-position: 0 0;
+    height: 34px;
+    width: 34px;
+    float: right;
+    cursor: pointer;
+    margin-right: 2px;
+
+    position: relative;
+    z-index: 1;
+}
+
+#reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+    background: url('/images/star_big_color.gif') no-repeat;
+}
+
+.fstars>span.stars-view{
+    display: inline-block;
+    height: 14px;
+    width: 75px;
+    background: url("/images/star_small_gray.png");
+}
+.fstars>span.stars-view>span{
+    display: inline-block;
+    height: 14px;
+    background: url("/images/star-small_color.png");
+}
+/*
+#reviewStars-input #star-0 {
+    left: 0px;
+}
+#reviewStars-input #star-1 {
+    left: 53px;
+}
+#reviewStars-input #star-2 {
+    left: 106px;
+}
+#reviewStars-input #star-3 {
+    left: 159px;
+}
+#reviewStars-input #star-4 {
+    left: 212px;
+}
+#reviewStars-input #star-5 {
+    left: 265px;
+}*/
