@@ -8,7 +8,22 @@ body	{
 	height:100%;
 	background-color:#FFFFFF;
 }
+/* 1. Main Navigation
+-------------------------------------------------- */
+nav.navbar{	background-color: #693;}
+nav.navbar .nav-item{padding-right: 15px;}
+nav.navbar a.nav-link{color: #FFF;}
+nav.navbar a.nav-link:hover{text-decoration: underline;}
 
+/* 2. Structure
+-------------------------------------------------- */
+#header 				{ margin-top: 56px; height: 140px; }
+#header .logo		{ padding:10px 0 15px; font-size: 36px; font-weight: bold; }
+#header nav.navbar .nav-item {padding-right: 10px;}
+#header nav.navbar{	background-color: #FFF;}
+#header nav.navbar a.nav-link{padding: 8px; color: #000;text-transform: uppercase;font-family: 'Montserrat',Helvetica, sans-serif; font-size: 14px;}
+#header nav.navbar li.active a.nav-link{color: #693;text-decoration: underline;}
+/*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }
 
@@ -24,7 +39,7 @@ textarea	{ width: 99%; min-height: 100px; }
 .locselectcountry, .locselectregion, .locselectcity { width: 160px!important; }
 
 /* 1. Main Navigation
--------------------------------------------------- */
+-------------------------------------------------- *
 
 #nav				{ line-height:1.4em; background:#ddd; overflow:auto; margin:0; padding:0; }
 #nav li				{ width:159px; border-right:1px solid #f8f8f8; float:left; }
@@ -34,7 +49,7 @@ textarea	{ width: 99%; min-height: 100px; }
 #nav li a:hover span	{ color:#ccc; }
 
 /* 2. Structure
--------------------------------------------------- */
+-------------------------------------------------- *
 
 #wrapper 			{ min-height:100%; }
 #main 				{ padding-bottom: 100px; }
@@ -49,7 +64,7 @@ textarea	{ width: 99%; min-height: 100px; }
 .block				{ margin:0 0 25px; }
 
 /* 3. Headings
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .mboxHD	{ color:#000000; font-weight: bold; font-size:16px; margin: 10px 0; }
 
@@ -62,7 +77,7 @@ div.done										{ color:#4f8a10; background-color:#dff2bf; background-image:ur
 div.help										{ color:#00529b; background-color:#bde5f8; background-image:url(../../../images/icons/default/help.png); border:1px solid #00529b; }
 
 /* 4. Tables
--------------------------------------------------- */
+-------------------------------------------------- *
 
 table td 	{ vertical-align:top;line-height: 22px;}
 
@@ -89,7 +104,7 @@ table.fico td img	{ margin-right:10px; vertical-align:middle; }
 
 table.flat td.photo{width: 310px;}
 /* 6. Misc
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .odd	{ background-color:#fff!important; }
 .even	{ background-color:#f1f1f1!important; }
@@ -180,7 +195,7 @@ span.readmore		{ display:block; }
 .clearfix							{ zoom:1; }
 
 /* 7. Pagination
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .paging		{ margin:10px 0 20px 0; text-align:center; font-size:.9em; }
 .paging img	{ vertical-align:-3px; }
@@ -195,20 +210,20 @@ span.readmore		{ display:block; }
 .spaced				{ border:none!important; margin:0 8px!important; padding:0!important; }
 
 /* 8. Comments
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .comments1, .comments2	{ margin-bottom:10px; float:left; position:relative; }
 .comments1				{ width:20%; }
 .comments2				{ width:80%; }
 
 /* 9. Polls
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .bar_front 	{ background-color:#cde8fb; border-right:0px solid #333; color:#ddd; height:8px; font-size:1px; }
 .bar_back 	{ background-color:#fff; border:1px solid #333; height:8px; }
 
 /* 10. Forums
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .b1 img			{ margin:0 5px 0 0; vertical-align:-5px!important; }
 .userstatus		{ margin-top:2px; float:right; }
@@ -219,14 +234,14 @@ span.readmore		{ display:block; }
 #newf li			{ margin-right:10px; display:inline; }
 
 /* 11. Search
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .search-res			{ margin:0 0 10px; overflow:auto; }
 .search-res .small	{ color:#000; }
 .search-hl      		{ font-weight:bold; padding:0 2px; background:yellow; }
 
 /* 12. Lists
--------------------------------------------------- */
+-------------------------------------------------- *
 
 .endItem			{ margin-right:0!important; }
 .endItem+li			{ clear:both; }
@@ -237,7 +252,7 @@ ol					{ margin-left:20px; list-style-type:decimal; }
 #usergrouplist ul li:first-child a	{ color:#900; }
 
 /* 13. Login form 
---------------------------------------------------- */
+--------------------------------------------------- *
 
 .form-signin {
 	padding: 7px 19px 19px 19px;
@@ -275,7 +290,7 @@ ol					{ margin-left:20px; list-style-type:decimal; }
 
 #reporterror a:hover{
 	transition: ease-in-out .3s;
-	/*background: #6f9c00;*/
+	/*background: #6f9c00;*
 	background-image: linear-gradient(to bottom,#007707,#0c4);
 	text-decoration: none;
 	color: #FFFFFF;
@@ -322,4 +337,4 @@ table.noborder td{
 }
 .round img{
 	border-radius: 50%;
-}
+}*/

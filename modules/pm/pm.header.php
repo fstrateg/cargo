@@ -18,21 +18,20 @@ defined('COT_CODE') or die('Wrong URL.');
 
 if ($usr['id'] > 0)
 {
-	$out['pms'] = cot_rc_link(cot_url('pm'), $L['Private_Messages']);
+	$out['pms'] = cot_rc_link(cot_url('pm'), $L['Private_Messages'], 'class="nav-link"');
 
 	require_once cot_incfile('pm', 'module');
 	if ($usr['newpm'])
 	{
 		$usr['messages'] = $db->query("SELECT COUNT(*) FROM $db_pm WHERE pm_touserid='".$usr['id']."' AND pm_tostate=0")->fetchColumn();
 	}
-	$out['pmreminder'] = cot_rc_link(cot_url('pm'),
-		($usr['messages'] > 0) ? cot_declension($usr['messages'], $Ls['Privatemessages']) : $L['hea_noprivatemessages']
-	);
+	$out['pmtext'] = ($usr['messages'] > 0) ? cot_declension($usr['messages'], $Ls['Privatemessages']) : $L['hea_noprivatemessages'];
 
 	$t->assign(array(
 		'HEADER_USER_PM_URL' => cot_url('pm'),
 		'HEADER_USER_PMS' => $out['pms'],
-		'HEADER_USER_PMREMINDER' => $out['pmreminder']
+		'HEADER_USER_PMREMINDER' => cot_rc_link(cot_url('pm'),$out['pmtext']),
+		'HEADER_USER_PMTEXT' => $out['pmtext'],
 	));
 }
 
