@@ -23,6 +23,32 @@ nav.navbar a.nav-link:hover{text-decoration: underline;}
 #header nav.navbar{	background-color: #FFF;}
 #header nav.navbar a.nav-link{padding: 8px; color: #000;text-transform: uppercase;font-family: 'Montserrat',Helvetica, sans-serif; font-size: 14px;}
 #header nav.navbar li.active a.nav-link{color: #693;text-decoration: underline;}
+
+#reporterror{
+
+}
+#reporterror a{
+    position: fixed;
+    bottom: -3px;
+    right: 50px;
+    border-style: solid;
+    border-color: #007707;
+    border-radius: 3px;
+    border-width: 2px 2px 0 2px;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+#reporterror a:hover{
+    transition: ease-in-out .3s;
+/*background: #6f9c00;*/
+background-color: #693;
+text-decoration: none;
+color: #FFFFFF;
+}
+
+.mboxHD	{ color:#000000; font-weight: bold; font-size:16px; margin: 10px 0; }
+
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }
@@ -186,7 +212,7 @@ table.flat td.photo{width: 310px;}
 .textbox	{ margin-bottom:10px; overflow:auto; }
 
 span.readmore		{ display:block; }
-	span.readmore a	{  }
+span.readmore a	{  }
 
 .download	{ margin:10px 0; padding:10px 0 10px 84px; background:url(../img/download.png) no-repeat 10px 12px; border:1px dashed #c00; }
 
@@ -251,22 +277,22 @@ ol					{ margin-left:20px; list-style-type:decimal; }
 
 #usergrouplist ul li:first-child a	{ color:#900; }
 
-/* 13. Login form 
+/* 13. Login form
 --------------------------------------------------- *
 
 .form-signin {
-	padding: 7px 19px 19px 19px;
-	background-color: #fff;
-	border: 1px solid #e5e5e5;
-	-webkit-border-radius: 5px;
-	   -moz-border-radius: 5px;
-			border-radius: 5px;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-			box-shadow: 0 1px 2px rgba(0,0,0,.05);
+padding: 7px 19px 19px 19px;
+background-color: #fff;
+border: 1px solid #e5e5e5;
+-webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+        border-radius: 5px;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 .form-signin .checkbox {
-	margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 #listprojects {}
@@ -274,67 +300,67 @@ ol					{ margin-left:20px; list-style-type:decimal; }
 #listprojects .prjbold { background-color: #dff2bf; }
 
 #reporterror{
-	
+
 }
 #reporterror a{
-	position: fixed;
-    bottom: -3px;
-    right: 50px;
-    border-style: solid;
-    border-color: #007707;
-    border-radius: 3px;
-    border-width: 2px 2px 0 2px;
-	display: inline-block;
-	padding: 5px 10px;
-	}
+position: fixed;
+bottom: -3px;
+right: 50px;
+border-style: solid;
+border-color: #007707;
+border-radius: 3px;
+border-width: 2px 2px 0 2px;
+display: inline-block;
+padding: 5px 10px;
+}
 
 #reporterror a:hover{
-	transition: ease-in-out .3s;
-	/*background: #6f9c00;*
-	background-image: linear-gradient(to bottom,#007707,#0c4);
-	text-decoration: none;
-	color: #FFFFFF;
-	}
+transition: ease-in-out .3s;
+/*background: #6f9c00;*
+background-image: linear-gradient(to bottom,#007707,#0c4);
+text-decoration: none;
+color: #FFFFFF;
+}
 
 #listtransport h4{
-	line-height: 24px;
+line-height: 24px;
 }
 #listtransport h4 span{
-	vertical-align: text-top;
+vertical-align: text-top;
 }
 #listtransport .dover{
-	font-size: 14px;
-	text-decoration: none;
-	font-weight: normal;
+font-size: 14px;
+text-decoration: none;
+font-weight: normal;
 }
 
 small.info{color: #888888;}
 
 .claims{
-    padding: 5px;
-    border: 1px solid #fff;
+padding: 5px;
+border: 1px solid #fff;
 }
 .claims:hover{
 transition: ease-in-out .3s;
 background-color: #e9ffde;
 box-shadow: #b5f7bf 2px 2px 5px;
-    border: 1px solid #b5f7bf;
+border: 1px solid #b5f7bf;
 }
 table.noborder td{
-	border: none;
-	padding: 4px;
+border: none;
+padding: 4px;
 }
 
 .aslink{
-	background-color: transparent;
-	text-decoration: none;
-	border: none;
-	color: #007707;
-	cursor: pointer;
+background-color: transparent;
+text-decoration: none;
+border: none;
+color: #007707;
+cursor: pointer;
 }
 .aslink:hover {
-	text-decoration: underline;
+text-decoration: underline;
 }
 .round img{
-	border-radius: 50%;
+border-radius: 50%;
 }*/

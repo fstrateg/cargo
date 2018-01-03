@@ -53,7 +53,7 @@
 		</div>
 	</div>	
 	<!-- ENDIF -->
-	<nav class="navbar fixed-top navbar-expand-lg">
+	<nav class="navbar fixed-top navbar-dark navbar-expand-xl">
 		<div id="wrapper" class="container">
 
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -131,7 +131,7 @@
 				<div class="logo"><a href="{PHP|cot_url('index')}" title="{PHP.cfg.maintitle} {PHP.cfg.separator} {PHP.cfg.subtitle}"><img src="themes/{PHP.theme}/img/logo.png"/></a></div>
 			</div>
 			<div class="col-9 align-self-center">
-				<nav1 class="navbar1">
+				<nav class="navbar">
 					<div class="navbar-inner">
 						<ul class="nav">
 							<li class="nav-item <!-- IF {PHP.env.ext} == 'index' -->active<!-- ENDIF -->"><a class="nav-link" href="{PHP|cot_url('index')}">{PHP.L.Home}</a></li>
@@ -148,12 +148,12 @@
 							<li<!-- IF {PHP.env.ext} == 'inway' --> class="active"<!-- ENDIF -->><a class="nav-link" href="{PHP|cot_url('inway')}">{PHP.L.hea_inway}</a></li>
 						</ul>
 					</div>
-				</nav1>
+				</nav>
 			</div>
 		</div>
 
 
 	</div>
-		<div id="main" class="content">
+		<div id="main" class="container">
 		
 <!-- END: HEADER -->

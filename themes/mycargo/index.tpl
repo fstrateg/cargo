@@ -8,7 +8,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="span3">
+	<div class="col-3">
 		<div class="well well-small">{PROJECTS_CATALOG}</div>
 		
 		<!-- IF {PHP.cot_plugins_active.userpoints} -->
@@ -29,7 +29,7 @@
 		</div>
 		<!-- ENDIF -->
 	</div>
-	<div class="span9">
+	<div class="col-9">
 		{PROJECTS_SEARCH}
 		
 		<!-- IF {PHP.cot_plugins_active.paypro} -->
