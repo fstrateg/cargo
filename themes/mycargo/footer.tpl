@@ -4,7 +4,19 @@
 </div>
 <div id="footer">
 	<div class="container">
-		&copy; {PHP|cot_date('Y')} {PHP.cfg.maintitle}
+        <div class="row">
+            <div class="col">
+                &copy; {PHP|cot_date('Y')} {PHP.cfg.maintitle}
+            </div>
+            <div class="col text-lg-right">
+                <!-- IF {PHP.env.mobile} -->
+                <p>mobile</p>
+                <!-- ELSE -->
+                <p>desctop</p>
+                <!-- ENDIF -->
+            </div>
+        </div>
+
         <!-- Yandex.Metrika counter -->
         <script type="text/javascript">
             (function (d, w, c) {

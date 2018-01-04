@@ -166,6 +166,8 @@ else
 }
 unset($ext);
 
+require_once $cfg['system_dir'].'/mobile.php';
+
 // Load the requested extension
 if ($env['type'] == 'plug')
 {
