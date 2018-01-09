@@ -185,7 +185,7 @@ $t->parse("MAIN.PTYPES");
 
 $t->assign(array(
 	"SEARCH_ACTION_URL" => cot_url('projects', "&type=" . $type, '', true),
-	"SEARCH_SQ" => cot_inputbox('text', 'sq', htmlspecialchars($sq), 'class="schstring"'),
+	"SEARCH_SQ" => cot_inputbox('text', 'sq', htmlspecialchars($sq), 'class="form-control"'),
 	"SEARCH_CAT" => cot_projects_selectcat($c, 'c'),
 	"SEARCH_TRANSP"=>create_avtospisok_selectbox('transp',$transp),
 	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false),

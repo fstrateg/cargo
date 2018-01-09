@@ -1,7 +1,7 @@
 <!-- BEGIN: SEARCH -->
 	<!-- BEGIN: PTYPES -->
 <div class="row justify-content-end">
-    <div class="col-3">
+    <div class="col-3 text-right">
         <!-- IF {PHP.usr.auth_write} -->
         <noindex>
             <!-- IF {PHP.usr.maingrp} == 4 -->
@@ -18,7 +18,7 @@
     </div>
 </div>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="{PTYPE_ALL_URL}">{PHP.L.All}</a></li>
+		<li class="nav-item"><a class="nav-link active" href="{PTYPE_ALL_URL}">{PHP.L.All}</a></li>
 		<!-- BEGIN: PTYPES_ROWS -->
 		<li<!-- IF {PTYPE_ROW_ACT} --> class="active"<!-- ENDIF -->><a href="{PTYPE_ROW_URL}">{PTYPE_ROW_TITLE}</a></li>
 		<!-- END: PTYPES_ROWS -->
@@ -28,32 +28,52 @@
 	</ul>	
 	<!-- END: PTYPES -->
 
-	<div class="well">			
+	<div class="panel">
 		<form action="{SEARCH_ACTION_URL}" method="get">
 			<input type="hidden" name="e" value="projects" />
-			<table width="100%" cellpadding="5" cellspacing="0">
-				<tr>
-					<td width="100">{PHP.L.Search}:</td>
-					<td>{SEARCH_SQ}</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td style="padding-bottom: 10px;"><small class="info">{PHP.L.projects_find_info}</small></td>
-				</tr>
-				<!-- IF {PHP.cot_plugins_active.locationselector} -->
-				<tr>
-					<td >{PHP.L.LocationFrom}:</td>
-					<td>{SEARCH_LOCATION}</td>
-				</tr>
-                <tr>
-                    <td >{PHP.L.LocationTo}:</td>
-                    <td>{SEARCH_LOCATIONTO}</td>
-                </tr>
-				<!-- ENDIF -->
-				<tr>
-					<td >{PHP.L.Category}:</td>
-					<td>{SEARCH_TRANSP}</td>
-				</tr>
+            <div class="form-group row">
+                <div class="col-2 col-form-label">
+                    {PHP.L.Search}:
+                </div>
+                <div class="col-10">
+                    {SEARCH_SQ}
+                    <small class="text-muted">{PHP.L.projects_find_info}</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 col-form-label">
+                    {PHP.L.LocationFrom}:
+                </div>
+                <div class="col-10">
+                    {SEARCH_LOCATION}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 col-form-label">
+                    {PHP.L.LocationTo}:
+                </div>
+                <div class="col-10">
+                    {SEARCH_LOCATIONTO}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 col-form-label">
+                    {PHP.L.Category}:
+                </div>
+                <div class="col-10">
+                    {SEARCH_TRANSP}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 col-form-label">
+                    {PHP.L.Order}:
+                </div>
+                <div class="col-10">
+                    {SEARCH_SORTER}
+                </div>
+            </div>
+			<!-- table cellpadding="5" cellspacing="0">
+
 				<tr>
 					<td>{PHP.L.Order}:</td>
 					<td>{SEARCH_SORTER}</td>
@@ -62,12 +82,12 @@
 					<td></td>
 					<td><input type="submit" name="search" class="btn" value="{PHP.L.Search}" /></td>
 				</tr>
-			</table>		
+			</table-->
 		</form>
 	</div>
 <!-- END: SEARCH -->
 
-<!-- BEGIN: PROJECTS -->
+<!-- BEGIN: PROJECTS1 -->
 <div id="listprojects">
 	<!-- BEGIN: PRJ_ROWS -->
     <div class="claims">
@@ -114,4 +134,4 @@
 	<!-- END: PRJ_ROWS -->
 </div>
 <div class="pagination"><ul>{PAGENAV_PAGES}</ul></div>
-<!-- END: PROJECTS -->
+<!-- END: PROJECTS1 -->

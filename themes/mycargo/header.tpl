@@ -121,12 +121,27 @@
 					<!-- ENDIF -->
 					<li class="nav-item"><a class="nav-link" href="{PHP.out.loginout_url}"><img src="themes/{PHP.theme}/img/logout.png" alt=""/>{PHP.L.Logout}</a></li>
 					<!-- END: USER -->
+					<!-- IF {PHP.env.mobile} -->
+                    <li class="nav-item <!-- IF {PHP.env.ext} == 'index' -->active<!-- ENDIF -->"><div class="dropdown-divider"></div><a class="nav-link" href="{PHP|cot_url('index')}">{PHP.L.Home}</a></li>
+                    <li class="nav-item <!-- IF {PHP.env.ext} == 'projects' -->active<!-- ENDIF -->"><a class="nav-link" href="{PHP|cot_url('projects')}">{PHP.L.projects_projects}</a></li>
+                    <li<!-- IF {PHP.env.ext} == 'marshrut' --> class="active"<!-- ENDIF -->><a class="nav-link" href="{PHP|cot_url('marshrut')}">{PHP.L.hea_claims}</a></li>
+                    <li<!-- IF {PHP.env.ext} == 'users' AND ({PHP.group} == {PHP.cot_groups.4.alias} AND {PHP.m} == 'main' --> class="active"<!-- ENDIF -->><a class="nav-link" href="{PHP.cot_groups.4.alias|cot_url('users', 'group='$this)}">{PHP.cot_groups.4.name}</a></li>
+                    <li<!-- IF {PHP.env.ext} == 'users' AND ({PHP.group} == {PHP.cot_groups.7.alias} AND {PHP.m} == 'main' --> class="active"<!-- ENDIF -->><a class="nav-link" href="{PHP.cot_groups.7.alias|cot_url('users', 'group='$this)}">{PHP.cot_groups.7.name}</a></li>
+                    <!-- IF {PHP.cot_modules.market} -->
+                    <li<!-- IF {PHP.env.ext} == 'market' AND !{PHP.type} --> class="active"<!-- ENDIF -->><a class="nav-link" href="{PHP|cot_url('market')}">{PHP.L.market}</a></li>
+                    <!-- ENDIF -->
+                    <!-- IF {PHP.cot_plugins_active.calcmarsh} -->
+                    <li<!-- IF {PHP.env.ext} == 'calcmarsh' --> class="active"<!-- ENDIF -->><a class="nav-link" href="{PHP|cot_url('calcmarsh')}">{PHP.L.projects_calc}</a></li>
+                    <!-- ENDIF -->
+                    <li<!-- IF {PHP.env.ext} == 'inway' --> class="active"<!-- ENDIF -->><a class="nav-link" href="{PHP|cot_url('inway')}">{PHP.L.hea_inway}</a></li>
+                    <!-- ENDIF -->
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<div class="container">
 		<div id="header" class="row">
+            <!-- IF !{PHP.env.mobile} -->
 			<div class="col-3">
 				<div class="logo"><a href="{PHP|cot_url('index')}" title="{PHP.cfg.maintitle} {PHP.cfg.separator} {PHP.cfg.subtitle}"><img src="themes/{PHP.theme}/img/logo.png"/></a></div>
 			</div>
@@ -150,6 +165,11 @@
 					</div>
 				</nav>
 			</div>
+            <!-- ELSE -->
+            <div class="col justify-content-center">
+                <div class="logo" style="text-align: center"><a href="{PHP|cot_url('index')}" title="{PHP.cfg.maintitle} {PHP.cfg.separator} {PHP.cfg.subtitle}"><img src="themes/{PHP.theme}/img/logo.png"/></a></div>
+            </div>
+            <!-- ENDIF -->
 		</div>
 
 

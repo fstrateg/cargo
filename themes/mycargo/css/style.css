@@ -59,6 +59,18 @@ div.well li.active a{
     padding-left: 5px;
 }
 
+.nav-tabs .nav-link.active{
+    border-top: 4px solid #693;
+}
+
+.panel{
+    padding: 1em;
+}
+
+span.locselect span{
+    width: 33.3%;
+    float: left;
+}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }

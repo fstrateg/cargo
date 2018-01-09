@@ -8,16 +8,17 @@
 	</div>
 </div>
 <div class="row">
+	<!-- IF !{PHP.env.mobile} -->
 	<div class="col-3">
 		<div class="well well-small">{PROJECTS_CATALOG}</div>
-		
+
 		<!-- IF {PHP.cot_plugins_active.userpoints} -->
 		<h4 class="mboxHD">{PHP.L.userpoints_topfreelancers}</h4>
 		{PHP|cot_get_topusers (4, 5)}
 		<br/>
 		<br/>
 		<h4 class="mboxHD">{PHP.L.userpoints_topemployers}</h4>
-		{PHP|cot_get_topusers (7, 5)}	
+		{PHP|cot_get_topusers (7, 5)}
 		<!-- ENDIF -->
 		<!-- IF {PHP.cot_plugins_active.kursvalut} -->
 		{PHP.ext_kursvalut}
@@ -29,7 +30,9 @@
 		</div>
 		<!-- ENDIF -->
 	</div>
-	<div class="col-9">
+	<!-- ENDIF -->
+
+	<div class="<!-- IF !{PHP.env.mobile} -->col-9<!-- ENDIF -->">
 		{PROJECTS_SEARCH}
 		
 		<!-- IF {PHP.cot_plugins_active.paypro} -->

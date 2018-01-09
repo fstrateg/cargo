@@ -1,10 +1,10 @@
 <?php
-function create_avtospisok_selectbox($optname,$sel){
+function create_avtospisok_selectbox($optname,$sel, $atr=''){
     if (!$sel){
         $sel=cot_import_buffered($optname,$sel);}
     cot::$db->registerTable('spisok_avtotransport');
     global $db, $db_spisok_avtotransport;
-    $result = "<select name=$optname>
+    $result = "<select name=$optname $atr>
 <optgroup label=''>";
     $res = $db->query("SELECT id,name FROM $db_spisok_avtotransport WHERE hot = TRUE")->fetchall();
     foreach ($res as $item)

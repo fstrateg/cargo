@@ -46,10 +46,10 @@ $t_pr->parse("SEARCH.PTYPES");
 
 $t_pr->assign(array(
 	'SEARCH_ACTION_URL' => cot_url('projects', '', '', true),
-	'SEARCH_SQ' => cot_inputbox('text', 'sq', htmlspecialchars($sq), 'class="schstring"'),
+	'SEARCH_SQ' => cot_inputbox('text', 'sq', htmlspecialchars($sq), 'class="form-control"'),
 	"SEARCH_CAT" => cot_projects_selectcat($c, 'c'),
-	"SEARCH_TRANSP"=> create_avtospisok_selectbox('transp',''),
-	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false),
+	"SEARCH_TRANSP"=> create_avtospisok_selectbox('transp','', 'class ="form-control"'),
+	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false, 'class ="form-control"'),
 ));
 
 foreach($cot_extrafields[$db_projects] as $exfld)
