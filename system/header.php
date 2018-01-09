@@ -80,6 +80,8 @@ if (!COT_AJAX)
 	if (defined('COT_NOMENU')) {$mtpl_base='headnomenu';}
 	$t = new XTemplate(cot_tplfile($mtpl_base, $mtpl_type));
 
+    $mobile=$env['mobile']?'MOBILE':'DESKTOP';
+
 	/* === Hook === */
 	foreach (cot_getextplugins('header.main') as $pl)
 	{
@@ -179,7 +181,7 @@ if (!COT_AJAX)
 		}
 		/* ===== */
 
-		$t->parse('HEADER.USER');
+		$t->parse("HEADER.$mobile.USER");
 	}
 	else
 	{
@@ -205,7 +207,7 @@ if (!COT_AJAX)
 		}
 		/* ===== */
 
-		$t->parse('HEADER.GUEST');
+		$t->parse("HEADER.$mobile.GUEST");
 	}
 
 	/* === Hook === */
@@ -214,6 +216,8 @@ if (!COT_AJAX)
 		include $pl;
 	}
 	/* ===== */
+    $t->parse('HEADER.'.$mobile);
+
 
 	$t->parse('HEADER');
 	$t->out('HEADER');

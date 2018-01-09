@@ -1,7 +1,7 @@
 <!-- BEGIN: SEARCH -->
 	<!-- BEGIN: PTYPES -->
 <div class="row justify-content-end">
-    <div class="col-3 text-right">
+    <div class="col text-right">
         <!-- IF {PHP.usr.auth_write} -->
         <noindex>
             <!-- IF {PHP.usr.maingrp} == 4 -->
@@ -28,63 +28,93 @@
 	</ul>	
 	<!-- END: PTYPES -->
 
-	<div class="panel">
-		<form action="{SEARCH_ACTION_URL}" method="get">
-			<input type="hidden" name="e" value="projects" />
+	<form action="{SEARCH_ACTION_URL}" method="get">
+		<input type="hidden" name="e" value="projects" />
+        <!-- IF {PHP.env.mobile} -->
+        <div class="panel">
+            <div class="form-group row">
+                <div class="col-form-label">
+                {PHP.L.Search}:
+                </div>
+                {SEARCH_SQ}
+                 <small class="text-muted">{PHP.L.projects_find_info}</small>
+            </div>
+            <div class="form-group row">
+                <div class="col-form-label">
+                {PHP.L.LocationFrom}:
+                </div>
+                {SEARCH_LOCATION}
+            </div>
+            <div class="form-group row">
+                <div class="col-form-label">
+                {PHP.L.LocationTo}:
+                </div>
+                {SEARCH_LOCATIONTO}
+            </div>
+            <div class="form-group row">
+                <div class="col-form-label">
+                {PHP.L.Category}:
+                </div>
+                {SEARCH_TRANSP}
+            </div>
+            <div class="form-group row">
+                <div class="col-form-label">
+                {PHP.L.Order}:
+                </div>
+                {SEARCH_SORTER}
+            </div>
+            <div class="form-group row">
+            <button type="submit" class="btn btn-warning btn-block">{PHP.L.Search}</button>
+            </div>
+        </div>
+        <!-- ELSE -->
+        <div class="panel">
             <div class="form-group row">
                 <div class="col-2 col-form-label">
-                    {PHP.L.Search}:
+                {PHP.L.Search}:
                 </div>
                 <div class="col-10">
-                    {SEARCH_SQ}
+                {SEARCH_SQ}
                     <small class="text-muted">{PHP.L.projects_find_info}</small>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-2 col-form-label">
-                    {PHP.L.LocationFrom}:
+                {PHP.L.LocationFrom}:
                 </div>
                 <div class="col-10">
-                    {SEARCH_LOCATION}
+                {SEARCH_LOCATION}
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-2 col-form-label">
-                    {PHP.L.LocationTo}:
+                {PHP.L.LocationTo}:
                 </div>
                 <div class="col-10">
-                    {SEARCH_LOCATIONTO}
+                {SEARCH_LOCATIONTO}
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-2 col-form-label">
-                    {PHP.L.Category}:
+                {PHP.L.Category}:
                 </div>
                 <div class="col-10">
-                    {SEARCH_TRANSP}
+                {SEARCH_TRANSP}
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-2 col-form-label">
-                    {PHP.L.Order}:
+                {PHP.L.Order}:
                 </div>
                 <div class="col-10">
-                    {SEARCH_SORTER}
+                {SEARCH_SORTER}
                 </div>
             </div>
-			<!-- table cellpadding="5" cellspacing="0">
+            <button type="submit" class="btn btn-warning">{PHP.L.Search}</button>
+        </div>
+        <!-- ENDIF -->
+	</form>
 
-				<tr>
-					<td>{PHP.L.Order}:</td>
-					<td>{SEARCH_SORTER}</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" name="search" class="btn" value="{PHP.L.Search}" /></td>
-				</tr>
-			</table-->
-		</form>
-	</div>
 <!-- END: SEARCH -->
 
 <!-- BEGIN: PROJECTS1 -->
