@@ -64,7 +64,7 @@
                 {SEARCH_SORTER}
             </div>
             <div class="form-group row">
-            <button type="submit" class="btn btn-warning btn-block">{PHP.L.Search}</button>
+            <button type="submit" class="btn btn-warning">{PHP.L.Search}</button>
             </div>
         </div>
         <!-- ELSE -->
@@ -110,58 +110,104 @@
                 {SEARCH_SORTER}
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning">{PHP.L.Search}</button>
+            <div class="form-group row">
+                <div class="col-2 col-form-label">
+                </div>
+                <div class="col-10">
+                    <button type="submit" class="btn btn-warning">{PHP.L.Search}</button>
+                </div>
+            </div>
         </div>
         <!-- ENDIF -->
 	</form>
 
 <!-- END: SEARCH -->
 
-<!-- BEGIN: PROJECTS1 -->
+<!-- BEGIN: PROJECTS -->
 <div id="listprojects">
 	<!-- BEGIN: PRJ_ROWS -->
+    <!-- IF !{PHP.env.mobile} -->
     <div class="claims">
-        <div class="media<!-- IF {PRJ_ROW_ISBOLD} --> well prjbold<!-- ENDIF --><!-- IF {PRJ_ROW_ISTOP} --> well prjtop<!-- ENDIF -->">
-            <h4>
-                <!-- IF {PRJ_ROW_COST} > 0 --><div class="pull-right">{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
-                <a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a>
+        <div class="row">
+            <div class="col">
+                <h4><a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a></h4>
+            </div>
+            <h4 class="col text-right">
+                <!-- IF {PRJ_ROW_COST} > 0 -->{PRJ_ROW_COST} {PHP.cfg.payments.valuta}<!-- ENDIF -->
             </h4>
-            <div class="row">
-                <div class="span8">{PRJ_ROW_OWNER_NICKNAME}
-                    <!-- FOR {PHONE} IN {PRJ_ROW_OWNER_PHONES} -->
-                    {PHONE};
-                    <!-- ENDFOR -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="span6">
-                    <span class="date"> [#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</span> <span class="region">{PRJ_ROW_MARSHRUT}</span></div>
-                <div class="span1">{PRJ_ROW_MASSA}{PHP.L.projects_t}</div>
-                <div class="span1">{PRJ_ROW_VOL}{PHP.L.projects_m3}</div>
-            </div>
-            <div class="row">
-                <div class="span6">{PRJ_ROW_SHORTTEXT}</div>
-				<div class="span2">{PRJ_ROW_FRT}</div>
-            </div>
-            <div class="row">
-                <div class="span8">
-                    <!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
-                    <p class="small">{PHP.L.Tags}:
-                        <!-- BEGIN: PRJ_ROW_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_ROW_TAGS_ROW_URL}" title="{PRJ_ROW_TAGS_ROW_TAG}" rel="nofollow">{PRJ_ROW_TAGS_ROW_TAG}</a><!-- END: PRJ_ROW_TAGS_ROW -->
-                        <!-- BEGIN: PRJ_ROW_NO_TAGS -->{PRJ_ROW_NO_TAGS}<!-- END: PRJ_ROW_NO_TAGS -->
-                    </p>
-                    <!-- ENDIF -->
+        </div>
+        <div class="row"><div class="col">
+        <table class="table">
+            <tr class="row">
+               <td class="col-7">
+                   <div class="row-fluid">{PRJ_ROW_OWNER_NICKNAME}
+                       <!-- FOR {PHONE} IN {PRJ_ROW_OWNER_PHONES} -->
+                       {PHONE};
+                       <!-- ENDFOR -->
+                   </div>
+                   <div class="row-fluid">[#{PRJ_ROW_ID} {PRJ_ROW_DATE}]</div>
+                   <div class="row-fluid">{PRJ_ROW_MARSHRUT}</div>
+                   <div class="row-fluid">{PRJ_ROW_SHORTTEXT}</div>
+               </td>
+                <td class="col-3 text-center align-middle">
+                    <b>{PRJ_ROW_MASSA}{PHP.L.projects_t}<br/>
+                        {PRJ_ROW_FRT}</b>
+                </td>
+                <td class="col-2 text-center align-middle">
+                    <b>{PRJ_ROW_VOL}{PHP.L.projects_m3}<br/>{PRJ_ROW_TRANSP}</b>
+                </td>
+            </tr>
 
-                    <div class="type">
-                        <!-- IF {PHP.cot_plugins_active.paypro} AND {PRJ_ROW_FORPRO} --><span class="label label-important">{PHP.L.paypro_forpro}</span> <!-- ENDIF -->
-                        <!-- IF {PRJ_ROW_TYPE} -->{PRJ_ROW_TYPE} / <!-- ENDIF -->{PRJ_ROW_TRANSP}
-                    </div>
-                </div>
+        </table>
+        </div></div>
+    </div>
+    <!-- ENDIF -->
+    <!-- IF {PHP.env.mobile} -->
+    <div class="claims">
+        <div class="row">
+            <div class="col"><h4><a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a></h4></div>
+        </div>
+        <div class="row">
+            <div class="col">{PRJ_ROW_OWNER_NICKNAME}</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <!-- FOR {PHONE} IN {PRJ_ROW_OWNER_PHONES} -->
+                {PHONE};
+                <!-- ENDFOR -->
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                [#{PRJ_ROW_ID} {PRJ_ROW_DATE}]
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {PRJ_ROW_MARSHRUT}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {PRJ_ROW_SHORTTEXT}
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <b>{PRJ_ROW_MASSA}{PHP.L.projects_t}<br/>
+                    {PRJ_ROW_FRT}</b>
+            </div>
+            <div class="col">
+                <b>{PRJ_ROW_VOL}{PHP.L.projects_m3}<br/>
+                    {PRJ_ROW_TRANSP}</b>
+            </div>
+        </div>
+        <div class="row text-right">
+            <div class="col"><!-- IF {PRJ_ROW_COST} > 0 --><h4>{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</h4><!-- ENDIF --></div>
+        </div>
     </div>
-	<hr/>
+    <!-- ENDIF -->
 	<!-- END: PRJ_ROWS -->
 </div>
 <div class="pagination"><ul>{PAGENAV_PAGES}</ul></div>
-<!-- END: PROJECTS1 -->
+<!-- END: PROJECTS -->

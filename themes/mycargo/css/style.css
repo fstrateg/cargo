@@ -71,6 +71,16 @@ span.locselect span{
     width: 33.3%;
     float: left;
 }
+.claims td {border-top: none;}
+.claims{
+    padding: 10px;
+    border-bottom: 1px solid silver;
+}
+.claims table {margin: 0;}
+.claims:hover{
+    border-left: 4px solid #693;
+    padding-left: 6px;
+}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }
