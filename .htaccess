@@ -2,6 +2,11 @@
 # Below are the rules to be included in your main .htaccess file or httpd.conf
 # Rewrite engine options
 #Options FollowSymLinks -Indexes
+AddType application/vnd.ms-fontobject eot
+AddType font/opentype otf
+AddType font/truetype ttf
+AddType application/x-font-woff woff
+
 RewriteEngine On
 
 # Server-relative path to Cotonti. Replace it with your path if you run Cotonti
@@ -39,3 +44,4 @@ RewriteRule ^socnetwork/([a-z0-9]+) index.php?e=socnetwork&a=$1 [QSA,NC,NE,L]
 
 # All the rest goes through standard rewrite gateway
 RewriteRule ^([^?]+) index.php?rwr=$1 [QSA,NC,NE,L]
+

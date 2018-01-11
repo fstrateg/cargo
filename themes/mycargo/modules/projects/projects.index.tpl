@@ -10,7 +10,7 @@
             </a>
             <!-- ELSE -->
             <a rel="nofollow" class="btn btn-success" href="{PHP|cot_url('projects', 'm=add')}"
-               title="{PHP.L.projects_add_to_catalog}">{PHP.L.projects_add_to_catalog}
+               title="{PHP.L.projects_add_to_catalog}"><span class="typcn typcn-plus"></span>{PHP.L.projects_add_to_catalog}
             </a>
             <!-- ENDIF -->
         </noindex>
