@@ -10,7 +10,7 @@
             </a>
             <!-- ELSE -->
             <a rel="nofollow" class="btn btn-success" href="{PHP|cot_url('projects', 'm=add')}"
-               title="{PHP.L.projects_add_to_catalog}"><span class="typcn typcn-plus"></span>{PHP.L.projects_add_to_catalog}
+               title="{PHP.L.projects_add_to_catalog}"><span class="icon icon-plus"></span>{PHP.L.projects_add_to_catalog}
             </a>
             <!-- ENDIF -->
         </noindex>
@@ -64,7 +64,7 @@
                 {SEARCH_SORTER}
             </div>
             <div class="form-group row">
-            <button type="submit" class="btn btn-warning">{PHP.L.Search}</button>
+            <button type="submit" class="btn btn-warning"><span class="icon icon-search"></span>{PHP.L.Search}</button>
             </div>
         </div>
         <!-- ELSE -->
@@ -114,7 +114,7 @@
                 <div class="col-2 col-form-label">
                 </div>
                 <div class="col-10">
-                    <button type="submit" class="btn btn-warning">{PHP.L.Search}</button>
+                    <button type="submit" class="btn btn-warning"><span class="icon icon-search"></span>{PHP.L.Search}</button>
                 </div>
             </div>
         </div>

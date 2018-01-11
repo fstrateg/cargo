@@ -81,6 +81,10 @@ span.locselect span{
     border-left: 4px solid #693;
     padding-left: 6px;
 }
+
+.btn-success{
+    background-color: #693;
+}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }
