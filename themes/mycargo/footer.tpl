@@ -1,6 +1,5 @@
 <!-- BEGIN: FOOTER -->
-
-	</div>
+    </div>
 </div>
 <div id="footer">
 	<div class="container">

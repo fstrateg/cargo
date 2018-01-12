@@ -4,7 +4,7 @@
 *	{ margin:0; padding:0; }
 html	{ padding:0; height:100%; }
 
-body	{ 
+body	{
 	height:100%;
 	background-color:#FFFFFF;
 }
@@ -23,7 +23,17 @@ nav.navbar a.nav-link:hover{text-decoration: underline;}
 #header nav.navbar{	background-color: #FFF;}
 #header nav.navbar a.nav-link{padding: 8px; color: #000;text-transform: uppercase;font-family: 'Montserrat',Helvetica, sans-serif; font-size: 14px;}
 #header nav.navbar li.active a.nav-link{color: #693;text-decoration: underline;}
+.bcrups{color: #aaa; padding-bottom: 5px;}
 
+h1,h2 {font-family: 'Montserrat',Helvetica, sans-serif;}
+
+#main{background-color: #f0f0f0;
+        padding: 20px 0;}
+#content{
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 10px 10px;
+}
 #reporterror{
 
 }

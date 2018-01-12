@@ -1,28 +1,28 @@
 <!-- BEGIN: MAIN -->
-<div class="breadcrumb">{BREADCRUMBS}</div>
-<h1>
-<!-- IF {PHP.c} -->
-	{CATTITLE}
+<!-- IF {PHP.env.mobile} -->
+<h2>
+	{PHP.L.projects_projects}
+</h2>
 <!-- ELSE -->
-	{PHP.L.projects}
-<!-- ENDIF -->
+<div class="bcrups">{PHP.L.Home}</div>
+<h1>
+	{PHP.L.projects_projects}
 </h1>
-<!-- IF {CATDESC} -->
-<div class="well">{CATDESC}</div>
 <!-- ENDIF -->
+<div id="content" class="container">
 <div class="row">
-	<div class="span3">
+	<div class="col-3">
 		<!-- IF {CATALOG} --><div class="well well-small">{CATALOG}</div><!-- ENDIF -->
-		
+
 		<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
 		<div class="mboxHD">{PHP.L.Tags}</div>
 		{PRJ_TAG_CLOUD}
 		<!-- ENDIF -->
-				
-	</div>
-	<div class="span9">
 
-		<!-- BEGIN: PTYPES -->
+	</div>
+	<div class="col-9">
+
+		<!-- BEGIN: PTYPES1 -->
 		<ul class="nav nav-tabs">
 			<li<!-- IF {PTYPE_ALL_ACT} --> class="active"<!-- ENDIF -->><a href="{PTYPE_ALL_URL}">{PHP.L.All}</a></li>
 			<!-- BEGIN: PTYPES_ROWS -->
@@ -44,48 +44,100 @@
 					<!-- ENDIF -->
 				</noindex>
 			</li><!-- ENDIF -->
-		</ul>	
-		<!-- END: PTYPES -->
-		
-		<div class="well">			
-			<form action="{SEARCH_ACTION_URL}" method="get">
-				<input type="hidden" name="e" value="projects" />
-				<input type="hidden" name="type" value="{PHP.type}" />
-				<input type="hidden" name="l" value="{PHP.lang}" />
-				<table width="100%" cellpadding="5" cellspacing="0">
-					<tr>
-						<td width="100">{PHP.L.Search}:</td>
-						<td>{SEARCH_SQ}</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td style="padding-bottom: 10px;"><small class="info">{PHP.L.projects_find_info}</small></td>
-					</tr>
-					<!-- IF {PHP.cot_plugins_active.locationselector} -->
-					<tr>
-						<td >{PHP.L.LocationFrom}:</td>
-						<td>{SEARCH_LOCATION}</td>
-					</tr>
-                    <tr>
-                        <td >{PHP.L.LocationTo}:</td>
-                        <td>{SEARCH_LOCATIONTO}</td>
-                    </tr>
-					<!-- ENDIF -->
-					<tr>
-						<td >{PHP.L.Category}:</td>
-						<td>{SEARCH_TRANSP}</td>
-					</tr>
-					<tr>
-						<td>{PHP.L.Order}:</td>
-						<td>{SEARCH_SORTER}</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" name="search" class="btn" value="{PHP.L.Search}" /></td>
-					</tr>
-				</table>		
-			</form>
-		</div>
+		</ul>
+		<!-- END: PTYPES1-->
+		<form action="{SEARCH_ACTION_URL}" method="get">
+			<input type="hidden" name="e" value="projects" />
+			<!-- IF {PHP.env.mobile} -->
+			<div class="panel">
+				<div class="form-group row">
+					<div class="col-form-label">
+						{PHP.L.Search}:
+					</div>
+					{SEARCH_SQ}
+					<small class="text-muted">{PHP.L.projects_find_info}</small>
+				</div>
+				<div class="form-group row">
+					<div class="col-form-label">
+						{PHP.L.LocationFrom}:
+					</div>
+					{SEARCH_LOCATION}
+				</div>
+				<div class="form-group row">
+					<div class="col-form-label">
+						{PHP.L.LocationTo}:
+					</div>
+					{SEARCH_LOCATIONTO}
+				</div>
+				<div class="form-group row">
+					<div class="col-form-label">
+						{PHP.L.Category}:
+					</div>
+					{SEARCH_TRANSP}
+				</div>
+				<div class="form-group row">
+					<div class="col-form-label">
+						{PHP.L.Order}:
+					</div>
+					{SEARCH_SORTER}
+				</div>
+				<div class="form-group row">
+					<button type="submit" class="btn btn-warning"><span class="icon icon-search"></span>{PHP.L.Search}</button>
+				</div>
+			</div>
+			<!-- ELSE -->
+			<div class="panel">
+				<div class="form-group row">
+					<div class="col-2 col-form-label">
+						{PHP.L.Search}:
+					</div>
+					<div class="col-10">
+						{SEARCH_SQ}
+						<small class="text-muted">{PHP.L.projects_find_info}</small>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-2 col-form-label">
+						{PHP.L.LocationFrom}:
+					</div>
+					<div class="col-10">
+						{SEARCH_LOCATION}
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-2 col-form-label">
+						{PHP.L.LocationTo}:
+					</div>
+					<div class="col-10">
+						{SEARCH_LOCATIONTO}
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-2 col-form-label">
+						{PHP.L.Category}:
+					</div>
+					<div class="col-10">
+						{SEARCH_TRANSP}
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-2 col-form-label">
+						{PHP.L.Order}:
+					</div>
+					<div class="col-10">
+						{SEARCH_SORTER}
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-2 col-form-label">
+					</div>
+					<div class="col-10">
+						<button type="submit" class="btn btn-warning"><span class="icon icon-search"></span>{PHP.L.Search}</button>
+					</div>
+				</div>
+			</div>
+			<!-- ENDIF -->
+		</form>
 
 		<!-- IF {PHP.cot_plugins_active.paypro} -->
 			<!-- IF !{PHP|cot_getuserpro()} AND {PHP.cfg.plugin.paypro.projectslimit} > 0 AND {PHP.cfg.plugin.paypro.projectslimit} <= {PHP.usr.id|cot_getcountprjofuser($this)} -->
@@ -149,5 +201,5 @@
 		<!-- ENDIF -->
 	</div>
 </div>
-
+</div>
 <!-- END: MAIN -->

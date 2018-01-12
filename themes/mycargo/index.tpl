@@ -1,5 +1,16 @@
 <!-- BEGIN: MAIN -->
+<!-- IF {PHP.env.mobile} -->
+<h2>
+	{PHP.L.projects_projects}
+</h2>
+<!-- ELSE -->
+<div class="bcrups">{PHP.L.Home}</div>
+<h1>
+	{PHP.L.projects_projects}
+</h1>
+<!-- ENDIF -->
 
+<div id="content" class="container">
 <div class="row">
 	<div class="span12">
 		<!-- IF {PHP.cot_plugins_active.paytop} -->
@@ -47,5 +58,5 @@
 		{PROJECTS}
 	</div>
 </div>
-	
+</div>
 <!-- END: MAIN -->

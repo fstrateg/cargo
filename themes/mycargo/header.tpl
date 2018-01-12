@@ -251,6 +251,6 @@
         <!-- END: MOBILE -->
 
     </div>
-		<div id="main" class="container">
-
+	<div id="main">
+		<div class="container">
 <!-- END: HEADER -->
