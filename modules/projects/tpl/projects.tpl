@@ -1,18 +1,18 @@
 <!-- BEGIN: MAIN -->
 
-<div class="breadcrumb">{PRJ_TITLE}</div>
+<div class="bcrups">{PRJ_TITLE}</div>
+
+<h1 class="tboxHD">
+	{PRJ_SHORTTITLE}
+</h1>
 
 <!-- IF {PRJ_REALIZED} -->
 <div class="pull-right label label-info margintop10">{PHP.L.projects_isrealized}</div>
 <!-- ENDIF -->
 
-<!-- IF {PHP.cot_plugins_active.paypro} AND {PRJ_FORPRO} -->
-<div class="pull-right margintop10"><span class="label label-important">{PHP.L.paypro_forpro}</span></div>
-<!-- ENDIF -->
+<div id="content" class="container">
 
-<h1 class="tboxHD">
-	{PRJ_SHORTTITLE}
-</h1>
+
 <!-- IF {PRJ_STATE} == 2 -->
 <div class="alert alert-warning">{PHP.L.projects_forreview}</div>
 <!-- ENDIF -->
@@ -21,10 +21,10 @@
 <!-- ENDIF -->
 
 <div class="row">
-	<div class="span1">
+	<div class="col-auto">
 		{PRJ_OWNER_AVATAR}
 	</div>
-	<div class="span2">
+	<div class="col-4">
 		<p>{PRJ_OWNER_NICKNAME}</p>
 		<p>
 			<!-- IF {PRJ_OWNER_ISPRO} -->
@@ -36,8 +36,8 @@
 		<p>{PHONE}</p>
 		<!-- ENDFOR -->
 	</div>
-	<div class="span4 pull-right">
-		<table width="100%">
+	<div class="col-6">
+		<table class="table details">
 			<tr><td><b>№:</b></td><td>#{PRJ_ID}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_created}:</b></td><td>{PRJ_DATE}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_period}:</b></td><td>{PRJ_DATEFROM}-{PRJ_DATETO}</td></tr>
@@ -191,5 +191,5 @@
     </div>
 </div>
 <!-- ENDIF -->
-
+</div>
 <!-- END: MAIN -->
