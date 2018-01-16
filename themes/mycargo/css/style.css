@@ -95,6 +95,20 @@ span.locselect span{
 .btn-success{
     background-color: #693;
 }
+
+table.noborder td{
+    border-top: none;
+}
+
+table.details td{
+    padding: 5px;
+}
+
+.note{
+    background-color: #f8faf8;
+    font-style: italic;
+    padding: 10px;
+}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }
