@@ -109,6 +109,9 @@ table.details td{
     font-style: italic;
     padding: 10px;
 }
+#buttons .btn{
+    margin-bottom: 10px;
+}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }

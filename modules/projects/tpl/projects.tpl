@@ -72,26 +72,43 @@
 		<div class="col">
 		<!-- IF {PRJ_USER_IS_ADMIN} -->
 			<!-- IF {PHP.env.mobile} -->
-			test
-			<button class="navbar-toggler navbar-toggler-right navbar-dark" type="button" data-toggle="collapse" data-target="#buttons" aria-controls="buttons" aria-expanded="false"
+			<button class="navbar-toggler navbar-toggler-right navbar-dark btn btn-success" type="button" data-toggle="collapse" data-target="#buttons" aria-controls="buttons" aria-expanded="false"
 					aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<!-- ENDIF -->
-				<div class="well well-small" id="buttons">
-					<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
+			<div class="collapse navbar-collapse" id="buttons">
+				<div class="row">
+					<div class="col"><a href="{PRJ_ADMIN_COPY_URL}" class="nav-link btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a></div>
 					<!-- IF {PRJ_STATE} != 3 -->
-						<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
-						<!-- IF {PRJ_PERFORMER} == 0 -->
-							<a href="{PRJ_ADMIN_DELETE_URL}" class="btn btn-danger"><i class="icon-remove icon-white"></i> {PHP.L.Delete}</a> &nbsp;
-						<!-- ENDIF -->
+					<div class="col"><a href="{PRJ_ADMIN_EDIT_URL}" class="nav-link btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a></div>
+					<!-- IF {PRJ_PERFORMER} == 0 -->
+					<div class="col"><a href="{PRJ_ADMIN_DELETE_URL}" class="nav-link btn btn-danger"><i class="icon-remove icon-white"></i> {PHP.L.Delete}</a></div>
+					<!-- ENDIF -->
 					<!-- ENDIF -->
 					<!-- IF {PRJ_STATE} == 0 -->
-						<!-- IF {PRJ_PERFORMER} < {PRJ_COUNT} -->
-						<a href="{PRJ_ADMIN_ADDPRF_URL}" class="btn btn-success pull-right"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a>
-						<!-- ENDIF -->
+					<!-- IF {PRJ_PERFORMER} < {PRJ_COUNT} -->
+					<div class="col"><a href="{PRJ_ADMIN_ADDPRF_URL}" class="nav-link btn btn-success"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a></div>
+					<!-- ENDIF -->
 					<!-- ENDIF -->
 				</div>
+			</div>
+			<!-- ELSE -->
+			<div id="buttons">
+				<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
+				<!-- IF {PRJ_STATE} != 3 -->
+				<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
+				<!-- IF {PRJ_PERFORMER} == 0 -->
+				<a href="{PRJ_ADMIN_DELETE_URL}" class="btn btn-danger"><i class="icon-remove icon-white"></i> {PHP.L.Delete}</a> &nbsp;
+				<!-- ENDIF -->
+				<!-- ENDIF -->
+				<!-- IF {PRJ_STATE} == 0 -->
+				<!-- IF {PRJ_PERFORMER} < {PRJ_COUNT} -->
+				<a href="{PRJ_ADMIN_ADDPRF_URL}" class="btn btn-success pull-right"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a>
+				<!-- ENDIF -->
+				<!-- ENDIF -->
+			</div>
+			<!-- ENDIF -->
+
 
 		<!-- ENDIF -->
 		</div>
