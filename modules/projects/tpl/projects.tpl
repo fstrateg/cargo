@@ -1,18 +1,18 @@
 <!-- BEGIN: MAIN -->
-
-<div class="breadcrumb">{PRJ_TITLE}</div>
+<!-- IF !{PHP.env.mobile} -->
+<div class="bcrups">{PRJ_TITLE}</div>
+<!-- ENDIF -->
+<h1 class="tboxHD">
+	{PRJ_SHORTTITLE}
+</h1>
 
 <!-- IF {PRJ_REALIZED} -->
 <div class="pull-right label label-info margintop10">{PHP.L.projects_isrealized}</div>
 <!-- ENDIF -->
 
-<!-- IF {PHP.cot_plugins_active.paypro} AND {PRJ_FORPRO} -->
-<div class="pull-right margintop10"><span class="label label-important">{PHP.L.paypro_forpro}</span></div>
-<!-- ENDIF -->
+<div id="content" class="container">
 
-<h1 class="tboxHD">
-	{PRJ_SHORTTITLE}
-</h1>
+
 <!-- IF {PRJ_STATE} == 2 -->
 <div class="alert alert-warning">{PHP.L.projects_forreview}</div>
 <!-- ENDIF -->
@@ -21,10 +21,10 @@
 <!-- ENDIF -->
 
 <div class="row">
-	<div class="span1">
+	<div class="col-auto">
 		{PRJ_OWNER_AVATAR}
 	</div>
-	<div class="span2">
+	<div class=<!-- IF {PHP.env.mobile} -->"col"<!-- ELSE -->"col-4"<!-- ENDIF -->>
 		<p>{PRJ_OWNER_NICKNAME}</p>
 		<p>
 			<!-- IF {PRJ_OWNER_ISPRO} -->
@@ -36,8 +36,8 @@
 		<p>{PHONE}</p>
 		<!-- ENDFOR -->
 	</div>
-	<div class="span4 pull-right">
-		<table width="100%">
+	<div class=<!-- IF {PHP.env.mobile} -->"col"<!-- ELSE -->"col-6"<!-- ENDIF -->>
+		<table class="table details">
 			<tr><td><b>№:</b></td><td>#{PRJ_ID}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_created}:</b></td><td>{PRJ_DATE}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_period}:</b></td><td>{PRJ_DATEFROM}-{PRJ_DATETO}</td></tr>
@@ -48,9 +48,12 @@
 	</div>
 </div>
 <hr/>
-<div class="row">
-	<div class="span6">
-		<table width="100%">
+	<div class="row">
+		<div class="col"><div class="note">{PRJ_TEXT}</div></div>
+	</div>
+	<div class="row">
+	<div class=<!-- IF {PHP.env.mobile} -->"col"<!-- ELSE -->"col-6"<!-- ENDIF -->>
+		<table class="table noborder details">
 			<!-- IF {PRJ_COST} > 0 -->
 			<tr><td><b>{PHP.L.offers_budget}:</b></td><td>{PRJ_COST} {PHP.cfg.payments.valuta}</td></tr>
 			<!-- ENDIF -->
@@ -63,50 +66,53 @@
 			<tr><td><b>{PHP.L.LocationTo}:</b></td><td>{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</td></tr>
 		</table>
         <p>&nbsp;</p>
-
 	</div>
-	<div class="span6">
-		{PRJ_TEXT}
-
-		<!-- IF {PHP.cot_plugins_active.mavatars} -->
-		<!-- IF {PRJ_MAVATARCOUNT} -->
-		<div style="clear:both;"></div>
-		<h5>{PHP.L.Files}:</h5>
-		<ol class="files">
-			<!-- FOR {KEY}, {VALUE} IN {PRJ_MAVATAR} -->
-			<li><a href="{VALUE.FILE}">{VALUE.FILENAME}.{VALUE.FILEEXT}</a></li>
-			<!-- ENDFOR -->
-		</ol>
-		<!-- ENDIF -->
-		<!-- ENDIF -->
-
-	</div>
-	<div class="span12">
-		<!-- IF {PHP.cot_plugins_active.tags} AND {PHP.cot_plugins_active.tagslance} AND {PHP.cfg.plugin.tagslance.projects} -->
-		<p class="small">{PHP.L.Tags}:
-			<!-- BEGIN: PRJ_TAGS_ROW --><!-- IF {PHP.tag_i} > 0 -->, <!-- ENDIF --><a href="{PRJ_TAGS_ROW_URL}" title="{PRJ_TAGS_ROW_TAG}" rel="nofollow">{PRJ_TAGS_ROW_TAG}</a><!-- END: PRJ_TAGS_ROW -->
-			<!-- BEGIN: PRJ_NO_TAGS -->{PRJ_NO_TAGS}<!-- END: PRJ_NO_TAGS -->
-		</p>
-		<!-- ENDIF -->
-
+</div>
+	<div class="row">
+		<div class="col">
 		<!-- IF {PRJ_USER_IS_ADMIN} -->
-		<div class="well well-small">
-			<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
-            <!-- IF {PRJ_STATE} != 3 -->
+			<!-- IF {PHP.env.mobile} -->
+			<button class="navbar-toggler navbar-toggler-right navbar-dark btn btn-success" type="button" data-toggle="collapse" data-target="#buttons" aria-controls="buttons" aria-expanded="false"
+					aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="buttons">
+				<div class="row">
+					<div class="col"><a href="{PRJ_ADMIN_COPY_URL}" class="nav-link btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a></div>
+					<!-- IF {PRJ_STATE} != 3 -->
+					<div class="col"><a href="{PRJ_ADMIN_EDIT_URL}" class="nav-link btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a></div>
+					<!-- IF {PRJ_PERFORMER} == 0 -->
+					<div class="col"><a href="{PRJ_ADMIN_DELETE_URL}" class="nav-link btn btn-danger"><i class="icon-remove icon-white"></i> {PHP.L.Delete}</a></div>
+					<!-- ENDIF -->
+					<!-- ENDIF -->
+					<!-- IF {PRJ_STATE} == 0 -->
+					<!-- IF {PRJ_PERFORMER} < {PRJ_COUNT} -->
+					<div class="col"><a href="{PRJ_ADMIN_ADDPRF_URL}" class="nav-link btn btn-success"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a></div>
+					<!-- ENDIF -->
+					<!-- ENDIF -->
+				</div>
+			</div>
+			<!-- ELSE -->
+			<div id="buttons">
+				<a href="{PRJ_ADMIN_COPY_URL}" class="btn btn-info"><i class="icon-tags icon-white"></i> {PHP.L.Copy}</a> &nbsp;
+				<!-- IF {PRJ_STATE} != 3 -->
 				<a href="{PRJ_ADMIN_EDIT_URL}" class="btn btn-info"><i class="icon-tag icon-white"></i> {PHP.L.Edit}</a> &nbsp;
 				<!-- IF {PRJ_PERFORMER} == 0 -->
-					<a href="{PRJ_ADMIN_DELETE_URL}" class="btn btn-danger"><i class="icon-remove icon-white"></i> {PHP.L.Delete}</a> &nbsp;
+				<a href="{PRJ_ADMIN_DELETE_URL}" class="btn btn-danger"><i class="icon-remove icon-white"></i> {PHP.L.Delete}</a> &nbsp;
 				<!-- ENDIF -->
-            <!-- ENDIF -->
-			<!-- IF {PRJ_STATE} == 0 -->
+				<!-- ENDIF -->
+				<!-- IF {PRJ_STATE} == 0 -->
 				<!-- IF {PRJ_PERFORMER} < {PRJ_COUNT} -->
 				<a href="{PRJ_ADMIN_ADDPRF_URL}" class="btn btn-success pull-right"><i class="icon-white icon-plus-sign"></i> {PHP.L.claims_setperformer}</a>
 				<!-- ENDIF -->
-            <!-- ENDIF -->
-		</div>
+				<!-- ENDIF -->
+			</div>
+			<!-- ENDIF -->
+
+
 		<!-- ENDIF -->
+		</div>
 	</div>
-</div>
 <hr/>
 <!-- BEGIN: PRJ_PERFORM -->
 <h4>{PHP.L.claims_performers}</h4>
@@ -183,13 +189,13 @@
 
 <!-- END: PRJ_PERFORM -->
 
-<!-- IF {PHP.cot_plugins_active.simmarsh} -->
+<!-- IF {PHP.cot_plugins_active.simmarsh} AND {SIMMARSH} -->
 <hr />
 <div class="row">
-    <div class="span12">
+    <div class="col">
     {SIMMARSH}
     </div>
 </div>
 <!-- ENDIF -->
-
+</div>
 <!-- END: MAIN -->
