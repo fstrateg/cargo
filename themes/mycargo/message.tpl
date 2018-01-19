@@ -2,7 +2,7 @@
 
 	<div class="block">
 		<h2>{MESSAGE_TITLE}</h2>
-		<div class="alert alert-error">
+		<div class="alert alert-danger">
 			{MESSAGE_BODY}
 			<!-- BEGIN: MESSAGE_CONFIRM -->
 			<table class="inline" style="width:80%">

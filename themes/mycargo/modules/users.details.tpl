@@ -5,7 +5,7 @@
 	<div class="col-auto">
 		<div class="thumbnail">{USERS_DETAILS_AVATAR}</div>
 		<!-- IF {PHP.env.mobile} -->
-		<span class="label label-info">{USERS_DETAILS_USERPOINTS}</span> {USERS_DETAILS_USERSTARS}
+		<span class="badge badge-success">{USERS_DETAILS_USERPOINTS}</span> {USERS_DETAILS_USERSTARS}
 		<!-- ENDIF -->
 		<!-- IF {PHP.cot_plugins_active.paypro} AND {PHP.usr.id} > 0 AND {PHP.usr.id} != {USERS_DETAILS_ID} -->
 		<br/>
@@ -24,9 +24,9 @@
 		<!-- IF !{PHP.env.mobile} -->
 		<div class="text-right">
 			<!-- IF {USERS_DETAILS_ISPRO} -->
-			<span class="label label-important">PRO</span> 
+			<span class="badge badge-dark">PRO</span>
 			<!-- ENDIF -->
-			<span class="label label-info">{USERS_DETAILS_USERPOINTS}</span> {USERS_DETAILS_USERSTARS}
+			<span class="badge badge-success">{USERS_DETAILS_USERPOINTS}</span> {USERS_DETAILS_USERSTARS}
 		</div>
 		<!-- ENDIF -->
 		<div class="tabbable">

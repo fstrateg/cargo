@@ -1,5 +1,5 @@
 <!-- BEGIN: ERROR -->
-<div class="alert alert-error">
+<div class="alert alert-danger">
 	<h4>{PHP.L.Error}</h4>
 	<ul>
 		<!-- BEGIN: ERROR_ROW -->
