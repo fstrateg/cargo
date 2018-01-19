@@ -141,9 +141,9 @@
 					<div class="col">
 						<h4><a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a></h4>
 					</div>
-					<h4 class="col text-right">
-						<!-- IF {PRJ_ROW_COST} > 0 -->{PRJ_ROW_COST} {PHP.cfg.payments.valuta}<!-- ENDIF -->
-					</h4>
+					<h5 class="col text-right">
+						<!-- IF {PRJ_ROW_COST} > 0 --><span class="money"></span> {PRJ_ROW_COST} {PHP.cfg.payments.valuta}<!-- ENDIF -->
+					</h5>
 				</div>
 				<div class="row"><div class="col">
 						<table class="table">
@@ -212,7 +212,7 @@
 					</div>
 				</div>
 				<div class="row text-right">
-					<div class="col"><!-- IF {PRJ_ROW_COST} > 0 --><h4>{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</h4><!-- ENDIF --></div>
+					<div class="col"><!-- IF {PRJ_ROW_COST} > 0 --><h5><span class="money"></span>{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</h5><!-- ENDIF --></div>
 				</div>
 			</div>
 			<!-- ENDIF -->

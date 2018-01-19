@@ -112,6 +112,24 @@ table.details td{
 #buttons .btn{
     margin-bottom: 10px;
 }
+
+.tab-content{background-color: #fff;}
+.tab-content tr:first-child td{
+    border-top: none;
+}
+
+.tabbable .mobile .nav-link{
+    display: inline-block;
+}
+.tabbable .mobile .nav-link.active{
+    text-decoration: underline;
+}
+
+.nav-under a.nav-link.active{
+    text-decoration: underline;
+}
+.badge{font-size: 11px;}
+.money{background: url('../img/money-b.png') no-repeat;display: inline-block;width: 17px;height: 16px; margin-right: .3em;vertical-align: middle;}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }

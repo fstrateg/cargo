@@ -203,7 +203,7 @@
             </div>
         </div>
         <div class="row text-right">
-            <div class="col"><!-- IF {PRJ_ROW_COST} > 0 --><h4>{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</h4><!-- ENDIF --></div>
+            <div class="col"><!-- IF {PRJ_ROW_COST} > 0 --><h5><span class="money"></span>{PRJ_ROW_COST} {PHP.cfg.payments.valuta}</h5><!-- ENDIF --></div>
         </div>
     </div>
     <!-- ENDIF -->

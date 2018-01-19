@@ -1,10 +1,13 @@
 <!-- BEGIN: MAIN -->
 <div class="reviews">
-	<h4>{PHP.L.reviews_reviews}</h4>
+	<div class="row pt-3">
+		<div class="col"><h4>{PHP.L.reviews_reviews}</h4></div>
+	</div>
 	<!-- BEGIN: REVIEWS_ROWS -->
 		<div class="row">
-			<div class="span1">{REVIEW_ROW_AVATAR}</div>
-			<div class="span8">
+			<div class=<!-- IF {PHP.env.mobile} -->"col-4"<!-- ELSE -->"col-2"<!-- ENDIF -->>
+				<div class="img-fluid avatar">{REVIEW_ROW_AVATAR}</div></div>
+			<div class="col">
 				<div class="pull-right score">{REVIEW_ROW_SCORE}</div>
 				<div class="owner">{REVIEW_ROW_OWNER}</div>
 				<!-- IF {REVIEW_ROW_AREA} == 'projects' -->
