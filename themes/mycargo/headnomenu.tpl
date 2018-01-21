@@ -7,6 +7,7 @@
 <!-- IF {HEADER_META_KEYWORDS} --><meta name="keywords" content="{HEADER_META_KEYWORDS}" /><!-- ENDIF -->
 <meta http-equiv="content-type" content="{HEADER_META_CONTENTTYPE}; charset=UTF-8" />
 <meta name="generator" content="Cotonti http://www.cotonti.com" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="{HEADER_CANONICAL_URL}" />
 {HEADER_BASEHREF}
 {HEADER_HEAD}

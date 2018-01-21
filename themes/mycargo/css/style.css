@@ -77,7 +77,7 @@ div.well li.active a{
     padding: 1em;
 }
 
-span.locselect span{
+span.locselect span,span.datesel span{
     width: 33.3%;
     float: left;
 }
@@ -130,6 +130,9 @@ table.details td{
 }
 .badge{font-size: 11px;}
 .money{background: url('../img/money-b.png') no-repeat;display: inline-block;width: 17px;height: 16px; margin-right: .3em;vertical-align: middle;}
+
+.form-group .inline{display: inline-block;
+}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }
