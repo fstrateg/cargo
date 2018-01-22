@@ -9,11 +9,11 @@
 	</section>
 	<section class="body">
 		<form name="login" action="{USERS_REGISTER_SEND}" method="post" enctype="multipart/form-data" >
-			<div class="pad5"><div class="width50 divsenter">{USERS_REGISTER_USER}</div></div>
-			<div class="pad5"><div class="width50 divsenter">{USERS_REGISTER_EMAIL}</div></div>
-			<div class="pad5"><div class="width50 divsenter">{USERS_REGISTER_PASSWORD}</div></div>
-			<div class="pad5"><div class="width50 divsenter">{USERS_REGISTER_PASSWORDREPEAT}</div></div>
-			<div id="rverify" class="pad5"><div class="width50 divsenter">
+			<div class="pad5"><div class="width50 divsenter col-5">{USERS_REGISTER_USER}</div></div>
+			<div class="pad5"><div class="width50 divsenter col-5">{USERS_REGISTER_EMAIL}</div></div>
+			<div class="pad5"><div class="width50 divsenter col-5">{USERS_REGISTER_PASSWORD}</div></div>
+			<div class="pad5"><div class="width50 divsenter col-5">{USERS_REGISTER_PASSWORDREPEAT}</div></div>
+			<div id="rverify" class="pad5"><div class="width50 divsenter col-5">
 				{USERS_REGISTER_VERIFYIMG}
 				{USERS_REGISTER_VERIFYINPUT}
 			</div>

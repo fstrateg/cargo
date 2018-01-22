@@ -214,7 +214,7 @@ $t->assign(array(
 	'USERS_PROFILE_FORM_SEND' => cot_url('users', "m=profile&a=update&".cot_xg()),
 	'USERS_PROFILE_ID' => $urr['user_id'],
 	'USERS_PROFILE_NAME' => htmlspecialchars($urr['user_name']),
-	'USERS_FIOFIRM'=> cot_inputbox('text','ruserfiofirm',$urr['user_fiofirm'],['class'=>'schstring','maxlength'=>150]),
+	'USERS_FIOFIRM'=> cot_inputbox('text','ruserfiofirm',$urr['user_fiofirm'],['class'=>'form-control','maxlength'=>150]),
 	'USERS_PROFILE_MAINGRP' => cot_build_group($urr['user_maingrp']),
 	'USERS_PROFILE_GROUPS' => cot_build_groupsms($urr['user_id'], FALSE, $urr['user_maingrp']),
 	'USERS_PROFILE_COUNTRY' => cot_selectbox_countries($urr['user_country'], 'rusercountry'),
@@ -233,10 +233,10 @@ $t->assign(array(
 	'USERS_PROFILE_LASTLOG_STAMP' => $urr['user_lastlog'],
 	'USERS_PROFILE_LOGCOUNT' => $urr['user_logcount'],
 	'USERS_PROFILE_ADMINRIGHTS' => '',
-	'USERS_PROFILE_OLDPASS' => cot_inputbox('password', 'roldpass', '', array('size' => 12, 'maxlength' => 32)),
-	'USERS_PROFILE_NEWPASS1' => cot_inputbox('password', 'rnewpass1', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off')),
-	'USERS_PROFILE_NEWPASS2' => cot_inputbox('password', 'rnewpass2', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off')),
-	'NEED'=>'<span class="red">*</span>',
+	'USERS_PROFILE_OLDPASS' => cot_inputbox('password', 'roldpass', '', array('size' => 12, 'maxlength' => 32, 'class'=>'form-control')),
+	'USERS_PROFILE_NEWPASS1' => cot_inputbox('password', 'rnewpass1', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off', 'class'=>'form-control')),
+	'USERS_PROFILE_NEWPASS2' => cot_inputbox('password', 'rnewpass2', '', array('size' => 12, 'maxlength' => 32, 'autocomplete' => 'off', 'class'=>'form-control')),
+	'NEED'=>'<span class="text-danger">*</span>',
 ));
 //Phones
 $t->assign([

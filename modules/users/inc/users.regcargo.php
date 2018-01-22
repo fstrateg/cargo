@@ -221,10 +221,10 @@ $t->assign(array(
 	'USERS_REGISTER_SUBTITLE' => $L['aut_registersubtitle'],
 	'USERS_REGISTER_ADMINEMAIL' => $cot_adminemail,
 	'USERS_REGISTER_SEND' => cot_url('users', 'm=regcargo&a=add'),
-	'USERS_REGISTER_USER' => cot_inputbox('text', 'rusername', $ruser['user_name'], array('size' => 24, 'maxlength' => 100, 'placeholder'=>$L['Username'])),
-	'USERS_REGISTER_EMAIL' => cot_inputbox('text', 'ruseremail', $ruser['user_email'], array('size' => 24, 'maxlength' => 64, 'placeholder'=>$L['users_validemail'])),
-	'USERS_REGISTER_PASSWORD' => cot_inputbox('password', 'rpassword1', '', array('size' => 12, 'maxlength' => 32, 'placeholder'=>$L['Password'])),
-	'USERS_REGISTER_PASSWORDREPEAT' => cot_inputbox('password', 'rpassword2', '', array('size' => 12, 'maxlength' => 32, 'placeholder'=>$L['users_confirmpass'])),
+	'USERS_REGISTER_USER' => cot_inputbox('text', 'rusername', $ruser['user_name'], array('size' => 24, 'maxlength' => 100, 'placeholder'=>$L['Username'], 'class'=>'form-control')),
+	'USERS_REGISTER_EMAIL' => cot_inputbox('text', 'ruseremail', $ruser['user_email'], array('size' => 24, 'maxlength' => 64, 'placeholder'=>$L['users_validemail'], 'class'=>'form-control')),
+	'USERS_REGISTER_PASSWORD' => cot_inputbox('password', 'rpassword1', '', array('size' => 12, 'maxlength' => 32, 'placeholder'=>$L['Password'], 'class'=>'form-control')),
+	'USERS_REGISTER_PASSWORDREPEAT' => cot_inputbox('password', 'rpassword2', '', array('size' => 12, 'maxlength' => 32, 'placeholder'=>$L['users_confirmpass'], 'class'=>'form-control')),
 	'USERS_REGISTER_GROUP'=> cot_inputbox('hidden','ruserusergroup',$maingroup)
 ));
 
@@ -259,7 +259,7 @@ $script="<script type=\"text/javascript\">//<![CDATA[
  	var s=$('#rverify span');
  	s.hide();
  	var r=s.text();
- 	$('input[name=\"rverify\"]').attr('placeholder',r).attr('size','').val('');
+ 	$('input[name=\"rverify\"]').attr('placeholder',r).attr('size','').attr('class','form-control').val('');
 // 	}
  //splace();
 //]]></script>";

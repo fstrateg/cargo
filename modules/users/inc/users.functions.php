@@ -280,9 +280,9 @@ function cot_user_data($uid = 0, $cacheitem = true)
 function cot_input_phone($name,$vl)
 {
     $text='+7-('
-        .cot_inputbox('text','%s','%s','class="number" maxlength="3" style="width:30px!important;"')
+        .cot_inputbox('text','%s','%s','class="number inline form-control" maxlength="3" style="width:60px!important;"')
         .')-'
-        .cot_inputbox('text','%s','%s','class="number" maxlength="7" style="width:60px!important;"');
+        .cot_inputbox('text','%s','%s','class="number inline form-control" maxlength="7" style="width:120px!important;"');
     if (preg_match_all('/\d{3,}/',$vl,$arr)>1)
     {
         $part1=$arr[0][0];
