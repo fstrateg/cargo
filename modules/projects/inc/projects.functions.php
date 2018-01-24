@@ -873,10 +873,23 @@ function cot_frt_tag($vl)
 function cot_get_frt($name,$vl)
 {
 	global $L;
-	$html=cot_checkbox($vl==1||$vl==3,$name.'_full',$L['cargo_frt_full']);
-	$html.=cot_checkbox($vl==2||$vl==3,$name.'_coll',$L['cargo_frt_coll']);
+	$html=cot_checkbox($vl==1||$vl==3,$name.'_full',$L['cargo_frt_full'],['class'=>'form-check-input']);
+	$html.=cot_checkbox($vl==2||$vl==3,$name.'_coll',$L['cargo_frt_coll'],['class'=>'form-check-input']);
 
 	return $html;
+}
+
+function cot_get_frt4($name,$vl)
+{
+    global $L;
+    $html='<div class="form-check form-check-inline"><label class="form-check-label">';
+    $html.=cot_inputbox('checkbox',$name.'_full',$vl==1||$vl==3,['class'=>'form-check-input']).' '.$L['cargo_frt_full'];
+    //$html.=cot_checkbox($vl==1||$vl==3,$name.'_full',$L['cargo_frt_full'],['class'=>'form-check-input']);
+    $html.='</label></div>';
+    $html.='<div class="form-check form-check-inline"><label class="form-check-label">';
+    //$html.=cot_checkbox($vl==2||$vl==3,$name.'_coll',$L['cargo_frt_coll'],['class'=>'form-check-input']);
+    $html.='</label></div>';
+    return $html;
 }
 
 function cot_import_frt($name,$source)
