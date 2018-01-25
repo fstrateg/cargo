@@ -63,16 +63,6 @@
                 <div class="form-check form-check-inline">
                     {PRJADD_FORM_FRT}
                 </div>
-                <!--div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                    {PRJADD_FORM_FRT1} {PHP.L.cargo_frt_full}
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                    {PRJADD_FORM_FRT2} {PHP.L.cargo_frt_coll}
-                    </label>
-                </div-->
             </div>
         </div>
         <div class="form-group row">

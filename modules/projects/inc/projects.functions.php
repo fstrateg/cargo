@@ -884,13 +884,20 @@ function cot_get_frt4($name,$vl)
     global $L;
 	$vl=empty($vl)?'0':$vl;
     $html='<div class="form-check form-check-inline"><label class="form-check-label">';
-	$value=$vl==1||$vl==3?1:0;
-    $html.=cot_inputbox('checkbox',$name.'_full',$value,['class'=>'form-check-input']).' '.$L['cargo_frt_full'];
+    if ($vl==1||$vl==3)
+	    $atr['checked']='true';
+    $atr['class']='form-check-input';
+    $html.=cot_inputbox('hidden',$name.'_full','0');
+    $html.=cot_inputbox('checkbox',$name.'_full','1',$atr).' '.$L['cargo_frt_full'];
     //$html.=cot_checkbox($vl==1||$vl==3,$name.'_full',$L['cargo_frt_full'],['class'=>'form-check-input']);
     $html.='</label></div>';
     $html.='<div class="form-check form-check-inline"><label class="form-check-label">';
-	$value=$vl==2||$vl==3?1:0;
-	$html.=cot_inputbox('checkbox',$name.'_coll',$value,['class'=>'form-check-input']).' '.$L['cargo_frt_coll'];
+    $atr=array();
+    if ($vl==2||$vl==3)
+        $atr['checked']='true';
+    $atr['class']='form-check-input';
+	$html.=cot_inputbox('hidden',$name.'_coll','0');
+	$html.=cot_inputbox('checkbox',$name.'_coll','1',$atr).' '.$L['cargo_frt_coll'];
     //$html.=cot_checkbox($vl==2||$vl==3,$name.'_coll',$L['cargo_frt_coll'],['class'=>'form-check-input']);
     $html.='</label></div>';
     return $html;
