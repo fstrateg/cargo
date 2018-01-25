@@ -134,7 +134,7 @@ class BL
     var $dat;
     var $id;
 
-    function BL()
+    function __construct()
     {
         global $usr;
         $this->own=$usr['id'];

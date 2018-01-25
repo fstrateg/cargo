@@ -134,7 +134,7 @@ class Favorites
     var $dat;
     var $id;
 
-    function Favorites()
+    function __construct()
     {
         global $usr;
         $this->own=$usr['id'];

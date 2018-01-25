@@ -882,11 +882,15 @@ function cot_get_frt($name,$vl)
 function cot_get_frt4($name,$vl)
 {
     global $L;
+	$vl=empty($vl)?'0':$vl;
     $html='<div class="form-check form-check-inline"><label class="form-check-label">';
-    $html.=cot_inputbox('checkbox',$name.'_full',$vl==1||$vl==3,['class'=>'form-check-input']).' '.$L['cargo_frt_full'];
+	$value=$vl==1||$vl==3?1:0;
+    $html.=cot_inputbox('checkbox',$name.'_full',$value,['class'=>'form-check-input']).' '.$L['cargo_frt_full'];
     //$html.=cot_checkbox($vl==1||$vl==3,$name.'_full',$L['cargo_frt_full'],['class'=>'form-check-input']);
     $html.='</label></div>';
     $html.='<div class="form-check form-check-inline"><label class="form-check-label">';
+	$value=$vl==2||$vl==3?1:0;
+	$html.=cot_inputbox('checkbox',$name.'_coll',$value,['class'=>'form-check-input']).' '.$L['cargo_frt_coll'];
     //$html.=cot_checkbox($vl==2||$vl==3,$name.'_coll',$L['cargo_frt_coll'],['class'=>'form-check-input']);
     $html.='</label></div>';
     return $html;
