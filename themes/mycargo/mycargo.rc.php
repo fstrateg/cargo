@@ -14,6 +14,7 @@ defined('COT_CODE') or die('Wrong URL.');
 
 cot_rc_add_file($cfg['themes_dir'].'/'.$usr['theme'].'/bootstrap/css/bootstrap.min.css');
 Resources::addFile($cfg['themes_dir'].'/'.$usr['theme'].'/bootstrap/css/icons.css');
+Resources::addFile($cfg['themes_dir'].'/'.$usr['theme'].'/bootstrap/js/popper.min.js');
 //cot_rc_add_file($cfg['themes_dir'].'/'.$usr['theme'].'/bootstrap/css/bootstrap.old.css');
 //cot_rc_add_file($cfg['themes_dir'].'/'.$usr['theme'].'/bootstrap/css/bootstrap-responsive.old.css');
 

@@ -145,8 +145,8 @@ class Performers
         $item['PRF_PRFDELURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=del&pid=".$data['item_id']);
         $item['PRF_PRFEDURL']=cot_url('projects',"m=setperformer&id=".$data['item_claim']."&a=edit&pid=".$data['item_id']);
         $name=$this->L[$data['item_confirm']==0?'claims_not_confirm':'claims_confirm'];
-        $cls=$data['item_confirm']==0?'important':'info';
-        $item['PRF_CONFIRM']="<span class='label label-$cls'>$name</span>";
+        $cls=$data['item_confirm']==0?'danger':'info';
+        $item['PRF_CONFIRM']="<span class='badge badge-$cls'>$name</span>";
         if (!$prefix) return $item;
         $rez=[];
         foreach($item as $key=>$vl)

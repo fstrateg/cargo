@@ -2,17 +2,18 @@
 <div class="breadcrumb">{PHP.L.prj_setp_title}</div>
 <h1>{PHP.L.prj_setp_title}</h1>
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
+<div id="content" class="container">
 <div class="row">
-    <div class="span1">
+    <div class="col-auto">
         {PRJ_PERF_AVATAR}
     </div>
-    <div class="span2">
+    <div class="col">
         <p>{PRJ_PERF_NICKNAME}</p>
         <p>
             <!-- IF {PRJ_PERF_ISPRO} -->
-            <span class="label label-important">PRO</span>
+            <span class="badge badge-important">PRO</span>
             <!-- ENDIF -->
-            <span class="label label-info">{PRJ_PERF_USERPOINTS}</span>
+            <span class="badge badge-info">{PRJ_PERF_USERPOINTS}</span>
             <!-- IF {PHP.cot_modules.blacklist} -->
                     {PRJ_PERF_BLLABEL}
             <!-- ENDIF -->
@@ -28,50 +29,72 @@
 <hr>
 <h3>{PHP.L.claims_factdata}</h3>
 <form action="{PRJ_FORM_ACTION}" method="post" name="newadv" enctype="multipart/form-data">
-<div class="row">
-    <div class="span6">
-        <table width="100%">
-            <tr>
-                <td><b>ID:</b></td>
-                <td style="line-height: 40px"><div class="span2">#{PRJ_ID}</div></td>
-            </tr>
-            <tr>
-                <td><b>{PHP.L.prj_setp_number}:</b></td>
-                <td><div class="span2">{PRJ_NUMBER}</div></td>
-            </tr>
-            <tr>
-                <td><b>{PHP.L.prj_setp_fio}:</b></td>
-                <td><div class="span4">{PRJ_FIO}</div></td>
-            </tr>
-            <tr>
-                <td><b>{PHP.L.prj_setp_summa}:</b></td>
-                <td><div class="span2">{PRJ_SUMM}</div></td>
-            </tr>
-            <tr>
-                <td><b>{PHP.L.prj_setp_dtload}:</b></td>
-                <td><div class="span2">{PRJ_DB}</div></td>
-            </tr>
-            <tr>
-                <td><b>{PHP.L.prj_setp_dtunload}:</b></td>
-                <td><div class="span2">{PRJ_DE}</div></td>
-            </tr>
-            <tr>
-                <td><b>{PHP.L.Notes}:</b></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="2">{PRJ_TEXT}</td>
-            </tr>
-        </table>
+    <div class="form-group row">
+        <div class="col-12 col-sm-4">
+            <b>ID:</b>
+        </div>
+        <div class="col-12 col-sm-8 col-md-4">
+            #{PRJ_ID}
+        </div>
     </div>
-</div>
+    <div class="form-group row">
+        <div class="col-12 col-sm-4">
+            <b>{PHP.L.prj_setp_number}:</b>
+        </div>
+        <div class="col-12 col-sm-8 col-md-4">
+        {PRJ_NUMBER}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-12 col-sm-4">
+            <b>{PHP.L.prj_setp_fio}:</b>
+        </div>
+        <div class="col-12 col-sm-8 col-md-4">
+        {PRJ_FIO}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-12 col-sm-4">
+            <b>{PHP.L.prj_setp_summa}:</b>
+        </div>
+        <div class="col-12 col-sm-8 col-md-4">
+        {PRJ_SUMM}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-12 col-sm-4">
+            <b>{PHP.L.prj_setp_dtload}:</b>
+        </div>
+        <div class="col-12 col-sm-8 col-md-4">
+        {PRJ_DB}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-12 col-sm-4">
+            <b>{PHP.L.prj_setp_dtunload}:</b>
+        </div>
+        <div class="col-12 col-sm-8 col-md-4">
+        {PRJ_DE}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <b>{PHP.L.Notes}:</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        {PRJ_TEXT}
+        </div>
+    </div>
     {PRJ_PERFORMER}
     {PRJ_CLAIM}
-    <div class="well well-small">
+    <div class="well well-small mt-2">
         <button type="submit" class="btn btn-success"><i class="icon-ok icon-white"></i> {PHP.L.Save}</button>
         <a href="{PRJ_CANCEL_URL}" class="btn btn-warning"><i class="icon-remove icon-white"></i> {PHP.L.Cancel}</a>
     </div>
 </form>
+    </div>
 {TEST}
 <script type="text/javascript" src="/js/jquery-ui.min.js">
 </script>

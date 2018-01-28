@@ -2,24 +2,25 @@
 <div class="breadcrumb">{PHP.L.claims_setperformed}</div>
 <h1>{PHP.L.claims_setperformed}</h1>
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
+<div id="content" class="container">
 <div class="row">
-    <div class="span1">
-        {PRJ_PERF_AVATAR}
+    <div class="col-auto">
+    {PRJ_PERF_AVATAR}
     </div>
-    <div class="span2">
+    <div class="col">
         <p>{PRJ_PERF_NICKNAME}</p>
         <p>
-            <!-- IF {PRJ_PERF_ISPRO} -->
-            <span class="label label-important">PRO</span>
-            <!-- ENDIF -->
-            <span class="label label-info">{PRJ_PERF_USERPOINTS}</span>
+            <span class="badge badge-info">{PRJ_PERF_USERPOINTS}</span>
         </p>
         <!-- FOR {PHONE} IN {PRJ_PERF_PHONES} -->
         <p>{PHONE}</p>
         <!-- ENDFOR -->
     </div>
-    <div class="span4">
-        <table width="100%">
+</div>
+<div class="row">
+    <div class="col col-4-sm">
+    {PRF.PRF_CONFIRM}
+        <table class="table noborder details table-striped">
             <tr>
                 <td><b>{PHP.L.prj_setp_fio}</b></td>
                 <td>{PRJ_PRF_FIO}</td>
@@ -40,16 +41,19 @@
                 <td><b>{PHP.L.prj_setp_summa}</b></td>
                 <td>{PRJ_PRF_SUMM} {PHP.cfg.payments.valuta}</td>
             </tr>
-            <tr><td colspan="2"><b>{PHP.L.Notes}</b></tr>
-            <tr><td colspan="2" class="small">{PRJ_PRF_NOTES}</td></tr>
         </table>
     </div>
+</div>
+<div class="row">
+    <div class="col"><div class="note">
+    {PRJ_PRF_NOTES}
+    </div></div>
 </div>
 <hr>
 <p><b>{PHP.L.claims_rating_title}</b></p>
 <form action="{PRJ_FORM_SEND}" method="post" name="edit" enctype="multipart/form-data">
 <div class="row">
-    <div class="span3">
+    <div class="col">
         <div id="reviewStars-input">
             <input id="star-4" type="radio" value="5" name="reviewStars"<!-- IF {PRJ_PERFORMED_STARS} == 5 --> checked<!-- ENDIF --> />
             <label title="{PHP.L.claims_rating_verygood}" for="star-4"></label>
@@ -69,13 +73,17 @@
     </div>
 </div>
 <hr />
-<p><b>{PHP.L.claims_rating_notes}</b></p>
-{PRJ_PERFORMED_NOTES}
-<p>&nbsp;</p>
 <div class="row">
-    <div class="span3">
-        <button type="submit" class="btn btn-success">{PHP.L.project_realized}</button>
+    <div class="col">
+    <p><b>{PHP.L.claims_rating_notes}</b></p>
+    {PRJ_PERFORMED_NOTES}
+    </div>
+ </div>
+<div class="row">
+    <div class="col">
+        <button type="submit" class="btn btn-success mt-3">{PHP.L.project_realized}</button>
     </div>
 </div>
 </form>
+    </div>
 <!-- END:MAIN -->

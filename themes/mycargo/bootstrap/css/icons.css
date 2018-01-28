@@ -1,3 +1,5 @@
+.dark {background-image: url("../img/glyphicons-halflings.png") !important;}
+
 [class^="icon-"],
 [class*=" icon-"] {
     display: inline-block;

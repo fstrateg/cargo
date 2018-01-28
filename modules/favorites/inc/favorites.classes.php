@@ -177,7 +177,7 @@ class Favorites
     private function createLablel()
     {
         $text=sprintf($this->L['fv_label'],cot_date('d.m.Y h:i',$this->dat),$this->note);
-        $html="<span class=\"label label-success\" data-toggle=\"tooltip\" title=\"$text\">FV</span>";
+        $html="<span class=\"badge badge-success\" data-toggle=\"tooltip\" title=\"$text\">FV</span>";
         return $html;
     }
 }

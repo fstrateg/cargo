@@ -63,11 +63,11 @@ if ($cot_modules['blacklist'] && $info['PRJ_PERF_BL'])
 $t->assign($info);
 $t->assign([
     'PRJ_ID'=>$id,
-    'PRJ_NUMBER'=>cot_inputbox('text','rnumber',$item['item_number']),
-    'PRJ_FIO'=>cot_inputbox('text','rfio',$item['item_fio']),
-    'PRJ_SUMM'=>cot_inputbox('number','rsumm',$item['item_summ']),
-    'PRJ_DB'=>cot_inputbox('text','rdb',cot_date('d.m.Y',$item['item_db']),'id="date_from"'),
-    'PRJ_DE'=>cot_inputbox('text','rde',cot_date('d.m.Y',$item['item_de']),'id="date_to"'),
+    'PRJ_NUMBER'=>cot_inputbox('text','rnumber',$item['item_number'],'class="form-control"'),
+    'PRJ_FIO'=>cot_inputbox('text','rfio',$item['item_fio'],'class="form-control"'),
+    'PRJ_SUMM'=>cot_inputbox('number','rsumm',$item['item_summ'],'class="form-control"'),
+    'PRJ_DB'=>cot_inputbox('text','rdb',cot_date('d.m.Y',$item['item_db']),'id="date_from" class="form-control"'),
+    'PRJ_DE'=>cot_inputbox('text','rde',cot_date('d.m.Y',$item['item_de']),'id="date_to" class="form-control"'),
     'PRJ_PERFORMER'=>cot_inputbox('hidden','rperformer',$userid),
     'PRJ_CLAIM'=>cot_inputbox('hidden','rclaim',$id),
     "PRJ_TEXT" => cot_textarea('rnote', $item['item_note'], 10, 60, 'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),

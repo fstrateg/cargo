@@ -7,7 +7,7 @@
 </h1>
 
 <!-- IF {PRJ_REALIZED} -->
-<div class="pull-right label label-info margintop10">{PHP.L.projects_isrealized}</div>
+<div class="pull-right badge badge-info mt1">{PHP.L.projects_isrealized}</div>
 <!-- ENDIF -->
 
 <div id="content" class="container">
@@ -36,7 +36,7 @@
 		<p>{PHONE}</p>
 		<!-- ENDFOR -->
 	</div>
-	<div class=<!-- IF {PHP.env.mobile} -->"col"<!-- ELSE -->"col-6"<!-- ENDIF -->>
+	<div class="col col-4-sm">
 		<table class="table details">
 			<tr><td><b>№:</b></td><td>#{PRJ_ID}</td></tr>
 			<tr><td><b>{PHP.L.projects_dat_created}:</b></td><td>{PRJ_DATE}</td></tr>
@@ -52,22 +52,22 @@
 		<div class="col"><div class="note">{PRJ_TEXT}</div></div>
 	</div>
 	<div class="row">
-	<div class=<!-- IF {PHP.env.mobile} -->"col"<!-- ELSE -->"col-6"<!-- ENDIF -->>
-		<table class="table noborder details">
-			<!-- IF {PRJ_COST} > 0 -->
-			<tr><td><b>{PHP.L.offers_budget}:</b></td><td>{PRJ_COST} {PHP.cfg.payments.valuta}</td></tr>
-			<!-- ENDIF -->
-			<tr><td><b>{PHP.L.projects_count}:</b></td><td>{PRJ_COUNT_OST} ({PRJ_COUNT})</td></tr>
-			<tr><td><b>{PHP.L.projects_frt}:</b></td><td>{PRJ_FRT}</td></tr>
-			<tr><td><b>{PHP.L.projects_massa}:</b></td><td>{PRJ_MASSA} {PHP.L.projects_ton}</td></tr>
-			<tr><td><b>{PHP.L.projects_vol}:</b></td><td>{PRJ_VOL} {PHP.L.projects_m3}</td></tr>
-			<tr><td><b>{PHP.L.Category}:</b></td><td>{PRJ_TRANSP}</td></tr>
-			<tr><td><b>{PHP.L.LocationFrom}:</b></td><td>{PRJ_COUNTRY} {PRJ_REGION} {PRJ_CITY}</td></tr>
-			<tr><td><b>{PHP.L.LocationTo}:</b></td><td>{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</td></tr>
-		</table>
-        <p>&nbsp;</p>
-	</div>
-</div>
+        <div class="col col-4-sm">
+            <table class="table noborder details table-striped">
+                <!-- IF {PRJ_COST} > 0 -->
+                <tr><td><b>{PHP.L.offers_budget}:</b></td><td>{PRJ_COST} {PHP.cfg.payments.valuta}</td></tr>
+                <!-- ENDIF -->
+                <tr><td><b>{PHP.L.projects_count}:</b></td><td>{PRJ_COUNT_OST} ({PRJ_COUNT})</td></tr>
+                <tr><td><b>{PHP.L.projects_frt}:</b></td><td>{PRJ_FRT}</td></tr>
+                <tr><td><b>{PHP.L.projects_massa}:</b></td><td>{PRJ_MASSA} {PHP.L.projects_ton}</td></tr>
+                <tr><td><b>{PHP.L.projects_vol}:</b></td><td>{PRJ_VOL} {PHP.L.projects_m3}</td></tr>
+                <tr><td><b>{PHP.L.Category}:</b></td><td>{PRJ_TRANSP}</td></tr>
+                <tr><td><b>{PHP.L.LocationFrom}:</b></td><td>{PRJ_COUNTRY} {PRJ_REGION} {PRJ_CITY}</td></tr>
+                <tr><td><b>{PHP.L.LocationTo}:</b></td><td>{PRJ_COUNTRYTO} {PRJ_REGIONTO} {PRJ_CITYTO}</td></tr>
+            </table>
+            <p>&nbsp;</p>
+        </div>
+    </div>
 	<div class="row">
 		<div class="col">
 		<!-- IF {PRJ_USER_IS_ADMIN} -->
@@ -108,8 +108,6 @@
 				<!-- ENDIF -->
 			</div>
 			<!-- ENDIF -->
-
-
 		<!-- ENDIF -->
 		</div>
 	</div>
@@ -118,22 +116,36 @@
 <h4>{PHP.L.claims_performers}</h4>
 <!-- FOR {PRF} IN {PRJ_PERFS} -->
 <hr style="border-top: 1px solid #eee"/>
-<div class="row">
-    <div class="span1">
+<div class="row justify-content-between">
+    <div class="col-auto">
         {PRF.PRF_OWNER.PRF_AVATAR}
     </div>
-    <div class="span3">
+    <div class="col-6">
         <p>{PRF.PRF_OWNER.PRF_NICKNAME}</p>
         <p>
-            <span class="label label-info">{PRF.PRF_OWNER.PRF_USERPOINTS}</span>
+            <span class="badge badge-info">{PRF.PRF_OWNER.PRF_USERPOINTS}</span>
         </p>
         <!-- FOR {PHONE} IN {PRF.PRF_OWNER.PRF_PHONES} -->
         <p>{PHONE}</p>
         <!-- ENDFOR -->
     </div>
-	<div class="span4">
-		{PRF.PRF_CONFIRM}
-		<table width="100%">
+    <div class="col-auto">
+        <!-- IF {PRF.PRF_STATUS} < 2 -->
+            <div class="btn-group">
+                <a class="btn btn-info dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-cog icon-white"></i></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{PRF.PRF_PRFDONEURL}"><i class="dark icon-ok"></i> {PHP.L.claims_performed}</a>
+                    <a class="dropdown-item" href="{PRF.PRF_PRFEDURL}"><i class="dark icon-pencil"></i> {PHP.L.Edit}</a>
+                    <a class="dropdown-item" href="{PRF.PRF_PRFDELURL}"><i class="dark icon-remove"></i> {PHP.L.offers_otkazat}</a>
+                </div>
+            </div>
+        <!-- ENDIF -->
+    </div>
+</div>
+<div class="row">
+	<div class="col col-4-sm mt-2">
+		<p>{PRF.PRF_CONFIRM}</p>
+		<table class="table noborder details table-striped">
 			<tr>
 				<td><b>{PHP.L.prj_setp_fio}</b></td>
 				<td>{PRF.PRF_FIO}</td>
@@ -154,34 +166,34 @@
 				<td><b>{PHP.L.prj_setp_summa}</b></td>
 				<td>{PRF.PRF_SUMM} {PHP.cfg.payments.valuta}</td>
 			</tr>
-			<tr><td colspan="2"><b>{PHP.L.Notes}</b></tr>
-			<tr><td colspan="2" class="small">{PRF.PRF_NOTES}</td></tr>
 		</table>
 	</div>
+    </div>
+<div class="row">
+    <div class="col"><div class="note">
+    {PRF.PRF_NOTES}
+        </div></div>
+</div>
 	<!-- IF {PRF.PRF_STATUS} >= 2 -->
-	<div class="span4">
-		<label class="label label-info">{PHP.L.claims_performed}</label>
+	<div class="row">
+        <div class="col">
+		<label class="badge badge-info mt-2">{PHP.L.claims_performed}</label>
 		<div class="fstars" style="padding: 10px 0">
 			<span class="stars-view"><span style="width: {PRF.PRF_STARS}%"></span></span>
 		</div>
 		{PRF.PRF_FEEDBACK}
-		<hr/>
+
+		</div>
+
+        <div class="col align-self-end">
 		<div class="fstars" style="padding: 10px 0">
 			<span class="stars-view"><span style="width: {PRF.PRF_TRSTARS}%"></span></span>
 		</div>
 		{PRF.PRF_TRFEEDBACK}
+        </div>
 	</div>
-	<!-- ELSE -->
-	<div class="span2 pull-right">
-		<div class="btn-group">
-			<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog icon-white"></i><span class="caret"></span></a>
-			<ul class="dropdown-menu pull-left">
-                <li><a href="{PRF.PRF_PRFDONEURL}"><i class="icon-ok"></i> {PHP.L.claims_performed}</a></li>
-				<li><a href="{PRF.PRF_PRFEDURL}"><i class="icon-pencil"></i> {PHP.L.Edit}</a></li>
-				<li><a href="{PRF.PRF_PRFDELURL}"><i class="icon-remove"></i> {PHP.L.offers_otkazat}</a></li>
-			</ul>
-		</div>
-	</div>
+<hr>
+
 	<!-- ENDIF -->
 </div>
 

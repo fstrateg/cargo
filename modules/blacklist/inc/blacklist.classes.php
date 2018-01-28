@@ -177,7 +177,7 @@ class BL
     private function createLablel()
     {
         $text=sprintf($this->L['bl_label'],cot_date('d.m.Y h:i',$this->dat),$this->note);
-        $html="<span class=\"label label-inverse\" data-toggle=\"tooltip\" title=\"$text\">BL</span>";
+        $html="<span class=\"badge badge-dark\" data-toggle=\"tooltip\" title=\"$text\">BL</span>";
         return $html;
     }
 }
