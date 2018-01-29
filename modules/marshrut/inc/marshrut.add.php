@@ -32,10 +32,10 @@ cot_display_messages($t);
 
 $t->assign([
         'MR_FORM_SEND'=>cot_url('marshrut','m=add&a=add'),
-        'MR_FORM_DB'=>cot_inputbox('text','mrdb',cot_date('d.m.Y',$ritem['item_db']),['id'=>'mrdb']),
-        'MR_FORM_DE'=>cot_inputbox('text','mrde',cot_date('d.m.Y',$ritem['item_de']),['id'=>'mrde']),
-        'MR_FORM_TTYPE'=>create_avtospisok_selectbox('mrttype',$ritem['item_ttype']),
-        'MR_FORM_FRT'=>cot_getfrt($ritem['item_frt']),
+        'MR_FORM_DB'=>cot_inputbox('text','mrdb',cot_date('d.m.Y',$ritem['item_db']),['id'=>'mrdb','class'=>'form-control']),
+        'MR_FORM_DE'=>cot_inputbox('text','mrde',cot_date('d.m.Y',$ritem['item_de']),['id'=>'mrde','class'=>'form-control']),
+        'MR_FORM_TTYPE'=>create_avtospisok_selectbox('mrttype',$ritem['item_ttype'],'class="form-control"'),
+        'MR_FORM_FRT'=>cot_getfrt4($ritem['item_frt'],'mr'),
         'MR_FORM_PRICE'=>cot_inputbox('text','mrprice',$ritem['item_price']),
         'TEST'=> print_r($ritem,true),
     ]);
