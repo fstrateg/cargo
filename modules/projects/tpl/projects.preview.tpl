@@ -11,13 +11,10 @@
 	<div class="span1">
 		{PRJ_OWNER_AVATAR}
 	</div>
-	<div class="span2">
-		<p>{PRJ_OWNER_NICKNAME}</p>
+    <div class=<!-- IF {PHP.env.mobile} -->"col"<!-- ELSE -->"col-4"<!-- ENDIF -->>
+    <p>{PRJ_OWNER_NICKNAME}</p>
 		<p>
-			<!-- IF {PRJ_OWNER_ISPRO} -->
-			<span class="label label-important">PRO</span> 
-			<!-- ENDIF -->
-			<span class="label label-info">{PRJ_OWNER_USERPOINTS}</span> {PRJ_OWNER_USERSTARS}
+			<span class="badge badge-success">{PRJ_OWNER_USERPOINTS}</span> {PRJ_OWNER_USERSTARS}
 		</p>
         <!-- FOR {PHONE} IN {PRJ_OWNER_PHONES} -->
         <p>{PHONE}</p>

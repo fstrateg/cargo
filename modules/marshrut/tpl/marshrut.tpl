@@ -57,13 +57,13 @@
                 <span class="money"></span><!-- IF {MR_COST} > 0 -->{MR_COST} {PHP.cfg.payments.valuta}<!-- ENDIF -->
             </h5>
         </div>
-        <!-- ELSE -->
+    <!-- ELSE -->
         <div class="row">
             <h4 class="col">
             {MR_TITLE}
             </h4>
             <h5 class="col text-right">
-                <span class="money"></span><!-- IF {MR_COST} > 0 -->{MR_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
+                <span class="money"></span><!-- IF {MR_COST} > 0 -->{MR_COST} {PHP.cfg.payments.valuta}<!-- ENDIF -->
             </h5>
         </div>
         <div class="row">
