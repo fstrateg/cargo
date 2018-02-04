@@ -66,7 +66,7 @@ function transpedit_view($item)
     $t=new XTemplate($mskin);
     cot_display_messages($t);
 
-    $attr=['style'=>'text-transform:uppercase;'];
+    $attr=['style'=>'text-transform:uppercase;','class'=>'form-control'];
     if ($item['item_verifed']>0)
     {
         $attr['disabled']='true';
@@ -80,11 +80,11 @@ function transpedit_view($item)
     $t->assign(array(
         "TRNSEDIT_FORM_SEND" => cot_url('transport', "m=edit&a=update&id=" . $item['item_id']),
         "TRNSEDIT_FORM_ID" => $item['item_id'],
-        "TRNSEDIT_FORM_TRANSP" => create_avtospisok_selectbox('rtransp', $item['item_transp']),
+        "TRNSEDIT_FORM_TRANSP" => create_avtospisok_selectbox('rtransp', $item['item_transp'], 'class="form-control"'),
         "TRNSEDIT_FORM_REGNUMBER" => cot_inputbox('text','rtitle',$item['item_title'],$attr),
-        "TRNSEDIT_FORM_VOL" => cot_inputbox('number','rvol',$item['item_vol']),
-        "TRNSEDIT_FORM_LEN" => cot_inputbox('number','rlen',$item['item_length']),
-        "TRNSEDIT_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255']),
+        "TRNSEDIT_FORM_VOL" => cot_inputbox('number','rvol',$item['item_vol'], 'class="form-control"'),
+        "TRNSEDIT_FORM_LEN" => cot_inputbox('number','rlen',$item['item_length'], 'class="form-control"'),
+        "TRNSEDIT_FORM_DRIVER" => cot_inputbox('text','rdriver',$item['item_driver'],['size'=>'75','max-length'=>'255', 'class'=>'form-control']),
         "TRNSEDIT_FORM_PHOTO"=> transpedit_getphoto($item['item_photo'],$id),
         "TRNSEDIT_FORM_TEXT" => cot_textarea('rtext', $item['item_text'], 10, 60,'id="formtext"', ($prjeditor) ? 'input_textarea_'.$prjeditor : ''),
         "TRNSEDIT_FORM_DELETE"=> cot_rc_link('javascript:void(0)',$L['Delete'],'class="btn btn-danger" id="del"'),
@@ -96,8 +96,8 @@ function transpedit_view($item)
     /* triler */
         $t->assign([
             'TRAILER_NUMBER'=>cot_inputbox('text','tnumber',$item['trailer_number'],$attr),
-            'TRAILER_VOL'=>cot_inputbox('number','tvol',$item['trailer_vol']),
-            'TRAILER_LEN'=>cot_inputbox('number','tlen',$item['trailer_len']),
+            'TRAILER_VOL'=>cot_inputbox('number','tvol',$item['trailer_vol'], 'class="form-control"'),
+            'TRAILER_LEN'=>cot_inputbox('number','tlen',$item['trailer_len'], 'class="form-control"'),
             'TRAILER'=>cot_inputbox('hidden','trailer',$item['trailer_number']||$item['trailer_vol']||$item['trailer_len']?'1':'0'),
         ]);
 

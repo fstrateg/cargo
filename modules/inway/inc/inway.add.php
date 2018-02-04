@@ -70,7 +70,7 @@ class InwayAdd extends InwayBase
             }
         }
         $this->others=implode(',',$others);
-        $html=cot_selectbox($this->value->cat,'rcat',$values,$titles);
+        $html=cot_selectbox($this->value->cat,'rcat',$values,$titles,true,['class'=>'form-control']);
         $html.=cot_inputbox('text','rother',$this->value->other,'id="val_other"');
         $html.=cot_inputbox('hidden','rothers',$this->others,'id="list_other"');
 

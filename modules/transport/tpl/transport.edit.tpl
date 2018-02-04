@@ -1,66 +1,140 @@
 <!-- BEGIN: MAIN -->
-<div class="breadcrumb">{PHP.L.transport_edit_project_title}</div>
+<div class="bcrups"><h4>{PHP.L.transport_edit_project_title}</h4></div>
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
-<div class="customform">
+<div id="content">
     <form action="{TRNSEDIT_FORM_SEND}" method="post" name="edit" enctype="multipart/form-data">
-        <table class="table">
-            <tr>
-                <td width="150">{PHP.L.transport_type}:</td>
-                <td>{TRNSEDIT_FORM_TRANSP}</td>
-            </tr>
-            <tr>
-                <td>{PHP.L.transport_location}:</td>
-                <td>{TRNSEDIT_FORM_LOCATION}</td>
-            </tr>
-            <tr>
-                <td>{PHP.L.transport_fio_driver}</td>
-                <td>{TRNSEDIT_FORM_DRIVER}</td>
-            </tr>
-            <tr>
-                <td>{PHP.L.transport_regnumber}:</td>
-                <td>{TRNSEDIT_FORM_REGNUMBER}</td>
-            </tr>
-            <tr>
-                <td>{PHP.L.transport_vol}:</td>
-                <td><div class="input-append">{TRNSEDIT_FORM_VOL}<span class="add-on">{PHP.L.projects_m3}</div></td>
-            </tr>
-            <tr>
-                <td>{PHP.L.transport_length}:</td>
-                <td><div class="input-append">{TRNSEDIT_FORM_LEN}<span class="add-on">{PHP.L.projects_m}</div></td>
-            </tr>
-            <tr id="trailer">
-                <td>{PHP.L.transport_triler}:</td>
-                <td>
-                    <div id="trfull">
-                        <table class="noborder">
-                            <tr><td>{PHP.L.transport_regnumber}</td><td>{TRAILER_NUMBER}</td></tr>
-                            <tr><td>{PHP.L.transport_vol}</td><td><div class="input-append">{TRAILER_VOL}<span class="add-on">{PHP.L.projects_m3}</div></td></tr>
-                            <tr><td>{PHP.L.transport_length}</td><td><div class="input-append">{TRAILER_LEN}<span class="add-on">{PHP.L.projects_m}</div></td></tr>
-                            <tr><td colspan="2"><a class="btn btn-danger" href="javascript:void(0)">{PHP.L.Remove}</a></td></tr>
-                        </table>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_type}:
+            </div>
+            <div class="col-12 col-sm-8 col-md-4">
+            {TRNSEDIT_FORM_TRANSP}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_location}:
+            </div>
+            <div class="col-12 col-sm-8">
+            {TRNSEDIT_FORM_LOCATION}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_fio_driver}:
+            </div>
+            <div class="col-12 col-sm-8 col-md-4">
+            {TRNSEDIT_FORM_DRIVER}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_regnumber}:
+            </div>
+            <div class="col-12 col-sm-8 col-md-4">
+            {TRNSEDIT_FORM_REGNUMBER}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_vol}:
+            </div>
+            <div class="col-12 col-sm-8 col-md-4">
+                <div class="input-group">
+                {TRNSEDIT_FORM_VOL}
+                    <div class="input-group-append">
+                        <span class="input-group-text">{PHP.L.projects_m3}</span>
                     </div>
-                    <div id="trempty" style="display: none">
-                        <a class="btn btn-success" href="javascript:void(0)">{PHP.L.Add}</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_length}:
+            </div>
+            <div class="col-12 col-sm-8 col-md-4">
+                <div class="input-group">
+                {TRNSEDIT_FORM_LEN}
+                    <div class="input-group-append">
+                        <span class="input-group-text">{PHP.L.projects_m}</span>
                     </div>
-                    {TRAILER}
-                </td>
-            </tr>
-            <tr>
-                <td>{PHP.L.transport_photo}:</td>
-                <td>{TRNSEDIT_FORM_PHOTO}</td>
-            </tr>
-            <tr>
-                <td class="top">{PHP.L.Notes}:</td>
-                <td>{TRNSEDIT_FORM_TEXT}</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" class="btn btn-success" value="{PHP.L.transport_save}" />
-                    <div class="pull-right offers">{TRNSEDIT_FORM_UNPUBLISH} {TRNSEDIT_FORM_DELETE}</div>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+        </div>
+        <div id="trailer" class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_triler}:
+            </div>
+            <div id="trfull" class="col-12 col-sm-12 col-md-8">
+                <div class="form-group row">
+                    <div class="col-12 col-sm-4">
+                    {PHP.L.transport_regnumber}:
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                    {TRAILER_NUMBER}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 col-sm-4">
+                    {PHP.L.transport_vol}:
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        <div class="input-group">
+                        {TRAILER_VOL}
+                            <div class="input-group-append">
+                                <span class="input-group-text">{PHP.L.projects_m3}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 col-sm-4">
+                    {PHP.L.transport_length}:
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-4">
+                        <div class="input-group">
+                        {TRAILER_LEN}
+                            <div class="input-group-append">
+                                <span class="input-group-text">{PHP.L.projects_m}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12 col-sm-4">
+                        <a class="btn btn-danger" href="javascript:void(0)">{PHP.L.Remove}</a>
+                    </div>
+                </div>
+            </div>
+            <div id="trempty" class="col-12 col-sm-8 col-md-4" style="display: none">
+                <a class="btn btn-success" href="javascript:void(0)">{PHP.L.Add}</a>
+            </div>
+        {TRAILER}
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.transport_photo}:
+            </div>
+            <div class="col-12 col-sm-8 col-md-4">
+            {TRNSEDIT_FORM_PHOTO}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-sm-4">
+            {PHP.L.Notes}:
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col">
+            {TRNSEDIT_FORM_TEXT}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col">
+                <input type="submit" class="btn btn-success" value="{PHP.L.transport_save}" />
+            </div>
+            <div class="col text-right">{TRNSEDIT_FORM_UNPUBLISH} {TRNSEDIT_FORM_DELETE}</div>
+        </div>
     </form>
 </div>
 <script type="text/javascript" charset="utf-8">

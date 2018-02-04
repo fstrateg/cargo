@@ -147,8 +147,8 @@ order by b.order";
     public function getTagForm($prefix='')
     {
         $tmp=$this->getTags('');
-        $tmp['DSC']=cot_textarea('rdsc',$this->desc,10,70);
-        $tmp['TITLE']=cot_inputbox('text','rtitle',$this->title);
+        $tmp['DSC']=cot_textarea('rdsc',$this->desc,10,70,['class'=>'form-control']);
+        $tmp['TITLE']=cot_inputbox('text','rtitle',$this->title,['class'=>'form-control']);
         $tmp['ID']=cot_inputbox('hidden','rid',$this->id);
         $rez=array();
         foreach($tmp as $key=>$vl)

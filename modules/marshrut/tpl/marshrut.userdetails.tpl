@@ -45,42 +45,45 @@
     <!-- END: CLAIM_ROWS -->
     <!-- BEGIN: MARSH_ROWS -->
 <div class="row">
-    <div class="span9">
-        <h4>
+            <div class="col"><h5>
             {MR_CLAIM} <!-- IF {MR_CONFIRM} == 1 -->
-            <span class="label label-success">{PHP.L.marshrut_confirm}</span>
+            <span class="badge badge-success">{PHP.L.marshrut_confirm}</span>
             <!-- ELSE -->
-            <span class="label label-inverse">{PHP.L.marshrut_confirm_not}</span>
+            <span class="badge badge-dark">{PHP.L.marshrut_confirm_not}</span>
             <!-- ENDIF -->
-            <!-- IF {MR_SUMM} > 0 --><div class="pull-right span2">{MR_SUMM} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
-        </h4>
-    </div>
+            </h5>
+            </div>
+    <!-- IF {MR_SUMM} > 0 --><div class="col-12 col-md-6 text-md-right"><h5><span class="money"></span> {MR_SUMM} {PHP.cfg.payments.valuta}</h5></div><!-- ENDIF -->
 </div>
 <div class="row">
-    <div class="span9">
-        {MR_NICKNAME}
-        <!-- FOR {PHONE} IN {MR_PHONES} -->
-        {PHONE};
-        <!-- ENDFOR -->
+    <div class="col">
+    {MR_NICKNAME}
     </div>
 </div>
+<div class="row"><div class="col">
+    <!-- FOR {PHONE} IN {MR_PHONES} -->
+{PHONE};
+    <!-- ENDFOR --></div>
+</div>
 <div class="row">
-    <div class="span9">
+    <div class="col">
         {MR_TITLE}
     </div>
-    <div class="span3">
+    </div>
+<div class="row">
+    <div class="col">
         {MR_DB}-{MR_DE}
     </div>
-    <div class="span2">
+    <div class="col">
         {MR_TTYPE}
     </div>
-    <div class="span3">
+    <div class="col">
         {MR_FRT}
     </div>
 </div>
 <!-- IF {MR_CONFIRM} == 0 -->
 <div class="row">
-    <div class="span9">
+    <div class="col">
         <div class="well well-small">
             <a class="btn btn-success" href="{MR_URLCONF}">Подтвердить заказ</a>
             <a class="btn btn-danger" href="javascript: void(0)" onclick="reject('{MR_URLREJT}')">Отказаться от заказа</a>
@@ -89,47 +92,54 @@
 </div>
 <!-- ENDIF -->
 <!-- IF {MR_CONFIRM} == 1 -->
+    <div class="row"><div class="col">
     <!-- IF {MR_TRSTARS} == 0 -->
         <a href="javascript: void(0)" onclick="closeClaim('{MR_URLCLOSE}')">{PHP.L.marshrut_close}</a>
     <!-- ELSE -->
-        <span class="label">Ожидается отзыв от заказчика</span>
+        <span class="badge badge-info">Ожидается отзыв от заказчика</span>
     <!-- ENDIF -->
+    </div></div>
 <!-- ENDIF -->
 <hr>
     <!-- END: MARSH_ROWS -->
 <!-- BEGIN: CLOSED_ROWS -->
 <div class="row">
-    <div class="span9">
-        <h4>
-        {MR_CLAIM}
-            <!-- IF {MR_SUMM} > 0 --><div class="pull-right span2">{MR_SUMM} {PHP.cfg.payments.valuta}</div><!-- ENDIF -->
-        </h4>
+    <div class="col">
+        <h5>
+        {MR_CLAIM}</h5>
+    </div>
+            <!-- IF {MR_SUMM} > 0 --><div class="col-12 col-md-6 text-md-right"><h5><span class="money"></span> {MR_SUMM} {PHP.cfg.payments.valuta}</h5></div><!-- ENDIF -->
+</div>
+<div class="row">
+    <div class="col">
+    {MR_NICKNAME}
     </div>
 </div>
 <div class="row">
-    <div class="span9">
-    {MR_NICKNAME}
+    <div class="col">
         <!-- FOR {PHONE} IN {MR_PHONES} -->
     {PHONE};
         <!-- ENDFOR -->
     </div>
 </div>
 <div class="row">
-    <div class="span9">
+    <div class="col">
     {MR_TITLE}
     </div>
-    <div class="span3">
+</div>
+<div class="row">
+    <div class="col">
     <p>{MR_DB}-{MR_DE}</p>
     </div>
-    <div class="span2">
+    <div class="col">
     {MR_TTYPE}
     </div>
-    <div class="span3">
+    <div class="col">
     {MR_FRT}
     </div>
 </div>
 <div class="row">
-    <div class="span5">
+    <div class="col-12 col-md-6">
         <b>Мой отзыв</b>
         <div class="fstars" style="padding: 10px 0">
             <span class="stars-view"><span style="width: {MR_TRSTARS}%"></span></span>
@@ -138,7 +148,7 @@
             {MR_TRFEEDBACK}
         </div>
     </div>
-    <div class="span4">
+    <div class="col-12 col-md-6">
         <b>Отзыв работодателя</b>
         <div class="fstars" style="padding: 10px 0">
             <span class="stars-view"><span style="width: {MR_FSTARS}%"></span></span>

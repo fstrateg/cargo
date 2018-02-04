@@ -81,7 +81,7 @@ function cot_transport_status($item_state)
         $status = 'hidden';
         $class='warning';
     }
-    $status="<span class='label label-$class'>".$L['transport_status_'.$status].'</span>';
+    $status="<span class='badge badge-$class'>".$L['transport_status_'.$status].'</span>';
     return $status;
 }
 
