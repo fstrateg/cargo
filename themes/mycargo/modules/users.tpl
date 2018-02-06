@@ -8,35 +8,33 @@
 	<!-- ENDIF -->
 	</h1>
 <div id="content">
-	<div class="row">
-		<div class="col">
-		
-			<div class="well">
 				<form action="{SEARCH_ACTION_URL}" method="get">
 					<input type="hidden" name="f" value="search" />
 					<input type="hidden" name="e" value="users" />
 					<input type="hidden" name="group" value="{PHP.group}" />
 					<input type="hidden" name="cat" value="{PHP.cat}" />
 					<input type="hidden" name="l" value="{PHP.lang}" />
-					<table width="100%" cellpadding="5" cellspacing="0">
-						<tr>
-							<td width="100">{PHP.L.Search}:</td>
-							<td><input type="text" name="sq" value="{PHP.sq|htmlspecialchars($this)}" class="form-control"/></td>
-						</tr>
-						<!-- IF {PHP.cot_plugins_active.locationselector} -->
-						<tr>
-							<td >{PHP.L.Location}:</td>
-							<td>{SEARCH_LOCATION}</td>
-						</tr>
-						<!-- ENDIF -->
-						<tr>
-							<td></td>
-							<td><input type="submit" name="search" class="btn" value="{PHP.L.Search}" /></td>
-						</tr>
-					</table>	
+                    <div class="form-group row">
+                        <div class="col-12 col-sm-4 col-md-2">
+                        {PHP.L.Search}:
+                        </div>
+                        <div class="col-12 col-sm-8">
+                            <input type="text" name="sq" value="{PHP.sq|htmlspecialchars($this)}" class="form-control"/>
+                        </div>
+                    </div>
+                    <!-- IF {PHP.cot_plugins_active.locationselector} -->
+                    <div class="form-group row">
+                        <div class="col-12 col-sm-4 col-md-2">
+                        {PHP.L.Location}:
+                        </div>
+                        <div class="col-12 col-sm-8">
+                            {SEARCH_LOCATION}
+                        </div>
+                    </div>
+
+                    <!-- ENDIF -->
+                    <div class="form-group row"><div class="col"><input type="submit" name="search" class="btn" value="{PHP.L.Search}" /></div></div>
 				</form>
-			</div>
-			
 			<!-- BEGIN: USERS_ROW -->
 				<div class="row">
 					<div class="col-auto">
@@ -56,8 +54,6 @@
 			<!-- ELSE -->
 			<div class="alert">{PHP.L.Noitemsfound}</div>
 			<!-- ENDIF -->
-		</div>
-	</div>
 </div>
 
 <!-- END: MAIN -->

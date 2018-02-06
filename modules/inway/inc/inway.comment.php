@@ -37,8 +37,8 @@ class InwayComment
     private function prepareForm()
     {
         $this->t->assign([
-            'FEDITOR'=>cot_textarea('rnote',$this->value->note,10,70),
-            'FDAT'=>cot_inputbox('text','rdat',$this->value->dat,['id'=>'rdat']),
+            'FEDITOR'=>cot_textarea('rnote',$this->value->note,10,70,['class'=>'form-control']),
+            'FDAT'=>cot_inputbox('text','rdat',$this->value->dat,['id'=>'rdat','class'=>'form-control']),
             'FSTARS'=>$this->value->stars,
             'FCANSEL'=>cot_url('inway',['m'=>'comment','a'=>'button','id'=>$this->id],'',true),
             'FSAVE'=>cot_url('inway',['m'=>'comment','a'=>'save','id'=>$this->id],'',true),

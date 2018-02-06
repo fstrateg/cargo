@@ -2,18 +2,18 @@
 {FILE "{PHP.cfg.themes_dir}/{PHP.cfg.defaulttheme}/warnings.tpl"}
 <form id="cmForm" action="{FSAVE}" method="post" class="ajax post-comments">
 <div class="row">
-    <div class="span2">
+    <div class="col-12 col-sm-4 col-md-3">
         {PHP.L.inway_datvisit}
     </div>
-    <div class="span2">
+    <div class="col-4">
         {FDAT}
     </div>
 </div>
 <div class="row">
-    <div class="span2">
+    <div class="col-12 col-sm-4 col-md-3">
         {PHP.L.inway_stars}
     </div>
-    <div class="span3">
+    <div class="col">
         <div id="reviewStars-input">
             <input id="star-4" type="radio" value="5" name="rstars"<!-- IF {FSTARS} == 5 --> checked<!-- ENDIF --> />
             <label title="{PHP.L.claims_rating_verygood}" for="star-4"></label>
@@ -33,12 +33,12 @@
     </div>
 </div>
 <div class="row">
-    <div class="span2">
+    <div class="col">
         {PHP.L.inway_yourcomment}
     </div>
 </div>
 <div class="row">
-    <div class="span12">
+    <div class="col">
     {FEDITOR}
     </div>
 </div>
@@ -47,7 +47,7 @@
     <input type="submit" value="{PHP.L.Save}" class="aslink"/>
 </div>
 <div class="span1">
-    <a class="ajax" href="{FCANSEL}" rel="get-comments">{PHP.L.Cancel}</a>
+    <a class="ajax btn btn-warning"  href="{FCANSEL}" rel="get-comments">{PHP.L.Cancel}</a>
 </div>
 </form>
 <script type="text/javascript">
