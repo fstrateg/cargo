@@ -1,10 +1,11 @@
 <!-- BEGIN: MAIN -->
 		<div class="block">
-			<h2 class="users">{PASSRECOVER_TITLE}</h2>
+            <h2 class="users">{PASSRECOVER_TITLE}</h2>
+            <div id="content"><div class="row"><div class="col">
 			<!-- IF {PHP.msg} == 'request' --><p>{PHP.L.pasrec_mailsent}</p><!-- ENDIF -->
 			<!-- IF {PHP.msg} == 'auth' --><p>{PHP.L.pasrec_mailsent2}</p><!-- ENDIF -->
 			<!-- IF !{PHP.msg} -->
-			<ol>
+			<ol class="rounded-list">
 				<li>{PHP.L.pasrec_explain1}</li>
 				<li>{PHP.L.pasrec_explain2}</li>
 				<li>{PHP.L.pasrec_explain3}</li>
@@ -15,5 +16,7 @@
 			</form>
 			<p>{PHP.L.pasrec_explain4}</p>
 			<!-- ENDIF -->
-		</div>
+            </div>
+		</div></div></div>
+
 <!-- END: MAIN -->

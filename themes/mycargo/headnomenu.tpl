@@ -19,21 +19,28 @@
 		<div class="content">
 			<header>
 				<div class="container">
-					<a href="/"><img src="/images/logo.png"></a>
-					<!-- IF ({PHP.usr.id}==0) -->
-						<!-- IF ({PHP.env.location} == 'home') -->
-							<ul class="user-links list-inline pull-right">
-								<li><a href="{PHP|cot_url('users','m=register')}" class="link-signup text-uppercase" id="signup">{PHP.L.Register}</a></li>
-								<li><a href="{PHP|cot_url('login')}" class="link-login text-uppercase">{PHP.L.Login}</a></li>
-							</ul>
-						<!-- ENDIF -->
-						<!-- IF ({PHP.env.location} == 'users') -->
-							<ul class="user-links list-inline pull-right">
-								<li><span class="gray"><b>{PHP.L.users_hasaccount}</b></span></li>
-								<li><a href="{PHP|cot_url('login')}" class="link-login text-uppercase">{PHP.L.Login}</a></li>
-							</ul>
-						<!-- ENDIF -->
-					<!-- ENDIF -->
+                    <div class="row">
+                        <div class="col">
+                            <a href="/"><img src="/images/logo.png"></a>
+                        </div>
+                        <div class="col">
+                            <!-- IF ({PHP.usr.id}==0) -->
+                            <!-- IF ({PHP.env.location} == 'home') -->
+                            <ul class="user-links list-inline pull-right">
+                                <li><a href="{PHP|cot_url('users','m=register')}" class="link-signup text-uppercase" id="signup">{PHP.L.Register}</a></li>
+                                <li><a href="{PHP|cot_url('login')}" class="link-login text-uppercase">{PHP.L.Login}</a></li>
+                            </ul>
+                            <!-- ENDIF -->
+                            <!-- IF ({PHP.env.location} == 'users') -->
+                            <ul class="user-links list-inline pull-right">
+                                <li><span class="gray"><b>{PHP.L.users_hasaccount}</b></span></li>
+                                <li><a href="{PHP|cot_url('login')}" class="link-login text-uppercase">{PHP.L.Login}</a></li>
+                            </ul>
+                            <!-- ENDIF -->
+                            <!-- ENDIF -->
+                        </div>
+                    </div>
+
 				</div>
 			</header>
 <!-- END: HEADER -->

@@ -8,8 +8,8 @@
 		<div class="col2 rz">
 			<h2 class="gray">{PHP.L.users_trcargo}</h2>
 			<span class="gray"><b>{PHP.L.users_needtransp}</b></span>
-			<div class="row">
-				<div class="for-button for-button2">
+			<div class="row text-center">
+				<div class="for-button for-button2 col">
 					<a class="btngreen" href="{PHP|cot_url('users','m=regcargo')}">{PHP.L.users_hiretransp}</a>
 				</div>
 			</div>
@@ -18,8 +18,8 @@
 		<div class="col2">
 			<h2 class="gray">{PHP.L.users_havetransp}</h2>
 			<span class="gray"><b>{PHP.L.users_fcargo}</b></span>
-			<div class="row">
-				<div class="for-button for-button2">
+			<div class="row text-center">
+				<div class="for-button for-button2 col">
 					<a class="btngreen" href="{PHP|cot_url('users','m=regtransp')}">{PHP.L.users_findcargo}</a>
 				</div>
 			</div>
