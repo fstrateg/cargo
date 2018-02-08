@@ -51,34 +51,34 @@
 <!-- ENDIF -->
 <!-- BEGIN: COMMENT -->
 <div class="row">
-    <div class="col-1 round">
+    <div class="col-2 round">
         {FRM_AVATAR}
     </div>
-    <div class="col-11">
+    <div class="col-10">
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-4">
                 {FRM_NICKNAME}
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-4">
                 <small class="grey">{PHP.L.inway_added} {FRM_CREATED}</small>
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-4">
                 {PHP.L.inway_cm_dat} {FRM_DAT}
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-4">
                 <div class="fstars" style="padding: 10px 0">
                     <span class="stars-view"><span style="width: {FRM_STARS}%"></span></span>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 {FRM_NOTE}
             </div>
         </div>

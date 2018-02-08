@@ -87,11 +87,13 @@ if ($s == 'grplevel' || $s == 'grpname' || $gm > 1)
 	$join_condition = "LEFT JOIN $db_groups as g ON g.grp_id=u.user_maingrp";
 }
 
-if($f == 'search' && mb_strlen($y) > 1)
+if($f == 'search' && mb_strlen($y) > 0)
 {
 	$sq = $y;
+    $yy=(int)$y;
 	$title[] = $L['Search']." '".htmlspecialchars($y)."'";
-	$where['namelike'] = "user_name LIKE '%".$db->prep($y)."%'";
+	$where['namelike'] = "(user_name LIKE '%".$db->prep($y)."%' or user_fiofirm LIKE'%{$db->prep($y)}%' or user_id=$yy)";
+
 }
 elseif($g > 1)
 {

@@ -6,6 +6,15 @@
  * Time: 17:04
  */
 defined('COT_CODE') or die('Wrong URL');
+
+if (isset($_GET['swith'])) {
+    $_SESSION['mobile']=($_GET['swith']=='mobile');
+}
+if (isset($_SESSION['mobile'])) {
+    $env['mobile']=$_SESSION['mobile'];
+    return;
+}
+
 $env['mobile']=check_mobile_device();
 
 function check_mobile_device() {

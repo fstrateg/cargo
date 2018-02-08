@@ -42,12 +42,12 @@
     {FEDITOR}
     </div>
 </div>
+<div class="row">
+    <div class="col">
+            <input type="submit" value="{PHP.L.Save}" class="aslink mt-3"/>
+            <a class="ajax ml-3 mt-3"  href="{FCANSEL}" rel="get-comments">{PHP.L.Cancel}</a>
 
-<div class="span1">
-    <input type="submit" value="{PHP.L.Save}" class="aslink"/>
-</div>
-<div class="span1">
-    <a class="ajax btn btn-warning"  href="{FCANSEL}" rel="get-comments">{PHP.L.Cancel}</a>
+    </div>
 </div>
 </form>
 <script type="text/javascript">
