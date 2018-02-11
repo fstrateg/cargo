@@ -23,7 +23,12 @@ body{margin:0;
 		padding-bottom: 50px;
 		background-size: cover;
 	}
-	
+	.login{
+
+        background-image: url('../img/fon.jpg');
+        background-position: -0px -100px;
+        background-size: 100%;
+    }
 	.landing-hero{
 		color: #fff;
 		font-weight: bold;
@@ -202,14 +207,14 @@ color: #7d7d7d;
 	.pad{
 		padding: 20px;
 	}
-	.pad5{
-		padding: 5px;
-	}
-		.green-link{
+    .pad10{padding: 10px;}
+	.pad5{padding: 5px;}
+	.green-link{
 		color: #007707;
 		text-decoration: none;
 	}
-		.alert ul{list-style: none;}
+    .white{color:#fff;}
+	.alert ul{list-style: none;}
 
 	@media (min-width: 1000px)
 	{
