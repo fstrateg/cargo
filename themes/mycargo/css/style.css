@@ -187,6 +187,7 @@ ol.rounded-list > li:before
 .aslink:hover {
     text-decoration: underline;
 }
+div#AuthModal {background-color: #fff;}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }

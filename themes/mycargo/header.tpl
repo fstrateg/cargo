@@ -19,7 +19,8 @@
 <body>
     <!-- BEGIN: DESKTOP -->
 	<!-- IF {PHP.usr.id} == 0 -->
-	<div id="AuthModal" class="modal hide fade">
+	<div id="AuthModal1" class="modal hide fade">
+    <div class="modal-dialog" role="document">
 		<div class="modal-header">
 			<h3 id="myModalLabel">{PHP.L.Login}</h3>
 			</div>
@@ -51,7 +52,9 @@
 			<div class="modal-footer">
 			<button class="btn" data-dismiss="modal" aria-hidden="true">{PHP.L.Close}</button>
 		</div>
-	</div>	
+    </div>
+    </div>
+
 	<!-- ENDIF -->
 	<nav class="navbar fixed-top navbar-dark navbar-expand-xl">
 		<div id="wrapper" class="container">
@@ -253,4 +256,33 @@
     </div>
 	<div id="main">
 		<div class="container">
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Open modal
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal Heading</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Modal body..
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 <!-- END: HEADER -->
