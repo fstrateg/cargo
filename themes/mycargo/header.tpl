@@ -19,42 +19,47 @@
 <body>
     <!-- BEGIN: DESKTOP -->
 	<!-- IF {PHP.usr.id} == 0 -->
-	<div id="AuthModal1" class="modal hide fade">
-    <div class="modal-dialog" role="document">
-		<div class="modal-header">
-			<h3 id="myModalLabel">{PHP.L.Login}</h3>
-			</div>
-			<div class="modal-body">
-				<form class="form-horizontal" action="{HEADER_GUEST_SEND}" method="post">
-					<div class="control-group">
-						<label class="control-label" for="inputEmail">{PHP.L.users_nameormail}</label>
-						<div class="controls">
-							<input type="text" name="rusername" id="inputEmail" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="inputPassword">{PHP.L.Password}</label>
-						<div class="controls">
-							<input type="password" name="rpassword" id="inputPassword" /><br/>
-							<a rel="nofollow" class="link small" href="{PHP|cot_url('users','m=passrecover')}">{PHP.L.users_lostpass}</a>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<label class="checkbox">
-							{HEADER_GUEST_COOKIETTL} {PHP.L.users_rememberme}
-							</label><br/>
-							<button type="submit" class="btn btn-primary btn-large">{PHP.L.Login}</button>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" aria-hidden="true">{PHP.L.Close}</button>
-		</div>
-    </div>
-    </div>
+	<div class="modal fade" id="AuthModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">{PHP.L.Login}</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form class="form-horizontal" action="{HEADER_GUEST_SEND}" method="post">
+						<div class="control-group">
+							<label class="control-label" for="inputEmail">{PHP.L.users_nameormail}</label>
+							<div class="controls">
+								<input class="form-control" type="text" name="rusername" id="inputEmail" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputPassword">{PHP.L.Password}</label>
+							<div class="controls">
+								<input class="form-control" type="password" name="rpassword" id="inputPassword" /><br/>
+								<a rel="nofollow" class="link small" href="{PHP|cot_url('users','m=passrecover')}">{PHP.L.users_lostpass}</a>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<label class="checkbox">
+									{HEADER_GUEST_COOKIETTL} {PHP.L.users_rememberme}
+								</label><br/>
+								<button type="submit" class="btn btn-success btn-large">{PHP.L.Login}</button>
+								<button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">{PHP.L.Close}</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<!-- ENDIF -->
 	<nav class="navbar fixed-top navbar-dark navbar-expand-xl">
 		<div id="wrapper" class="container">
@@ -170,7 +175,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <!-- BEGIN: GUEST -->
-                    <li class="nav-item"><a class="nav-link" href="{PHP|cot_url('login')}" data-toggle="modal" onClick="$('#AuthModal').modal(); return false;">{PHP.L.Login}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{PHP|cot_url('login')}">{PHP.L.Login}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{PHP|cot_url('users','m=register')}">{PHP.L.Register}</a></li>
                     <!-- END: GUEST -->
                     <!-- BEGIN: USER -->
@@ -256,33 +261,4 @@
     </div>
 	<div id="main">
 		<div class="container">
-            <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Open modal
-            </button>
-
-            <!-- The Modal -->
-            <div class="modal fade" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Modal Heading</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            Modal body..
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
 <!-- END: HEADER -->
