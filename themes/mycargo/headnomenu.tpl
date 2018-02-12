@@ -19,7 +19,7 @@
 		<div class="content">
 			<header>
 				<div class="container">
-                    <div class="row">
+                    <div class="row" style="display:table">
                         <div class="col">
                             <a href="/"><img src="/images/logo.png"></a>
                         </div>
@@ -32,12 +32,14 @@
                                 </ul>
                                 <!-- ENDIF -->
                                 <!-- IF ({PHP.env.location} == 'users') -->
+                            <div class="col cell-middle">
                                 <ul class="user-links list-inline pull-right">
-                                    <div class="col">
+
                                         <li><span class="gray"><b>{PHP.L.users_hasaccount}</b></span></li>
                                         <li><a href="{PHP|cot_url('login')}" class="link-login text-uppercase">{PHP.L.Login}</a></li>
-                                     </div>
+
                                 </ul>
+                            </div>
                                 <!-- ENDIF -->
                             <!-- ENDIF -->
                         </div>

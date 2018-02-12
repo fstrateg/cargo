@@ -28,6 +28,8 @@ div#loginpage {
 	background-position-y: 50px;
 	background-size: 100%;
 }
+
+.cell-middle{display: inline-block;}
 @media (min-width: 576px) {
 	div#loginpage {
 		background: url('../img/fon-md.jpg') no-repeat;
@@ -44,6 +46,11 @@ div#loginpage {
 		background-size: 100%;
 		margin: auto;
 		padding-bottom: 100px;
+	}
+
+	.cell-middle{
+		vertical-align: middle;
+		display: table-cell;
 	}
 }
 
