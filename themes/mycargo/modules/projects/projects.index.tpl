@@ -133,7 +133,7 @@
                 <h4><a href="{PRJ_ROW_URL}">{PRJ_ROW_SHORTTITLE}</a></h4>
             </div>
             <h4 class="col text-right">
-                <!-- IF {PRJ_ROW_COST} > 0 -->{PRJ_ROW_COST} {PHP.cfg.payments.valuta}<!-- ENDIF -->
+                <!-- IF {PRJ_ROW_COST} > 0 --><span class="money"></span>{PRJ_ROW_COST} {PHP.cfg.payments.valuta}<!-- ENDIF -->
             </h4>
         </div>
         <div class="row"><div class="col">
