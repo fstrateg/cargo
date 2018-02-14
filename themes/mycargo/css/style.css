@@ -187,6 +187,13 @@ ol.rounded-list > li:before
 .aslink:hover {
     text-decoration: underline;
 }
+.page-item.active .page-link {
+    background-color: #007707;
+    border-color: #007707;
+}
+.page-item .page-link {
+    color: #007707;
+}
 /*
 hr			{ border:0 solid #ccc; border-top-width:1px; clear:both; height:0; }
 hr.divider	{ margin:10px 0; }

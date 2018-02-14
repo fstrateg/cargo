@@ -89,12 +89,13 @@
         <hr>
         <!-- END: MARSH_ROWS -->
     </div>
+    <!-- IF {MARSHRUT_COUNT} > 0 -->
+    <div><ul class="pagination justify-content-center">{PAGENAV_PAGES}</ul></div>
+    <!-- ELSE -->
+    <div class="alert">{PHP.L.marshrut_empty} {MARSHRUT_COUNT}</div>
+    {TEST}
+    <!-- ENDIF -->
 </div>
-<!-- IF {MARSHRUT_COUNT} > 0 -->
-<div class="pagination"><ul>{PAGENAV_PAGES}</ul></div>
-<!-- ELSE -->
-<div class="alert">{PHP.L.marshrut_empty} {MARSHRUT_COUNT}</div>
-{TEST}
-<!-- ENDIF -->
+
 
 <!-- END: MAIN -->
