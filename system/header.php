@@ -111,7 +111,7 @@ if (!COT_AJAX)
 	$usr['istransp']=($usr['maingrp']==4?1:0);
 
 	if ($usr['iscargo']) {
-		$img = 'box.png';
+		$img = 'user.png';
 		$imgtitle=$L['Cargo'];
 	}
 	elseif ($usr['istransp']) {

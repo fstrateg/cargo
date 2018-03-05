@@ -23,6 +23,20 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="lalitty">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="lalitu">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="rich">
         <serverdata>
           <mappings>

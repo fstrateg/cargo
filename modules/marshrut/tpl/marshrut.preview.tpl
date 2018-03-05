@@ -52,6 +52,7 @@
             <hr/>
         </div>
     </div>
+    {SIMCARGO}
 </div>
 <script type="text/javascript">
     $('#del').click(function(){
@@ -59,5 +60,4 @@
     });
 </script>
 {TEST}
-{SIMCARGO}
 <!-- END: MAIN -->
