@@ -1,11 +1,11 @@
 <?php
 defined('COT_CODE') or die('Wrong URL');
 
-$cls=new InwayComment('inway.comment');
+$cls=new InwayComment('inway.commentadd');
 
 $a=cot_import('a','G','TXT');
 if (!$a) $a='button';
-if (!in_array($a,['button','form','save'])) $a='button';
+if (!in_array($a,['button','form','save','reply','reply_cansel'])) $a='button';
 $cls->setAction($a);
 $module_body=$cls->createPage();
 
@@ -22,12 +22,15 @@ class InwayComment
     var $action;
 
     var $id;
+    /** @var int $repid */
+    var $repid;
 
     function InwayComment($tpl)
     {
         $this->t=new XTemplate(cot_tplfile($tpl));
         $this->value=new TbComment();
         $this->id=cot_import('id','G','INT');
+        $this->repid=cot_import('rep','G','INT');
     }
 
     public function setAction($a)
@@ -44,6 +47,31 @@ class InwayComment
             'FSAVE'=>cot_url('inway',['m'=>'comment','a'=>'save','id'=>$this->id],'',true),
             'FPOST'=>cot_inputbox('submit','submit','')
         ]);
+    }
+
+    private function prepareReplyForm()
+    {
+        $rep=cot_import('rep','G','INT');
+        $this->t->assign([
+            'FID'=>$rep,
+            'FEDITOR'=>cot_textarea('rnote',$this->value->note,10,70,['class'=>'form-control']),
+            'FCANSEL'=>cot_url('inway',['m'=>'comment','a'=>'reply_cansel','id'=>$this->id,'rep'=>$this->repid],'',true),
+            'FSAVE'=>cot_url('inway',['m'=>'comment','a'=>'save','id'=>$this->id],'',true),
+            'FPOST'=>cot_inputbox('submit','submit','')
+        ]);
+    }
+
+    private function prepareReplyButton()
+    {
+        $this->t->assign([
+                'BUT_URL'=>cot_url('inway',['m'=>'comment','a'=>'reply','id'=>$this->id,'rep'=>$this->repid]),
+                'BUT_NUM'=>$this->repid,
+            ]);
+    }
+
+    private function prepareReplySave()
+    {
+
     }
 
     private function prepareButton()
@@ -88,6 +116,14 @@ class InwayComment
                 break;
             case 'BUTTON':
                 $this->prepareButton();
+                break;
+            case 'REPLY':
+                $this->prepareReplyForm();
+                break;
+            case 'REPLY_CANSEL':
+                $this->prepareReplyButton();
+                break;
+            case 'REPLY_SAVE':
                 break;
 
         }

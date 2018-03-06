@@ -84,6 +84,15 @@
         </div>
     </div>
 </div>
+    <!-- IF {PHP.usr.id} == {FRM_IN_OWNER} -->
+    <div class="row">
+        <div class="col-10 offset-2 text-right">
+            <div id="comments{FRM_NUM}">
+                <a class="ajax" href="{FRM_REPURL}" rel="get-comments{FRM_NUM}">{PHP.L.inway_addreply}</a>
+            </div>
+        </div>
+    </div>
+    <!-- ENDIF -->
 <hr>
 <!-- END: COMMENT -->
 </div>

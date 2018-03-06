@@ -55,9 +55,12 @@ class InwayDetails extends InwayBase
         $cm=TbComment::getListForID($this->value->id);
         foreach($cm as $item)
         {
+            $this->t->assign('FRM_NUM',$item->id);
+            $this->t->assign('FRM_REPURL',cot_url('inway',['m'=>'comment','a'=>'reply','id'=>$this->value->id,'rep'=>$item->id],'',true));
             $this->t->assign($item->getTags('FRM_'));
             $this->t->assign(cot_generate_usertags($item->userid, 'FRM_'));
             $this->t->parse('MAIN.COMMENT');
+
         }
 
     }
