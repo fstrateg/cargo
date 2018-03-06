@@ -5,7 +5,7 @@ $cls=new InwayComment('inway.commentadd');
 
 $a=cot_import('a','G','TXT');
 if (!$a) $a='button';
-if (!in_array($a,['button','form','save','reply','reply_cansel'])) $a='button';
+if (!in_array($a,['button','form','save','reply','reply_cansel','reply_save'])) $a='button';
 $cls->setAction($a);
 $module_body=$cls->createPage();
 
@@ -56,7 +56,7 @@ class InwayComment
             'FID'=>$rep,
             'FEDITOR'=>cot_textarea('rnote',$this->value->note,10,70,['class'=>'form-control']),
             'FCANSEL'=>cot_url('inway',['m'=>'comment','a'=>'reply_cansel','id'=>$this->id,'rep'=>$this->repid],'',true),
-            'FSAVE'=>cot_url('inway',['m'=>'comment','a'=>'save','id'=>$this->id],'',true),
+            'FSAVE'=>cot_url('inway',['m'=>'comment','a'=>'reply_save','id'=>$this->id,'rep'=>$this->repid],'',true),
             'FPOST'=>cot_inputbox('submit','submit','')
         ]);
     }
@@ -124,6 +124,12 @@ class InwayComment
                 $this->prepareReplyButton();
                 break;
             case 'REPLY_SAVE':
+                $this->value->loadFromPost();
+                $this->value->inway_id=$this->id;
+                {
+                    $this->setAction('SAVED');
+                    return $this->createPage();
+                }
                 break;
 
         }

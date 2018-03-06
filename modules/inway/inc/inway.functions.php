@@ -255,12 +255,20 @@ class TbComment
     var $stars;
     var $note;
     var $userid;
+    var $reply;
     var $inway_id;
 
     public static function getListForID($id)
     {
         global $db,$db_inway_comments;
-        $rz=$db->query("select * from $db_inway_comments where inway_id=$id order by created desc");
+        $rz=$db->query("select * from $db_inway_comments where inway_id=$id and reply=0 order by created desc");
+        return TbComment::cursorToList($rz);
+    }
+
+    public static function getListForComment($id)
+    {
+        global $db,$db_inway_comments;
+        $rz=$db->query("select * from $db_inway_comments where reply=$id order by created desc");
         return TbComment::cursorToList($rz);
     }
 

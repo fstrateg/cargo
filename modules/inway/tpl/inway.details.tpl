@@ -84,6 +84,35 @@
         </div>
     </div>
 </div>
+    <!-- BEGIN: REPLY -->
+    <div class="row pt-3">
+        <div class="col-10 offset-2">
+            <div class="row">
+                <div class="col-1 round">
+                    {FRM_AVATAR}
+                </div>
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            {FRM_NICKNAME}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <small class="grey">{PHP.L.inway_added} {FRM_CREATED}</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            {FRM_NOTE}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END: REPLY -->
     <!-- IF {PHP.usr.id} == {FRM_IN_OWNER} -->
     <div class="row">
         <div class="col-10 offset-2 text-right">
@@ -93,9 +122,9 @@
         </div>
     </div>
     <!-- ENDIF -->
-<hr>
+
+    <hr>
 <!-- END: COMMENT -->
-</div>
 
 
 <script type="text/javascript">
