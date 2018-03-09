@@ -126,6 +126,8 @@ class InwayComment
             case 'REPLY_SAVE':
                 $this->value->loadFromPost();
                 $this->value->inway_id=$this->id;
+                $this->value->reply=$this->repid;
+                if ($this->value->note) $this->value->add();
                 {
                     $this->setAction('SAVED');
                     return $this->createPage();

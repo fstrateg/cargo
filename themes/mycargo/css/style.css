@@ -47,6 +47,7 @@ h1,h2 {font-family: 'Montserrat',Helvetica, sans-serif;}
     border-width: 2px 2px 0 2px;
     display: inline-block;
     padding: 5px 10px;
+    background-color: rgba(256,256,256,0.7);
 }
 
 #reporterror a:hover{

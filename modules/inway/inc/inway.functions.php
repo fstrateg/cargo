@@ -340,7 +340,9 @@ class TbComment
             'NOTE'=>$this->note,
             'USERID'=>$this->userid,
             'CREATED'=>$this->created,
-            'INWAY_ID'=>$this->inway_id
+            'INWAY_ID'=>$this->inway_id,
+            'REPLY'=>$this->reply
+
         ];
     }
 
