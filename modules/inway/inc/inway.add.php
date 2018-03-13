@@ -81,7 +81,7 @@ class InwayAdd extends InwayBase
     {
         global $usr;
         $this->value=TbInway::getItem($id);
-        if ($this->value->owner!=$usr['id']) cot_die_message(404);
+        if ($this->value->owner!=$usr['id']&&!$usr['isadmin']) cot_die_message(404);
     }
 
     public function loadFromPost()

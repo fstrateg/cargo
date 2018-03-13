@@ -6,6 +6,15 @@ $tpl=cot_tplfile('inway','module',true);
 
 $cls=new InwayIList('inway.admin.ilist');
 
+$p=cot_import('p','G','TXT');
+if ($p=='del')
+{
+    $id=cot_import('id','G','INT');
+    $item=TbInway::getItem($id);
+    $item->delete();
+    cot_redirect(cot_url('admin',['m'=>'inway','a'=>'ilist'],'',true));
+}
+
 $adminmain=$cls->createPage();
 
 class InwayIList extends InwayBase
@@ -28,5 +37,6 @@ class InwayIList extends InwayBase
             $this->t->assign('IN_ONMAP',cot_url('inway',['m'=>'map','id'=>$item->id],'',true));
             $this->t->parse('MAIN.SRV');
         }
+        $this->t->assign('DEL_URL',cot_url('admin',['m'=>'inway','a'=>'ilist','p'=>'del'],'',true));
     }
 }

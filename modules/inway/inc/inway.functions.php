@@ -165,6 +165,7 @@ order by b.order";
     public function getTags($prefix='')
     {
         $tmp=[
+            'ID'=>$this->id,
             'TITLE'=>$this->title,
             'DAT'=>cot_date('d.m.Y',$this->dat),
             'DSC'=>$this->desc,
@@ -243,7 +244,17 @@ order by b.order";
     public function delete()
     {
         global $db;
-        $db->delete($this->table_name,'id='.$this->id);
+        try {
+            $db->beginTransaction();
+            TbComment::deleteAllForId($this->id);
+            $db->delete($this->table_name, 'id=' . $this->id);
+            $db->commit();
+        }
+        catch (Exception $e)
+        {
+            $db->rollBack();
+            cot_error($e->getMessage(),$e->getTraceAsString());
+        }
     }
 }
 
@@ -281,6 +292,13 @@ class TbComment
 
         $rz=$db->query($sql);
         return TbComment::cursorToList($rz);
+    }
+
+    public static function deleteAllForId($id)
+    {
+        global  $db,$db_inway_comments;
+        $sql="delete from $db_inway_comments where inway_id=$id";
+        $db->query($sql)->execute();
     }
 
     private static function cursorToList($c)

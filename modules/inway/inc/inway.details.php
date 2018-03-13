@@ -33,7 +33,7 @@ class InwayDetails extends InwayBase
         global $usr,$L;
         $this->t->assign($this->value->getTags('FRM_IN_'));
         $btn=array();
-        if ($usr['id']==$this->value->owner)
+        if ($usr['id']==$this->value->owner||$usr['isadmin'])
         {
             // edit
             $btn['FRM_IN_RTITLE']=$L['Edit'];
