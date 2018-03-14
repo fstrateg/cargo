@@ -2,8 +2,6 @@
 defined('COT_CODE') or die('Wrong URL');
 cot_block($usr['isadmin']);
 
-$tpl=cot_tplfile('inway','module',true);
-
 $cls=new InwayIList('inway.admin.ilist');
 
 $p=cot_import('p','G','TXT');
@@ -12,6 +10,13 @@ if ($p=='del')
     $id=cot_import('id','G','INT');
     $item=TbInway::getItem($id);
     $item->delete();
+    cot_redirect(cot_url('admin',['m'=>'inway','a'=>'ilist'],'',true));
+}
+if ($p=='mod')
+{
+    $id=cot_import('id','G','INT');
+    $item=TbInway::getItem($id);
+    $item->approval();
     cot_redirect(cot_url('admin',['m'=>'inway','a'=>'ilist'],'',true));
 }
 
@@ -28,22 +33,37 @@ class InwayIList extends InwayBase
     {
         global $cfg;
         Resources::addFile("${cfg['themes_dir']}/${cfg['defaulttheme']}/css/stars.css");
+
+        $flt=cot_import('flt','G','ALP');
+        if (empty($flt))
+        {
+            $this->t->assign('IN_PAGE_ALL',true);
+            $ss=TbInway::getListWhere("");
+            $this->t->assign('IN_ALL_COUNT',count($ss));
+            $this->t->assign('IN_MOD_COUNT',TbInway::getCountWhere("isnew='Y'"));
+        }
+        else
+        {
+            $this->t->assign('IN_PAGE_MOD',true);
+            $ss=TbInway::getListWhere("isnew='Y'");
+            $this->t->assign('IN_ALL_COUNT',TbInway::getCountWhere());
+            $this->t->assign('IN_MOD_COUNT',count($ss));
+        }
         /** @var TbInway $item */
-        $ss=TbInway::getList();
+
         foreach($ss as $item)
         {
             $this->t->assign($item->getTags('IN_'));
-            $this->t->assign(cot_generate_usertags($item->owner,'IN_'));
+            $this->t->assign(cot_generate_usertags($item->owner,'IN_USR_'));
             $this->t->assign('IN_DETAILS',cot_url('inway','m=details&id='.$item->id,'',true));
             $this->t->assign('IN_ONMAP',cot_url('inway',['m'=>'map','id'=>$item->id],'',true));
             $this->t->parse('MAIN.SRV');
         }
         $this->t->assign('DEL_URL',cot_url('admin',['m'=>'inway','a'=>'ilist','p'=>'del'],'',true));
+        $this->t->assign('MOD_URL',cot_url('admin',['m'=>'inway','a'=>'ilist','p'=>'mod'],'',true));
         $this->t->assign([
-            'IN_PAGE_ALL'=>true,
             'IN_URL_ALL'=>cot_url('admin',['m'=>'inway','a'=>'ilist']),
             'IN_URL_MOD'=>cot_url('admin',['m'=>'inway','a'=>'ilist','flt'=>'mod']),
-
         ]);
     }
 }

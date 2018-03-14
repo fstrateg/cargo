@@ -43,6 +43,7 @@ class TbInway
     var $dat;
     var $lat=43.2246925;
     var $long=76.8412974;
+    var $isnew;
     var $cat;
     var $cat_name;
     var $other;
@@ -73,6 +74,7 @@ class TbInway
         $this->stars=$item['stars'];
         $this->cnt=$item['cnt'];
         $this->other=$item['other'];
+        $this->isnew=$item['isnew'];
     }
 
     /**
@@ -97,8 +99,14 @@ class TbInway
 
     public static function getList($type=0)
     {
+        $usl=empty($type)?'':'cat='.$type;
+        return self::getListWhere($usl);
+    }
+
+    public static function getListWhere($where='')
+    {
         global $db,$db_inway;
-        $sql=empty($type)?'':" where cat=$type";
+        $sql=empty($where)?'':" where $where";
 
         $rez=array();
         $items=$db->query("Select * from ".$db_inway.$sql." order by dat desc")->fetchAll();
@@ -108,6 +116,13 @@ class TbInway
             $rez[]=$vl;
         }
         return $rez;
+    }
+
+    public static function getCountWhere($where='')
+    {
+        global $db,$db_inway;
+        $sql=empty($where)?'':" where $where";
+        return $db->query("select count(*) from $db_inway".$sql)->fetchColumn();
     }
 
     public static function getItem($id)
@@ -175,6 +190,7 @@ order by b.order";
             'OWNER'=>$this->owner,
             'STARS'=>$this->stars*20,
             'CNT'=>$this->cnt,
+            'ISNEW'=>($this->isnew=='Y'),
         ];
         if ($this->cat_name)
         {
@@ -256,6 +272,12 @@ order by b.order";
             cot_error($e->getMessage(),$e->getTraceAsString());
         }
     }
+
+    public function approval()
+    {
+        global $db;
+        $db->update($this->table_name,['isnew'=>'N'],'id='.$this->id);
+    }
 }
 
 class TbComment
@@ -274,6 +296,21 @@ class TbComment
         global $db,$db_inway_comments;
         $rz=$db->query("select * from $db_inway_comments where inway_id=$id and reply=0 order by created desc");
         return TbComment::cursorToList($rz);
+    }
+
+    public static function getListWhere($where='')
+    {
+        global $db,$db_inway_comments;
+        $sql=empty($where)?'':" where $where";
+        $rz=$db->query("select * from $db_inway_comments $sql order by created desc");
+        return TbComment::cursorToList($rz);
+    }
+
+    public static function getCountWhere($where='')
+    {
+        global $db,$db_inway_comments;
+        $sql=empty($where)?'':" where $where";
+        return $db->query("select count(*) from $db_inway_comments $sql order by created desc")->fetchColumn();
     }
 
     public static function getListForComment($id)
