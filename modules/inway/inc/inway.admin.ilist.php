@@ -33,10 +33,17 @@ class InwayIList extends InwayBase
         foreach($ss as $item)
         {
             $this->t->assign($item->getTags('IN_'));
+            $this->t->assign(cot_generate_usertags($item->owner,'IN_'));
             $this->t->assign('IN_DETAILS',cot_url('inway','m=details&id='.$item->id,'',true));
             $this->t->assign('IN_ONMAP',cot_url('inway',['m'=>'map','id'=>$item->id],'',true));
             $this->t->parse('MAIN.SRV');
         }
         $this->t->assign('DEL_URL',cot_url('admin',['m'=>'inway','a'=>'ilist','p'=>'del'],'',true));
+        $this->t->assign([
+            'IN_PAGE_ALL'=>true,
+            'IN_URL_ALL'=>cot_url('admin',['m'=>'inway','a'=>'ilist']),
+            'IN_URL_MOD'=>cot_url('admin',['m'=>'inway','a'=>'ilist','flt'=>'mod']),
+
+        ]);
     }
 }

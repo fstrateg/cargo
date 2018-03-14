@@ -1,8 +1,25 @@
 <!-- BEGIN:MAIN -->
 <h3>Список сервисов</h3>
+<div class="row">
+    <div class="span2">&nbsp;</div>
+    <div class="span3">
+        <ul class="nav nav-pills">
+            <li<!-- IF {IN_PAGE_ALL} --> class="active"<!-- ENDIF -->>
+                <a href="{IN_URL_ALL}">Все</a>
+            </li>
+            <li<!-- IF {IN_PAGE_MOD} --> class="active"<!-- ENDIF -->>
+                <a href="{IN_URL_MOD}">Модерация</a>
+            </li>
+            </ul>
+    </div>
+</div>
 <!-- BEGIN: SRV -->
 <div class="row">
-    <div class="span5">
+    <div class="span2" style="text-align: center">
+        <p>{IN_AVATAR}</p><p>{IN_NICKNAME}</p>
+        <p><span class="badge badge-info">{IN_USERPOINTS}</span> {IN_USERSTARS}</p>
+    </div>
+    <div class="span3">
         <p><a href="{IN_ONMAP}"><img src="/images/view.png" title="{PHP.L.inway_showonmap}"/></a> <a href="{IN_DETAILS}">{IN_TITLE}</a></p>
         <div class="fstars" style="padding: 10px 0">
             <span class="stars-view"><span style="width: {IN_STARS}%"></span></span> ({IN_CNT} {PHP.L.inway_reviews})
