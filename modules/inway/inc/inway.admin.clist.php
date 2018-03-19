@@ -33,6 +33,8 @@ class InwayCList extends InwayBase
         foreach($ss as $item)
         {
             $this->t->assign($item->getTags('IN_'));
+            $this->t->assign('IN_REPLY',$item->reply);
+            $this->t->assign(cot_generate_usertags($item->userid,'IN_USR_'));
             $this->t->parse('MAIN.COMMENT');
         }
     }

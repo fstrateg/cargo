@@ -290,6 +290,7 @@ class TbComment
     var $userid;
     var $reply;
     var $inway_id;
+    var $isnew;
 
     public static function getListForID($id)
     {
@@ -357,6 +358,8 @@ class TbComment
             'DAT'=>$this->dat,
             'NOTE'=>$this->note,
             'CREATED'=>cot_date('d.m.y h:i',$this->created),
+            'ISNEW'=>$this->isnew,
+            'ID'=>$this->id,
         ];
         if (!$pref) return $tmp;
         $rez=array();
@@ -372,6 +375,8 @@ class TbComment
         $this->note=$arr['note'];
         $this->created=$arr['created'];
         $this->userid=$arr['userid'];
+        $this->reply=$arr['reply'];
+        $this->isnew=$arr['isnew'];
     }
 
     public function loadFromPost()
