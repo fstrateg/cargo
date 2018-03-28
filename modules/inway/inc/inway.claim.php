@@ -50,13 +50,10 @@ class InwayClaim extends InwayBase
             if (getimagesize($file['tmp_name']))
             {
                 $id=$this->value->id;
-                if (!$id)
-                {
-                    $id='u_'.$usr['id'];
-                }
-                $ritem['item_photo']=$cfg['photos_dir']."/${id}_inway.jpg";
+                $ritem['item_photo']=$cfg['photos_dir']."/inway_${id}_${usr['id']}.jpg";
                 include_once $cfg['system_dir'].'/uploads.php';
-                cot_uploadImage($file['tmp_name'],$cfg['root_dir'].DS.$ritem['item_photo'],300);
+                cot_uploadImage($file['tmp_name'],$cfg['root_dir'].DS.$ritem['item_photo'],1024);
+                $this->value->newrequest();
                 cot_message('inway_filesend');
                 return true;
             }

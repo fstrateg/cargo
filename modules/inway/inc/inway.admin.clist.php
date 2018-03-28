@@ -20,13 +20,17 @@ class InwayCList extends InwayBase
             $this->t->assign('IN_ALL_COUNT',count($ss));
             $this->t->assign('IN_MOD_COUNT',TbComment::getCountWhere("isnew='Y'"));
         }
-        else
+        if ($flt=='mod')
         {
             $this->t->assign('IN_PAGE_MOD',true);
             $ss=TbComment::getListWhere("isnew='Y'");
             $this->t->assign('IN_ALL_COUNT',TbComment::getCountWhere());
             $this->t->assign('IN_MOD_COUNT',count($ss));
         }
+        $this->t->assign([
+            'IN_URL_ALL'=>cot_url('admin',['m'=>'inway','a'=>'clist'],'',true),
+            'IN_URL_MOD'=>cot_url('admin',['m'=>'inway','a'=>'clist','flt'=>'mod'],'',true),
+        ]);
         /**
          * @var $item TbComment
          */

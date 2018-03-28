@@ -2,13 +2,16 @@
 <h3>Список сервисов</h3>
 <div class="row">
     <div class="span2">&nbsp;</div>
-    <div class="span3">
+    <div class="span10">
         <ul class="nav nav-pills">
             <li<!-- IF {IN_PAGE_ALL} --> class="active"<!-- ENDIF -->>
                 <a href="{IN_URL_ALL}">Все ({IN_ALL_COUNT})</a>
             </li>
             <li<!-- IF {IN_PAGE_MOD} --> class="active"<!-- ENDIF -->>
                 <a href="{IN_URL_MOD}">Модерация ({IN_MOD_COUNT})</a>
+            </li>
+            <li<!-- IF {IN_PAGE_REQ} --> class="active"<!-- ENDIF -->>
+            <a href="{IN_URL_REQ}">Запросы ({IN_REQ_COUNT})</a>
             </li>
             </ul>
     </div>
@@ -34,6 +37,9 @@
         <a class="btn btn-danger" style="margin-top:10px" onclick="delete_srv({IN_ID},'{IN_TITLE}')">{PHP.L.Delete}</a>
         <!-- IF {IN_ISNEW} -->
         <a class="btn btn-info" style="margin-top:10px" onclick="validate_srv({IN_ID},'{IN_TITLE}')">{PHP.L.Validate}</a>
+        <!-- ENDIF -->
+        <!-- IF {IN_REQ} > 0 -->
+        <a class="btn btn-info" style="margin-top:10px" href="{REQ_URL}" ">{PHP.L.inway_request}</a>
         <!-- ENDIF -->
     </div>
 </div>

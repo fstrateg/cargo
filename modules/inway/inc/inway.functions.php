@@ -50,6 +50,7 @@ class TbInway
     var $owner;
     var $stars;
     var $cnt;
+    var $req;
 
     var $table_name;
 
@@ -75,6 +76,7 @@ class TbInway
         $this->cnt=$item['cnt'];
         $this->other=$item['other'];
         $this->isnew=$item['isnew'];
+        $this->req=$item['req'];
     }
 
     /**
@@ -191,6 +193,7 @@ order by b.order";
             'STARS'=>$this->stars*20,
             'CNT'=>$this->cnt,
             'ISNEW'=>($this->isnew=='Y'),
+            'REQ'=>$this->req,
         ];
         if ($this->cat_name)
         {
@@ -273,6 +276,24 @@ order by b.order";
         }
     }
 
+    public function newrequest()
+    {
+        global $db, $usr;
+        $db->update($this->table_name,['req'=>$usr['id']],'id='.$this->id);
+    }
+
+    public function removerequest()
+    {
+        global $db, $usr;
+        $db->update($this->table_name,['req'=>0],'id='.$this->id);
+    }
+
+    public function appr_request()
+    {
+        global $db, $usr;
+        $db->update($this->table_name,['owner'=>$this->req, 'req'=>0],'id='.$this->id);
+    }
+
     public function approval()
     {
         global $db;
@@ -349,6 +370,20 @@ class TbComment
             $rez[]=$item;
         }
         return $rez;
+    }
+
+    public static function moderate($id)
+    {
+        global  $db,$db_inway_comments;
+        $sql="update $db_inway_comments set isnew='N' where id=$id";
+        $db->query($sql)->execute();
+    }
+
+    public static function delete($id)
+    {
+        global  $db,$db_inway_comments;
+        $sql="delete from $db_inway_comments where id=$id";
+        $db->query($sql)->execute();
     }
 
     public function getTags($pref='')

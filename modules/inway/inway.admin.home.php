@@ -46,7 +46,8 @@ class InwayAdminHome
         $this->pushString("<li>$a</li>");
 
         $cnt=$this->getCount($db_inway,"req>0");
-        $this->pushString("<li>Запросов на владение: $cnt</li>");
+        $a=cot_rc_link(cot_url('admin',['m'=>'inway','a'=>'ilist','flt'=>'req'],'',true),"Запросов на владение: $cnt");
+        $this->pushString("<li>$a</li>");
 
         $cnt=$this->getCount($db_inway,"isnew='Y'");
         $a=cot_rc_link(cot_url('admin',['m'=>'inway','a'=>'ilist','flt'=>'mod'],'',true),"Севисов на модерацию: $cnt");

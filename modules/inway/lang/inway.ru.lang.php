@@ -33,4 +33,5 @@ $L['inway_added']='Добавлено';
 $L['inway_cm_dat']='Посещал сервис';
 $L['inway_reviews']='Отзывов';
 $L['inway_showonmap']='Показать на карте';
-$L['inway_filesend']='Файл отправлен на верификацию';
+$L['inway_filesend']='Заявка успешно отправлена на верификацию';
+$L['inway_request']='Запрос прав';
