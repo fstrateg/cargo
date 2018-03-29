@@ -12,8 +12,8 @@ cot_rc_add_file($cfg['plugins_dir'] . '/kursvalut/tpl/kursvalut.css');
 $dat=date('d.m.Y');
 $arr = array('USD','EUR','RUB','CNY');
 $tr = create_tr($arr);
-$st = "<div class='table_blur'>
-    <table>
+$st = "<div class='table_blur d-none d-xl-block'>
+    <table class='table-responsive'>
         <caption>Курс валют на $dat </caption>
         <tr>
             <th>Валюта</th>

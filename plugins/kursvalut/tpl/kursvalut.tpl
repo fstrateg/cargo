@@ -1,7 +1,7 @@
 <!-- BEGIN: MAIN -->
 
 <div class='table_blur'>
-    <table>
+    <table class="table-responsive">
         <caption>{CAPT}</caption>
         <tr>
             <th>Валюта</th>
